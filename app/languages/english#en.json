@@ -1,0 +1,1758 @@
+{
+	"direction": "ltr",
+	"global": {
+		"submit"						: "Submit",
+		"create"						: "Create",
+		"delete"						: "Delete",
+		"edit"							: "Edit",
+		"view"							: "View",
+		"cancel"						: "Cancel",
+		"update"						: "Update",
+		"enable"						: "Enable",
+		"hidden"						: "Hidden",
+		"login"							: "Login",
+		"language"						: "Language",
+		"choose_language"				: "Choose Language",
+		"theme_style"					: "Switch to %s Mode",
+		"theme_style_light"				: "Light",
+		"theme_style_dark"				: "Dark",
+		"close"							: "Close",
+		"search"						: "Search",
+		"no_data"						: "No data available..",
+		"yes"							: "Yes",
+		"no"							: "No",
+		"active"						: "Active",
+		"disabled"						: "Disabled",
+		"export"						: "Export",
+		"export_csv"					: "Export to CSV",
+		"export_json"					: "Export to JSON",
+		"export_pdf"					: "Export to PDF",
+		"captcha_placeholder"			: "Captcha text",
+		"loading"						: "Loading..",
+		"view_more"						: "View more",
+		"view_x_more"					: "View %s more..",
+		"clipboard_copy"				: "Copy to clipboard",
+		"clipboard_copied"				: "Copied!",
+		"terms_and_conditions"			: "Terms and Conditions",
+		"privacy_policy"				: "Privacy Policy",
+		"delete_file"					: "Delete uploaded file",
+		"bulk_actions"					: "Bulk actions",
+		"unlimited"						: "Unlimited",
+
+		"info_message": {
+			"confirm_delete"			: "Are you sure you want to delete this?",
+			"plan_feature_no_access"	: "Your current plan does not allow you to access this feature.",
+			"user_plan_is_expired"   	: "Your current plan has expired and your access is limited. Please get a new plan!"
+		},
+
+		"success_message": {
+			"create1"					: "%s has been successfully created.",
+			"create2"					: "Successfully created.",
+			"update1"					: "%s has been successfully updated.",
+			"update2"					: "Successfully updated.",
+			"delete1"					: "%s has been successfully deleted.",
+			"delete2"					: "Successfully deleted."
+		},
+
+		"error_message": {
+			"directory_not_writable"	: "Directory is not writable <strong>%s</strong>. Make sure to give it the proper CHMOD permissions.",
+			"file_not_writable"			: "File is not writable <strong>%s</strong>. Make sure to give it the proper CHMOD permissions.",
+			"empty_fields"				: "You must fill all the fields!",
+			"empty_field"				: "This field is required, you must fill it!",
+			"invalid_captcha"			: "The captcha code is not valid!",
+			"invalid_file_type"			: "Invalid file type!",
+			"invalid_csrf_token"		: "The action could not be finished because the protector has expired, please try again!",
+			"basic"						: "We could not perform your requested command!",
+			"file_size_limit"			: "Your uploaded file is too big, the maximum file size you are allowed to upload is %s MB."
+		},
+
+		"menu": {
+			"home"						: "Home",
+			"logout"					: "Logout",
+			"settings"					: "Settings",
+			"admin"						: "Admin",
+			"website"					: "Visit website",
+			"admin_others"				: "Others"
+		},
+
+		"accessibility": {
+			"toggle_navigation"			: "Toggle navigation",
+			"logo_alt"					: "Website Logo",
+			"captcha_alt"				: "Captcha",
+			"captcha_input"				: "Captcha Field"
+		},
+
+		"pagination": {
+			"previous"					: "Previous",
+			"next"						: "Next",
+			"results"					: "Showing %s-%s out of %s results."
+		},
+
+		"filters": {
+			"header"					: "Filters",
+			"reset"						: "Reset",
+			"search"					: "Search",
+			"search_by"					: "Search by",
+			"status"					: "Status",
+			"order_by"					: "Order by",
+			"order_by_datetime"			: "Created datetime",
+			"order_type"				: "Order type",
+			"order_type_asc"			: "Ascending",
+			"order_type_desc"			: "Descending",
+			"all"						: "All",
+			"results_per_page"			: "Results per page"
+		},
+
+		"date": {
+			"CHANGE_THOSE_AT_YOUR_OWN_RESPONSIBILITY": "",
+			"datetime_readable_format"	: "%1$s %2$s, %3$s",
+			"datetime_small_readable_format": "%1$s %2$s",
+			"datetime_ymd_format"		: "%1$s-%2$s-%3$s",
+			"datetime_his_format"		: "%1$s:%2$s:%3$s",
+			"datetime_ymd_his_format"	: "%1$s-%2$s-%3$s %4$s:%5$s:%6$s",
+
+			"now"						: "now",
+			"cancel"					: "Cancel",
+			"apply"						: "Apply",
+			"from"						: "From",
+			"to"						: "To",
+			"custom"					: "Custom",
+			"today"						: "Today",
+			"yesterday"					: "Yesterday",
+			"last_7_days"				: "Last 7 days",
+			"last_30_days"				: "Last 30 days",
+			"this_month"				: "This month",
+			"last_month"				: "Last month",
+			"all_time"					: "All time",
+
+			"second"					: "second",
+			"seconds"					: "seconds",
+			"minute"					: "minute",
+			"minutes"					: "minutes",
+			"hour"						: "hour",
+			"hours"						: "hours",
+			"day"						: "day",
+			"days"						: "days",
+			"month"						: "month",
+			"months"					: "months",
+			"year"						: "year",
+			"years"						: "years",
+			"time_ago"					: "%1$s %2$s ago",
+			"time_until"				: "%1$s %2$s until",
+
+			"long_days": {
+				"1"						: "Monday",
+				"2"						: "Tuesday",
+				"3"						: "Wednesday",
+				"4"						: "Thursday",
+				"5"						: "Friday",
+				"6"						: "Saturday",
+				"7"						: "Sunday"
+			},
+
+			"short_days": {
+				"1"						: "Mon",
+				"2"						: "Tue",
+				"3"						: "Wed",
+				"4"						: "Thu",
+				"5"						: "Fri",
+				"6"						: "Sat",
+				"7"						: "Sun"
+			},
+
+			"long_months": {
+				"1"						: "January",
+				"2"						: "February",
+				"3"						: "March",
+				"4"						: "April",
+				"5"						: "May",
+				"6"						: "June",
+				"7"						: "July",
+				"8"						: "August",
+				"9"						: "September",
+				"10"					: "October",
+				"11"					: "November",
+				"12"					: "December"
+			},
+
+			"short_months": {
+				"1"						: "Jan",
+				"2"						: "Feb",
+				"3"						: "Mar",
+				"4"						: "Apr",
+				"5"						: "May",
+				"6"						: "Jun",
+				"7"						: "Jul",
+				"8"						: "Aug",
+				"9"						: "Sep",
+				"10"					: "Oct",
+				"11"					: "Nov",
+				"12"					: "Dec"
+			}
+		},
+
+		"number": {
+			"decimal_point"				: ".",
+			"thousands_separator"		: ","
+		},
+
+		"emails": {
+			"user_activation": {
+				"subject"				: "Confirm your new account - {{WEBSITE_TITLE}}",
+				"body"					: "Hey there {{NAME}},<br /><br />We are glad you joined us! <br /><br />One more step and you are ready,<br /><br />you just need to click the following link in order to join {{WEBSITE_TITLE}}<br /><br /><a href=\"{{ACTIVATION_LINK}}\">Activate your account</a><br /><br />Greetings from {{WEBSITE_TITLE}}!"
+			},
+
+			"user_pending_email": {
+				"subject"				: "Confirm your email address change - {{WEBSITE_TITLE}}",
+				"body"					: "Hey there {{NAME}},<br /><br />You have requested to change your email address from {{CURRENT_EMAIL}} to {{NEW_EMAIL}}. <br /><br />Please click on the link below to confirm your new email address. <br /><br /><a href=\"{{ACTIVATION_LINK}}\">Confirm email address change</a><br /><br />Greetings from {{WEBSITE_TITLE}}!"
+			},
+
+			"user_lost_password": {
+				"subject"				: "Reset your password - {{WEBSITE_TITLE}}",
+				"body"					: "Hey there {{NAME}},<br /><br />This is your reset password link: <a href=\"{{LOST_PASSWORD_LINK}}\">Reset Password</a><br /><br />If you did not request this, you can ignore it!<br /><br />Greetings from {{WEBSITE_TITLE}}!"
+			},
+
+			"user_payment": {
+				"subject"				: "Payment received - {{WEBSITE_TITLE}}",
+				"body"					: "Hey there {{NAME}},<br /><br />This is a confirmation that your payment has been received by us.<br /><br />Your account plan is now paid until {{PLAN_EXPIRATION_DATE}}!<br /><br />You can also check all the <a href=\"{{USER_PAYMENTS_LINK}}\">payments</a> you made, <a href=\"{{USER_PLAN_LINK}}\">change your plan</a> or <a href=\"{{USER_PLAN_LINK}}\">cancel it</a>.<br /><br />Greetings from {{WEBSITE_TITLE}}!"
+			},
+
+			"user_plan_expiry_reminder": {
+				"subject"				: "Your plan is expiring in {{DAYS_UNTIL_EXPIRATION}} days - {{WEBSITE_TITLE}}",
+				"body"					: "Hey there {{NAME}},<br /><br />This is a simple email to remind you that your {{PLAN_NAME}} plan is going to expire in {{DAYS_UNTIL_EXPIRATION}} days.<br /><br />Please <a href=\"{{USER_PLAN_RENEW_LINK}}\">renew your plan</a> if you wish to continue using our website with all the features you have.<br /><br />Greetings from {{WEBSITE_TITLE}}!"
+			},
+
+			"user_data_send": {
+				"subject"				: "New data collected for {{CAMPAIGN_NAME}} campaign - {{NOTIFICATION_NAME}} notification",
+				"body"					: "Here is everything we have collected from the <strong>{{CAMPAIGN_NAME}}</strong> Campaign - <strong>{{NOTIFICATION_NAME}}</strong> Notification.<br /><br />{{DATA}}<br /><br />Greetings from {{WEBSITE_TITLE}}!"
+			},
+
+			"admin_new_user_notification": {
+				"subject"				: "New user registered - {{WEBSITE_TITLE}}",
+				"body"					: "Hey!<br /><br />A new user just registered to the website!<br /><br />Welcome to {{NAME}} ({{EMAIL}}) to your website!"
+			},
+
+			"admin_new_payment_notification": {
+				"subject"				: "New payment via {{PROCESSOR}} of {{TOTAL_AMOUNT}} {{CURRENCY}} - {{WEBSITE_TITLE}}",
+				"body"					: "Hey!<br /><br />{{NAME}} ({{EMAIL}}) user just paid <strong>{{TOTAL_AMOUNT}} {{CURRENCY}}</strong> to your website!<br /><br />Here's to more earnings!"
+			},
+
+			"admin_new_affiliate_withdrawal_notification": {
+				"subject"				: "New affiliate withdrawal request for {{TOTAL_AMOUNT}} {{CURRENCY}} - {{WEBSITE_TITLE}}",
+				"body"					: "Hey!<br /><br />{{NAME}} ({{EMAIL}}) user just submitted an affiliate withdrawal request for <strong>{{TOTAL_AMOUNT}} {{CURRENCY}}</strong> with the following note: \"{{AFFILIATE_WITHDRAWAL_NOTE}}\".<br /><br /><a href=\"{{ADMIN_AFFILIATE_WITHDRAWAL_LINK}}\">View affiliate withdrawal</a>"
+			}
+		},
+
+		"footer": {
+			"copyright"					: "Copyright &copy; %s %s"
+		},
+
+		"plan_settings": {
+			"no_ads"                    	: "No Ads",
+			"removable_branding"			: "Removable Branding",
+			"custom_branding"				: "Custom Branding",
+			"campaigns_limit"				: "%s Campaigns",
+			"notifications_limit"			: "%s Notifications",
+			"notifications_impressions_limit"		: "%s Notifications Impressions / month",
+			"track_notifications_retention"			: "%s days statistics retention",
+			"enabled_notifications_all"				: "All Notifications Enabled",
+			"enabled_notifications_x"				: "%s Enabled Notifications",
+			"api_is_enabled"						: "API access",
+			"api_is_enabled_help"					: "Get access to use the REST API.",
+			"affiliate_is_enabled"					: "Affiliate access",
+			"affiliate_is_enabled_help"				: "Get access to the affiliate program to earn money."
+		}
+	},
+
+	"page": {
+		"breadcrumb"					: "Page",
+		"print"							: "Print",
+
+		"estimated_reading_time"		: "%s read",
+		"last_date"						: "Last updated on: %s"
+	},
+
+	"pages": {
+		"title"							: "Pages",
+		"header"						: "Resources center",
+		"subheader"						: "Here you can find useful page resources depending on your needs.",
+		"total_views"					: "(%s views)",
+
+		"index": {
+			"breadcrumb"				: "Pages",
+
+			"popular_pages": {
+				"header"				: "Popular pages"
+			},
+
+			"pages_categories": {
+				"header"				: "Categories",
+				"total_pages"			: "%s available pages"
+			}
+		},
+
+		"pages_category": {
+			"breadcrumb"				: "Pages Category"
+		}
+	},
+
+	"plan": {
+		"breadcrumb"					: "Choose plan",
+		"title"							: "Plan",
+		"header_new"					: "Choose your plan",
+		"subheader_new"					: "Select one plan to continue your subscription.",
+		"header_renew"					: "Renew your plan",
+		"subheader_renew"				: "Select one plan to renew your subscription.",
+		"header_upgrade"				: "Upgrade your plan",
+		"subheader_upgrade"				: "Select one plan to upgrade your subscription.",
+
+		"free": {
+			"price"						: "Free"
+		},
+
+		"trial": {
+			"price"						: "Trial"
+		},
+
+		"custom_plan": {
+			"monthly"					: "Monthly",
+			"annual"					: "Annual",
+			"lifetime"					: "Lifetime",
+			"monthly_payments"			: "Monthly payments.",
+			"annual_payments"			: "Annual payments.",
+			"lifetime_payments"			: "Lifetime payments."
+		},
+
+		"button": {
+			"choose"					: "Choose plan",
+			"disabled"					: "Disabled",
+			"already_free"				: "Your plan"
+		}
+	},
+
+	"pay_billing": {
+		"breadcrumb"					: "Billing",
+		"title"							: "Billing",
+		"header"						: "Fill in your billing details",
+		"subheader"						: "We require your billing details for generating proper invoices & for tax handling, provide valid billing details only.",
+		"submit"						: "Update & continue to %s checkout"
+	},
+
+	"pay": {
+		"breadcrumb"					: "%s plan",
+		"title"							: "Pay",
+		"plan_details"					: "What you'll get",
+		"accept"						: "By continuing with your order you confirm that you read, understand & agree to the %s and %s of the site.",
+
+		"free": {
+			"free_already"				: "Your already have the free plan activated!",
+			"other_plan_not_expired"	: "Your current plan is not expired yet, you will get the free plan after it expires!"
+		},
+
+		"trial": {
+			"header"					: "Start the %s plan",
+			"subheader"					: "You are almost there.",
+
+			"trial_done"				: "Your trial option was already used, you can't renew it anymore.",
+			"other_plan_not_expired"	: "Your current plan is not expired yet, if you start your trial it will override it!",
+			"trial_start"				: "Start my %s days trial"
+		},
+
+		"custom_plan": {
+			"header"					: "Purchase the %s plan",
+			"subheader"					: "You are almost there, complete the following form and checkout.",
+
+			"paypal"					: "PayPal",
+			"stripe"					: "Stripe",
+			"offline_payment"			: "Offline payment",
+
+			"payment_frequency"			: "Payment frequency",
+			"monthly"					: "Monthly Payments",
+			"annual"					: "Annual Payments",
+			"annual_savings"			: "%s %s",
+			"lifetime"					: "Lifetime deal",
+			"lifetime_help"				: "One time payment",
+
+			"code_button"				: "I have a discount code",
+			"code" 						: "Discount code",
+
+			"payment_processor"			: "Payment method",
+			"no_processor"				: "There are no payment processors available at the moment.",
+			"offline_payment_instructions": "Payment instructions",
+			"offline_payment_proof"		: "Proof of payment",
+			"offline_payment_proof_help": "Upload the proof of payment (jpg, jpeg, png or pdf).",
+
+			"payment_type"				: "Type of payment",
+			"one_time_type"				: "One Time Payment",
+			"recurring_type"            : "Recurring Payment",
+
+			"summary": {
+				"header"				: "Order summary",
+
+				"plan"				: "Plan",
+
+				"payment_frequency"		: "Frequency",
+				"monthly"				: "Monthly",
+				"monthly_help"			: "Every 30 days",
+				"annual"				: "Yearly",
+				"annual_help"			: "Every 365 days",
+				"lifetime"				: "Lifetime",
+				"lifetime_help"			: "",
+
+				"payment_processor"		: "Paid with",
+
+				"payment_type"			: "Type",
+				"one_time"				: "One time",
+				"one_time_help"			: "",
+				"recurring"				: "Recurring",
+				"recurring_help"		: "Automatic billing",
+
+				"plan_price"			: "Price",
+
+				"discount"				: "Discount",
+
+				"tax_inclusive"			: "Inclusive",
+				"tax_exclusive"			: "Exclusive",
+
+				"total"					: "Total"
+			},
+
+			"pay"						: "Checkout"
+		},
+
+		"success_message": {
+			"code"						: "Applied discount code for %s."
+		},
+
+		"error_message": {
+			"code_invalid"				: "This discount code is invalid..",
+			"code_used"					: "You have already used this discount code..",
+			"canceled_payment"			: "It seems you've canceled the payment for some reason.",
+			"failed_payment"			: "Something didn't work quite right, please try again if this persists contact the site admin.",
+			"offline_payment_proof_missing": "You must upload a payment proof before submitting the payment order."
+		}
+	},
+
+	"pay_thank_you" : {
+		"title"							: "Thank you",
+		"header"						: "Thank you!",
+		"button"						: "Go to my dashboard",
+
+		"plan_trial_start"			: "Your trial period just started!",
+		"plan_custom_will_start" 	: "Your payment was sent and your new membership will be activated!",
+		"plan_custom_pending"		: "Your payment order was sent and your new membership will be activated if the proof will be accepted!"
+	},
+
+	"account": {
+		"title"							: "Account",
+		"menu"							: "Account",
+
+		"plan": {
+			"header"				    : "%s Plan",
+			"subheader"			    	: "ends on %s",
+			"upgrade_plan"			: "Upgrade Plan",
+			"renew_plan"				: "Renew/Change Plan",
+			"renew"						: "Renew/Upgrade",
+
+			"notifications_impressions_limit" : "You have used %s impressions out of %s this month"
+		},
+
+		"settings": {
+			"header"					: "Settings",
+			"subheader"					: "Basic profile settings of your account.",
+
+			"email"						: "Email",
+			"name"						: "Name",
+			"timezone"					: "Timezone",
+			"timezone_help"				: "Your preferred way of displaying dates."
+		},
+
+		"billing": {
+			"header"					: "Billing details",
+			"subheader"					: "These billing details are used when generating invoices after a successful payment.",
+
+			"subscription_id_active"	: "You have an active subscription, you can't change the billing details until the subscription expires or is cancelled.",
+
+			"type"						: "Type",
+			"type_personal"				: "Personal",
+			"type_business"				: "Business",
+			"name"						: "Name",
+			"address"					: "Address",
+			"city"						: "City",
+			"county"					: "County",
+			"country"					: "Country",
+			"zip"						: "ZIP",
+			"phone"						: "Phone",
+			"tax_id"					: "Tax ID"
+		},
+
+		"change_password": {
+			"header"					: "Change Password",
+			"subheader"					: "If you do not want to change your password, do not fill any of those fields below.",
+
+			"current_password"			: "Current Password",
+			"new_password"				: "New Password",
+			"repeat_password"			: "Repeat Password"
+		},
+
+		"twofa": {
+			"header"					: "Two-factor authentication",
+			"subheader"					: "Use a mobile authentication app to get a verification code to enter every time you log in.",
+
+			"is_enabled"				: "Enable Two-factor authentication",
+			"qr"						: "1. Scan QR Code",
+			"qr_help"					: "Open the authentication app (ex: Authy, Google Authenticator) on your mobile device and scan the following QR Code with your camera.",
+
+			"secret"					: "Can't scan the QR Code?",
+			"secret_help"				: "Try inserting the following secret code into your app if you can't scan the QR Code.",
+
+			"verify"					: "2. Enter freshly generated token",
+			"verify_help"				: "To confirm that you setup your code properly, please enter the 6-digit token from your mobile app."
+		},
+
+		"info_message": {
+			"user_pending_email"		: "An email confirmation was sent to the new email address. Make sure to check and confirm it via email."
+		},
+
+		"error_message": {
+			"invalid_current_password"	: "Your current password is not valid!",
+			"short_password"			: "Your password is too short, you must have at least 6 characters!",
+			"passwords_not_matching"	: "Your entered passwords do not match",
+			"twofa_check"				: "The token that you entered is not valid, please try again to setup the Two-factor authentication system."
+		},
+
+		"success_message": {
+			"account_updated"			: "Your account was updated!",
+			"password_updated"			: "Your account password was updated!"
+		}
+	},
+
+	"account_delete": {
+		"title"							: "Delete account",
+		"menu"							: "Delete account",
+		"header"						: "Delete account",
+		"subheader"						: "By deleting the account, all of your stored data will be deleted. <br /> This action is irreversible once done.",
+		"current_password"				: "Current Password",
+
+		"error_message": {
+			"invalid_current_password"	: "Your current password is not valid!"
+		},
+
+		"success_message"				: "Your account was fully deleted! We're sorry to see you go!"
+	},
+
+	"account_plan": {
+		"title"							: "Account Plan",
+		"menu"							: "Plan",
+		"header"						: "Account Plan",
+
+		"plan":{
+			"renews"					: "Plan will renew on %s",
+			"expires"					: "Plan ends on %s"
+		},
+
+		"cancel": {
+			"header"					: "Cancel Subscription",
+			"subheader"					: "By cancelling your subscription no further payments will be made. <br /> You will still have access to your features that you paid for until the expiration date.",
+			"cancel"					: "Cancel Subscription",
+			"confirm_message"			: "Are you sure you want to cancel your subscription?",
+			"reason"					: "Cancelled from %s"
+		},
+
+		"code": {
+			"header"					: "Redeem",
+			"subheader"					: "Redeeming a code will cancel your current plan and automatically switch you to the new plan associated with the code.",
+
+			"input"						: "Redemption code",
+			"submit"					: "Activate"
+		},
+
+		"success_message": {
+			"code_redeemed"				: "Code has been successfully redeemed!",
+			"code"						: "Redeemable code is available: %s for %s days.",
+			"subscription_canceled"     : "Your recurring subscription was canceled!"
+		},
+
+		"error_message": {
+			"code_invalid"				: "This redeemable code is invalid..",
+			"code_used"					: "You have already used this redeemable code.."
+		}
+	},
+
+	"account_payments": {
+		"title"							: "Account Payments",
+		"menu"							: "Payments",
+		"header"						: "Account Payments",
+		"subheader"						: "All the payments made on your account.",
+
+		"payments": {
+			"customer"					: "Customer",
+			"type"						: "Type",
+			"date"						: "Date",
+			"name"						: "Full Name",
+			"total_amount"				: "Total Amount",
+			"plan_id"				: "Plan",
+			"invoice"					: "Invoice",
+			"status_pending"			: "Pending approval",
+			"status_approved"			: "Approved",
+
+			"no_data"					: "No payments for now.."
+		},
+
+		"filters": {
+			"processor"						: "Processor",
+			"processor_paypal"				: "PayPal",
+			"processor_stripe"				: "Stripe",
+			"processor_offline_payment"		: "Offline payment",
+
+			"type"							: "Type",
+			"type_one_time"					: "One time",
+			"type_recurring"				: "Recurring",
+
+			"frequency"						: "Frequency",
+			"frequency_monthly"				: "Monthly",
+			"frequency_annual"				: "Annual",
+			"frequency_lifetime"			: "Lifetime",
+
+			"order_by_total_amount"			: "Total amount"
+		}
+	},
+
+	"account_logs": {
+		"title"							: "Account logs",
+		"menu"							: "Logs",
+		"header"						: "Account logs",
+		"subheader"						: "A list of your most important recorded activity.",
+
+		"logs": {
+			"type"						: "Type",
+			"ip"						: "IP",
+			"datetime"					: "Date",
+			"details"					: "Details",
+
+			"no_data"					: "Your account has no recorded logs..",
+			"no_data_help"				: "Here you will be able to find important log entries regarding your account."
+		},
+
+		"filters": {
+			"search_by_type"            : "Type",
+			"search_by_ip"              : "IP"
+		}
+	},
+
+	"account_api": {
+		"title"							: "Account API",
+		"menu"							: "API",
+		"header"						: "API",
+		"subheader"						: "Your API key. If needed, you can get a new one by hitting the button below. Looking for the %sAPI Documentation?%s",
+		"api_key"						: "API Key",
+		"button"						: "Regenerate API Key",
+		"success_message"				: "Your API key was regenerated successfully!"
+	},
+
+	"referrals": {
+		"title"							: "Referrals",
+		"menu"							: "Referrals",
+
+		"invite": {
+			"header"					: "Invite people",
+			"subheader_once"			: "Invite people to %s with the following link and get %s from their first payment to the platform.",
+			"subheader_forever"			: "Invite people to %s with the following link and get %s from all their payments to the platform.",
+			"referral_key"				: "Referral link",
+			"button"					: "Copy referral link"
+		},
+
+		"statistics": {
+			"header"					: "Statistics",
+			"referrals"					: "Referrals",
+			"referrals_help"			: "People who have signed up using your referral link.",
+			"converted_referrals"			: "Paying referrals",
+			"converted_referrals_help"		: "People who have signed up & paid for a plan at least once.",
+			"pending_affiliate_commissions" : "Pending commissions",
+			"pending_affiliate_commissions_help" : "All payments are held for 30 days for proper confirmation before they are approved.",
+			"approved_affiliate_commissions": "Approved commissions",
+			"approved_affiliate_commissions_help": "All payments that have been approved, which are ready to be withdrawn."
+		},
+
+		"withdraw": {
+			"header"					: "Withdraw",
+			"subheader"					: "Once you reach at least %s, you can create a withdrawal request.",
+			"amount"					: "Amount",
+			"is_paid"					: "Is paid",
+			"is_paid_paid"				: "Paid!",
+			"is_paid_pending"			: "Pending",
+			"success_message"			: "Your withdrawal request has been sent for approval and processing!"
+		}
+	},
+
+	"invoice": {
+		"print"							: "Print",
+		"invoice"						: "INVOICE",
+		"invoice_nr"					: "Invoice Nr",
+		"invoice_date"					: "Date",
+
+		"vendor"						: "Vendor",
+		"customer"						: "Customer",
+
+		"name"							: "Name",
+		"address"						: "Address",
+		"city"							: "City",
+		"county"						: "County",
+		"zip"							: "ZIP",
+		"country"						: "Country",
+		"email"							: "Email",
+		"phone"							: "Phone",
+		"tax_id"						: "Tax ID",
+
+		"table": {
+			"item"						: "Item",
+			"amount"					: "Amount",
+
+			"plan"						: "%s Plan",
+			"frequency"					: "%s access.",
+			"frequency_monthly"			: "30 days",
+			"frequency_annual"			: "1 year",
+			"frequency_lifetime"		: "Lifetime",
+
+			"code"						: "Discount",
+			"code_help"					: "Code used: %s",
+
+			"total"						: "Total",
+			"paid_via"					: "Paid via %s"
+		}
+	},
+
+	"login": {
+		"menu"							: "Login",
+		"title"							: "Login",
+		"header"						: "Login",
+
+		"form": {
+			"email" 					: "Email Address",
+			"email_placeholder"			: "email@domain.com",
+			"password"					: "Password",
+			"password_placeholder"		: "Password",
+			"twofa_token"				: "Two-factor token",
+			"twofa_token_placeholder"	: "Token code from the authenticator app",
+			"remember_me"				: "Remember me",
+			"login"						: "Login",
+			"or"						: "or"
+		},
+
+		"display": {
+			"total_track_notifications" : "Displayed notifications worldwide and counting.",
+			"register"					: "Don't have an account? %s",
+			"register_help"				: "Register",
+
+			"lost_password"				: "Lost Password",
+			"resend_activation"			: "Resend Activation",
+			"facebook"					: "%s Facebook Login",
+			"google"					: "%s Google Login"
+		},
+
+		"info_message": {
+			"twofa_token"				: "Use your authenticator app to get the token for the Two-factor authentication.",
+			"logged_in"					: "Welcome back, %s! You've successfully logged in."
+		},
+
+		"error_message": {
+			"twofa_token"				: "Your two-factor authentication token is invalid!",
+			"wrong_login_credentials"	: "Your login combination is invalid!",
+			"user_not_active"			: "Your account is not confirmed or banned!",
+			"email_is_null"				: "Your facebook account doesn't have an email associated with it, we could not finish the Facebook login process."
+		}
+	},
+
+	"lost_password": {
+		"title"							: "Lost password",
+		"header"						: "Lost password",
+		"subheader"						: "We will send you an email with a magic recovery link to reset your password.",
+		"return"						: "Return to Login",
+		"email"		 					: "Email",
+		"submit"						: "Send me a recovery link",
+		"success_message"				: "We sent an email to you if there is an account registered with it!"
+	},
+
+	"reset_password": {
+		"title"							: "Set a new password",
+		"header"						: "Set a new password",
+		"subheader"						: "For better security, make sure your new password is strong.",
+		"return"						: "Return to Login",
+		"new_password"					: "New password",
+		"repeat_password"				: "Repeat your new password",
+		"error_message": {
+			"short_password"			: "Your password is too short, you must have at least 6 characters!",
+			"passwords_not_matching"	: "Your entered passwords do not match!"
+		},
+		"submit"						: "Set password",
+		"success_message"				: "Your new password was set!"
+	},
+
+	"resend_activation": {
+		"title"							: "Resend activation",
+		"header"						: "Resend activation email",
+		"subheader"						: "Mails can get lost, but we can send you another activation email for your account.",
+		"return"						: "Return to Login",
+		"email" 						: "Email",
+		"submit"						: "Send me the activation email",
+		"success_message"				: "We sent an email to you if there is an account registered with it!"
+	},
+
+	"activate_user": {
+		"user_activation"				: "Your account has been confirmed and is now active!",
+		"user_pending_email"			: "Your new email address has been confirmed!"
+	},
+
+	"register": {
+		"title"							: "Register",
+		"menu"							: "Register",
+		"header"						: "Register",
+		"login"							: "Already have an account?",
+
+		"display": {
+			"total_notifications"		: "Total notifications created with our platform."
+		},
+
+		"form": {
+			"name"						: "Name",
+			"name_placeholder"			: "Your full name",
+			"email"						: "Email",
+			"email_placeholder"			: "email@domain.com",
+			"password"					: "Password",
+			"password_placeholder"		: "Password",
+			"repeat_password"			: "Repeat Password",
+			"accept"					: "I confirm that I have read and understood the %s and %s of the site.",
+			"register"					: "Register"
+		},
+
+		"error_message": {
+			"username_length"			: "Username must be between 3 and 32 characters!",
+			"name_length"				: "Name must be between 3 and 32 characters!",
+			"email_exists"				: "We're sorry, but that email is already used!",
+			"invalid_email"				: "You entered an invalid email!",
+			"short_password"			: "Your password is too short, you must have at least 6 characters!",
+			"passwords_not_matching"	: "Your entered passwords do not match"
+		},
+
+		"success_message": {
+			"registration"				: "Check your email for the activation link of your account!",
+			"login"						: "Welcome to our platform, we are grateful to have you here!"
+		}
+	},
+
+	"dashboard": {
+		"title"								: "Dashboard",
+		"breadcrumb"						: "Dashboard",
+		"menu"								: "Dashboard",
+		"header"							: "Dashboard",
+
+		"campaigns": {
+			"header"						: "Campaigns",
+			"create"						: "Create Campaign",
+
+			"name"							: "Campaign",
+			"date"							: "Launched on",
+			"is_enabled"					: "Status",
+			"is_enabled_tooltip"			: "Change the status of the Campaign",
+
+			"no_data"						: "There are no campaigns at the moment, why not create one?"
+		},
+
+		"filters": {
+			"search_by_name"				: "Name",
+			"search_by_domain"				: "Domain",
+			"order_by_name"					: "Name"
+		}
+	},
+
+	"campaign": {
+		"title"								: "%s Campaign",
+		"breadcrumb"						: "Campaign",
+
+		"header": {
+			"custom_branding"				: "Custom Branding",
+			"pixel_key"						: "Install Pixel"
+		},
+
+		"filters": {
+			"type"							: "Type",
+			"search_by_name"				: "Name",
+			"order_by_name"					: "Name"
+		},
+
+		"notifications": {
+			"header"						: "Campaign notifications",
+			"create"						: "Create notification",
+			"link"							: "Notifications",
+
+			"name"							: "Notification",
+			"type"							: "Type",
+			"display_trigger"				: "Trigger",
+			"display_duration"				: "Duration",
+			"is_enabled"					: "Status",
+			"is_enabled_tooltip"			: "Change the status",
+			"display_duration_unlimited"	: "Forever",
+
+			"no_data"						: "There are no notifications for this campaign, why not create one?"
+		},
+
+		"statistics": {
+			"disabled"						: "As of now, analytics for campaigns are not enabled.",
+			"header"						: "Statistics",
+			"link"							: "Statistics",
+
+			"impressions_chart"				: "Impressions",
+			"hovers_chart"					: "Mouse Hovers",
+			"clicks_chart"					: "Clicks",
+			"form_submissions_chart"        : "Form Submissions",
+
+			"no_data"						: "There is no data for this date range unfortunately."
+		},
+
+		"error_message": {
+			"campaigns_limit"				: "You have exceeded the limit of campaigns on your plan."
+		}
+	},
+
+	"custom_branding_campaign_modal": {
+		"header"						: "Custom Branding",
+		"subheader"						: "Create your own custom branding for your notifications.",
+
+		"input": {
+			"name"						: "Branding Name",
+			"name_help"					: "Leave empty to have the default site branding.",
+			"url"						: "URL"
+		}
+	},
+
+	"create_campaign_modal": {
+		"header"						: "Create a new campaign",
+		"subheader"						: "Easily create a new campaign by filling the following information.",
+
+		"input": {
+			"name"						: "Name",
+			"domain"					: "Domain / Subdomain",
+			"domain_placeholder"		: "ex: domain.com or subdomain.domain.com",
+			"domain_help"				: "The domain name of the website where the campaign is going to run.",
+			"domain_help2"				: "Notifications will NOT work on other domains other than what you define here.",
+			"include_subdomains"		: "Include Subdomains",
+			"include_subdomains_help"	: "All the subdomains will match on this campaign as well if checked."
+		}
+	},
+
+	"update_campaign_modal": {
+		"header"						: "Update Campaign",
+		"subheader"						: "Change an already existing campaign.",
+
+		"input": {
+			"name"						: "Name",
+			"domain"					: "Domain / Subdomain",
+			"domain_placeholder"		: "ex: domain.com or subdomain.domain.com",
+			"domain_help"				: "The domain name of the website where the campaign is going to run.",
+			"domain_help2"				: "Notifications will NOT work on other domains other than what you define here.",
+			"include_subdomains"		: "Include Subdomains",
+			"include_subdomains_help"	: "All the subdomains will match on this campaign as well if checked."
+		}
+	},
+
+	"campaign_pixel_key_modal": {
+		"install": {
+			"header"					: "Install Pixel",
+			"subheader"					: "Copy and paste the following JS Code Snippet before the end of the <code>&lt;/head&gt;</code> of your website.",
+			"copy"						: "Copy Pixel",
+			"copied"					: "Copied!"
+		}
+	},
+
+	"campaign_delete_modal": {
+		"header"						: "Delete campaign",
+		"subheader"						: "By deleting the campaign, all the data associated with the campaign will be lost. This action cannot be undone."
+	},
+
+	"notification": {
+		"breadcrumb"						: "Notification",
+		"title"								: "%s Notification",
+
+		"preview": {
+			"header"                        : "Preview",
+			"subheader"                     : "Overall preview of how it would look like."
+		},
+
+		"settings": {
+			"header"						: "Settings",
+			"link"							: "Settings",
+
+			"tab_basic"						: "Basic",
+			"tab_triggers"					: "Triggers",
+			"tab_display"					: "Display",
+			"tab_customize"					: "Customize",
+			"tab_data"						: "Data",
+
+			"name"							: "Notification name",
+			"title"							: "Title Message",
+			"description"					: "Description Message",
+			"content_title"					: "Content Title",
+			"content_description"			: "Content Description",
+			"video"							: "YouTube Video Embed Url",
+			"video_help"					: "Allowed formats: https://www.youtube.com/embed/VIDEO_ID or https://www.youtube.com/watch?v=VIDEO_ID",
+			"last_activity"					: "Count data from last X %s",
+			"conversion_title"				: "Conversion Title",
+			"conversion_title_help"			: "You can insert dynamic variables from your Conversion Data. Example: If you have a field named <code>full_name</code>, you can use it as <code>{full_name}</code>.",
+			"conversion_description"		: "Conversion Description",
+			"conversion_active_help"		: "You can insert dynamic variables from your Conversion Data as mentioned in the Conversion Title.",
+			"conversions_count"				: "How many conversions to show?",
+			"conversions_count_help"		: "",
+			"in_between_delay"				: "In between delay",
+			"in_between_delay_help"		: "Written in seconds",
+			"reviews_count"					: "How many reviews to show?",
+			"reviews_count_help"			: "",
+			"input_placeholder"				: "Input Placeholder",
+			"email_placeholder"				: "Email Placeholder",
+			"image"							: "Image URL",
+			"image_help"					: "Leave empty for no image. Hint: icons8.com has a good library of small icons that you can use.",
+			"url"							: "Notification URL",
+			"url_help"						: "The URL you want to user to go to after clicking the notification. Leave empty for no link.",
+			"url_new_tab"					: "On click open on new tab",
+			"url_new_tab_help"				: "",
+			"url_link"						: "Link URL",
+			"url_link_text"					: "Link URL Text",
+			"thank_you_url"					: "Thank you URL",
+			"thank_you_url_help"			: "The URL the user will be redirected to after submitting the form. Leave empty to disable the function.",
+			"coupon_code"					: "Coupon Code",
+			"button_url"					: "Button Url",
+			"button_text"					: "Button Text",
+			"button_text_help"				: "Leave empty to remove the button completely.",
+			"footer_text"					: "Footer Text",
+			"share_url"						: "Share URL",
+			"share_url_help"				: "Leave empty if you want the URL to be dynamic to the current page where the notification is shown.",
+			"share_facebook"				: "Facebook Share",
+			"share_twitter"					: "Twitter Share",
+			"share_linkedin"				: "Linkedin Share",
+			"show_angry"					: "Show Angry",
+			"show_sad"						: "Show Sad",
+			"show_neutral"					: "Show Neutral",
+			"show_happy"					: "Show Happy",
+			"show_excited"					: "Show Excited",
+			"end_date"						: "End Date",
+			"show_agreement"				: "Show Agreement",
+			"show_agreement_help"			: "Require the user to confirm his agreement by ticking a checkbox.",
+			"agreement_url"					: "Agreement URL",
+			"agreement_text"				: "Agreement Text",
+
+			"trigger_all_pages"				: "Trigger on all pages",
+			"trigger_all_pages_help"		: "Where should the notification show?",
+			"trigger_add"					: "Add new trigger",
+			"trigger_type_exact"			: "Exact match",
+			"trigger_type_not_exact"		: "Does not match exact",
+			"trigger_type_contains"			: "Contains",
+			"trigger_type_not_contains"		: "Does not contain",
+			"trigger_type_starts_with"		: "Starts with",
+			"trigger_type_not_starts_with"	: "Does not start with",
+			"trigger_type_ends_with"		: "Ends with",
+			"trigger_type_not_ends_with"	: "Does not end with",
+			"trigger_type_page_contains"	: "Page Contains",
+			"trigger_type_exact_placeholder": "Full URL ( ex: https://domain.com )",
+			"trigger_type_not_exact_placeholder": "Full URL ( ex: https://domain.com )",
+			"trigger_type_contains_placeholder"				: "Part of the url ( ex: /product/102481 )",
+			"trigger_type_not_contains_placeholder"			: "Part of the url ( ex: /product/102481 )",
+			"trigger_type_starts_with_placeholder"			: "Part of the url",
+			"trigger_type_not_starts_with_placeholder"		: "Part of the url",
+			"trigger_type_ends_with_placeholder"			: "Part of the url",
+			"trigger_type_not_ends_with_placeholder"		: "Part of the url",
+			"trigger_type_page_contains_placeholder"		: "Text that is included in the website",
+			"display_trigger"				: "Display Trigger",
+			"display_trigger_help"			: "On what event the notification should show up.",
+			"display_trigger_delay"			: "Delay",
+			"display_trigger_delay_placeholder" : "Number of seconds to wait until notification shows up",
+			"display_trigger_scroll"		: "Scroll Percentage",
+			"display_trigger_scroll_placeholder" : "Percent of scrolling from the top down",
+			"display_trigger_exit_intent"	: "Exit Intent",
+			"display_frequency"				: "Display frequency",
+			"display_frequency_help" 		: "How often should the notification trigger?.",
+			"display_frequency_all_time"	: "All the time",
+			"display_frequency_once_per_session"	: "Once per visit session",
+			"display_frequency_once_per_browser"	: "Once per browser",
+			"display_mobile"				: "Display on small screens",
+			"display_mobile_help"			: "Whether or not to display the notification on when pixels available are smaller than 768px.",
+			"display_desktop"				: "Display on large screens",
+			"display_desktop_help"			: "Whether or not to display the notification on when pixels available are bigger than 768px.",
+
+			"display_duration"				: "Display Duration",
+			"display_duration_help"			: "How many seconds to display the notification. Set -1 to display forever.",
+			"display_position"				: "Display Position",
+			"display_position_help"			: "Position of the notification on the screen. Position doesn't change on the preview.",
+			"display_position_top_left"		: "Top Left",
+			"display_position_top_center"	: "Top Center",
+			"display_position_top_right"	: "Top Right",
+			"display_position_middle_left"	: "Middle Left",
+			"display_position_middle_center": "Middle Center",
+			"display_position_middle_right"	: "Middle Right",
+			"display_position_bottom_left"	: "Bottom Left",
+			"display_position_bottom_center": "Bottom Center",
+			"display_position_bottom_right"	: "Bottom Right",
+			"display_position_top"			: "Top",
+			"display_position_bottom"		: "Bottom",
+			"display_position_top_floating"	: "Top Floating",
+			"display_position_bottom_floating"	: "Bottom Floating",
+			"display_minimum_activity"		: "Minimum activity",
+			"display_minimum_activity_help"	: "Minimum data needed to display the notification.",
+			"display_close_button"			: "Display Close Button",
+			"display_branding"				: "Display Branding",
+
+			"on_animation"					: "Entrance Animation",
+			"on_animation_fadeIn"			: "Fade In",
+			"on_animation_slideInUp"		: "Slide In Up",
+			"on_animation_slideInDown"		: "Slide In Down",
+			"on_animation_zoomIn"			: "Zoom In",
+			"on_animation_bounceIn"			: "Bounce In",
+			"off_animation"					: "Exit Animation",
+			"off_animation_fadeOut"			: "Fade Out",
+			"off_animation_slideOutUp"		: "Slide Out Up",
+			"off_animation_slideOutDown"	: "Slide Out Down",
+			"off_animation_zoomOut"			: "Zoom Out",
+			"off_animation_bounceOut"		: "Bounce Out",
+			"title_color"					: "Title color",
+			"description_color"				: "Description color",
+			"content_title_color"			: "Content Title color",
+			"content_description_color"		: "Content description color",
+			"background_color"				: "Background color",
+			"background_pattern"			: "Background pattern",
+			"background_pattern_none"		: "None",
+			"background_pattern_jupiter"	: "Jupiter",
+			"background_pattern_wavy"		: "Wavy",
+			"background_pattern_hexagons"	: "Hexagons",
+			"background_pattern_autumn"		: "Autumn",
+			"background_pattern_shapes"		: "Shapes",
+			"background_pattern_anchors"	: "Anchors",
+			"background_pattern_plus"		: "Plus",
+			"background_pattern_bubbles"	: "Bubbles",
+			"background_pattern_wiggle"		: "Wiggle",
+			"button_background_color"		: "Button background color",
+			"button_color"					: "Button color",
+			"number_color"					: "Number color",
+			"coupon_code_color"				: "Coupon code color",
+			"coupon_code_background_color"  : "Coupon code background color",
+			"coupon_code_border_color"	    : "Coupon code border color",
+			"number_background_color"		: "Number background color",
+			"pulse_background_color"		: "Pulse background color",
+			"time_color"					: "Time color",
+			"time_background_color"			: "Time background color",
+			"border_width"					: "Border width",
+			"border_width_help"				: "Value from 0 to 5 for the border width of the notification.",
+			"border_color"					: "Border color",
+			"border_radius"					: "Border radius",
+			"border_radius_help"			: "Change the shape of the corners of the notification",
+			"border_radius_straight"		: "Straight",
+			"border_radius_rounded"			: "Rounded",
+			"border_radius_round"			: "Round",
+			"shadow"						: "Display shadow",
+			"shadow_help"					: "Enable or disable the shadow around the edges of the notification",
+			"engagement_links_categories"	: "Categories",
+			"engagement_links_categories_links": "Categories links",
+
+			"data_send_is_enabled"			: "Send caught data to external sources",
+			"data_send_webhook"				: "Webhook",
+			"data_send_webhook_help"		: "Leave empty to disable this field.",
+			"data_send_webhook_placeholder"	: "Webhook URL",
+			"data_send_email"				: "Email",
+			"data_send_email_help"			: "Leave empty to disable this field.",
+			"data_send_email_placeholder"	: "Valid email address",
+
+			"data_trigger_webhook"			: "Webhook Trigger",
+			"data_trigger_webhook_help"		: "Call the endpoint to let us know about an event or conversion that happened on your website related to this notification, we'll do the rest. The call MUST be a POST request and can have any form data parameters.",
+			"data_trigger_type_webhook"		: "Webhook",
+			"data_trigger_input_webhook"	: "Full Webhook Url",
+
+			"data_trigger_auto"				: "Auto Capture Data",
+			"data_trigger_auto_help"		: "Setting the Auto Capture option will try to automatically detect when a form has been submitted and record that data for you. ( Password fields will never be captured )",
+			"data_trigger_auto_add"			: "Add new rule"
+		},
+
+		"statistics": {
+			"disabled"						: "As of now, analytics for notifications are not enabled.",
+			"header"						: "Statistics",
+			"link"							: "Statistics",
+
+			"impressions_chart"				: "Impressions",
+			"hovers_chart"					: "Mouse Hovers",
+			"clicks_chart"					: "Clicks",
+			"form_submissions_chart"        : "Form Submissions",
+			"feedback_chart"                : "Feedback Submissions",
+
+			"header_feedback"               : "Feedbacks",
+			"feedback"                      : "Feedback",
+			"feedback_total"                : "Count",
+
+			"header_top_pages"				: "Top Pages",
+			"subheader_top_pages"			: "Most active pages on which notifications had most activity.",
+
+			"url"							: "",
+			"type"							: "",
+			"pageviews"						: "Pageviews",
+
+			"impression"					: "Impression",
+			"hover"							: "Hover",
+			"form_submission"				: "Form Submission",
+			"click"							: "Click",
+			"auto_capture"					: "Auto Capture",
+			"feedback_emoji_angry"          : "Emoji Angry",
+			"feedback_emoji_sad"            : "Emoji Sad",
+			"feedback_emoji_neutral"        : "Emoji Neutral",
+			"feedback_emoji_happy"          : "Emoji Happy",
+			"feedback_emoji_excited"        : "Emoji Excited",
+			"feedback_score_1"				: "Score 1",
+			"feedback_score_2"				: "Score 2",
+			"feedback_score_3"				: "Score 3",
+			"feedback_score_4"				: "Score 4",
+			"feedback_score_5"				: "Score 5"
+		},
+
+		"data": {
+			"header"						: "Data",
+			"link"							: "Data",
+			"create"						: "Import Data",
+
+			"expand_data"					: "Click to get conversion data",
+			"no_data"						: "No data",
+			"data"							: "Data",
+			"url"							: "URL",
+			"date"							: "Date",
+			"ip"							: "IP",
+			"country"						: "Country",
+			"city"							: "City",
+			"country_code"					: "Country code",
+			"variable"						: "Can also be used as a variable {%s}",
+			"type"							: "Type",
+			"type_auto_capture"				: "Auto Captured",
+			"type_webhook"					: "Webhook",
+			"type_imported"					: "Imported",
+			"type_email_collector"			: "Email Collected",
+			"type_collector"				: "Collected"
+		},
+
+		"create_data_modal": {
+			"header"						: "Import / Create Data",
+			"create_key_value"				: "Add field",
+
+			"input": {
+				"key"						: "Key / Field Name",
+				"key_placeholder"			: "name",
+				"value"						: "Value",
+				"value_placeholder"			: "John Doe"
+			}
+		},
+
+		"create_review_data_modal": {
+			"header"						: "Create new review",
+
+			"input": {
+				"title"						: "Name",
+				"description"				: "Text",
+				"stars"						: "Stars",
+				"stars_help"				: "Leave empty to not show any stars in the review.",
+				"image"						: "Image URL"
+			}
+		},
+
+		"info_message": {
+			"no_data"						: "There is no data for this date range unfortunately."
+		},
+
+		"error_message": {
+			"notifications_limit"			: "You have exceeded the limit of notifications on your plan."
+		},
+
+
+		"informational": {
+			"name"                              : "Informational",
+			"description"                       : "Fully customizable informational message for your users.",
+			"icon"								: "fa fa-fw fa-info-circle",
+
+			"title_default"            			: "Flash sale!",
+			"description_default"           	: "Limited sale until tonight, right now!",
+			"image_default"       				: "https://img.icons8.com/dusk/2x/sale.png"
+		},
+
+		"coupon": {
+			"name"                              : "Coupon",
+			"description"                       : "The best way to let your users know that you are running a sale.",
+			"icon"								: "fa fa-fw fa-piggy-bank",
+
+			"title_default"            			: "35% OFF!",
+			"description_default"           	: "Limited summer sale coupon code!",
+			"image_default"       				: "https://img.icons8.com/nolan/2x/cutting-coupon.png",
+			"coupon_code_default"				: "COUPON20",
+			"button_text_default"				: "Get Coupon",
+			"footer_text_default"				: "No, I don't want to save money!"
+		},
+
+		"live_counter": {
+			"name"                              : "Live Counter",
+			"description"                       : "Show your visitors how many people are on your site to create more trust.",
+			"icon"								: "fa fa-fw fa-globe",
+
+			"description_default"           	: "Active visitors now.",
+			"image_default"       				: "https://img.icons8.com/nolan/2x/cutting-coupon.png",
+			"number_default"					: "15"
+		},
+
+		"email_collector": {
+			"name"                              : "Email Collector",
+			"description"                       : "Easily collect emails and generate leads from your users.",
+			"icon"								: "fa fa-fw fa-envelope-open",
+
+			"title_default"            			: "Weekly newsletter",
+			"description_default"           	: "We do not send out spam emails & you can unsubscribe at any point.",
+			"email_placeholder_default"       	: "Your valid email",
+			"button_text_default"       		: "Sign me up",
+			"agreement_text_default"			: "I read & agree the Privacy Policy"
+		},
+
+		"latest_conversion": {
+			"name"                              : "Latest Conversion",
+			"description"                       : "Establish social proof by displaying your most recent conversions on your site.",
+			"icon"								: "fa fa-fw fa-funnel-dollar",
+
+			"title_default"            			: "Someone from England",
+			"description_default"      		 	: "Signed up for the newsletter.",
+			"image_default"						: "https://img.icons8.com/dusk/2x/small-smile.png",
+			"time_ago_default"       			: "10 mins ago"
+		},
+
+		"conversions_counter": {
+			"name"                              : "Conversions Counter",
+			"description"                       : "Establish social proof by showing how many recent conversions you've got.",
+			"icon"								: "fa fa-fw fa-comment-dollar",
+
+			"title_default"           			: "People bought the product",
+			"image_default"       				: "https://img.icons8.com/officel/2x/return-purchase.png",
+			"number_default"					: "5",
+			"time_default"       				: "In the last %s hours"
+		},
+
+		"video": {
+			"name"                              : "Video",
+			"description"                       : "Easily display a small widget with an informative YouTube video.",
+			"icon"								: "fa fa-fw fa-video",
+
+			"title_default"            			: "Demo of the product",
+			"thumbnail_default"       			: "https://i3.ytimg.com/vi/3WxQgvuT6ZI/maxresdefault.jpg",
+			"button_text_default"				: "Sign up"
+		},
+
+		"social_share": {
+			"name"                              : "Social Share",
+			"description"                       : "Let others share your content and generate more traffic for you.",
+			"icon"								: "fa fa-fw fa-share-alt",
+
+			"title_default"            			: "Tell your friends",
+			"description_default"           	: "We appreciate all the shares to support us! Thank you!"
+		},
+
+		"random_review": {
+			"name"                              : "Random Review",
+			"description"                       : "Display a random review/testimonial from your clients to create social proof.",
+			"icon"								: "fa fa-fw fa-random",
+
+			"title_default"            			: "John Doe",
+			"description_default"           	: "SocialProof is a 5 star product!",
+			"image_default"						: "https://img.icons8.com/color/2x/person-male.png"
+		},
+
+		"emoji_feedback": {
+			"name"                              : "Emoji Feedback",
+			"description"                       : "An interactive way for your users to give you feedback about your site.",
+			"icon"								: "fa fa-fw fa-smile-beam",
+
+			"title_default"            			: "Do you like our website?",
+			"feedback_emoji_angry"              : "Angry",
+			"feedback_emoji_sad"                : "Sad",
+			"feedback_emoji_neutral"            : "Neutral",
+			"feedback_emoji_happy"              : "Happy",
+			"feedback_emoji_excited"            : "Excited"
+		},
+
+		"cookie_notification": {
+			"name"                              : "Cookie Notification",
+			"description"                       : "Notify your users that you are using cookies on your site.",
+			"icon"								: "fa fa-fw fa-cookie",
+
+			"description_default"      			: "This website uses cookies to ensure you get the best experience on our website.",
+			"button_text_default"				: "Okay",
+			"url_text_default"					: "Learn More",
+			"image_default"						: "https://img.icons8.com/plasticine/2x/cookie.png"
+		},
+
+		"score_feedback": {
+			"name"                              : "Score Feedback",
+			"description"                       : "The easiest way for your users to give you a score feedback.",
+			"icon"								: "fa fa-fw fa-sort-numeric-up",
+
+			"title_default"            			: "How'd you like our website?",
+			"description_default"				: "Rate from 1 to 5. 5 being excellent.",
+			"feedback_score_1"					: "1",
+			"feedback_score_2"					: "2",
+			"feedback_score_3"					: "3",
+			"feedback_score_4"					: "4",
+			"feedback_score_5"					: "5"
+		},
+
+		"request_collector": {
+			"name"                              : "Request Collector",
+			"description"                       : "Collecting leads has never been easier with the request collector.",
+			"icon"								: "fa fa-fw fa-user-plus",
+
+			"title_default"            			: "John",
+			"description_default"           	: "Support Team",
+			"image_default"						: "https://img.icons8.com/cotton/2x/online-support.png",
+			"content_title_default"				: "Any questions?",
+			"content_description_default"		: "Let us know and we will get back to you!",
+			"input_placeholder_default"       	: "Valid Phone Number",
+			"button_text_default"       		: "Call me back ⚡️",
+			"agreement_text_default"			: "I read & agree the Privacy Policy"
+		},
+
+		"countdown_collector": {
+			"name"                              : "Countdown Collector",
+			"description"                       : "Create urgency/FOMO with a countdown timer and an input for lead generation.",
+			"icon"								: "fa fa-fw fa-clock",
+
+			"title_default"            			: "Building a website 💻",
+			"description_default"           	: "Free Webinar by us.",
+			"content_title_default"				: "Hurry up! Registrations are closing soon.",
+			"input_placeholder_default"       	: "Valid Email",
+			"button_text_default"       		: "Sign up️",
+			"agreement_text_default"			: "I read & agree the Privacy Policy",
+
+			"days"								: "days",
+			"hours"								: "hours",
+			"minutes"							: "minutes",
+			"seconds"							: "seconds"
+		},
+
+
+		"informational_bar": {
+			"name"                              : "Informational Bar",
+			"description"                       : "Fully customizable informational bar for the top or bottom.",
+			"icon"								: "fa fa-fw fa-info",
+
+			"title_default"            			: "Your title here",
+			"description_default"           	: "Your description will go here!",
+			"image_default"       				: "https://img.icons8.com/cute-clipart/2x/info.png"
+		},
+
+		"image": {
+			"name"                              : "Image",
+			"description"                       : "Display a small widget with an informative Image of your choice.",
+			"icon"								: "fa fa-fw fa-image",
+
+			"title_default"            			: "This is a demo title",
+			"image_default"       				: "https://images.unsplash.com/photo-1592142484268-342bdc296658?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80",
+			"button_text_default"				: "Register"
+		},
+
+		"collector_bar": {
+			"name"                              : "Collector Bar",
+			"description"                       : "Collect emails or leads without distracting the users.",
+			"icon"								: "fa fa-fw fa-inbox",
+
+			"title_default"            			: "Sign up to receive updates & discounts via email",
+			"input_placeholder_default"       	: "Your valid email",
+			"button_text_default"       		: "Subscribe",
+			"agreement_text_default"			: "I read & agree the Privacy Policy"
+		},
+
+		"coupon_bar": {
+			"name"                              : "Coupon Bar",
+			"description"                       : "Top or bottom simple bar to give your visitors a nice coupon for them to use.",
+			"icon"								: "fa fa-fw fa-money-check-alt",
+
+			"title_default"            			: "We're running a limited sale until the end of the day 🙌",
+			"coupon_code_default"           	: "SALE15"
+		},
+
+		"button_bar": {
+			"name"                              : "Button Bar",
+			"description"                       : "Top or bottom cool bar to promote anything to your visitors.",
+			"icon"								: "fa fa-fw fa-newspaper",
+
+			"title_default"            			: "We just launched our new product feature",
+			"button_text_default"           	: "Check product"
+		},
+
+		"collector_modal": {
+			"name"                              : "Modal Collector",
+			"description"                       : "Collect leads with a nice looking and big modal.",
+			"icon"								: "fa fa-fw fa-fire",
+
+			"title_default"            			: "Sign up",
+			"description_default"           	: "We do not send out spam emails & you can unsubscribe at any point.",
+			"image_default"            			: "",
+			"input_placeholder_default"       	: "Your valid email",
+			"button_text_default"       		: "Sign me up",
+			"agreement_text_default"			: "I read & agree the Privacy Policy"
+		},
+
+		"collector_two_modal": {
+			"name"                              : "Modal Two Collector",
+			"description"                       : "Collect leads with a nice looking and big modal.",
+			"icon"								: "fa fa-fw fa-dice",
+
+			"title_default"            			: "Get discounts & latest offers via email",
+			"description_default"           	: "We do not send out spam emails & you can unsubscribe at any point.",
+			"image_default"            			: "",
+			"input_placeholder_default"       	: "Your valid email",
+			"button_text_default"       		: "Sign up",
+			"agreement_text_default"			: "I read & agree the Privacy Policy"
+		},
+
+		"button_modal": {
+			"name"                              : "Call to action",
+			"description"                       : "Raise awareness and cta with a nice looking modal.",
+			"icon"								: "fa fa-fw fa-cloud",
+
+			"title_default"            			: "New product",
+			"description_default"           	: "We just launched our new product, check it out right now!",
+			"image_default"            			: "https://assets-ouch.icons8.com/preview/255/675cef88-9340-42a9-a5b0-52c240cc965a.png",
+			"button_text_default"       		: "Download for free"
+		},
+
+		"text_feedback": {
+			"name"                              : "Text Feedback",
+			"description"                       : "Collect better and straight forward insight from your users.",
+			"icon"								: "fa fa-fw fa-heading",
+
+			"title_default"            			: "Any suggestions for us?",
+			"description_default"           	: "Let us know how we can do better 🙏.",
+			"input_placeholder_default"       	: "Your honest input",
+			"button_text_default"       		: "Submit"
+		},
+
+		"engagement_links": {
+			"name"                              : "Engagement Links",
+			"description"                       : "Display a subtle widget which contains all of your relevant links.",
+			"icon"								: "fa fa-fw fa-link",
+
+			"title"								: "Connect with us 👁",
+			"categories": [
+				{
+					"title"						: "Social Media",
+					"description"				: "Our social media pages.",
+
+					"links": [
+						{
+							"title"				: "Twitter",
+							"description"		: "Follow us on Twitter!",
+							"image"				: "https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../assets/preview/2012/png/iconmonstr-twitter-1.png&r=0&g=0&b=0",
+							"url"				: "https://domain.com/"
+						},
+
+						{
+							"title"				: "Facebook",
+							"description"		: "Like our page on Facebook!",
+							"image"				: "https://cdns.iconmonstr.com/wp-content/assets/preview/2017/240/iconmonstr-facebook-6.png",
+							"url"				: "https://domain.com/"
+						}
+					]
+				},
+
+				{
+					"title"						: "Contact",
+					"description"				: "",
+
+					"links": [
+						{
+							"title"				: "Email",
+							"description"		: "Our support email.",
+							"image"				: "",
+							"url"				: "https://domain.com/"
+						},
+
+						{
+							"title"				: "Whatsapp",
+							"description"		: "Send us a message.",
+							"image"				: "",
+							"url"				: "https://domain.com/"
+						}
+					]
+				}
+			]
+		}
+	},
+
+	"notification_delete_modal": {
+		"header"						: "Delete notification",
+		"subheader"						: "By deleting the notification, all the data associated with the notification will be lost. This action cannot be undone."
+	},
+
+	"notification_create": {
+		"breadcrumb"					: "Create a new notification",
+		"title"							: "Create a new notification",
+		"header"						: "Create a new notification",
+		"default_name"					: "My new notification"
+	},
+
+	"index": {
+		"title"							: "Increase Conversions & Site Growth",
+		"meta_description"				: "",
+		"meta_keywords"					: "",
+		"header"						: "<span class=\"underline\">Skyrocket</span> Conversions<br /> & Increase <span class=\"underline\">Growth</span>.",
+		"subheader"						: "<strong>%s notifications</strong> were created & customized by our users.<br />Increase your website's growth by using our notification widgets.",
+		"sign_up"						: "Get started ➡",
+		"breadcrumb"					: "Home",
+
+		"steps": {
+			"header"					: "More engagement, growth & leads.",
+
+			"one"						: "Install pixel",
+			"one_text"					: "Easily integrate it on any website with just one line of code.",
+
+			"two"						: "Create your notification",
+			"two_text"					: "Create and customize your notification however you like it.",
+
+			"three"						: "Grow & Profit",
+			"three_text"				: "Generate more leads, conversions and growth. It's that easy."
+		},
+
+		"setup": {
+			"header"					: "Easy setup & integration on any website.",
+			"description"				: "Any website can run our notifications.",
+
+			"shopify"					: "Shopify",
+			"wordpress"					: "Wordpress",
+			"zapier"					: "Zapier",
+			"squarespace"				: "Squarespace"
+		},
+
+		"tools": {
+			"header"					: "%s notifications displayed",
+			"subheader"					: "The proper social proof and utility widgets",
+
+			"preview"					: "Notification Preview",
+			"preview_description"		: "Choose any type of notification and preview it live."
+		},
+
+		"pricing": {
+			"header"					: "Choose your plan",
+			"subheader"					: "Choose and get your plan based on your needs"
+		},
+
+		"cta": {
+			"header"					: "Sign up now",
+			"subheader"					: "Start upgrading your website with our widgets.",
+			"sign_up"					: "Get started"
+		}
+	},
+
+	"api": {
+		"error_message": {
+			"no_bearer"					: "The request is missing the Bearer Authentication header.",
+			"no_access"					: "You do not have access to the API.",
+			"rate_limit"				: "You reached the limit of requests in one minute, please wait.",
+			"not_found"					: "The resource you are looking for does not exist."
+		}
+	},
+
+	"api_documentation": {
+		"breadcrumb"					: "API Documentation",
+		"title"							: "API Documentation",
+		"header"						: "API Documentation",
+		"subheader"						: "This is the documentation for the available API endpoints, which are built around the <strong>REST architecture</strong>. All the API endpoints will return a <strong>JSON response</strong> with the standard <strong>HTTP response codes</strong> and need a <strong>Bearer Authentication via an API Key</strong>.",
+
+		"endpoint"						: "Endpoint",
+		"example"						: "Example",
+		"response"						: "Response example",
+		"api_key"						: "Get API Key",
+		"base_url"						: "Base URL",
+		"parameters"					: "Parameters",
+		"required"						: "Required",
+		"optional"						: "Optional",
+		"details"						: "Details",
+		"description"					: "Description",
+
+		"authentication": {
+			"header"					: "Authentication",
+			"subheader"					: "All the API endpoints require an API key sent by the <strong>Bearer Authentication method.</strong>"
+		},
+
+		"filters": {
+			"page"                      : "The page number that you want results from. Defaults to <code>1</code>.",
+			"results_per_page"          : "How many results you want per page. Allowed values are: %s. Defaults to <code>%s</code>.",
+			"search"                    : "The search string.",
+			"search_by"                 : "What field are you searching by. Allowed values are: %s.",
+			"order_by"                  : "What field to order the results by. Allowed values are: %s.",
+			"order_by_type"             : "The ordering of the results. Allowed values are: <code>ASC</code> for ascending ordering, and <code>DESC</code> for descending ordering."
+		},
+
+		"campaigns": {
+			"header"					: "Campaigns",
+			"read_all_header"			: "Retrieve campaigns",
+			"read_header"				: "Retrieve a campaign"
+		},
+
+		"notifications": {
+			"header"					: "Notifications",
+			"read_all_header"			: "Retrieve notifications",
+			"read_header"				: "Retrieve a notification"
+		},
+
+		"user": {
+			"header"					: "User",
+			"read_header"				: "Retrieve user"
+		},
+
+		"payments": {
+			"header"					: "Payments",
+			"read_all_header"			: "Retrieve payments",
+			"read_header"				: "Retrieve a payment"
+		},
+
+		"users_logs": {
+			"header"					: "Logs",
+			"read_all_header"			: "Retrieve logs"
+		}
+	},
+
+	"affiliate": {
+		"breadcrumb"					: "Affiliate",
+		"title"							: "Affiliate",
+		"menu"							: "Affiliate",
+		"header"						: "The affiliates program",
+		"subheader"						: "Easiest way to earn commission from people that you bring to the platform.",
+
+		"commission_percentage": {
+			"header"					: "%s commission",
+			"subheader_once"			: "Earn commission from the first payment of any user that you bring to the platform.",
+			"subheader_forever"			: "Earn commission from all of the payments of any user that you bring to the platform."
+		},
+
+		"minimum_withdrawal_amount": {
+			"header"					: "%s minimum withdrawal",
+			"subheader"					: "Once your approved balance reaches the minimum withdrawal amount, you can request a withdrawal."
+		},
+
+		"how": {
+			"header"					: "How does it work?",
+			"one"						: "Sign up",
+			"one_help"					: "Simply register for an account on our platform.",
+			"two"						: "Share your link",
+			"two_help"					: "Start promoting your referral link and bring new users.",
+			"three"						: "Start earning",
+			"three_help"				: "Once your referred users start paying, you'll get paid as well.",
+			"four"						: "Withdraw your money",
+			"four_help"					: "Request a withdrawal and you'll get paid."
+		},
+
+		"cta": {
+			"header"					: "Start earning money 💰",
+			"subheader"					: "Create an account and start in just a few minutes.",
+			"register"					: "Sign up"
+		}
+	},
+
+	"notfound": {
+		"title"							: "Not found",
+		"header"						: "404 Not Found",
+		"subheader"						: "The page you’re looking for was not found."
+	}
+}

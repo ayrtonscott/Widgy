@@ -1,0 +1,1082 @@
+{
+	"admin_campaigns": {
+		"title"							: "Campaigns",
+		"header"						: "Campaigns",
+		"menu"							: "Campaigns",
+
+		"table": {
+			"user"						: "User",
+			"campaign"					: "Campaign",
+			"datetime"					: "Created on",
+			"status"					: "Status"
+		},
+
+		"filters": {
+			"search_by_name"			: "Name",
+			"search_by_domain"			: "Domain",
+			"order_by_name"				: "Name"
+		}
+	},
+
+	"admin_campaign_delete_modal": {
+		"header"						: "Delete campaign",
+		"subheader"						: "By deleting the campaign, all the notifications from inside this campaign will be deleted as well. This action cannot be undone."
+	},
+
+	"admin_notifications": {
+		"title"							: "Notifications",
+		"header"						: "Notifications",
+		"menu"							: "Notifications",
+
+		"table": {
+			"user"						: "User",
+			"notification"				: "Notification",
+			"datetime"					: "Created on",
+			"status"					: "Status"
+		},
+
+		"filters": {
+			"type"						: "Notification type",
+			"search_by_name"			: "Name",
+			"order_by_name"				: "Name"
+		}
+	},
+
+	"admin_notification_delete_modal": {
+		"header"						: "Delete notification",
+		"subheader"						: "This action cannot be undone."
+	},
+
+	"admin_pages_categories": {
+		"header"						: "Pages categories",
+		"header_no_data"				: "Create your first page category",
+		"subheader_no_data"				: "Sort your additional pages by categories.",
+		"create"						: "Create category",
+
+		"pages_categories": {
+			"pages_category"			: "Category",
+			"total_pages"				: "%s pages"
+		},
+
+		"input": {
+			"url"						: "URL",
+			"url_placeholder"			: "your-pages-category-url",
+			"title"						: "Title",
+			"description"				: "Short description",
+			"icon"						: "Icon",
+			"icon_placeholder"			: "ex: fa fa-plane",
+			"icon_help"					: "Font Awesome icon, leave empty for no icon.",
+			"order"						: "Order",
+			"order_help"				: "Easily arrange pages categories with numbers in ascending order."
+		},
+
+		"error_message": {
+			"url_exists"				: "This URL alias is already taken by another page category."
+		}
+	},
+
+	"admin_pages_category_create": {
+		"title"							: "Create pages category",
+		"header"						: "Create a new pages category"
+	},
+
+	"admin_pages_category_update": {
+		"title"							: "Update pages category",
+		"header"						: "Update pages category"
+	},
+
+	"admin_pages_category_delete_modal": {
+		"header"						: "Delete pages category",
+		"subheader"						: "All the pages inside this category will be deleted as well. This action cannot be undone."
+	},
+
+	"admin_pages": {
+		"title"							: "Pages management",
+		"menu"							: "Pages",
+		"header"						: "Pages",
+		"header_no_data"				: "Create your first page",
+		"subheader_no_data"				: "Create additional pages that you can attach to the platform with ease.",
+		"create"						: "Create page",
+
+		"pages": {
+			"page"						: "Page",
+			"position"					: "Position",
+			"position_top"				: "Top menu",
+			"position_bottom"			: "Bottom menu",
+			"position_hidden"			: "Hidden",
+			"total_views"				: "%s views"
+		},
+
+		"input": {
+			"title"						: "Title",
+			"description"				: "Short description",
+			"url"       				: "URL",
+			"url_internal_placeholder"	: "ex: page-url",
+			"url_external_placeholder"	: "ex: https://domain.com/",
+			"editor"					: "Editor",
+			"editor_raw"				: "No editor",
+			"editor_wysiwyg"			: "WYSIWYG",
+			"content"					: "Content",
+			"position"					: "Position",
+			"position_top"				: "Top menu",
+			"position_bottom"			: "Bottom menu",
+			"position_hidden"			: "Hidden",
+			"type"						: "Type",
+			"type_internal"				: "Page",
+			"type_external"				: "Link",
+			"pages_category_id"			: "Category",
+			"pages_category_id_null"	: "No category",
+			"order"						: "Order",
+			"order_help"				: "Easily arrange pages with numbers in ascending order.",
+			"date"						: "First created on",
+			"last_date"					: "Last edited on"
+		},
+
+		"error_message": {
+			"url_exists"				: "This URL alias is already taken by another page."
+		}
+	},
+
+	"admin_page_delete_modal": {
+		"header"						: "Delete page",
+		"subheader"						: "This action cannot be undone."
+	},
+
+	"admin_page_create": {
+		"title"							: "Create page",
+		"header"						: "Create page"
+	},
+
+	"admin_page_update": {
+		"title"							: "Page update",
+		"header"						: "Page update"
+	},
+
+	"admin_plans": {
+		"title"							: "Plans management",
+		"menu"							: "Plans",
+		"header"						: "Plans management",
+		"create"						: "Create plan",
+
+		"table": {
+			"name"						: "Plan Name",
+			"custom_help"				: "Custom plans can be defined directly from the User Update page.",
+			"monthly_price"				: "Monthly Price",
+			"annual_price"				: "Annual Price",
+			"users"						: "Users",
+			"status"					: "Status"
+		},
+
+		"main": {
+			"header"					: "Main",
+			"subheader"					: "Define the main settings of the plan.",
+
+			"trial": {
+				"days"					: "Days",
+				"days_help"				: "The number of days that the trial plan can be used."
+			},
+
+			"name"						: "Name",
+			"monthly_price"				: "Monthly Price",
+			"annual_price"				: "Annual Price",
+			"lifetime_price"			: "Lifetime deal price",
+			"price_help"				: "Set 0 to disable the %s",
+			"status"					: "Status",
+			"order" 					: "Order",
+			"taxes_ids"					: "Applied Taxes",
+			"taxes_ids_help"			: "Easily select which of your %screated taxes%s you want to apply per plan."
+		},
+
+		"plan": {
+			"header"					: "Plan Settings",
+			"subheader"					: "Choose which features to enable for this plan.",
+			"per_month"					: "per month",
+
+			"campaigns_limit"			: "Total Campaigns Limit",
+			"campaigns_limit_help"		: "Set -1 for unlimited.",
+			"notifications_limit"		: "Total Notifications Limit",
+			"notifications_limit_help"	: "Set -1 for unlimited.",
+			"track_notifications_retention"		  : "Notifications statistics retention (days)",
+			"track_notifications_retention_help"  : "How many days will the notifications statistics be kept in the database.",
+			"notifications_impressions_limit": "Notifications Impressions Limit",
+			"notifications_impressions_limit_help": "How many times notifications will show on the users website ( in total per month ). Set -1 for unlimited. ( Impression: When one notification shows up on the users website )",
+			"no_ads"					: "No Ads",
+			"no_ads_help"				: "Enabling this will make all people having this plan to not see any ads.",
+			"removable_branding"		: "Removable Notifications Branding",
+			"removable_branding_help"	: "This gives the option for people to remove branding from notifications.",
+			"custom_branding"			: "Custom Notifications Branding",
+			"custom_branding_help"		: "This gives the option for people to add their custom branding for notifications.",
+			"enabled_notifications"		: "Enabled Notifications",
+			"enabled_notifications_help": "Select which notifications are enabled for usage on this plan.",
+			"api_is_enabled"            : "API access",
+			"api_is_enabled_help"       : "Enable ability for the user to use the REST API.",
+			"affiliate_is_enabled"      : "Affiliate access",
+			"affiliate_is_enabled_help" : "Enable ability for the user to be in the affiliate program."
+		}
+	},
+
+	"admin_plan_delete_modal": {
+		"header"						: "Delete Plan",
+		"subheader"						: "By deleting the plan, all the recurring subscriptions of this plan will be cancelled. Users will still have their features they paid for until the Expiration Date of the plan. This action cannot be undone."
+	},
+
+	"admin_plan_create": {
+		"title"							: "Create Plan",
+		"menu"							: "Create Plan",
+		"header"						: "Create a new plan"
+	},
+
+	"admin_plan_update": {
+		"title"							: "Update plan",
+		"header"						: "Update the %s plan",
+
+		"update_users_plan_settings": {
+			"button"					: "Update and update plan subscribers as well",
+			"button_help"				: "By updating the plan subscribers you will overwrite all their current settings with the new settings of this plan."
+		},
+
+		"error_message": {
+			"disabled_plans"			: "You are not allowed to disable all the plans which are available (Custom plans are not considered if the payment system is disabled)."
+		}
+	},
+
+	"admin_codes": {
+		"title"							: "Codes management",
+		"menu"							: "Codes",
+		"header"						: "Codes management",
+		"header_no_data"				: "Create your first code",
+		"subheader_no_data"				: "Create discount codes or fully redeemable codes that you can share to your users.",
+		"create"						: "Create code",
+
+		"table": {
+			"code"						: "Code",
+			"type"						: "Type",
+			"plan_id"					: "Plan",
+			"plan_id_null"				: "All plans",
+			"discount"					: "Discount",
+			"quantity"					: "Quantity",
+			"redeemed_codes"			: "Redeemed"
+		},
+
+		"main": {
+			"type"						: "Type",
+			"type_discount"				: "Discount",
+			"type_redeemable"			: "Redeemable",
+			"plan_id"					: "Plan",
+			"plan_id_help"				: "Which plan to make the code available for.",
+			"plan_id_null"				: "All plans",
+			"days"						: "Days",
+			"days_help"					: "How many days will the plan be available for.",
+			"code"						: "Code",
+			"discount"					: "Discount Percentage",
+			"discount_help"				: "Choose a discount between 1% and 99% off for the code",
+			"quantity"					: "Quantity",
+			"quantity_help"				: "How many time the code can be used."
+		}
+
+	},
+
+	"admin_code_delete_modal": {
+		"header"						: "Delete Code",
+		"subheader"						: "This action cannot be undone."
+	},
+
+	"admin_code_create": {
+		"title"							: "Create Code",
+		"menu"							: "Create Code",
+		"header"						: "Create a new code"
+	},
+
+	"admin_code_update": {
+		"title"							: "Edit Code",
+		"header"						: "Edit Code",
+		"subheader"						: "Changing the settings will not have any effect on already redeemed or used codes.",
+		"subheader2"					: "You can share the code with a shareable link: %s"
+	},
+
+	"admin_taxes": {
+		"title"							: "Taxes management",
+		"menu"							: "Taxes",
+		"header"						: "Taxes management",
+		"header_no_data"				: "Create your first tax",
+		"subheader_no_data"				: "Create taxes that you can use and apply to paid plans.",
+		"create"						: "Create tax",
+
+		"table": {
+			"tax"						: "Tax",
+			"name"						: "Name",
+			"details"					: "Details",
+			"billing_type"				: "Billing for"
+		},
+
+		"main": {
+			"internal_name"				: "Internal name",
+			"internal_name_help"		: "This name won't be shown to the user.",
+			"name"						: "Tax name",
+			"description"				: "Tax description",
+			"value"						: "Tax Value",
+			"value_type"				: "Value Type",
+			"value_type_percentage"		: "Percentage",
+			"value_type_fixed"			: "Fixed",
+			"type"						: "Type",
+			"type_inclusive"			: "Inclusive",
+			"type_exclusive"			: "Exclusive",
+			"billing_type"				: "Billing for",
+			"billing_type_personal"		: "Personal only",
+			"billing_type_business"		: "Business only",
+			"billing_type_both"			: "Personal & Business",
+			"billing_type_help"			: "Select for who you want to apply this tax for.",
+			"countries"					: "Countries",
+			"countries_help"			: "Select the countries that you want to apply this tax on. Leave empty if you want the tax to be applied for all countries."
+		}
+
+	},
+
+	"admin_tax_create": {
+		"title"							: "Create Tax",
+		"menu"							: "Create Tax",
+		"header"						: "Create a new tax",
+		"subheader"						: "Once a tax is created, it can't be edited or deleted. After the tax is created, you can associate it with your created Plans."
+	},
+
+	"admin_tax_update": {
+		"title"							: "Edit Tax",
+		"header"						: "Edit Tax"
+	},
+
+	"admin_affiliates_withdrawals": {
+		"title"							: "Affiliates withdrawals",
+		"menu"							: "Aff. withdrawals",
+		"header"						: "Affiliates withdrawals",
+
+		"table": {
+			"user"						: "User",
+			"amount"					: "Amount",
+			"is_paid"					: "Is paid",
+			"is_paid_paid"				: "Paid!",
+			"is_paid_pending"			: "Pending",
+			"datetime"					: "Created on",
+			"action_pay_affiliate_withdrawal" : "Approve withdrawal"
+		},
+
+		"filters": {
+			"is_paid"					: "Is paid",
+			"is_paid_paid"				: "Paid!",
+			"is_paid_pending"			: "Pending",
+			"order_by_amount"			: "Amount"
+		}
+	},
+
+	"admin_affiliate_withdrawal_delete_modal": {
+		"header"						: "Delete affiliate withdrawal",
+		"subheader"						: "This action cannot be undone."
+	},
+
+	"admin_affiliate_withdrawal_approve_modal": {
+		"header"						: "Approve withdrawal",
+		"subheader"						: "If you approve the withdrawal, the affiliate withdrawal will be considered as completed and the user will get notified via email. Don't forget to send their payment."
+	},
+
+	"admin_payments": {
+		"title"							: "Payments list",
+		"header"						: "Payments list",
+		"menu"							: "Payments",
+
+		"table": {
+			"type"						: "Type",
+			"email"						: "Email",
+			"user"						: "User",
+			"payer"						: "Payer",
+			"total_amount"				: "Total Amount",
+			"action_view_proof"			: "View proof",
+			"action_approve_proof"		: "Approve payment",
+			"invoice"					: "Invoice"
+		},
+
+		"filters": {
+			"status"					: "Status",
+			"status_paid"				: "Paid",
+			"status_pending"			: "Pending",
+
+			"plan_id"					: "Plan",
+
+			"search_by_name"			: "Payer name",
+			"search_by_email"			: "Payer email",
+			"order_by_email"			: "Payer email",
+			"order_by_name"				: "Payer name",
+			"order_by_total_amount"		: "Total amount"
+		}
+	},
+
+	"admin_payment_delete_modal": {
+		"header"						: "Delete payment",
+		"subheader"						: "This action cannot be undone."
+	},
+
+	"admin_payment_approve_modal": {
+		"header"						: "Approve payment",
+		"subheader"						: "If you approve the payment, the plan for the user will start.",
+		"success_message"				: "Payment approval was performed successfully!"
+	},
+
+	"admin_index": {
+		"title"							: "Admin Dashboard",
+		"menu"							: "Dashboard",
+		"header"						: "Dashboard",
+
+		"display": {
+			"campaigns"                 : "Campaigns",
+			"notifications"             : "Notifications",
+			"track_notifications"		: "Notifications shown",
+			"track_logs"                : "Pixel script loads",
+			"track_conversions"         : "Tracked conversions",
+			"users"                     : "Users",
+			"payments"                  : "Payments",
+			"payments_total_amount"     : "Earned"
+		},
+
+		"users": {
+			"header"					: "Latest users"
+		},
+
+		"payments": {
+			"header"					: "Latest payments"
+		}
+	},
+
+	"admin_users": {
+		"title"							: "Users management",
+		"header"						: "Users management",
+		"menu"							: "Users",
+
+		"table": {
+			"admin"						: "Admin",
+			"user"						: "User",
+			"active"					: "Status",
+			"plan_id"					: "Plan",
+			"details"					: "Details",
+			"date"						: "Registration date: %s",
+			"last_activity"				: "Last activity: %s",
+			"total_logins"				: "Total logins: %s",
+			"plan_expiration_date"		: "Plan expiration date",
+			"country_unknown"           : "Unknown country"
+		},
+
+		"filters": {
+			"is_enabled"				: "Status",
+			"is_enabled_active"			: "Active",
+			"is_enabled_disabled"		: "Disabled",
+			"is_enabled_unconfirmed"	: "Unconfirmed",
+
+			"plan_id"					: "Plan",
+			"country"					: "Country",
+
+			"search_by_name"			: "Name",
+			"search_by_email"			: "Email",
+			"order_by_email"			: "Email",
+			"order_by_name"				: "Name",
+			"order_by_last_activity"	: "Last activity",
+			"order_by_date"				: "Registration date",
+			"order_by_total_logins"		: "Total logins"
+		},
+
+		"error_message": {
+			"self_delete"				: "You can't delete yourself!",
+			"name_length"				: "The name field must be between 3 and 32 characters!",
+			"email_exists"				: "This email is already used by another account!",
+			"invalid_email"				: "You entered an invalid email!",
+			"short_password"			: "Your password is too short, you must have at least 6 characters!",
+			"passwords_not_matching"	: "Your entered passwords do not match!"
+		}
+	},
+
+	"admin_user_delete_modal": {
+		"header"						: "Delete User",
+		"subheader"						: "By deleting the user, everything that is linked to the user will be deleted. This action cannot be undone."
+	},
+
+	"admin_user_login_modal": {
+		"header"						: "Login as this user",
+		"subheader"						: "By logging in as another user, you will be logged out of the current account and fully logged in to this user.",
+		"success_message"				: "Successfully logged in as %s! To get out of this account simply use the logout function."
+	},
+
+	"admin_user_create": {
+		"title"							: "Create user",
+		"header"						: "Create user",
+		"menu"							: "Create user",
+
+		"form": {
+			"name"						: "Name",
+			"name_placeholder"			: "Full name",
+			"email"						: "Email",
+			"email_placeholder"			: "email@domain.com",
+			"password"					: "Password",
+			"password_placeholder"		: "Password",
+			"repeat_password"			: "Repeat Password"
+		},
+
+		"success_message": {
+			"created"					: "Account has been created!"
+		}
+	},
+
+	"admin_user_update": {
+		"title"							: "Edit User",
+		"header"						: "Edit User",
+
+		"main": {
+			"header"					: "Main",
+			"subheader"					: "Profile details, status and permissions of the account.",
+			"username"					: "Username",
+			"name"						: "Name",
+			"email"						: "Email",
+			"is_enabled"				: "Account Status",
+			"is_enabled_active"			: "Active",
+			"is_enabled_unconfirmed"	: "Unconfirmed",
+			"is_enabled_disabled"		: "Disabled",
+			"type"						: "User Privileges",
+			"type_help"					: "Admin users will have the same privileges as you, be careful!",
+			"type_admin"				: "Admin",
+			"type_user"					: "User"
+		},
+
+		"plan": {
+			"header"					: "Plan",
+			"subheader"					: "Change and update the plan of the user.",
+			"plan_id"			    	: "Current Plan",
+			"plan_expiration_date"   	: "Plan Expiration Date",
+			"plan_expiration_date_invalid"   	: "Keep in mind, this plan expiration date is in the past. You can still save it like this, though.",
+			"plan_trial_done"			: "Plan Trial Done"
+		},
+
+		"change_password": {
+			"header"					: "Change Password",
+			"subheader"					: "Leave it empty if you don't want to change the user's password!",
+			"new_password"				: "New Password",
+			"repeat_password"			: "Repeat Password"
+		}
+	},
+
+	"admin_user_view": {
+		"title"							: "View User",
+		"header"						: "View User",
+
+		"main": {
+			"ip"						: "IP",
+			"country"					: "Country",
+			"name"						: "Name",
+			"email"						: "Email",
+			"status"					: "Account status",
+			"status_active"				: "Active",
+			"status_disabled"			: "Disabled",
+			"type"						: "Privileges",
+			"type_help"					: "Admin users will have the same privileges as you, be careful!",
+			"type_admin"				: "Admin",
+			"type_user"					: "User",
+			"last_activity"				: "Last active",
+			"last_user_agent"			: "Last user agent",
+			"plan_trial_done"			: "Trial is done",
+			"plan"						: "Current plan",
+			"plan_expiration_date"		: "Plan expiration date",
+			"total_logins"				: "Total logins",
+			"current_month_notifications_impressions" : "Notifications impressions this month",
+			"total_notifications_impressions" : "Total notifications impressions",
+			"language"					: "Language",
+			"timezone"					: "Timezone"
+		},
+
+		"campaigns"						: "Campaigns",
+		"notifications"					: "Notifications",
+		"payments"	 					: "Payments",
+
+		"users_logs"                    : "Logs",
+		"redeemed_codes"                : "Redeemed codes"
+	},
+
+	"admin_users_logs": {
+		"title"							: "Users logs",
+		"header"						: "Users logs",
+		"menu"							: "Users logs",
+
+		"table": {
+			"user"						: "User",
+			"type"  					: "Type",
+			"ip"						: "IP",
+			"details"                   : "Details",
+			"datetime"					: "Date"
+		},
+
+		"filters": {
+			"search_by_type"            : "Type",
+			"search_by_ip"              : "IP"
+		}
+	},
+
+	"admin_user_log_delete_modal": {
+		"header"						: "Delete log",
+		"subheader"						: "This action cannot be undone."
+	},
+
+	"admin_redeemed_codes": {
+		"title"							: "Redeemed codes",
+		"header"						: "Redeemed codes",
+		"menu"							: "Redeemed codes",
+
+		"table": {
+			"user"						: "User",
+			"code"  					: "Code",
+			"datetime"					: "Date"
+		}
+	},
+
+	"admin_redeemed_code_delete_modal": {
+		"header"						: "Delete redeemed code log",
+		"subheader"						: "This action cannot be undone."
+	},
+
+	"admin_settings": {
+		"title"							: "Website Settings",
+		"menu"							: "Website Settings",
+		"header"						: "Website Settings",
+		"documentation"					: "Read the <a href=\"https://altumco.de/socialproofo-docs\" target=\"_blank\">Documentation</a> to get more details on certain available configurations.",
+
+		"tab": {
+			"main"						: "Main",
+			"socialproofo"				: "SocialProofo",
+			"payment"					: "Payment",
+			"paypal"					: "Paypal",
+			"stripe"					: "Stripe",
+			"offline_payment"           : "Offline payment",
+			"affiliate"					: "Affiliate",
+			"business"					: "Business",
+			"facebook"					: "Facebook Login",
+			"google"					: "Google Login",
+			"captcha"					: "Captcha",
+			"ads"						: "Ads",
+			"socials"					: "Socials",
+			"smtp"						: "SMTP",
+			"custom"					: "Custom JS / CSS",
+			"announcements"             : "Announcements",
+			"email_notifications"		: "Email Notifications",
+			"offload"					: "Offload",
+			"webhooks"					: "Webhooks",
+            "cron"                      : "Cron",
+			"license"					: "License"
+		},
+
+		"main": {
+			"title"						: "Website title",
+			"default_language"			: "Default language",
+			"default_language_help"		: "To add more languages, please consult the documentation.",
+			"default_theme_style"		: "Default theme style",
+			"logo"						: "Logo",
+			"logo_help"					: "jpg, jpeg, png, gif, or svg accepted. Recommended size: Max height of 40px and transparent.",
+			"logo_remove"				: "Remove logo",
+			"favicon"					: "Favicon",
+			"favicon_help"				: "png, gif or ico accepted.",
+			"favicon_remove"			: "Remove favicon",
+			"opengraph"					: "Opengraph image",
+			"opengraph_help"			: "jpg, jpeg, png or gif accepted.",
+			"opengraph_remove"			: "Remove favicon",
+			"email_confirmation"		: "Email confirmation",
+			"email_confirmation_help"	: "Send out email confirmation when a user registers or changes his email address.",
+			"register_is_enabled"		: "Enable new users registration",
+			"register_is_enabled_help"	: "Allow people to register on your platform or completely disable the register page.",
+			"default_timezone"			: "Default timezone",
+			"default_timezone_help"		: "The default timezone for users when they are registering (they can change it later on).",
+			"index_url"					: "Custom landing page URL",
+			"index_url_help"			: "Set the full custom index url ( ex: https://google.com/ ) if you want to completely disable the default landing page of the product. Helpful when you want to have your own landing page. Leave empty to disable.",
+			"terms_and_conditions_url"		: "Terms and Conditions URL",
+			"terms_and_conditions_url_help"	: "Link to the terms and conditions of the website. Can be a link created with the Pages creator from the sidebar.",
+			"privacy_policy_url"			: "Privacy Policy URL",
+			"privacy_policy_url_help"		: "Link to the privacy policy of the website. Can be a link created with the Pages creator from the sidebar."
+		},
+
+		"socialproofo": {
+			"branding"					: "Branding",
+			"branding_help"				: "This branding is used by default in the notification widgets. HTML can be used in this field.",
+
+			"analytics_is_enabled"		: "Analytics System for SocialProofo notifications",
+			"analytics_is_enabled_help"	: "This option allows you to enable or disable the Analytics that are generated for notifications widgets.",
+
+			"pixel_cache"				: "Pixel Cache (in seconds)",
+			"pixel_cache_help"			: "Set 0 to disable the cache of the pixel tracking code."
+		},
+
+		"payment": {
+			"is_enabled"				: "Enable Payments System",
+			"is_enabled_help"			: "Disabling the payment system will remove all the options for the users to upgrade their accounts or see any payment related information.",
+			"type"						: "Enabled payment types",
+			"type_help"					: "",
+			"type_one_time"				: "One Time",
+			"type_recurring"			: "Recurring",
+			"type_both"					: "Both",
+			"brand_name"				: "Brand Name",
+			"brand_name_help"			: "The brand name will be used for displaying the brand when users purchase via payment gates. (ex: paypal)",
+			"currency"					: "Currency",
+			"currency_help"				: "Currency Code for the payments (ex: USD).",
+			"codes_is_enabled" 			: "Enable Discount/Redeemable Codes",
+			"codes_is_enabled_help" 	: "Enabling the discount codes system will enable users to add a discount code created from the admin panel, before they checkout.",
+			"taxes_and_billing_is_enabled"		: "Enable Taxes & Billing system",
+			"taxes_and_billing_is_enabled_help"	: "Enabling this feature will require users to fill in their Billing info before checking out and you will also be able to create taxes for each created plan."
+		},
+
+		"paypal": {
+			"is_enabled"			: "Enable Paypal payments",
+			"mode"				    : "Mode",
+			"mode_help"			    : "live - production, sandbox - testing purposes",
+			"client_id"			    : "Client Id",
+			"secret"				: "Secret"
+		},
+
+		"stripe": {
+			"is_enabled"			: "Enable Stripe payments",
+			"publishable_key"	    : "Publishable Key",
+			"secret_key"			: "Secret Key",
+			"webhook_secret"		: "Webhook Secret"
+		},
+
+		"offline_payment": {
+			"is_enabled"                : "Enable offline payments",
+			"instructions"		        : "Instructions",
+			"instructions_help"	        : "Payment instructions for the user to see, before submitting the payment."
+		},
+
+		"affiliate" : {
+			"is_enabled"				: "Enable the affiliate system",
+			"is_enabled_help"			: "The affiliate system will enable your users to get paid for bringing other paying users to your platform.",
+			"commission_type"			: "Commission type",
+			"commission_type_once"		: "Once - give out commission for the first payment of a referred user",
+			"commission_type_forever"	: "Forever - give out commission for all the payments of a referred user",
+			"minimum_withdrawal_amount"	: "Minimum withdrawal amount",
+			"minimum_withdrawal_amount_help"	: "How much does a user need to have in his balance until he can request a withdrawal.",
+			"commission_percentage"		: "Commission percentage",
+			"commission_percentage_help": "Mow much does a user make for a referred user payment.",
+			"withdrawal_notes"			: "Withdrawal request notes",
+			"withdrawal_notes_help"		: "Inform your users about the withdrawal process. You can request them to write in their bank account or Paypal email for example."
+		},
+
+		"business": {
+			"subheader"					: "These details will be used when generating invoices for the user.",
+			"invoice_is_enabled"		: "Enable Invoices System",
+			"invoice_is_enabled_help"	: "This option will determine if users will be able to see invoices for their payments or not.",
+			"invoice_nr_prefix"			: "Invoice Nr Prefix",
+			"invoice_nr_prefix_help"	: "Your Nr Prefix for all the invoices generated on the system. Ex: INV-",
+			"name"						: "Name",
+			"address"					: "Address",
+			"city"						: "City",
+			"county"					: "County",
+			"zip"						: "ZIP",
+			"country"					: "Country",
+			"email"						: "Email",
+			"phone"						: "Phone",
+			"tax_type"					: "Tax Type",
+			"tax_type_placeholder"		: "ex: VAT",
+			"tax_id"					: "Tax ID",
+			"custom_key_one"			: "Custom Field Name",
+			"custom_value_one"			: "Custom Field Value",
+			"custom_key_two"			: "Custom Field Name",
+			"custom_value_two"			: "Custom Field Value"
+		},
+
+		"captcha": {
+			"type"						: "Captcha type",
+			"type_basic"				: "Basic captcha",
+			"type_recaptcha"			: "Google ReCaptcha v2 checkbox",
+			"type_hcaptcha"				: "hCaptcha",
+			"recaptcha_public_key"		: "ReCaptcha Public Key",
+			"recaptcha_private_key"		: "ReCaptcha Private Key",
+			"hcaptcha_site_key"			: "hCaptcha Site Key",
+			"hcaptcha_secret_key"		: "hCaptcha Secret Key",
+			"login_is_enabled"			: "Enable captcha on the login page",
+			"register_is_enabled"		: "Enable captcha on the register page",
+			"lost_password_is_enabled"	: "Enable captcha on the lost password page",
+			"resend_activation_is_enabled"	: "Enable captcha on the resend activation page"
+		},
+
+		"facebook": {
+			"is_enabled"				: "Enable Facebook Login",
+			"app_id"					: "App Id",
+			"app_secret"				: "App Secret"
+		},
+
+		"google": {
+			"is_enabled"				: "Enable Google Login",
+			"client_id"					: "Client Id",
+			"client_secret"				: "Client Secret"
+		},
+
+		"ads": {
+			"ads_help"					: "Ads to show users that do not have a plan with the 'No ads' plan feature enabled. These fields accept text, html or javascript.",
+			"header"					: "App header",
+			"footer"					: "App footer"
+		},
+
+		"socials": {
+			"help"		        		: "Social links to be displayed in the footer of the website."
+		},
+
+		"smtp": {
+			"host"						: "Host",
+			"host_help"					: "If there are no values entered in this field then the system will try to use the default mail function.",
+			"from"						: "From email",
+			"from_help"					: "The email that the users get the email from / the 'reply-to' email.",
+			"from_name"					: "From name",
+			"from_name_help"			: "The name associated with the email below.",
+			"encryption"				: "Encryption",
+			"port"						: "Port",
+			"auth"						: "Authentication",
+			"username"					: "Username",
+			"password"					: "Password"
+		},
+
+		"custom": {
+			"head_js"                   : "Head Javascript",
+			"head_js_help"              : "Add your own tracking js code ( ex: Google Analytics ).",
+			"head_css"                  : "Custom CSS",
+			"head_css_help"             : "Add custom CSS in case you want to overwrite certain styles of the website."
+		},
+
+		"announcements": {
+			"content"                   : "Announcement content",
+			"content_help"				: "This field accepts text, html or javascript. Leave empty to disable.",
+			"text_color"                : "Text color",
+			"background_color"          : "Background color",
+			"show_logged_in"            : "Display for logged in users",
+			"show_logged_out"           : "Display for guests"
+		},
+
+		"email_notifications": {
+			"emails"					: "Emails to be notified",
+			"emails_help"				: "Emails that will receive a notification when one of the actions from below are performed. Add valid email addresses separated by a comma.",
+			"new_user"					: "New User",
+			"new_user_help"				: "Receive an email when a new users registers to the website.",
+			"new_payment"				: "New Payment",
+			"new_payment_help"			: "Receive an email when a new payment is successfully processed.",
+			"new_affiliate_withdrawal"				: "New affiliate withdrawal",
+			"new_affiliate_withdrawal_help"			: "Receive an email when a new affiliate withdrawal request is submitted."
+		},
+
+		"offload": {
+			"assets_url"				: "Assets URL",
+			"assets_url_help"			: "Full URL to the assets folder from any storage provider, such as: Amazon S3, DigitalOcean Spaces.",
+			"provider"                  : "Storage provider",
+			"uploads_url"				: "Uploads URL",
+			"uploads_url_help"			: "Full URL to the uploads folder from any storage provider, such as: Amazon S3, DigitalOcean Spaces.",
+			"endpoint_url"              : "Endpoint URL",
+			"access_key"                : "Access key",
+			"secret_access_key"         : "Secret access key",
+			"storage_name"              : "Bucket name",
+			"region"                    : "Region"
+		},
+
+		"webhooks": {
+			"user_new"					: "New users event - webhook URL",
+			"user_new_help"				: "Send a webhook with the <code>user_id</code>, <code>email</code>, <code>name</code> details when a new user successfully registers to the site.",
+			"user_delete"				: "User deletion event - webhook URL",
+			"user_delete_help"			: "Send a webhook with the <code>user_id</code>, <code>email</code>, <code>name</code> details when a user is deleted from the site."
+		},
+
+        "cron": {
+            "cron"						: "Cron job",
+			"last_execution"            : "Last executed %s"
+		},
+
+		"license": {
+			"license"					: "License",
+			"license_help"				: "The license you got from purchasing the product.",
+			"type"						: "License type",
+			"new_license"				: "New license",
+			"new_license_help"			: "Leave empty if you don't want to change it. Useful when changing your license or upgrading to a new one (ex: from Regular License to Extended)."
+		}
+	},
+
+	"admin_settings_send_test_email_modal": {
+		"header"                        : "Send test email",
+		"email"                         : "Email to send to",
+		"success_message"               : "We sent the email commands to your SMTP without receiving any errors.",
+		"error_message"                 : "We sent the email commands to your SMTP, but we have received the following errors: %s"
+	},
+
+	"admin_statistics": {
+		"title"							: "Website Statistics",
+		"menu"							: "Statistics",
+		"header"						: "Statistics",
+		"subheader"						: "See how your website evolves throughout time.",
+
+		"payments": {
+			"menu"						: "Payments",
+			"header"					: "Sales",
+			"subheader"					: "This website has generated %s %s revenue on %s sales.",
+			"no_payments"				: "There are no recorded payments for this date range.",
+			"chart_total_payments"		: "Total sales",
+			"chart_total_amount"		: "Total earned"
+		},
+
+		"affiliates_commissions": {
+			"menu"						: "Aff. Commissions",
+			"header"					: "Affiliates commissions",
+			"chart_total_affiliates_commissions"	: "Total affiliates commissions",
+			"chart_amount"				: "Total amount"
+		},
+
+		"affiliates_withdrawals": {
+			"menu"						: "Aff. Withdrawals",
+			"header"					: "Affiliates withdrawals",
+			"chart_total_affiliates_withdrawals"	: "Total affiliates withdrawals",
+			"chart_amount"				: "Total amount"
+		},
+
+		"growth": {
+			"menu"						: "Growth",
+
+			"users": {
+				"header"				: "New registered users",
+				"chart"					: "Users"
+			},
+
+			"users_logs": {
+				"header"				: "Active users",
+				"chart"					: "Active users"
+			},
+
+			"redeemed_codes": {
+				"header"				: "Redeemed codes",
+				"chart"					: "Codes"
+			}
+		},
+
+		"campaigns": {
+			"menu"						: "Campaigns",
+			"header"					: "Campaigns",
+			"chart"						: "New campaigns"
+		},
+
+		"notifications": {
+			"menu"						: "Notifications",
+			"header"					: "Notifications",
+			"chart"						: "New notifications"
+		},
+
+		"track_notifications": {
+			"menu"						: "Notifications analytics",
+			"header"					: "Notifications analytics",
+			"subheader"					: "Collected analytics for notifications which are running on your users websites.",
+			"chart_impression"			: "Impressions",
+			"chart_hover"				: "Hovers",
+			"chart_click"				: "Clicks",
+			"chart_form_submission"		: "Form Submissions"
+		},
+
+		"track_conversions": {
+			"menu"						: "Notifications conversions",
+			"header"					: "Notifications conversions",
+			"subheader"					: "The amount of conversions that are caught by the system for all the created notifications.",
+			"chart_webhook"				: "Webhooks",
+			"chart_auto_capture"		: "Auto captured",
+			"chart_collector"			: "Collector notifications",
+			"chart_imported"			: "Imported"
+		}
+	},
+
+	"admin_plugins": {
+		"title"							: "Plugins",
+		"menu"							: "Plugins",
+		"header"						: "Plugins",
+		"header_no_data"				: "No plugins available",
+		"subheader_no_data"				: "There are no plugins available for now :(.",
+		"no_access"                     : "You must own, install & activate the '%s' plugin to use this feature.",
+
+		"install"                       : "Install",
+		"uninstall"                     : "Uninstall",
+		"activate"                      : "Activate",
+		"disable"                       : "Disable",
+		"status_inexistent"             : "Get plugin",
+		"status_uninstalled"            : "Uninstalled",
+		"status_active"                 : "Active",
+		"status_disabled"               : "Disabled",
+
+		"table": {
+			"plugin"					: "Plugin",
+			"author"					: "Author",
+			"status"					: "Status"
+		},
+
+		"install_message"				: "%s has been successfully installed.",
+		"uninstall_message"				: "%s has been successfully uninstalled.",
+		"activate_message"				: "%s has been successfully activated.",
+		"disable_message"				: "%s has been successfully disabled."
+	},
+
+	"admin_plugin_uninstall_modal": {
+		"header"						: "Uninstall plugin",
+		"subheader"						: "By uninstalling the plugin, all the potential data related to the plugin will be removed from the system."
+	},
+
+	"admin_plugin_delete_modal": {
+		"header"						: "Delete plugin",
+		"subheader"						: "To delete the plugin, simply go into the <strong>plugins</strong> folder and delete the plugin."
+	},
+
+	"admin_api_documentation": {
+		"menu"							: "API docs",
+		"title"							: "Admin API documentation",
+		"header"						: "Admin API documentation",
+		"subheader"						: "This is the documentation for the available API endpoints, only for the admins, which are built around the <strong>REST architecture</strong>. All the API endpoints will return a <strong>JSON response</strong> with the standard <strong>HTTP response codes</strong> and need a <strong>Bearer Authentication via an API Key</strong>.",
+
+		"endpoint"						: "Endpoint",
+		"example"						: "Example",
+		"response"						: "Response example",
+		"api_key"						: "API Key",
+		"base_url"						: "Base URL",
+		"parameters"					: "Parameters",
+		"required"						: "Required",
+		"optional"						: "Optional",
+		"details"						: "Details",
+		"description"					: "Description",
+
+		"authentication": {
+			"header"					: "Authentication",
+			"subheader"					: "All the API endpoints require an API key sent by the <strong>Bearer Authentication method.</strong>"
+		},
+
+		"filters": {
+			"page"                      : "The page number that you want results from. Defaults to <code>1</code>.",
+			"results_per_page"          : "How many results you want per page. Allowed values are: %s. Defaults to <code>%s</code>.",
+			"search"                    : "The search string.",
+			"search_by"                 : "What field are you searching by. Allowed values are: %s.",
+			"order_by"                  : "What field to order the results by. Allowed values are: %s.",
+			"order_by_type"             : "The ordering of the results. Allowed values are: <code>ASC</code> for ascending ordering, and <code>DESC</code> for descending ordering."
+		},
+
+		"users": {
+			"header"					: "Users",
+			"read_all_header"           : "Retrieve list",
+			"read_header"               : "Retrieve a user",
+			"create_header"             : "Create a new user",
+			"update": {
+				"header"				: "Update a user",
+				"is_enabled"			: "0 - Disabled, 1 - Active, 2 - Banned",
+				"type"					: "0 - Normal user, 1 - Admin",
+				"plan_id"				: "free, trial or an integer plan_id",
+				"plan_expiration_date"	: "Y-m-d H:i:s format in UTC timezone",
+				"plan_trial_done"		: "0 - No, 1 - Yes"
+			},
+			"delete_header"             : "Delete a user",
+			"one_time_login_code_header": "Generate a one time login code"
+		},
+
+		"plans": {
+			"header"					: "Plans",
+			"read_all_header"           : "Retrieve list",
+			"read_header"               : "Retrieve a plan"
+		}
+	},
+
+	"admin_bulk_delete_modal": {
+		"header"						: "Delete in bulk",
+		"subheader"						: "You've selected multiple entries to be deleted, this may take a while & it action cannot be undone.",
+		"success_message"				: "The bulk deletion process was performed successfully!"
+	}
+}

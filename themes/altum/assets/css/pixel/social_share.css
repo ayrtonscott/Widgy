@@ -1,0 +1,77 @@
+/* Social Share */
+.altumcode-social-share-wrapper {
+}
+
+@media (min-width: 576px) {
+    .altumcode-social-share-wrapper {
+        max-width: 350px !important;
+    }
+}
+.altumcode-social-share-content {
+    padding: 8px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+}
+
+.altumcode-social-share-header {
+    display: flex !important;
+    width: 100% !important;
+}
+
+.altumcode-social-share-title {
+    flex-grow: 1 !important;
+    text-align: center !important;
+    font-size: 20px !important;
+    font-weight: bold !important;
+}
+
+.altumcode-social-share-description {
+    text-align: center !important;
+    font-size: 14px !important;
+    margin-bottom: 16px !important;
+}
+
+.altumcode-social-share-buttons {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-around !important;
+    width: 100% !important;
+    margin: 16px 0 !important;
+}
+
+.altumcode-social-share-button {
+    background: black;
+    color: white;
+    display: inline-block !important;
+    border-radius: 4px !important;
+    padding: 6px 10px !important;
+    text-align: center !important;
+    font-weight: bold !important;
+    font-size: 14px !important;
+    border-bottom: 2px #00000014 solid !important;
+    border-right: 2px #00000014 solid !important;
+}
+
+.altumcode-social-share-button-facebook {
+    background: #3C5A99 !important;
+}
+
+.altumcode-social-share-button-twitter {
+    background: #1DA1F2 !important;
+}
+
+.altumcode-social-share-button-linkedin {
+    background: #0077b5 !important;
+}
+
+.altumcode-social-share-button:hover {
+    color: white;
+    opacity: .9 !important;
+    text-decoration: none !important;
+}
+
+.altumcode-social-share-footer {
+    font-size: 14px !important;
+    text-decoration: underline !important;
+}

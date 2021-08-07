@@ -1,0 +1,436 @@
+:root {
+    --altumcode-spacing: 20px;
+}
+
+.altumcode {
+    visibility: hidden;
+    z-index: 999999999;
+    transition-duration:  .3s;
+    transition-property: opacity, transform;
+}
+
+@media print{
+    .altumcode {
+        display:none !important
+    }
+}
+
+.altumcode-clickable {
+    cursor: pointer !important;
+}
+
+.altumcode:hover {
+
+}
+
+.altumcode * {
+    margin: 0 !important;
+    width: initial !important;
+    height: initial !important;
+    padding: initial !important;
+    line-height: normal !important;
+}
+
+/* Animation classes for notifications */
+.altumcode.on-fadeIn {
+    visibility: visible !important;
+    animation: ease .3s fadeIn forwards !important;
+}
+
+.altumcode.on-slideInUp {
+    visibility: visible !important;
+    animation: ease .3s slideInUp forwards !important;
+}
+
+.altumcode.on-slideInDown {
+    visibility: visible !important;
+    animation: ease .3s slideInDown forwards !important;
+}
+
+.altumcode.on-zoomIn {
+    visibility: visible !important;
+    animation: ease .3s zoomIn forwards !important;
+}
+
+.altumcode.on-bounceIn {
+    visibility: visible !important;
+    animation: ease .3s bounceIn forwards !important;
+}
+
+.altumcode.off-fadeOut {
+    visibility: visible !important;
+    animation: ease .3s fadeOut both !important;
+}
+
+.altumcode.off-slideOutUp {
+    visibility: visible !important;
+    animation: ease .3s slideOutUp both !important;
+}
+
+.altumcode.off-slideOutDown {
+    visibility: visible !important;
+    animation: ease .3s slideOutDown both !important;
+}
+
+.altumcode.off-zoomOut {
+    visibility: visible !important;
+    animation: ease .3s zoomOut forwards !important;
+}
+
+.altumcode.off-bounceOut {
+    visibility: visible !important;
+    animation: ease .3s bounceOut forwards !important;
+}
+
+.altumcode-close {
+    opacity: .4 !important;
+    transition: .15s all !important;
+}
+
+.altumcode-close:hover {
+    cursor: pointer !important;
+    opacity: .6 !important;
+}
+
+.altumcode-rounded {
+    border-radius: 8px !important;
+}
+
+
+/* Toasts positions */
+.altumcode-top_left {
+    position: fixed !important;
+    max-width: 90% !important;
+
+    left: var(--altumcode-spacing);
+    top: var(--altumcode-spacing);
+}
+
+.altumcode-top_center {
+    position: fixed !important;
+    max-width: 90% !important;
+
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: var(--altumcode-spacing);
+    width: max-content;
+}
+
+.altumcode-top_right {
+    position: fixed !important;
+    max-width: 90% !important;
+
+    right: var(--altumcode-spacing);
+    top: var(--altumcode-spacing);
+}
+
+.altumcode-middle_left {
+    position: fixed !important;
+    max-width: 90% !important;
+
+    left: var(--altumcode-spacing);
+    margin: auto 0;
+    top: calc(45%);
+}
+
+.altumcode-middle_center {
+    position: fixed !important;
+    max-width: 90% !important;
+
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: max-content;
+}
+
+.altumcode-middle_right {
+    position: fixed !important;
+    max-width: 90% !important;
+
+    right: var(--altumcode-spacing);
+    margin: auto 0;
+    top: calc(45%);
+}
+
+.altumcode-bottom_left {
+    position: fixed !important;
+    max-width: 90% !important;
+
+    left: var(--altumcode-spacing);
+    bottom: var(--altumcode-spacing);
+}
+
+.altumcode-bottom_center {
+    position: fixed !important;
+    max-width: 90% !important;
+
+    margin: auto;
+    left: 0;
+    right: 0;
+    bottom: var(--altumcode-spacing);
+    width: max-content;
+}
+
+.altumcode-bottom_right {
+    position: fixed !important;
+    max-width: 90% !important;
+
+    right: var(--altumcode-spacing);
+    bottom: var(--altumcode-spacing);
+}
+
+/* Normal notifications above or below content */
+.altumcode-top {
+    position: initial !important;
+    display: none;
+    max-width: 100% !important;
+}
+
+.altumcode-bottom {
+    position: initial !important;
+    display: none;
+    max-width: 100% !important;
+}
+
+/* Floating notifications above or below the content */
+.altumcode-top_floating {
+    position: fixed !important;
+    display: none;
+    width: 100% !important;
+}
+
+.altumcode-bottom_floating {
+    position: fixed !important;
+    display: none;
+    width: 100% !important;
+    bottom: 0 !important;
+}
+
+/* Common used classes for notifications */
+.altumcode-wrapper {
+    padding: 10px !important;
+    color: black;
+    border: 0px solid black;
+    background: white;
+    position: relative !important;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji" !important;
+}
+
+.altumcode-wrapper-straight {
+    border-radius: 0px !important;
+}
+
+.altumcode-wrapper-rounded {
+    border-radius: 8px !important;
+}
+
+.altumcode-wrapper-round {
+    border-radius: 100px !important;
+}
+
+.altumcode-wrapper-shadow {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04) !important;
+}
+
+.altumcode-site {
+    font-size: 10px !important;
+    display: inline-block !important;
+}
+
+.altumcode-toast-pulse {
+    margin: 18px !important;
+    display: block !important;
+    width: 25px !important;
+    height: 25px !important;
+    border-radius: 50% !important;
+    background: #17bf21;
+    box-shadow: 0 0 0 rgba(39, 204, 48, 0.4) !important;
+    animation: altumcode-toast-pulse 2s infinite !important;
+}
+.altumcode-toast-pulse:hover {
+
+}
+
+@keyframes altumcode-toast-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(39, 204, 48, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(204,169,44, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(204,169,44, 0);
+    }
+}
+
+.altumcode-toast-star {
+    font-size: 13px !important;
+    color: #ffc100 !important;
+}
+
+.altumcode-agreement-checkbox {
+    display: flex !important;
+    align-items: center !important;
+}
+
+.altumcode-agreement-checkbox-input {
+    appearance: initial !important;
+    -webkit-appearance: checkbox !important;
+    -moz-appearance: checkbox !important;
+}
+
+.altumcode-agreement-checkbox-text {
+    font-size: 12px !important;
+    margin: 0 !important;
+    margin-left: 5px !important;
+    margin-top: 2px !important;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        transform: translate3d(0, 100%, 0);
+        visibility: visible;
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes slideInDown {
+    from {
+        transform: translate3d(0, -100%, 0);
+        visibility: visible;
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes slideOutUp {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+
+    to {
+        visibility: hidden;
+        transform: translate3d(0, -100%, 0);
+    }
+}
+
+
+@keyframes slideOutDown {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+
+    to {
+        visibility: hidden;
+        transform: translate3d(0, 100%, 0);
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale3d(0.3, 0.3, 0.3);
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes zoomOut {
+    from {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+        transform: scale3d(0.3, 0.3, 0.3);
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes bounceIn {
+    from,
+    20%,
+    40%,
+    60%,
+    80%,
+    to {
+        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    0% {
+        opacity: 0;
+        transform: scale3d(0.3, 0.3, 0.3);
+    }
+
+    20% {
+        transform: scale3d(1.1, 1.1, 1.1);
+    }
+
+    40% {
+        transform: scale3d(0.9, 0.9, 0.9);
+    }
+
+    60% {
+        opacity: 1;
+        transform: scale3d(1.03, 1.03, 1.03);
+    }
+
+    80% {
+        transform: scale3d(0.97, 0.97, 0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+@keyframes bounceOut {
+    20% {
+        transform: scale3d(0.9, 0.9, 0.9);
+    }
+
+    50%,
+    55% {
+        opacity: 1;
+        transform: scale3d(1.1, 1.1, 1.1);
+    }
+
+    to {
+        opacity: 0;
+        transform: scale3d(0.3, 0.3, 0.3);
+    }
+}

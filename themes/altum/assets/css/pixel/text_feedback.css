@@ -1,0 +1,97 @@
+/* Text Feedback */
+.altumcode-text-feedback-wrapper {
+}
+
+.altumcode-text-feedback-content {
+    padding: 5px 10px !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.altumcode-text-feedback-header {
+    display: flex !important;
+    align-items: center !important;
+}
+
+.altumcode-text-feedback-title {
+    font-size: 22px !important;
+    flex-grow: 1 !important;
+    text-align: center !important;
+    margin-bottom: 0 !important;
+    cursor: pointer !important;
+}
+
+.altumcode-text-feedback-expand {
+    padding: 5px !important;
+    margin-right: 5px !important;
+    border: 0 !important;
+    background: none !important;
+}
+
+.altumcode-text-feedback-hidden {
+    display: none !important;
+}
+
+.altumcode-text-feedback-shown {
+    display: block !important;
+    visibility: visible !important;
+    animation: ease .3s fadeIn forwards !important;
+}
+
+.altumcode-text-feedback-description {
+    font-size: 14px !important;
+    margin-bottom: 15px !important;
+    text-align: center !important;
+}
+
+.altumcode-text-feedback-form {
+    margin-bottom: 20px !important;
+}
+
+.altumcode-text-feedback-row {
+    display: flex !important;
+    flex-direction: column !important;
+    margin-bottom: 15px !important;
+}
+
+.altumcode-text-feedback-row input {
+    border: 1px solid hsla(0, 0%, 85%, 1) !important;
+    background: white;
+    padding: 10px 12px !important;
+    color: #495057;
+    font-size: 14px !important;
+    border-radius: 5px !important;
+    flex-grow: 1 !important;
+    margin-bottom: 10px !important;
+    transition: .3s border !important;
+}
+.altumcode-text-feedback-row input:hover {
+    border: 1px solid hsla(0, 0%, 90%, 1) !important;
+}
+
+.altumcode-text-feedback-row button {
+    flex-grow: 1 !important;
+    cursor: pointer !important;
+    background: black;
+    border: 0 !important;
+    font-size: 16px !important;
+    font-weight: bold;
+    padding: 10px 14px !important;
+    color: white;
+    border-radius: 5px !important;
+    transition: .3s opacity !important;
+}
+
+.altumcode-text-feedback-row button:hover {
+    opacity: 0.95 !important;
+}
+
+.altumcode-text-feedback-wrapper .altumcode-close {
+    margin-left: 15px !important;
+}
+
+@media (min-width: 768px) {
+    .altumcode-text-feedback-wrapper {
+        max-width: 700px !important;
+    }
+}
