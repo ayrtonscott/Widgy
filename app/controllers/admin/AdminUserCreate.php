@@ -36,7 +36,7 @@ class AdminUserCreate extends Controller {
             $values['email'] = $_POST['email'];
             $values['password'] = $_POST['password'];
 
-            if(DEMO) Alerts::add_error('This command is blocked on the demo.');
+            //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
             /* Check for any errors */
             $required_fields = ['name', 'email' ,'password'];

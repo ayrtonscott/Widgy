@@ -32,7 +32,7 @@ class ResetPassword extends Controller {
 
         if(!empty($_POST)) {
 
-            if(DEMO) Alerts::add_error('This command is blocked on the demo.');
+            //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
             /* Check for any errors */
             if(mb_strlen(trim($_POST['new_password'])) < 6) {

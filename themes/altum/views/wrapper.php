@@ -61,7 +61,7 @@
     </head>
 
     <body class="<?= language()->direction == 'rtl' ? 'rtl' : null ?> <?= \Altum\Routing\Router::$controller_settings['body_white'] ? 'bg-white' : null ?>" data-theme-style="<?= \Altum\ThemeStyle::get() ?>">
-        <?php if(DEMO) echo include_view(THEME_PATH . 'views/partials/ac_banner.php', ['demo_url' => 'https://socialproofo.com/demo/', 'title_text' => 'SocialProofo by AltumCode', 'product_url' => 'https://altumco.de/socialproofo-buy', 'buy_text' => 'Buy SocialProofo']) ?>
+        <?php //ALTUMCODE:DEMO if(DEMO) echo include_view(THEME_PATH . 'views/partials/ac_banner.php', ['demo_url' => 'https://socialproofo.com/demo/', 'title_text' => 'SocialProofo by AltumCode', 'product_url' => 'https://altumco.de/socialproofo-buy', 'buy_text' => 'Buy SocialProofo']) ?>
 
         <?php require THEME_PATH . 'views/partials/announcements.php' ?>
 

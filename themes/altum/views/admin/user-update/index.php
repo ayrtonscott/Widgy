@@ -10,7 +10,7 @@
 
 <?= \Altum\Alerts::output_alerts() ?>
 
-<?php if(DEMO) {$data->user->email = 'hidden@demo.com'; $data->user->name = $data->user->ip = 'hidden on demo';} ?>
+<?php //ALTUMCODE:DEMO if(DEMO) {$data->user->email = 'hidden@demo.com'; $data->user->name = $data->user->ip = 'hidden on demo';} ?>
 
 <div class="card <?= \Altum\Alerts::has_field_errors() ? 'border-danger' : null ?>">
     <div class="card-body">

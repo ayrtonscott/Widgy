@@ -74,7 +74,7 @@ $('#setup_form').on('submit', event => {
                 $('#sidebar-ul a[href="#finish"]').trigger('click');
 
                 /* Add the written url in the finish section */
-                let url = $('#setup_form [name="url"]').val();
+                let url = $('#setup_form [name="installation_url"]').val();
 
                 $('#final_url').text(url).attr('href', url);
 

@@ -32,7 +32,7 @@ class ResendActivation extends Controller {
             $_POST['email'] = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
             $values['email'] = $_POST['email'];
 
-            if(DEMO) Alerts::add_error('This command is blocked on the demo.');
+            //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
             /* Check for any errors */
             if(settings()->captcha->resend_activation_is_enabled && !$captcha->is_valid()) {

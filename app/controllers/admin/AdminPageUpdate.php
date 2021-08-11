@@ -44,7 +44,7 @@ class AdminPageUpdate extends Controller {
                     break;
             }
 
-            if(DEMO) Alerts::add_error('This command is blocked on the demo.');
+            //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
             /* Check for any errors */
             $required_fields = ['title', 'url'];

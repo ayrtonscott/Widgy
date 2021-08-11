@@ -125,8 +125,8 @@ class Pay extends Controller {
         /* Make sure that this only runs on user click submit post and not on callbacks / webhooks */
         if(!empty($_POST) && !$this->return_type) {
 
-            if(DEMO) Alerts::add_error('This command is blocked on the demo.');
-            if(DEMO) redirect('pay/' . $this->plan_id);
+            //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
+            //ALTUMCODE:DEMO if(DEMO) redirect('pay/' . $this->plan_id);
 
             /* Check for any errors */
             if(!Csrf::check()) {

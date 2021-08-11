@@ -82,7 +82,7 @@ class AdminCampaigns extends Controller {
             redirect('admin/campaigns');
         }
 
-        if(DEMO) Alerts::add_error('This command is blocked on the demo.');
+        //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
         if(!Csrf::check()) {
             Alerts::add_error(language()->global->error_message->invalid_csrf_token);
@@ -115,7 +115,7 @@ class AdminCampaigns extends Controller {
 
         $campaign_id = isset($this->params[0]) ? (int) $this->params[0] : null;
 
-        if(DEMO) Alerts::add_error('This command is blocked on the demo.');
+        //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
         if(!Csrf::check('global_token')) {
             Alerts::add_error(language()->global->error_message->invalid_csrf_token);

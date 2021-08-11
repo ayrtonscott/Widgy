@@ -32,7 +32,7 @@ class AdminCodeUpdate extends Controller {
             $_POST['quantity'] = (int) $_POST['quantity'];
             $_POST['code'] = trim(get_slug($_POST['code'], '-', false));
 
-            if(DEMO) Alerts::add_error('This command is blocked on the demo.');
+            //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
             if(!Csrf::check()) {
                 Alerts::add_error(language()->global->error_message->invalid_csrf_token);

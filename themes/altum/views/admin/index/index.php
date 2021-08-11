@@ -129,7 +129,7 @@
             </thead>
             <tbody>
             <?php while($row = $result->fetch_object()): ?>
-                <?php if(DEMO) {$row->email = 'hidden@demo.com'; $row->name = 'hidden on demo';} ?>
+                <?php //ALTUMCODE:DEMO if(DEMO) {$row->email = 'hidden@demo.com'; $row->name = 'hidden on demo';} ?>
                 <?php if(!isset($data->plans[$row->plan_id])) $data->plans[$row->plan_id] = (new \Altum\Models\Plan())->get_plan_by_id($row->plan_id) ?>
                 <tr>
                     <td>
@@ -214,7 +214,7 @@
                     </thead>
                     <tbody>
                     <?php while($row = $result->fetch_object()): ?>
-                        <?php if(DEMO) {$row->email = $row->user_email = 'hidden@demo.com'; $row->user_name = $row->name = 'hidden on demo';} ?>
+                        <?php //ALTUMCODE:DEMO if(DEMO) {$row->email = $row->user_email = 'hidden@demo.com'; $row->user_name = $row->name = 'hidden on demo';} ?>
 
                         <tr>
                             <td>

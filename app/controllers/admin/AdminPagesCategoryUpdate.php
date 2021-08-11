@@ -32,7 +32,7 @@ class AdminPagesCategoryUpdate extends Controller {
             $_POST['icon'] = Database::clean_string($_POST['icon']);
             $_POST['order'] = (int) $_POST['order'] ?? 0;
 
-            if(DEMO) Alerts::add_error('This command is blocked on the demo.');
+            //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
             /* Check for any errors */
             $required_fields = ['title', 'url'];

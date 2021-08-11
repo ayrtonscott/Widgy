@@ -64,7 +64,7 @@ class AdminSettings extends Controller {
         $this->process();
 
         if(!empty($_POST)) {
-            if(DEMO) Alerts::add_error('This command is blocked on the demo.');
+            //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
             /* :):) */
             $_POST['se_indexing'] = (bool) $_POST['se_indexing'];
@@ -220,7 +220,7 @@ class AdminSettings extends Controller {
         $this->process();
 
         if(!empty($_POST)) {
-            if(DEMO) Alerts::add_error('This command is blocked on the demo.');
+            //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
             /* :) */
             $_POST['is_enabled'] = (bool)$_POST['is_enabled'];
@@ -246,7 +246,7 @@ class AdminSettings extends Controller {
         $this->process();
 
         if(!empty($_POST)) {
-            if(DEMO) Alerts::add_error('This command is blocked on the demo.');
+            //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
             /* :) */
             $_POST['is_enabled'] = (bool)$_POST['is_enabled'];
@@ -267,7 +267,7 @@ class AdminSettings extends Controller {
         $this->process();
 
         if(!empty($_POST)) {
-            if(DEMO) Alerts::add_error('This command is blocked on the demo.');
+            //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
             /* :) */
             $_POST['is_enabled'] = (bool)$_POST['is_enabled'];
@@ -287,7 +287,7 @@ class AdminSettings extends Controller {
         $this->process();
 
         if(!empty($_POST)) {
-            if(DEMO) Alerts::add_error('This command is blocked on the demo.');
+            //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
             /* :) */
             $_POST['is_enabled'] = (bool)$_POST['is_enabled'];
@@ -305,7 +305,7 @@ class AdminSettings extends Controller {
         $this->process();
 
         if(!empty($_POST)) {
-            if(DEMO) Alerts::add_error('This command is blocked on the demo.');
+            //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
             if(!\Altum\Plugin::is_active('affiliate')) {
                 redirect('admin/settings/affiliate');
@@ -334,7 +334,7 @@ class AdminSettings extends Controller {
         $this->process();
 
         if(!empty($_POST)) {
-            if(DEMO) Alerts::add_error('This command is blocked on the demo.');
+            //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
             /* :) */
             $_POST['invoice_is_enabled'] = (bool) $_POST['invoice_is_enabled'];
@@ -366,7 +366,7 @@ class AdminSettings extends Controller {
         $this->process();
 
         if(!empty($_POST)) {
-            if(DEMO) Alerts::add_error('This command is blocked on the demo.');
+            //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
             /* :) */
             $_POST['type'] = in_array($_POST['type'], ['basic', 'recaptcha', 'hcaptcha']) ? $_POST['type'] : 'basic';
@@ -394,7 +394,7 @@ class AdminSettings extends Controller {
         $this->process();
 
         if(!empty($_POST)) {
-            if(DEMO) Alerts::add_error('This command is blocked on the demo.');
+            //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
             /* :) */
             $_POST['is_enabled'] = (bool) $_POST['is_enabled'];
@@ -413,7 +413,7 @@ class AdminSettings extends Controller {
         $this->process();
 
         if(!empty($_POST)) {
-            if(DEMO) Alerts::add_error('This command is blocked on the demo.');
+            //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
             /* :) */
             $_POST['is_enabled'] = (bool) $_POST['is_enabled'];
@@ -432,7 +432,7 @@ class AdminSettings extends Controller {
         $this->process();
 
         if(!empty($_POST)) {
-            if(DEMO) Alerts::add_error('This command is blocked on the demo.');
+            //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
             /* :) */
             $value = json_encode([
@@ -450,7 +450,7 @@ class AdminSettings extends Controller {
         $this->process();
 
         if(!empty($_POST)) {
-            if(DEMO) Alerts::add_error('This command is blocked on the demo.');
+            //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
             /* :) */
             $value = [];
@@ -467,7 +467,7 @@ class AdminSettings extends Controller {
         $this->process();
 
         if(!empty($_POST)) {
-            if(DEMO) Alerts::add_error('This command is blocked on the demo.');
+            //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
             /* :) */
             $_POST['auth'] = (bool) isset($_POST['auth']);
@@ -493,7 +493,7 @@ class AdminSettings extends Controller {
         $this->process();
 
         if(!empty($_POST)) {
-            if(DEMO) Alerts::add_error('This command is blocked on the demo.');
+            //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
             /* :) */
             $value = json_encode([
@@ -509,7 +509,7 @@ class AdminSettings extends Controller {
         $this->process();
 
         if(!empty($_POST)) {
-            if(DEMO) Alerts::add_error('This command is blocked on the demo.');
+            //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
             /* :) */
             $_POST['id'] = md5($_POST['content']);
@@ -535,7 +535,7 @@ class AdminSettings extends Controller {
         $this->process();
 
         if(!empty($_POST)) {
-            if(DEMO) Alerts::add_error('This command is blocked on the demo.');
+            //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
             /* :) */
             $_POST['emails'] = str_replace(' ', '', $_POST['emails']);
@@ -559,7 +559,7 @@ class AdminSettings extends Controller {
         $this->process();
 
         if(!empty($_POST)) {
-            if(DEMO) Alerts::add_error('This command is blocked on the demo.');
+            //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
             /* :) */
             $_POST['user_new'] = trim(filter_var($_POST['user_new'], FILTER_SANITIZE_STRING));
@@ -578,7 +578,7 @@ class AdminSettings extends Controller {
         $this->process();
 
         if(!empty($_POST)) {
-            if(DEMO) Alerts::add_error('This command is blocked on the demo.');
+            //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
             if(!\Altum\Plugin::is_active('offload')) {
                 redirect('admin/settings/offload');
@@ -613,7 +613,7 @@ class AdminSettings extends Controller {
         $this->process();
 
         if(!empty($_POST) && !empty($_POST['new_license'])) {
-            if(DEMO) Alerts::add_error('This command is blocked on the demo.');
+            //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
             $altumcode_api = 'https://api.altumcode.com/validate';
 
@@ -657,7 +657,7 @@ class AdminSettings extends Controller {
         $this->process();
 
         if(!empty($_POST)) {
-            if(DEMO) Alerts::add_error('This command is blocked on the demo.');
+            //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
             /* :) */
             $_POST['branding'] = trim($_POST['branding']);

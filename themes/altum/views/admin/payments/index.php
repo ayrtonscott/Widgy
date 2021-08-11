@@ -152,7 +152,7 @@
         </thead>
         <tbody>
         <?php foreach($data->payments as $row): ?>
-            <?php if(DEMO) {$row->email = $row->user_email = 'hidden@demo.com'; $row->name = $row->user_name = 'hidden on demo';} ?>
+            <?php //ALTUMCODE:DEMO if(DEMO) {$row->email = $row->user_email = 'hidden@demo.com'; $row->name = $row->user_name = 'hidden on demo';} ?>
             <tr>
                 <td>
                     <div class="d-flex flex-column">

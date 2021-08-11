@@ -53,7 +53,7 @@ class AdminPlanCreate extends Controller {
             $_POST['order'] = (int) $_POST['order'];
             $_POST['taxes_ids'] = json_encode(array_keys($_POST['taxes_ids'] ?? []));
 
-            if(DEMO) Alerts::add_error('This command is blocked on the demo.');
+            //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
             if(!Csrf::check()) {
                 Alerts::add_error(language()->global->error_message->invalid_csrf_token);

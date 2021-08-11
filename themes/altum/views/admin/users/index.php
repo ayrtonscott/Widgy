@@ -169,7 +169,7 @@
             </thead>
             <tbody>
             <?php foreach($data->users as $row): ?>
-                <?php if(DEMO) {$row->email = 'hidden@demo.com'; $row->name = 'hidden on demo';} ?>
+                <?php //ALTUMCODE:DEMO if(DEMO) {$row->email = 'hidden@demo.com'; $row->name = 'hidden on demo';} ?>
                 <tr>
                     <td data-bulk-table class="d-none">
                         <div class="custom-control custom-checkbox">

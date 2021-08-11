@@ -138,7 +138,7 @@
         </thead>
         <tbody>
         <?php foreach($data->campaigns as $row): ?>
-            <?php if(DEMO) {$row->user_email = 'hidden@demo.com'; $row->user_name = $row->domain = $row->name = 'hidden on demo';} ?>
+            <?php //ALTUMCODE:DEMO if(DEMO) {$row->user_email = 'hidden@demo.com'; $row->user_name = $row->domain = $row->name = 'hidden on demo';} ?>
             <tr>
                 <td data-bulk-table class="d-none">
                     <div class="custom-control custom-checkbox">

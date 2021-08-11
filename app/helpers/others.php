@@ -170,7 +170,7 @@ function get_device_type($user_agent) {
 function process_export_json($array_of_objects, $type = '', $type_array = [], $file_name = 'data') {
 
     if(isset($_GET['export']) && $_GET['export'] == 'json') {
-        if(DEMO) exit('This command is blocked on the demo.');
+        //ALTUMCODE:DEMO if(DEMO) exit('This command is blocked on the demo.');
 
         header('Content-Disposition: attachment; filename="' . $file_name . '.json";');
         header('Content-Type: application/json; charset=UTF-8');
@@ -202,7 +202,7 @@ function json_exporter($array_of_objects, $type = 'basic', $type_array = []) {
 function process_export_csv($array, $type = '', $type_array = [], $file_name = 'data') {
 
     if(isset($_GET['export']) && $_GET['export'] == 'csv') {
-        if(DEMO) exit('This command is blocked on the demo.');
+        //ALTUMCODE:DEMO if(DEMO) exit('This command is blocked on the demo.');
 
         header('Content-Disposition: attachment; filename="' . $file_name . '.csv";');
         header('Content-Type: application/csv; charset=UTF-8');

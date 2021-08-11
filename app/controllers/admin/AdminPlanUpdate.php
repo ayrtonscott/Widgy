@@ -62,7 +62,7 @@ class AdminPlanUpdate extends Controller {
 
         if(!empty($_POST)) {
 
-            if(DEMO) Alerts::add_error('This command is blocked on the demo.');
+            //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
             if (!Csrf::check()) {
                 Alerts::add_error(language()->global->error_message->invalid_csrf_token);

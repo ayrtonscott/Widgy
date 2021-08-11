@@ -17,7 +17,7 @@ trait Apiable {
     /* Function to check the request authentication */
     private function verify_request($require_to_be_admin = false) {
 
-        if(DEMO) $this->response_error('This feature is blocked on the demo.', 400);
+        //ALTUMCODE:DEMO if(DEMO) $this->response_error('This feature is blocked on the demo.', 400);
 
         /* Define the return content to be treated as JSON */
         header('Content-Type: application/json');

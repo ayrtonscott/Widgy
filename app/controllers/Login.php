@@ -34,7 +34,7 @@ class Login extends Controller {
             'password' => '',
         ];
 
-        if(DEMO) {$values['email'] = 'admin'; $values['password'] = 'admin';$user=(object)['twofa_secret' => null];}
+        //ALTUMCODE:DEMO if(DEMO) {$values['email'] = 'admin'; $values['password'] = 'admin';$user=(object)['twofa_secret' => null];}
 
         /* Initiate captcha */
         $captcha = new Captcha();

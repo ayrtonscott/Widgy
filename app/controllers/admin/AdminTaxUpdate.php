@@ -31,7 +31,7 @@ class AdminTaxUpdate extends Controller {
             $_POST['name'] = Database::clean_string($_POST['name']);
             $_POST['description'] = Database::clean_string($_POST['description']);
 
-            if(DEMO) Alerts::add_error('This command is blocked on the demo.');
+            //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
             if(!Csrf::check()) {
                 Alerts::add_error(language()->global->error_message->invalid_csrf_token);

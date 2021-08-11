@@ -60,7 +60,7 @@ class Account extends Controller {
                 ]);
             }
 
-            if(DEMO) if($this->user->user_id == 1) Alerts::add_error('Please create an account on the demo to test out this function.');
+            //ALTUMCODE:DEMO if(DEMO) if($this->user->user_id == 1) Alerts::add_error('Please create an account on the demo to test out this function.');
 
             /* Check for any errors */
             if(!Csrf::check()) {
