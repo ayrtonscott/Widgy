@@ -836,7 +836,7 @@
  
         "success_message": {
             "registration"              : "Tu cuenta ha sido creada. ¡Revisa tu email para encontrar el link de activación! (¡Asegurate de verificar tu correo no deseado!)",
-            "login"                     : "¡Bienvenido a Socialroot, nos encanta tenerte aquí!"
+            "login"                     : "¡Bienvenido a Cartelitos, nos encanta tenerte aquí!"
         }
     },
  
@@ -1355,7 +1355,7 @@
             "icon"                              : "fa fa-fw fa-random",
  
             "title_default"                     : "Brad 'el loco' Pit",
-            "description_default"               : "¡¡¡Socialroot es el mejor servicio que he probado!!! ¡¡I f#$%ing love it!! ",
+            "description_default"               : "¡¡¡Cartelitos es el mejor servicio que he probado!!! ¡¡I f#$%ing love it!! ",
             "image_default"                     : "https://r4.abcimg.es/resizer/resizer.php?imagen=https%3A%2F%2Fstatic3.abc.es%2Fmedia%2Fciencia%2F2020%2F02%2F12%2Fbrad-pitt-k5rG--220x220%40abc.jpg"
         },
  
@@ -1403,7 +1403,7 @@
             "icon"                              : "fa fa-fw fa-user-plus",
  
             "title_default"                     : "Eduardo Gomez",
-            "description_default"               : "Equipo de Socialroot",
+            "description_default"               : "Equipo de Cartelitos",
             "image_default"                     : "https://img.icons8.com/dusk/64/000000/winner.png",
             "content_title_default"             : "¿Tienes alguna pregunta?",
             "content_description_default"       : "¡Nos comunicaremos contigo en breve!",
