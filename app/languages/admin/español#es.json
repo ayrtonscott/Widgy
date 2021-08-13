@@ -200,7 +200,7 @@
 			"track_notifications_retention_help"  : "How many days will the notifications statistics be kept in the database.",
 			"notifications_impressions_limit": "Notifications Impressions Limit",
 			"notifications_impressions_limit_help": "How many times notifications will show on the users website ( in total per month ). Set -1 for unlimited. ( Impression: When one notification shows up on the users website )",
-			"no_ads"					: "No Ads",
+			"no_ads"					: "Soporte Premium",
 			"no_ads_help"				: "Enabling this will make all people having this plan to not see any ads.",
 			"removable_branding"		: "Removable Notifications Branding",
 			"removable_branding_help"	: "This gives the option for people to remove branding from notifications.",

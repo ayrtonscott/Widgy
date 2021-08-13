@@ -250,12 +250,12 @@
  
         "plan_settings": {
             "no_ads"                                    : "Soporte premium",
-            "removable_branding"                        : "Sin marca de agua",
+            "removable_branding"                        : "Sin 'By Cartelitos'",
             "custom_branding"                           : "Marca propia",
             "campaigns_limit"                           : "<strong>%s</strong> Sitios web",
             "notifications_limit"                       : "<strong>%s</strong> Notificaciones simultaneas",
             "notifications_impressions_limit"           : "<strong>%s</strong> Impresiones / mes",
-            "track_notifications_retention"			    : "<strong>%s</strong> días de estadisticas",
+            "track_notifications_retention"			    : "<strong>%s</strong> días de estadísticas",
             "enabled_notifications_all"                 : "Todos los estilos de notificaciones",
             "enabled_notifications_x"                   : "<strong>%s</strong> Estilos de notificaciones",
             "api_is_enabled"                            : "Acceso a la API",
@@ -360,12 +360,12 @@
         },
  
         "custom_plan": {
-            "header"                    : "Comprar el plan %s",
-            "subheader"                 : "¡Ya casi lo tienes! Completa el siguiente formulario.",
+            "header"                    : "Suscribirte al plan %s",
+            "subheader"                 : "⚡ ¡Ya casi es tuyo! Completa el siguiente formulario..",
  
             "paypal"                    : "PayPal",
             "stripe"                    : "Stripe",
-            "offline_payment"           : "MercadoPago",
+            "offline_payment"           : "<img src=\"https://http2.mlstatic.com/frontend-assets/ui-navigation/5.15.2/mercadopago/logo__large.png\">MercadoPago (Argentina)",
  
             "payment_frequency"         : "Frecuencia de pago",
             "monthly"                   : "Pagos mensuales",
@@ -935,7 +935,7 @@
             "domain_placeholder"        : "ej: domain.com o subdomain.domain.com",
             "domain_help"               : "El dominio del sitio donde correrá la campaña.",
             "domain_help2"              : "Las notificaciones NO FUNCIONARÁN en otros dominios que no especifiques aquí.",
-            "include_subdomains"        : "Incluir Subdominios (Recomendado)",
+            "include_subdomains"        : "Incluir Subdominios <strong>(Recomendado)</strong>",
             "include_subdomains_help"   : "Todos los subdominios funcionarán en esta campaña."
         }
     },
