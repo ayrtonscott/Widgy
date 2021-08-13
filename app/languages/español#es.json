@@ -361,7 +361,7 @@
  
         "custom_plan": {
             "header"                    : "Suscribirte al plan %s",
-            "subheader"                 : "⚡ ¡Ya casi es tuyo! Completa el siguiente formulario..",
+            "subheader"                 : "⚡ ¡Estás punto de mejorar tu sitio! Completa el siguiente formulario..",
  
             "paypal"                    : "PayPal",
             "stripe"                    : "Stripe",
@@ -418,7 +418,7 @@
                 "total"                 : "Total"
             },
  
-            "pay"                       : "Pagar"
+            "pay"                       : "Enviar datos"
         },
  
         "success_message": {
