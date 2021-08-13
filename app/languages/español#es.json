@@ -1,6 +1,6 @@
 {
     "direction": "ltr",
- 
+    
     "global": {
         "submit"                        : "Enviar",
         "create"                        : "Crear",
@@ -38,7 +38,7 @@
         "privacy_policy"                : "Política privacidad",
         "delete_file"                   : "Borrar archivo subido",
         "bulk_actions"                  : "Acciones masivas",
-        "unlimited"						: "Ilimitado",
+        "unlimited"						: "ꝏ",
  
         "info_message": {
             "confirm_delete"            : "¿Estás seguro de que quieres borrar esto?",
@@ -193,8 +193,8 @@
         },
  
         "number": {
-            "decimal_point"             : ",",
-            "thousands_separator"       : "."
+            "decimal_point"             : ".",
+            "thousands_separator"       : ","
         },
  
         "emails": {
@@ -249,19 +249,19 @@
         },
  
         "plan_settings": {
-            "no_ads"                    : "Soporte premium",
-            "removable_branding"        : "Sin marca de agua",
-            "custom_branding"           : "Marca propia",
-            "unlimited_campaigns_limit" : "Sitios ilimitados",
-            "campaigns_limit"           : "<strong>%s</strong> Sitios web",
-            "unlimited_notifications_limit" : "Notificaciones ilimitadas",
-            "notifications_limit"           : "<strong>%s</strong> Notificaciones",
-            "unlimited_notifications_impressions_limit" : "Impresiones ilimitadas",
+            "no_ads"                                    : "Soporte premium",
+            "removable_branding"                        : "Sin marca de agua",
+            "custom_branding"                           : "Marca propia",
+            "campaigns_limit"                           : "<strong>%s</strong> Sitios web",
+            "notifications_limit"                       : "<strong>%s</strong> Notificaciones simultaneas",
             "notifications_impressions_limit"           : "<strong>%s</strong> Impresiones / mes",
+            "track_notifications_retention"			    : "<strong>%s</strong> días de estadisticas",
             "enabled_notifications_all"                 : "Todos los estilos de notificaciones",
-            "enabled_notifications_x"                   : "%s Tipos de notificaciones disponibles",
+            "enabled_notifications_x"                   : "<strong>%s</strong> Estilos de notificaciones",
             "api_is_enabled"                            : "Acceso a la API",
-            "api_is_enabled_help"                       : "Puedes acceder a la API de desarrolladores."
+            "api_is_enabled_help"                       : "Puedes acceder a la API de desarrolladores.",
+            "affiliate_is_enabled"					    : "Programa de afiliados",
+			"affiliate_is_enabled_help"				    : "Podrás ganar dinero invitando personas."
         }
     },
  
