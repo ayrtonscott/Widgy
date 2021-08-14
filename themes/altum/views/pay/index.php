@@ -256,7 +256,9 @@
                             <div id="offline_payment_processor_wrapper" style="display: none;">
                                 <div class="form-group mt-4">
                                     <label><?= language()->pay->custom_plan->offline_payment_instructions ?></label>
-                                    <div class="card"><div class="card-body"><?= nl2br(settings()->offline_payment->instructions) ?></div></div>
+                                    <?php // * Modificado 13/8 en 7.1.0 - (Agregue ID Instrucciones) INICIO. ?>
+                                    <div class="card"><div id="instrucciones" class="card-body"><?= nl2br(settings()->offline_payment->instructions) ?></div></div>
+                                    <?php // * Modificado 13/8 en 7.1.0 - (Agregue ID Instrucciones) FIN. ?>
                                 </div>
 
                                 <div class="form-group mt-4">
@@ -908,11 +910,135 @@
 
         /* Display the total */
         $('#summary_total').html(nr(price, 2));
+        <?php // * Modificado 13/8 en 7.1.0 - INICIO. 
+        ?>
+        // Cada vez que calculamos precio, ejecutamos la función CHEQUEAR.
+        chequear();
+        <?php // * Modificado 13/8 en 7.1.0 - FIN. 
+        ?>
     }
 
     /* Select default values */
     $('[name="payment_frequency"]:first').click();
     $('[name="payment_processor"]:first').click();
     $('[name="payment_type"]').filter(':visible:first').click();
+    <?php // * Modificado 13/8 en 7.1.0 - INICIO. 
+    ?>
+
+    function chequear() {
+        <?php // ? Si seleccionamos el MES. 
+        ?>
+        if ($('#monthly_price').is(':checked')) {
+            switch ($(summary_total).html()) {
+                /*Standard packages*/
+                case '9.99':
+                    var plan = "Basic";
+                    var link = "https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c938084740ab1f901740d5e1a060765";
+                    break;
+                case '15.99':
+                    var plan = "Business";
+                    var link = "https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c93808472e484950173542324be44ef";
+                    break;
+                case '24.99':
+                    var plan = "Enterprise";
+                    var link = "https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c93808472e48495017333df68ae1033";
+                    break;
+                case '42.99':
+                    var plan = "Growth Hacker";
+                    var link = "https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c93808473fb8ded01741889163c3c8a";
+                    break;
+                case '60.99':
+                    var plan = "Big Whale";
+                    var link = "https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c93808473fb8ded0174188a2bc43c8e";
+                    break;
+                case '73.99':
+                    var plan = "Unicorn";
+                    var link = "https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c9380847415a4cf0174188ab344034b";
+                    break;
+                case '89.99':
+                    var plan = "Shenzhen";
+                    var link = "https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c9380847415a4cf0174188b4ed9034e";
+                    break;
+
+// 25% OFF
+                case '7.49':
+                    var plan = "Basic";
+                    var link = "https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c9380847b3a39f5017b420343660952";
+                    break;
+                case '11.99':
+                    var plan = "Business";
+                    var link = "https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c9380847b3a39f5017b4232b3180966";
+                    break;
+                case '18.74':
+                    var plan = "Enterprise";
+                    var link = "https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c9380847ac5c717017b4233a57e629c";
+                    break;
+                case '32.24':
+                    var plan = "Growth Hacker";
+                    var link = "https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c9380847ac5c27d017b42344e6362d7";
+                    break;
+                case '45.74':
+                    var plan = "Big Whale";
+                    var link = "https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c9380847ac5c717017b42350b93629d";
+                    break;
+                case '55.49':
+                    var plan = "Unicorn";
+                    var link = "https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c9380847ac5c27d017b4235b18162d8";
+                    break;
+                case '67.49':
+                    var plan = "Shenzhen";
+                    var link = "https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c9380847b3a39f5017b423658c40968";
+                    break;
+
+// 50% OFF
+                case '4.99':
+                    var plan = "Basic";
+                    var link = "https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c9380847415a4cf0174188f7a090353";
+                    break;
+                case '7.99':
+                    var plan = "Business";
+                    var link = "https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c9380847415a4cf017418901cbe0354";
+                    break;
+                case '12.50':
+                    var plan = "Enterprise";
+                    var link = "https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c93808473fb8ded0174189078843c9b";
+                    break;
+                case '21.49':
+                    var plan = "Growth Hacker";
+                    var link = "https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c93808473fb8ded01741890c7f53c9c";
+                    break;
+                case '30.49':
+                    var plan = "Big Whale";
+                    var link = "https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c9380847415a4cf017418912c830355";
+                    break;
+                case '37.00':
+                    var plan = "Unicorn";
+                    var link = "https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c9380847415a4cf01741891e7d00357";
+                    break;
+                case '45.00':
+                    var plan = "Shenzhen";
+                    var link = "https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c9380847415a4cf017418927eec035a";
+                    break;
+                default:
+            }
+        }
+        var USD = 102
+        var ARS = $(summary_total).html() * USD;
+        var ARS = parseInt(ARS);
+
+        var ins = '1. Ingresa en el siguiente enlace: <a class="text-info" target="_blank" href=" ' + link + ' " >Suscribirse a ' + plan + '</a><br><br> 2) Confirma la suscripción de <strong><span class="text-success">$' + parseInt((ARS + (ARS * 1.35 - ARS) + (ARS * 1.30 - ARS))) + '</span></strong> (ARS) <strong>finales.</strong><small> Impuestos incluidos</small><br><br>3) Saca una <strong>captura del comprobante</strong> de pago.<br><br>4) Click en <strong>seleccionar archivo</strong> y envianos el comprobante.<br><br>5) ¡Listo! No te olvides de hacer click en <strong>ENVIAR DATOS</strong> aquí debajo.<br><br><small>Para más información acerca de los cobros podes ver nuestras <a class="text-info" target="_blank" href="<?= SITE_URL . "page/preguntas-frecuentes" ?>" >preguntas frecuentes</a>.</small>';
+        $("#instrucciones").html(ins);
+
+        <?php // ? Si seleccionamos el AÑO. 
+        ?>
+        if ($('#annual_price').is(':checked')) {
+            var link = "https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c9380847ac5c27d017b40a69fe7611b";
+           var ins = '1) Ingresa en el siguiente enlace: <a class="text-info" target="_blank" href=" ' + link + ' " >Suscribirse (ANUAL)</a><br><br> 2) Confirma la suscripción de <strong><span class="text-success">$' + parseInt((ARS + (ARS * 1.35 - ARS) + (ARS * 1.30 - ARS))) + '</span></strong> (ARS) <strong>finales.</strong><br><br>3) Saca una <strong>captura del comprobante</strong> de pago.<br><br>4) Click en <strong>seleccionar archivo</strong> y envianos el comprobante.<br><br>5) ¡Listo! No te olvides de hacer click en <strong>ENVIAR DATOS</strong> aquí debajo.<br><br><small>Para más información acerca de los cobros podes ver nuestras <a class="text-info" target="_blank" href="<?= SITE_URL . "page/preguntas-frecuentes" ?>" >preguntas frecuentes</a>.</small>';
+        $("#instrucciones").html(ins);
+        }
+    }
+
+<?php // * Modificado 13/8 en 7.1.0 - FIN. 
+    ?>
 </script>
 <?php \Altum\Event::add_content(ob_get_clean(), 'javascript') ?>
