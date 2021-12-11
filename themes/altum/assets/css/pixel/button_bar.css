@@ -1,0 +1,63 @@
+/* Button bar */
+.altumcode-button-bar-wrapper {
+    width: 100% !important;
+    display: flex;
+    justify-content: center;
+}
+
+.altumcode-button-bar-content {
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.altumcode-button-bar-row {
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.altumcode-button-bar-title {
+    font-size: 18px !important;
+    font-weight: bold !important;
+    margin-bottom: 15px !important;
+}
+
+.altumcode-button-bar-middle {
+    display: flex !important;
+    margin-bottom: 10px !important;
+}
+
+.altumcode-button-bar-middle .altumcode-close {
+    margin-left: 10px !important;
+}
+
+.altumcode-button-bar-button {
+    flex-grow: 1 !important;
+    font-size: 14px !important;
+    background: white;
+    border-radius: 4px !important;
+    padding: 8px 12px !important;
+    text-align: center !important;
+    font-weight: bold !important;
+    border: 0 !important;
+}
+
+@media (min-width: 768px) {
+    .altumcode-button-bar-row {
+        flex-direction: row !important;
+        align-items: center !important;
+    }
+
+    .altumcode-button-bar-title {
+        margin-right: 20px !important;
+        margin-bottom: 0 !important;
+    }
+
+    .altumcode-button-bar-middle {
+        margin-bottom: 0 !important;
+        align-items: center !important;
+    }
+
+    .altumcode-button-bar-middle .altumcode-close {
+        margin-left: 20px !important;
+    }
+}
