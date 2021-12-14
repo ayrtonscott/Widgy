@@ -188,7 +188,7 @@
                 "9"                     : "Sep",
                 "10"                    : "Oct",
                 "11"                    : "Nov",
-                "12"                    : "Dec"
+                "12"                    : "Dic"
             }
         },
  
@@ -221,6 +221,16 @@
             "user_plan_expiry_reminder": {
 				"subject"				: "Tu plan expirará en {{DAYS_UNTIL_EXPIRATION}} días - {{WEBSITE_TITLE}}",
 				"body"					: "Hola {{NAME}},<br /><br />Esto es un recordatorio para avisarte que tu plan {{PLAN_NAME}} expirará en {{DAYS_UNTIL_EXPIRATION}} días.<br /><br />Por favor, considera <a href=\"{{USER_PLAN_RENEW_LINK}}\">renovarlo.</a> si quieres seguir disfrutando de los beneficios de nuestra aplicación.<br /><br />Saludos, el equipo de {{WEBSITE_TITLE}}!"
+			},
+
+            "user_deletion_reminder": {
+				"subject"				: "Tu cuenta será borrada en {{DAYS_UNTIL_DELETION}} días - {{WEBSITE_TITLE}}",
+				"body"					: "Hola {{NAME}},<br /><br />Este es un aviso para recordarte que tu cuenta será eliminada en {{DAYS_UNTIL_DELETION}} días debido a que has estado inactivo demasiado tiempo.<br /><br />Si quieres mantenerla, simplemente <a href=\"{{LOGIN_LINK}}\">ingresa</a> con tu cuenta y el proceso de borrado será interrumpido.<br /><br />Saludos, el equipo de  {{WEBSITE_TITLE}}!"
+			},
+
+			"auto_delete_inactive_users": {
+				"subject"				: "Lamentamos que te hayas ido - {{WEBSITE_TITLE}}",
+				"body"					: "Hey {{NAME}},<br /><br />Hemos eliminado tu cuenta debido a una inactividad de {{INACTIVITY_DAYS}} días.<br /><br />Siempre puedes <a href=\"{{REGISTER_LINK}}\">registrarte</a> con otra cuenta.<br /><br />Saludos, el equipo de {{WEBSITE_TITLE}}!"
 			},
  
             "user_data_send": {
@@ -307,14 +317,6 @@
         "header_upgrade"                : "Mejora tu plan",
         "subheader_upgrade"             : "Elige un plan para mejorar tu suscripción.",
  
-        "free": {
-            "price"                     : "Gratis"
-        },
- 
-        "trial": {
-            "price"                     : "Prueba"
-        },
- 
         "custom_plan": {
             "monthly"                   : "Mensual",
             "annual"                    : "Anual",
@@ -325,10 +327,11 @@
         },
  
         "button": {
-            "choose"                    : "Elegir plan",
-            "disabled"                  : "No disponible",
-            "already_free"              : "Tu plan es gratuito"
-        }
+			"choose"					: "Seleccionar",
+			"renew"						: "Renovar",
+			"trial"						: "Probar por %s días",
+			"contact"					: "Contactanos"
+		}
     },
  
     "pay_billing": {
@@ -366,7 +369,13 @@
             "paypal"                    : "PayPal",
             "stripe"                    : "Stripe",
             "offline_payment"           : "<img src=\"https://http2.mlstatic.com/frontend-assets/ui-navigation/5.15.2/mercadopago/logo__large.png\">MercadoPago (Argentina)",
- 
+            "coinbase"					: "Coinbase",
+			"payu"						: "PayU",
+			"paystack"					: "Paystack",
+			"razorpay"					: "Razorpay",
+			"mollie"					: "Mollie",
+			"yookassa"					: "Yookassa",
+
             "payment_frequency"         : "Frecuencia de pago",
             "monthly"                   : "Pagos mensuales",
             "annual"                    : "Pagos anuales",
@@ -384,27 +393,26 @@
             "offline_payment_proof_help": "Envianos la foto del comprobante de pago (jpg, jpeg, png or pdf).",
  
             "payment_type"              : "Tipo de pago",
-            "one_time_type"             : "Un solo pago",
-            "recurring_type"            : "Pagó recurrente",
+            "one_time_type"             : "Tramite de una sola vez",
+            "recurring_type"            : "Pago recurrente",
  
             "summary": {
                 "header"                : "Resumen",
- 
                 "plan"              : "Plan",
  
-                "payment_frequency"     : "Frecuencia",
+                "payment_frequency"     : "Facturación",
                 "monthly"               : "Mensual",
                 "monthly_help"          : "Cada 30 días",
                 "annual"                : "Anual",
                 "annual_help"           : "Cada 365 días",
                 "lifetime"              : "De por vida",
-                "lifetime_help"         : "",
+                "lifetime_help"         : "Cada 10 milenios",
  
                 "payment_processor"     : "Pagado por",
  
                 "payment_type"          : "Tipo",
-                "one_time"              : "Una vez",
-                "one_time_help"         : "",
+                "one_time"              : "Tramite único",
+                "one_time_help"         : "Solo se procesará una vez",
                 "recurring"             : "Recurrente",
                 "recurring_help"        : "Cobro automático",
  
@@ -418,7 +426,8 @@
                 "total"                 : "Total"
             },
  
-            "pay"                       : "Enviar datos"
+            "pay"                       : "Enviar datos",
+            "code_redeemable"			: "Canjea %s días gratis."
         },
  
         "success_message": {
@@ -440,7 +449,7 @@
         "button"                        : "Ir a mi tablero",
  
         "plan_trial_start"          : "¡Tu período de prueba ha empezado!",
-        "plan_custom_start"         : "¡Tu pago se ha acreditado y tu membresía ha sido activada!",
+        "plan_redeemed"				: "Has canjeado %s días!",
         "plan_custom_will_start"    : "¡Tu pago ha sido enviado y tu membresía será activada en las próximas 72 horas!",
         "plan_custom_pending"       : "Tu prueba de pago ha sido enviada. De ser correcta. ¡Tu membresía será activada en las próximas 72 horas!"
     },
@@ -525,7 +534,7 @@
  
         "success_message": {
             "account_updated"           : "¡Tu cuenta ha sido actualizada!",
-            "subscription_canceled"     : "¡Tu suscripción ha sido cancelada!"
+			"password_updated"			: "¡Tu contraseña ha sido actualizada!"
         }
     },
  
@@ -561,22 +570,8 @@
             "reason"					: "Cancelado por: %s"
         },
  
-        "code": {
-            "header"                    : "Canjear",
-            "subheader"                 : "ATENCIÓN: Si canjeas un código se cancelará tu plan actual,  y se sobrescribirá con el nuevo plan.",
- 
-            "input"                     : "Código de canje",
-            "submit"                    : "Enviar"
-        },
- 
         "success_message": {
-            "code_redeemed"             : "¡El código ha sido canjeado correctamente!",
-            "code"                      : "Beneficios activados: %s por %s días."
-        },
- 
-        "error_message": {
-            "code_invalid"              : "Este código es inválido..",
-            "code_used"                 : "Este código ya ha sido utilizado.."
+            "subscription_canceled"     : "Tu suscripción ha sido cancelada exitosamente.."
         }
     },
  
@@ -747,7 +742,8 @@
             "lost_password"             : "Olvidé mi contraseña",
             "resend_activation"         : "Reenviar activación",
             "facebook"                  : "%s Facebook Login",
-            "google"					: "%s Google Login"
+            "google"					: "%s Google Login",
+            "twitter"					: "%s Twitter Login"
         },
  
         "info_message": {
@@ -972,6 +968,7 @@
     "notification": {
         "breadcrumb"                        : "Notificación",
         "title"                             : "Notificación: %s",
+        "duplicate"							: "Duplicar",
  
         "preview": {
             "header"                        : "Vista previa",
@@ -1010,6 +1007,8 @@
             "email_placeholder"             : "Email",
             "image"                         : "URL de Imagen",
             "image_help"                    : "Dejar vacío si no hay imagen. Pista: icons8.com tiene una buena librería de iconos que puedes utilizar.",
+            "image_alt"						: "Texto alternativo de imagen",
+			"image_alt_help"				: "Descripción de imagen.",
             "url"                           : "URL de Notificación",
             "url_help"                      : "La URL a la cual irá el usuario después de hacer clic. Dejar en blanco para desactivar.",
             "url_new_tab"                   : "Abrir en nueva pestaña",
@@ -1038,7 +1037,6 @@
             "show_agreement_help"           : "Requiere que el usuario confirme los términos tildando este checkbox.",
             "agreement_url"                 : "URL de los términos",
             "agreement_text"                : "Texto de los términos",
- 
             "trigger_all_pages"             : "Ejecutar en todas las páginas",
             "trigger_all_pages_help"        : "¿Dónde se mostrará esta notificación?",
             "trigger_add"                   : "Agregar nuevo disparador",
@@ -1076,7 +1074,6 @@
             "display_mobile_help"           : "Mostrar en pantalla cuyos píxeles sean menores a 768px. (Ej: Moviles)",
             "display_desktop"               : "Mostrar en pantalla grandes",
             "display_desktop_help"          : "Mostrar en pantalla cuyos píxeles sean mayores a 768px.(Ej: Computadoras)",
- 
             "display_duration"              : "Duración",
             "display_duration_help"         : "Cuántos segundos mostrar la notificación. Establece -1 para mostrar por siempre.",
             "display_position"              : "Posición",
@@ -1098,7 +1095,6 @@
             "display_minimum_activity_help" : "Datos mínimos para mostrar la notificación.",
             "display_close_button"          : "Mostrar X para cerrar",
             "display_branding"              : "Mostrar marca",
- 
             "on_animation"                  : "Animación de entrada",
             "on_animation_fadeIn"           : "Fade In",
             "on_animation_slideInUp"        : "Slide In Up",
@@ -1249,8 +1245,7 @@
                 "title"                     : "Nombre",
                 "description"               : "Texto",
                 "stars"                     : "Estrellas",
-                "stars_help"                : "Dejar en blanco para no mostrar estrellas.",
-                "image"                     : "URL de imagen"
+                "stars_help"                : "Dejar en blanco para no mostrar estrellas."
             }
         },
  
@@ -1584,6 +1579,11 @@
         "header"                        : "Borrar notificación",
         "subheader"                     : "Si borras esta notificación todos los datos desaparecerán. Esta acción es irreversible."
     },
+
+
+    "notification_duplicate_modal": {
+		"header"						: "Duplicar notificación"
+	},
  
     "notification_create": {
         "breadcrumb"                    : "Crear nueva notificación",
@@ -1669,6 +1669,11 @@
         "optional"                      : "Opcional",
         "details"                       : "Detalles",
         "description"                   : "Descripción",
+        "string"						: "String",
+		"int"							: "Integer",
+		"float"							: "Float",
+		"boolean"						: "Boolean",
+		"file"							: "Archivo",
  
         "authentication": {
             "header"                    : "Autenticación",
@@ -1683,34 +1688,44 @@
             "order_by"                  : "Porque campos quieres ordenar los resultados. Los valores permitidos son: %s.",
             "order_by_type"             : "El orden de los resultados. Los valores permitidos son: <code>ASC</code> para orden ascendente, y <code>DESC</code> para orden descendente."
         },
+
+        "user": {
+			"breadcrumb"				: "User",
+			"title"						: "User API Documentation",
+			"header"					: "User",
+			"read_header"				: "Retrieve user"
+		},
  
         "campaigns": {
-            "header"                    : "Campañas",
-            "read_all_header"           : "Devolver campañas",
-            "read_header"               : "Devolver una campaña"
-        },
+			"breadcrumb"				: "Campañas",
+			"title"						: "Campaigns API Documentation",
+			"header"					: "Campaigns",
+			"read_all_header"			: "Retrieve campaigns",
+			"read_header"				: "Retrieve a campaign"
+		},
  
         "notifications": {
-            "header"                    : "Notificaciones",
-            "read_all_header"           : "Devolver notificaciones",
-            "read_header"               : "Devolver una notificación"
-        },
- 
-        "user": {
-            "header"                    : "Usuario",
-            "read_header"               : "Devolver usuario"
-        },
+			"breadcrumb"				: "Notifications",
+			"title"						: "Notifications API Documentation",
+			"header"					: "Notifications",
+			"read_all_header"			: "Retrieve notifications",
+			"read_header"				: "Retrieve a notification"
+		},
  
         "payments": {
-            "header"                    : "Pagos",
-            "read_all_header"           : "Devolver pagos",
-            "read_header"               : "Devolver un pago"
-        },
+			"breadcrumb"				: "Payments",
+			"title"						: "Payments API Documentation",
+			"header"					: "Payments",
+			"read_all_header"			: "Retrieve payments",
+			"read_header"				: "Retrieve a payment"
+		},
  
         "users_logs": {
-            "header"                    : "Registros",
-            "read_all_header"           : "Devuelve registros"
-        }
+			"breadcrumb"				: "Logs",
+			"title"						: "Logs API Documentation",
+			"header"					: "Logs",
+			"read_all_header"			: "Retrieve logs"
+		}
     },
 
     "affiliate": {

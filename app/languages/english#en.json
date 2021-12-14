@@ -1033,7 +1033,6 @@
 			"show_agreement_help"			: "Require the user to confirm his agreement by ticking a checkbox.",
 			"agreement_url"					: "Agreement URL",
 			"agreement_text"				: "Agreement Text",
-
 			"trigger_all_pages"				: "Trigger on all pages",
 			"trigger_all_pages_help"		: "Where should the notification show?",
 			"trigger_add"					: "Add new trigger",
@@ -1071,7 +1070,6 @@
 			"display_mobile_help"			: "Whether or not to display the notification on when pixels available are smaller than 768px.",
 			"display_desktop"				: "Display on large screens",
 			"display_desktop_help"			: "Whether or not to display the notification on when pixels available are bigger than 768px.",
-
 			"display_duration"				: "Display Duration",
 			"display_duration_help"			: "How many seconds to display the notification. Set -1 to display forever.",
 			"display_position"				: "Display Position",
@@ -1093,7 +1091,6 @@
 			"display_minimum_activity_help"	: "Minimum data needed to display the notification.",
 			"display_close_button"			: "Display Close Button",
 			"display_branding"				: "Display Branding",
-
 			"on_animation"					: "Entrance Animation",
 			"on_animation_fadeIn"			: "Fade In",
 			"on_animation_slideInUp"		: "Slide In Up",
