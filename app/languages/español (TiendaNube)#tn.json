@@ -1,0 +1,1773 @@
+{
+    "direction": "ltr",
+    
+    "global": {
+        "submit"                        : "Enviar",
+        "create"                        : "Crear",
+        "delete"                        : "Borrar",
+        "edit"                          : "Editar",
+        "view"                          : "Ver",
+        "cancel"                        : "Cancelar",
+        "update"                        : "Actualizar",
+        "enable"                        : "Habilitar",
+        "hidden"                        : "Oculto",
+        "login"                         : "Ingresar",
+        "language"                      : "Idioma",
+        "choose_language"               : "Seleccionar idioma",
+        "theme_style"                   : "Cambiar a modo %s",
+        "theme_style_light"             : "Claro",
+        "theme_style_dark"              : "Oscuro",
+        "close"                         : "Cerrar",
+        "search"                        : "Buscar",
+        "no_data"                       : "No hay datos disponibles.",
+        "yes"                           : "Sí",
+        "no"                            : "No",
+        "active"                        : "Activo",
+        "disabled"                      : "No Activo",
+        "export"                        : "Exportar",
+        "export_csv"                    : "Exportar a CSV",
+        "export_json"                   : "Exportar a JSON",
+        "export_pdf"                    : "Exportar a PDF",
+        "captcha_placeholder"           : "Captcha",
+        "loading"                       : "Cargando..",
+        "view_more"                     : "Ver más",
+        "view_x_more"                   : "Ver %s más..",
+        "clipboard_copy"				: "Copiar al portapapeles",
+		"clipboard_copied"				: "¡Copiado!",
+        "terms_and_conditions"          : "Términos y condiciones",
+        "privacy_policy"                : "Política privacidad",
+        "delete_file"                   : "Borrar archivo subido",
+        "bulk_actions"                  : "Acciones masivas",
+        "unlimited"						: "ꝏ",
+ 
+        "info_message": {
+            "confirm_delete"            : "¿Estás seguro de que quieres borrar esto?",
+            "plan_feature_no_access"    : "Tu plan actual no te permite acceder a este beneficio.",
+            "user_plan_is_expired"      : "Tu plan actual ha expirado y se ha limitado tu acceso. ¡Por favor considera renovarlo!"
+        },
+ 
+        "success_message": {
+            "create1"                   : "%s ha sido creado correctamente.",
+            "create2"					: "Creado correctamente.",
+			"update1"					: "%s ha sido actualizado correctamente.",
+			"update2"					: "Actualizado correctamente.",
+			"delete1"					: "%s ha sido eliminado correctamente.",
+			"delete2"					: "Eliminado correctamente."
+        },
+ 
+        "error_message": {
+            "directory_not_writable"    : "No tienes permisos para escribir en el directorio <strong>%s</strong>",
+            "file_not_writable"			: "File is not writable <strong>%s</strong>. Make sure to give it the proper CHMOD permissions.",
+            "empty_fields"              : "¡Debes llenar todos los campos!",
+            "empty_field"               : "¡Este campo es requerido!",
+            "invalid_captcha"           : "¡El código captcha no es válido!",
+            "invalid_file_type"         : "¡Tipo de archivo inválido!",
+            "invalid_csrf_token"        : "¡La acción no pudo ser realizada tu tiempo de espera ha expirado!",
+            "basic"                     : "¡No se pudo ejecutar el comando solicitado!",
+            "file_size_limit"           : "El archivo que has enviado es muy grande, el máximo permitido es %s MB."
+        },
+ 
+        "menu": {
+            "home"                      : "Inicio",
+            "logout"                    : "Salir",
+            "settings"                  : "Ajustes",
+            "admin"                     : "Admin",
+            "website"                   : "Tienda",
+            "admin_others"              : "Otros"
+        },
+ 
+        "accessibility": {
+            "toggle_navigation"         : "Activar navegación",
+            "logo_alt"                  : "Cartelitos.app Logo",
+            "captcha_alt"               : "Captcha",
+            "captcha_input"             : "Campo de Captcha"
+        },
+ 
+        "pagination": {
+            "previous"                  : "Anterior",
+            "next"                      : "Siguiente",
+            "results"                   : " Mostrando %s-%s  de %s resultados."
+        },
+ 
+        "filters": {
+            "header"                    : "Filtros",
+            "reset"                     : "Reiniciar",
+            "search"                    : "Buscar por",
+            "search_by"                 : "Buscar por",
+            "status"                    : "Estado",
+            "order_by"                  : "Ordenar por",
+            "order_by_datetime"         : "Fecha de creación",
+            "order_type"                : "Tipo de orden",
+            "order_type_asc"            : "Ascendente",
+            "order_type_desc"           : "Descendente",
+            "all"                       : "Todo",
+            "results_per_page"          : "Resultados por página"
+        },
+ 
+        "date": {
+            "CHANGE_THOSE_AT_YOUR_OWN_RESPONSIBILITY": "",
+            "datetime_readable_format"  : "%1$s %2$s, %3$s",
+            "datetime_small_readable_format": "%1$s %2$s",
+            "datetime_ymd_format"       : "%1$s-%2$s-%3$s",
+            "datetime_his_format"       : "%1$s:%2$s:%3$s",
+            "datetime_ymd_his_format"   : "%1$s-%2$s-%3$s %4$s:%5$s:%6$s",
+ 
+            "now"                       : "Ahora",
+            "cancel"                    : "Cancelar",
+            "apply"                     : "Aplicar",
+            "from"                      : "De",
+            "to"                        : "Hasta",
+            "custom"                    : "Personalizado",
+            "today"                     : "Hoy",
+            "yesterday"                 : "Ayer",
+            "last_7_days"               : "Últimos 7 días",
+            "last_30_days"              : "Últimos 30 días",
+            "this_month"                : "Este mes",
+            "last_month"                : "Último mes",
+            "all_time"                  : "Histórico",
+ 
+            "second"                    : "segundo",
+            "seconds"                   : "segundos",
+            "minute"                    : "minuto",
+            "minutes"                   : "minutos",
+            "hour"                      : "hora",
+            "hours"                     : "horas",
+            "day"                       : "día",
+            "days"                      : "días",
+            "month"                     : "mes",
+            "months"                    : "meses",
+            "year"                      : "año",
+            "years"                     : "años",
+            "time_ago"                  : "Hace %1$s %2$s",
+            "time_until"                : "%1$s %2$s hasta",
+ 
+            "long_days": {
+                "1"                     : "Lunes",
+                "2"                     : "Martes",
+                "3"                     : "Miércoles",
+                "4"                     : "Jueves",
+                "5"                     : "Viernes",
+                "6"                     : "Sábado",
+                "7"                     : "Domingo"
+            },
+ 
+            "short_days": {
+                "1"                     : "Lun",
+                "2"                     : "Mar",
+                "3"                     : "Mier",
+                "4"                     : "Jue",
+                "5"                     : "Vie",
+                "6"                     : "Sab",
+                "7"                     : "Dom"
+            },
+ 
+            "long_months": {
+                "1"                     : "Enero",
+                "2"                     : "Febrero",
+                "3"                     : "Marzo",
+                "4"                     : "Abril",
+                "5"                     : "Mayo",
+                "6"                     : "Junio",
+                "7"                     : "Julio",
+                "8"                     : "Agosto",
+                "9"                     : "Septiembre",
+                "10"                    : "Octubre",
+                "11"                    : "Noviembre",
+                "12"                    : "Diciembre"
+            },
+ 
+            "short_months": {
+                "1"                     : "Ene",
+                "2"                     : "Feb",
+                "3"                     : "Mar",
+                "4"                     : "Abr",
+                "5"                     : "May",
+                "6"                     : "Jun",
+                "7"                     : "Jul",
+                "8"                     : "Ago",
+                "9"                     : "Sep",
+                "10"                    : "Oct",
+                "11"                    : "Nov",
+                "12"                    : "Dic"
+            }
+        },
+ 
+        "number": {
+            "decimal_point"             : ".",
+            "thousands_separator"       : ","
+        },
+ 
+        "emails": {
+            "user_activation": {
+                "subject"               : "Confirma tu nueva cuenta - {{WEBSITE_TITLE}}",
+                "body"                  : "Hola {{NAME}},<br /><br />Estamos contentos de que te hayas Unido! <br /><br />Falta sólo un paso para estar listo,<br /><br />sólo necesitas clickear en el siguiente enlace para poder ingresar a {{WEBSITE_TITLE}}<br /><br /><a href=\"{{ACTIVATION_LINK}}\">Click aquí</a><br /><br />Saludos, el equipo de {{WEBSITE_TITLE}}!"
+            },
+ 
+            "user_pending_email": {
+                "subject"               : "Confirma tu cambio de email - {{WEBSITE_TITLE}}",
+                "body"                  : "Hola {{NAME}},<br /><br />Has solicitado cambiar tu email de {{CURRENT_EMAIL}} a {{NEW_EMAIL}}. <br /><br />Por favor click en el siguiente enlace para confirmar. <br /><br /><a href=\"{{ACTIVATION_LINK}}\">Click aquí</a><br /><br />Saludos, el equipo de {{WEBSITE_TITLE}}!"
+            },
+ 
+            "user_lost_password": {
+                "subject"               : "Recupera tu contraseña - {{WEBSITE_TITLE}}",
+                "body"                  : "Hola {{NAME}},<br /><br />Este es el link para recuperar tu contraseña: <a href=\"{{LOST_PASSWORD_LINK}}\">Restablecer contraseña</a><br /><br />Si no has solicitado esta acción puedes ignorarla<br /><br />Saludos, el equipo de {{WEBSITE_TITLE}}!"
+            },
+ 
+            "user_payment": {
+                "subject"               : "Pago recibido - {{WEBSITE_TITLE}}",
+                "body"                  : "Hola {{NAME}},<br /><br />Esto es una confirmación de que tu pago ha sido correctamente acreditado.<br /><br />Tu cuenta ahora tiene acceso hasta él {{PLAN_EXPIRATION_DATE}}!<br /><br />Por el cheque era en tu cuenta todos los <a href=\"{{USER_PAYMENTS_LINK}}\">pagos</a> qué has realizado, <a href=\"{{USER_PLAN_LINK}}\">Cambiar tu plan</a> o <a href=\"{{USER_PLAN_LINK}}\">Cancelarlo</a>.<br /><br />Saludos, el equipo de {{WEBSITE_TITLE}}!"
+            },
+
+            "user_plan_expiry_reminder": {
+				"subject"				: "Tu plan expirará en {{DAYS_UNTIL_EXPIRATION}} días - {{WEBSITE_TITLE}}",
+				"body"					: "Hola {{NAME}},<br /><br />Esto es un recordatorio para avisarte que tu plan {{PLAN_NAME}} expirará en {{DAYS_UNTIL_EXPIRATION}} días.<br /><br />Por favor, considera <a href=\"{{USER_PLAN_RENEW_LINK}}\">renovarlo.</a> si quieres seguir disfrutando de los beneficios de nuestra aplicación.<br /><br />Saludos, el equipo de {{WEBSITE_TITLE}}!"
+			},
+
+            "user_deletion_reminder": {
+				"subject"				: "Tu cuenta será borrada en {{DAYS_UNTIL_DELETION}} días - {{WEBSITE_TITLE}}",
+				"body"					: "Hola {{NAME}},<br /><br />Este es un aviso para recordarte que tu cuenta será eliminada en {{DAYS_UNTIL_DELETION}} días debido a que has estado inactivo demasiado tiempo.<br /><br />Si quieres mantenerla, simplemente <a href=\"{{LOGIN_LINK}}\">ingresa</a> con tu cuenta y el proceso de borrado será interrumpido.<br /><br />Saludos, el equipo de  {{WEBSITE_TITLE}}!"
+			},
+
+			"auto_delete_inactive_users": {
+				"subject"				: "Lamentamos que te hayas ido - {{WEBSITE_TITLE}}",
+				"body"					: "Hey {{NAME}},<br /><br />Hemos eliminado tu cuenta debido a una inactividad de {{INACTIVITY_DAYS}} días.<br /><br />Siempre puedes <a href=\"{{REGISTER_LINK}}\">registrarte</a> con otra cuenta.<br /><br />Saludos, el equipo de {{WEBSITE_TITLE}}!"
+			},
+ 
+            "user_data_send": {
+                "subject"               : "New data collected for {{CAMPAIGN_NAME}} campaign - {{NOTIFICATION_NAME}} notification",
+                "body"                  : "Here is everything we have collected from the <strong>{{CAMPAIGN_NAME}}</strong> Campaign - <strong>{{NOTIFICATION_NAME}}</strong> Notification.<br /><br />{{DATA}}<br /><br />Greetings from {{WEBSITE_TITLE}}!"
+            },
+ 
+            "admin_new_user_notification": {
+                "subject"               : "New user registered - {{WEBSITE_TITLE}}",
+                "body"                  : "Hey!<br /><br />A new user just registered to the website!<br /><br />Welcome to {{NAME}} ({{EMAIL}}) to your website!"
+            },
+ 
+            "admin_new_payment_notification": {
+                "subject"               : "New payment via {{PROCESSOR}} of {{TOTAL_AMOUNT}} {{CURRENCY}} - {{WEBSITE_TITLE}}",
+                "body"                  : "Hey!<br /><br />{{NAME}} ({{EMAIL}}) user just paid <strong>{{TOTAL_AMOUNT}} {{CURRENCY}}</strong> to your website!<br /><br />Here's to more earnings!"
+            },
+
+            "admin_new_affiliate_withdrawal_notification": {
+				"subject"				: "New affiliate withdrawal request for {{TOTAL_AMOUNT}} {{CURRENCY}} - {{WEBSITE_TITLE}}",
+				"body"					: "Hey!<br /><br />{{NAME}} ({{EMAIL}}) user just submitted an affiliate withdrawal request for <strong>{{TOTAL_AMOUNT}} {{CURRENCY}}</strong> with the following note: \"{{AFFILIATE_WITHDRAWAL_NOTE}}\".<br /><br /><a href=\"{{ADMIN_AFFILIATE_WITHDRAWAL_LINK}}\">View affiliate withdrawal</a>"
+			}
+        },
+ 
+        "footer": {
+            "copyright"                 : "Copyright &copy; %s %s"
+        },
+ 
+        "plan_settings": {
+            "no_ads"                                    : "Soporte premium",
+            "removable_branding"                        : "Sin 'By Cartelitos'",
+            "custom_branding"                           : "Marca propia",
+            "campaigns_limit"                           : "<strong>%s</strong> Tiendas",
+            "notifications_limit"                       : "<strong>%s</strong> Notificaciones simultaneas",
+            "notifications_impressions_limit"           : "<strong>%s</strong> Impresiones / mes",
+            "track_notifications_retention"			    : "<strong>%s</strong> días de estadísticas",
+            "enabled_notifications_all"                 : "Todos los estilos de notificaciones",
+            "enabled_notifications_x"                   : "<strong>%s</strong> Estilos de notificaciones",
+            "api_is_enabled"                            : "Acceso a la API",
+            "api_is_enabled_help"                       : "Puedes acceder a la API de desarrolladores.",
+            "affiliate_is_enabled"					    : "Programa de afiliados",
+			"affiliate_is_enabled_help"				    : "Podrás ganar dinero invitando personas."
+        }
+    },
+ 
+    "page": {
+        "breadcrumb"                    : "Página",
+        "print"                         : "Imprimir",
+ 
+        "estimated_reading_time"        : "Lectura de %s ",
+        "last_date"                     : "Actualizado el: %s"
+    },
+ 
+    "pages": {
+        "title"                         : "Páginas",
+        "header"                        : "Centro de recursos",
+        "subheader"                     : "Aquí puedes encontrar páginas útiles.",
+        "total_views"                   : "(%s Vistas)",
+ 
+        "index": {
+            "breadcrumb"                : "Páginas",
+ 
+            "popular_pages": {
+                "header"                : "Páginas populares"
+            },
+ 
+            "pages_categories": {
+                "header"                : "Categorías",
+                "total_pages"           : "%s Páginas disponibles"
+            }
+        },
+ 
+        "pages_category": {
+            "breadcrumb"                : "Categorías"
+        }
+    },
+ 
+    "plan": {
+        "breadcrumb"                    : "Elige tu plan",
+        "title"                         : "Plan",
+        "header_new"                    : "Elige tu plan",
+        "subheader_new"                 : "Elige tu plan para continuar tu suscripción.",
+        "header_renew"                  : "Renueva tu plan",
+        "subheader_renew"               : "Elige un plan para renovar tu suscripción.",
+        "header_upgrade"                : "Mejora tu plan",
+        "subheader_upgrade"             : "Elige un plan para mejorar tu suscripción.",
+ 
+        "custom_plan": {
+            "monthly"                   : "Mensual",
+            "annual"                    : "Anual",
+            "lifetime"                  : "De por vida",
+            "monthly_payments"          : "Pagos mensuales.",
+            "annual_payments"           : "Pagos anuales.",
+            "lifetime_payments"         : "Un solo pago."
+        },
+ 
+        "button": {
+			"choose"					: "Seleccionar",
+			"renew"						: "Renovar",
+			"trial"						: "Probar por %s días",
+			"contact"					: "Contactanos"
+		}
+    },
+ 
+    "pay_billing": {
+        "breadcrumb"                    : "Facturación",
+        "title"                         : "Facturación",
+        "header"                        : "Ingresa tu detalle de facturación",
+        "subheader"                     : "Necesitamos tu detalle de facturación para generar tu factura..",
+        "submit"                        : "Continúa al pago de %s"
+    },
+ 
+    "pay": {
+        "breadcrumb"                    : "%s",
+        "title"                         : "Pagar",
+        "plan_details"                  : "Lo que obtendrás",
+        "accept"                        : "Continuando con la orden confirmas que has leído, entendido y aceptado los %s y %s del sitio.",
+ 
+        "free": {
+            "free_already"              : "¡Ya tienes el plan gratuito activado!",
+            "other_plan_not_expired"    : "Tu plan actual todavía no ha expirado, ¡Cuando éste termine obtendrás el plan gratuito!"
+        },
+ 
+        "trial": {
+            "header"                    : "Inicia la %s",
+            "subheader"                 : "Ya casi estamos.",
+ 
+            "trial_done"                : "Ya has completado la prueba, no puedes repetirla.",
+            "other_plan_not_expired"    : "¡Tu plan actual todavía no ha expirado, si eliges otro se sobrescribirá!",
+            "trial_start"               : "Empezar mi prueba de %s días"
+        },
+ 
+        "custom_plan": {
+            "header"                    : "Suscribirte al plan %s",
+            "subheader"                 : "⚡ ¡Estás punto de mejorar tu tienda! Completa el siguiente formulario..",
+ 
+            "paypal"                    : "PayPal",
+            "stripe"                    : "Stripe",
+            "offline_payment"           : "<img src=\"https://http2.mlstatic.com/frontend-assets/ui-navigation/5.15.2/mercadopago/logo__large.png\">MercadoPago (<strong>Argentina</strong>)",
+            "coinbase"					: "Coinbase",
+			"payu"						: "PayU",
+			"paystack"					: "Paystack",
+			"razorpay"					: "Razorpay",
+			"mollie"					: "Mollie",
+			"yookassa"					: "Yookassa",
+
+            "payment_frequency"         : "<small>[1/3]</small> Frecuencia de cobros",
+            "monthly"                   : "Cobros mensuales",
+            "annual"                    : "Cobros anuales <small><font color=\"green\">(2 meses gratis)</font></small>",
+            "annual_savings"            : "%s %s",
+            "lifetime"                  : "De por vida",
+            "lifetime_help"             : "Un solo pago",
+ 
+            "code_button"               : "Tengo un cupón de descuento",
+            "code"                      : "Código de descuento",
+ 
+            "payment_processor"         : "<small>[2/3]</small> Método de pago",
+            "no_processor"              : "No hay procesadores de pago disponibles por el momento.",
+            "offline_payment_instructions": "Instrucciones para suscribirse:",
+            "offline_payment_proof"     : "Envianos el comprobante de pago..",
+            "offline_payment_proof_help": "Envianos la foto del comprobante de pago (jpg, jpeg, png or pdf).",
+ 
+            "payment_type"              : "<small>[3/3]</small> Tipo de pago",
+            "one_time_type"             : "Pago único",
+            "recurring_type"            : "Pago recurrente",
+ 
+            "summary": {
+                "header"                : "Resumen",
+                "plan"              : "Plan",
+ 
+                "payment_frequency"     : "Facturación",
+                "monthly"               : "Mensual",
+                "monthly_help"          : "Cada 30 días",
+                "annual"                : "Anual",
+                "annual_help"           : "Cada 365 días",
+                "lifetime"              : "De por vida",
+                "lifetime_help"         : "Cada 10 milenios",
+ 
+                "payment_processor"     : "Pagado por",
+ 
+                "payment_type"          : "Tipo",
+                "one_time"              : "Único",
+                "one_time_help"         : "Solo se cobrará una vez",
+                "recurring"             : "Recurrente",
+                "recurring_help"        : "Cobro automático",
+ 
+                "plan_price"            : "Precio",
+ 
+                "discount"              : "Descuento",
+ 
+                "tax_inclusive"         : "Con impuesto",
+                "tax_exclusive"         : "Sin impuesto",
+ 
+                "total"                 : "Total"
+            },
+ 
+            "pay"                       : "Enviar datos",
+            "code_redeemable"			: "Canjea %s días gratis."
+        },
+ 
+        "success_message": {
+            "code"                      : "Código de descuento aplicado por %s."
+        },
+ 
+        "error_message": {
+            "code_invalid"              : "Este código es inválido..",
+            "code_used"                 : "Ya has utilizado este código..",
+            "canceled_payment"          : "Aparentemente has cancelado el pago por alguna razón.",
+            "failed_payment"            : "Algo no está funcionando bien, por favor intenta nuevamente y si esto continúa comunicate por el chat.",
+            "offline_payment_proof_missing": "Necesitas enviarnos una prueba de pago antes de continuar, podrás hacerlo al final de esta página."
+        }
+    },
+ 
+    "pay_thank_you" : {
+        "title"                         : "Muchas gracias",
+        "header"                        : "¡Muchísimas gracias!",
+        "button"                        : "Ir a mi tablero",
+ 
+        "plan_trial_start"          : "¡Tu período de prueba ha empezado!",
+        "plan_redeemed"				: "Has canjeado %s días!",
+        "plan_custom_will_start"    : "¡Tu pago ha sido enviado y tu membresía será activada en las próximas 72 horas!",
+        "plan_custom_pending"       : "Tu prueba de pago ha sido enviada. De ser correcta. ¡Tu membresía será activada en las próximas 72 horas!"
+    },
+ 
+    "account": {
+        "title"                         : "Mi cuenta",
+        "menu"                          : "Mi cuenta",
+ 
+        "plan": {
+            "header"                    : "Plan: %s",
+            "subheader"                 : "termina el %s",
+            "upgrade_plan"          : "Mejorar plan",
+            "renew_plan"                : "Renovar/Cambiar plan",
+            "renew"                     : "Renovar/mejorar",
+ 
+            "notifications_impressions_limit" : "Has utilizado %s impresiones de las %s disponibles para este mes."
+        },
+ 
+        "settings": {
+            "header"                    : "Ajustes",
+            "subheader"                 : "Ajustes básicos de su cuenta.",
+ 
+            "email"                     : "Email",
+            "name"                      : "Nombre",
+            "timezone"                  : "Zona horaria",
+            "timezone_help"             : "¿Cómo prefieres ver las fechas?"
+        },
+ 
+        "billing": {
+            "header"                    : "Detalles de facturación",
+            "subheader"                 : "Estos detalles de facturación son utilizados para generar las facturas después de los pagos.",
+ 
+            "subscription_id_active"    : "Tienes una suscripción activa, no puedes cambiar los detalles de facturación hasta que esta se acabe.",
+ 
+            "type"                      : "Tipo",
+            "type_personal"             : "Personal",
+            "type_business"             : "Business",
+            "name"                      : "Name",
+            "address"                   : "Address",
+            "city"                      : "City",
+            "county"                    : "County",
+            "country"                   : "Country",
+            "zip"                       : "ZIP",
+            "phone"                     : "Phone",
+            "tax_id"                    : "Tax ID"
+        },
+ 
+        "change_password": {
+            "header"                    : "Cambiar contraseña",
+            "subheader"                 : "Si no quieres cambiar tu contraseña no rellenes en ningún campo aquí debajo",
+ 
+            "current_password"          : "Contraseña actual",
+            "new_password"              : "Nueva contraseña",
+            "repeat_password"           : "Repite la nueva contraseña"
+        },
+ 
+        "twofa": {
+            "header"                    : "Autenticación de dos factores",
+            "subheader"                 : "Puedes utilizar una aplicación móvil para generar un código cada vez que ingreses a nuestro sitio web.",
+ 
+            "is_enabled"                : "Habilitar autenticación de dos factores",
+            "qr"                        : "1. Escanear código QR",
+            "qr_help"                   : "Instala y abre la aplicación de autenticación en tu movil (ej: Authy, Google Authenticator) y luego escanea el código QR con tu cámara.",
+ 
+            "secret"                    : "¿No puedes escanear el código QR?",
+            "secret_help"               : "Intenta ingresar el código secreto en tu aplicación si no puedes escanear el código QR.",
+ 
+            "verify"                    : "2. Ingresa el último token generado",
+            "verify_help"               : "Para confirmar esta configuración por favor ingresa el token de 6 dígitos que ha generado la aplicación en su móvil."
+        },
+ 
+        "info_message": {
+            "user_pending_email"        : "Un email de confirmación ha sido enviado a tu correo. Por favor asegúrate de chequear tu bandeja de correo no deseado."
+        },
+ 
+        "error_message": {
+            "invalid_current_password"  : "¡Tu contraseña actual no es válida!",
+            "short_password"            : "¡Tu contraseña es muy corta, debe contener por lo menos 6 carácteres!",
+            "passwords_not_matching"    : "Tus nuevas contraseñas no coinciden",
+            "twofa_check"               : "El token ingresado no es válido, por favor inténtalo de nuevo.."
+        },
+ 
+        "success_message": {
+            "account_updated"           : "¡Tu cuenta ha sido actualizada!",
+			"password_updated"			: "¡Tu contraseña ha sido actualizada!"
+        }
+    },
+ 
+    "account_delete": {
+        "title"                         : "Borrar cuenta",
+        "menu"                          : "Borrar cuenta",
+        "header"                        : "Borrar cuenta",
+        "subheader"                     : "Si borras tu cuenta, todos tus datos se borrarán de nuestro sistema. <br /> Esta acción es irreversible.",
+        "current_password"              : "Contraseña actual",
+ 
+        "error_message": {
+            "invalid_current_password"  : "¡Tu contraseña actual no es válida!"
+        },
+
+        "success_message"				: "Tu cuenta ha sido eliminada, lamentamos que te vallas!"
+    },
+ 
+    "account_plan": {
+        "title"                         : "Plan",
+        "menu"                          : "Plan",
+        "header"                        : "Plan",
+ 
+        "plan":{
+            "renews"                    : "Tu plan se renovará el %s",
+            "expires"                   : "Tu plan termina el %s"
+        },
+ 
+        "cancel": {
+            "header"                    : "Cancelar suscripción",
+            "subheader"                 : "Si cancelas tu suscripción, no podremos cobrarte ningún otro pago. <br /> Todavía tendrás acceso a tu plan actual hasta la fecha de expiración.",
+            "cancel"                    : "Cancelar suscripción",
+            "confirm_message"           : "¿Seguro deseas cancelar el próximo cobro de tu suscripción? :(",
+            "reason"					: "Cancelado por: %s"
+        },
+ 
+        "success_message": {
+            "subscription_canceled"     : "Tu suscripción ha sido cancelada exitosamente.."
+        }
+    },
+ 
+    "account_payments": {
+        "title"                         : "Pagos",
+        "menu"                          : "Pagos",
+        "header"                        : "Pagos",
+        "subheader"                     : "Todos los pagos realizados en tu cuenta.",
+ 
+        "payments": {
+            "customer"                  : "Cliente",
+            "type"                      : "Tipo",
+            "date"                      : "Fecha",
+            "name"                      : "Nombre completo",
+            "total_amount"              : "Monto total",
+            "plan_id"               : "Plan",
+            "invoice"                   : "Factura",
+            "status_pending"            : "Aprobación pendiente",
+            "status_approved"           : "Aprobado",
+ 
+            "no_data"                   : "No hay pagos por ahora.."
+        },
+ 
+        "filters": {
+            "processor"                     : "Método",
+            "processor_paypal"              : "PayPal",
+            "processor_stripe"              : "Stripe",
+            "processor_offline_payment"     : "MercadoPago",
+ 
+            "type"                          : "Tipo",
+            "type_one_time"                 : "Un solo pago",
+            "type_recurring"                : "Recurrente",
+ 
+            "frequency"                     : "Frecuencia",
+            "frequency_monthly"             : "Mensual",
+            "frequency_annual"              : "Anual",
+            "frequency_lifetime"            : "De por vida",
+ 
+            "order_by_total_amount"         : "Monto total"
+        }
+    },
+ 
+    "account_logs": {
+        "title"                         : "Registros",
+        "menu"                          : "Registros",
+        "header"                        : "Registros",
+        "subheader"                     : "Una lista de la actividad reciente de tu cuenta.",
+ 
+        "logs": {
+            "type"                      : "Tipo",
+            "ip"                        : "IP",
+            "date"                      : "Fecha",
+ 
+            "no_data"                   : "Tu cuenta no tiene registros..",
+            "no_data_help"              : "Aquí podrás encontrar información importante acerca de tu cuenta."
+        },
+
+        "filters": {
+			"search_by_type"            : "Tipo",
+			"search_by_ip"              : "IP"
+		}
+    },
+ 
+    "account_api": {
+        "title"                         : "API key",
+        "menu"                          : "API",
+        "header"                        : "API",
+        "subheader"                     : "Tu clave de API. Si lo necesitas, puedes generar una nueva clickeando aquí debajo. Puedes ver más información en la %s documentación de la API %s",
+        "api_key"                       : "API Key",
+        "button"                        : "Generar nueva API Key",
+        "success_message"               : "¡Tu API key ha sido generada correctamente!"
+    },
+
+    "referrals": {
+		"title"							: "Referrals",
+		"menu"							: "Referrals",
+
+		"invite": {
+			"header"					: "Invite people",
+			"subheader_once"			: "Invite people to %s with the following link and get %s from their first payment to the platform.",
+			"subheader_forever"			: "Invite people to %s with the following link and get %s from all their payments to the platform.",
+			"referral_key"				: "Referral link",
+			"button"					: "Copy referral link"
+		},
+
+		"statistics": {
+			"header"					: "Statistics",
+			"referrals"					: "Referrals",
+			"referrals_help"			: "People who have signed up using your referral link.",
+			"converted_referrals"			: "Paying referrals",
+			"converted_referrals_help"		: "People who have signed up & paid for a plan at least once.",
+			"pending_affiliate_commissions" : "Pending commissions",
+			"pending_affiliate_commissions_help" : "All payments are held for 30 days for proper confirmation before they are approved.",
+			"approved_affiliate_commissions": "Approved commissions",
+			"approved_affiliate_commissions_help": "All payments that have been approved, which are ready to be withdrawn."
+		},
+
+		"withdraw": {
+			"header"					: "Withdraw",
+			"subheader"					: "Once you reach at least %s, you can create a withdrawal request.",
+			"amount"					: "Amount",
+			"is_paid"					: "Is paid",
+			"is_paid_paid"				: "Paid!",
+			"is_paid_pending"			: "Pending",
+			"success_message"			: "Your withdrawal request has been sent for approval and processing!"
+		}
+    },
+
+    "invoice": {
+        "print"                         : "Imprimir",
+        "invoice"                       : "Factura",
+        "invoice_nr"                    : "Factura N°",
+        "invoice_date"                  : "Fecha",
+ 
+        "vendor"                        : "Proveedor",
+        "customer"                      : "Cliente",
+ 
+        "name"                          : "Nombre",
+        "address"                       : "Dirección",
+        "city"                          : "Ciudad",
+        "county"                        : "País",
+        "zip"                           : "Código postal",
+        "country"                       : "País",
+        "email"                         : "Email",
+        "phone"                         : "Teléfono",
+        "tax_id"                        : "Impuesto",
+ 
+        "table": {
+            "item"                      : "Item",
+            "amount"                    : "Monto",
+ 
+            "plan"                      : "Plan %s",
+            "frequency"                 : "Acesso %s.",
+            "frequency_monthly"         : "30 días",
+            "frequency_annual"          : "Un año",
+            "frequency_lifetime"        : "De por vida",
+ 
+            "code"                      : "Descuento",
+            "code_help"                 : "Código utilizado: %s",
+ 
+            "total"                     : "Total",
+            "paid_via"                  : "Pagado via %s"
+        }
+    },
+ 
+    "login": {
+        "menu"                          : "Login",
+        "title"                         : "Login",
+        "header"                        : "Login",
+ 
+        "form": {
+            "email"                     : "Dirección de email",
+            "email_placeholder"         : "email@domain.com",
+            "password"                  : "Contraseña",
+            "password_placeholder"      : "Contraseña",
+            "twofa_token"               : "2FA token",
+            "twofa_token_placeholder"   : "Token de la autenticación de dos factores",
+            "remember_me"               : "Recuérdame",
+            "login"                     : "Login",
+            "or"                        : "o"
+        },
+ 
+        "display": {
+            "total_track_notifications" : "notificaciones impresas, y contando.. .",
+            "register"                  : "¿No tienes una cuenta? %s",
+            "register_help"             : "Regístrate",
+ 
+            "lost_password"             : "Olvidé mi contraseña",
+            "resend_activation"         : "Reenviar activación",
+            "facebook"                  : "%s Facebook Login",
+            "google"					: "%s Google Login",
+            "twitter"					: "%s Twitter Login"
+        },
+ 
+        "info_message": {
+            "twofa_token"               : "Utiliza tu aplicación de móvil para obtener el token de autenticación de dos factores.",
+            "logged_in"                 : "Bienvenido de nuevo, %s! Has ingresado correctamente."
+        },
+ 
+        "error_message": {
+            "twofa_token"               : "¡Tu token 2FA es inválido!",
+            "wrong_login_credentials"   : "¡Tu email o contraseña está mal!",
+            "user_not_active"           : "¡Tu cuenta no ha sido confirmada o has sido expulsado!",
+            "email_is_null"             : "Tu cuenta de Facebook no tiene un mail asociado, no se pudo completar el proceso."
+        }
+    },
+ 
+    "lost_password": {
+        "title"                         : "Perdí mi contraseña",
+        "header"                        : "Perdí mi contraseña",
+        "subheader"                     : "Te enviaremos un email con un enlace para recuperar tu contraseña.",
+        "return"                        : "Volver al Login",
+        "email"                         : "Email",
+        "submit"                        : "Envíame el enlace",
+        "success_message"               : "Sí ese email está registrado te enviaremos un enlace de recuperación!"
+    },
+ 
+    "reset_password": {
+        "title"                         : "Establecer nueva contraseña",
+        "header"                        : "Establecer nueva contraseña",
+        "subheader"                     : "Para mayor seguridad, asegurate que tu contraseña es bastante fuerte.",
+        "return"                        : "Volver al Login",
+        "new_password"                  : "Nueva contraseña ",
+        "repeat_password"               : "Repite tu nueva contraseña",
+        "error_message": {
+            "short_password"            : "¡Tu contraseña es muy corta, debe contener por lo menos 6 caracteres!",
+            "passwords_not_matching"    : "¡Las contraseñas no coinciden!"
+        },
+        "submit"                        : "Restablecer contraseña",
+        "success_message"               : "¡Tu nueva contraseña ha sido establecida!"
+    },
+ 
+    "resend_activation": {
+        "title"                         : "Reenviar activación",
+        "header"                        : "Reenviar email de activación",
+        "subheader"                     : "Si lo necesitas, podemos enviarte otro email.",
+        "return"                        : "Volver al Login",
+        "email"                         : "Email",
+        "submit"                        : "Envíenme el email de activación",
+        "success_message"               : "¡Si hay un email registrado te enviaremos el código de activación!"
+    },
+ 
+    "activate_user": {
+        "user_activation"               : "¡Felicidades, tu cuenta ahora está activa!",
+        "user_pending_email"            : "¡Tu nueva dirección de email ha sido confirmada!"
+    }, 
+ 
+    "register": {
+        "title"                         : "Registro",
+        "menu"                          : "Registro",
+        "header"                        : "Registro",
+        "login"                         : "¿Ya tienes una cuenta?",
+ 
+        "display": {
+            "total_notifications"       : "Notificaciones totales creadas en nuestra plataforma."
+        },
+ 
+        "form": {
+            "name"                      : "Nombre",
+            "name_placeholder"          : "Tu nombre completo",
+            "email"                     : "Email",
+            "email_placeholder"         : "email@domain.com",
+            "password"                  : "Contraseña",
+            "password_placeholder"      : "Contraseña",
+            "repeat_password"           : "Repetir contraseña",
+            "accept"                    : "Confirmo que he leído y entendido los %s y %s del sitio.",
+            "register"                  : "Registrarse"
+        },
+ 
+        "error_message": {
+            "username_length"           : "¡El nombre de usuario debe contener entre 3 y 32 caracteres!",
+            "name_length"               : "¡El nombre debe contener entre 3 y 32 caracteres!",
+            "email_exists"              : "¡Lo sentimos ese email, ya está siendo utilizado!",
+            "invalid_email"             : "¡Ingresaste un email inválido!",
+            "short_password"            : "¡Tu contraseña es muy corta, debe contener al menos 6 caracteres!",
+            "passwords_not_matching"    : "Las contraseñas no coinciden"
+        },
+ 
+        "success_message": {
+            "registration"              : "Tu cuenta ha sido creada. ¡Revisa tu email para encontrar el link de activación! (¡Asegurate de verificar tu correo no deseado!)",
+            "login"                     : "¡Bienvenido a Cartelitos, nos encanta tenerte aquí!"
+        }
+    },
+ 
+    "dashboard": {
+        "title"                             : "Tablero",
+        "breadcrumb"                        : "Tablero",
+        "menu"                              : "Tablero",
+        "header"                            : "Tablero",
+ 
+        "campaigns": {
+            "header"                        : "Campañas",
+            "create"                        : "Crear campaña",
+ 
+            "name"                          : "Tienda",
+            "date"                          : "Creada el",
+            "is_enabled"                    : "Estado",
+            "is_enabled_tooltip"            : "Cambia el estado de la campaña",
+ 
+            "no_data"                       : "No hay campañas por el momento, ¿Por qué no creamos una? <br> <center>Cada campaña es una tienda para incluir notificaciones..</center></br>"
+        },
+ 
+        "filters": {
+            "search_by_name"                : "Nombre",
+            "search_by_domain"              : "Dominio",
+            "order_by_name"                 : "Nombre"
+        }
+    },
+ 
+    "campaign": {
+        "title"                             : "Campaña:%s",
+        "breadcrumb"                        : "Campaña",
+ 
+        "header": {
+            "custom_branding"               : "Marca personalizada",
+            "pixel_key"                     : "Instalar Pixel"
+        },
+ 
+        "filters": {
+            "type"                          : "Tipo",
+            "search_by_name"                : "Nombre",
+            "order_by_name"                 : "Nombre"
+        },
+ 
+        "notifications": {
+            "header"                        : "Notificaciones de campaña",
+            "create"                        : "Crear notificación",
+            "link"                          : "Notificaciones",
+ 
+            "name"                          : "Notificación",
+            "type"                          : "Hipo",
+            "display_trigger"               : "Disparador",
+            "display_duration"              : "Duración",
+            "is_enabled"                    : "Estado",
+            "is_enabled_tooltip"            : "Cambia el estado",
+            "display_duration_unlimited"    : "Siempre",
+ 
+            "no_data"                       : "No hay notificaciones para esta campaña ¿Por qué no creamos una?"
+        },
+ 
+        "statistics": {
+            "disabled"                      : "Por el momento las analíticas de la campaña no están habilitadas.",
+            "header"                        : "Estadísticas",
+            "link"                          : "Estadísticas",
+ 
+            "impressions_chart"             : "Impresiones",
+            "hovers_chart"                  : "Pasadas de Mouse",
+            "clicks_chart"                  : "Clicks",
+            "form_submissions_chart"        : "Envíos de formulario",
+ 
+            "no_data"                       : "No hay datos para esta fecha..."
+        },
+ 
+        "error_message": {
+            "campaigns_limit"               : "Has excedido el límite de campañas para tu plan."
+        }
+    },
+ 
+    "custom_branding_campaign_modal": {
+        "header"                        : "Marca personalizada",
+        "subheader"                     : "Crea tu propia marca para las notificaciones.",
+ 
+        "input": {
+            "name"                      : "Nombre de la marca",
+            "name_help"                 : "Dejar en blanco para usar por defecto.",
+            "url"                       : "URL"
+        }
+    },
+ 
+    "create_campaign_modal": {
+        "header"                        : "Crear nueva campaña",
+        "subheader"                     : "Crea fácilmente tu campaña.",
+ 
+        "input": {
+            "name"                      : "Nombre",
+            "domain"                    : "Dominio / Subdominio",
+            "domain_placeholder"        : "ej: apple.com o apple.mitiendanube.com",
+            "domain_help"               : "El dominio de la tienda donde se instalarán las notificaciones.",
+            "domain_help2"              : "Puedes ver tu dominio real en tu <strong>Administrador Nube</strong> <br>(Configuraciones -> Dominios)<br><br>Es necesario que incluya el http://.",
+            "include_subdomains"        : "Incluir Subdominios <strong>(Recomendado)</strong>",
+            "include_subdomains_help"   : "Un subdominio es todo lo que va antes del primer punto<br>Ejemplos: <strong>tienda</strong>.apple.com, <strong>blog</strong>.apple.com, <strong>www</strong>.apple.com."
+        }
+    },
+ 
+    "update_campaign_modal": {
+        "header"                        : "Actualizar campaña",
+        "subheader"                     : "Cambia una campaña existente.",
+ 
+        "input": {
+            "name"                      : "Nombre",
+            "domain"                    : "Dominio / Subdominio",
+            "domain_placeholder"        : "ej: apple.com o apple.mitiendanube.com",
+            "domain_help"               : "El dominio de la tienda donde se instalarán las notificaciones.",
+            "domain_help2"              : "Puedes ver tu dominio real en tu <strong>Administrador Nube</strong> <br>(Configuraciones -> Dominios)<br><br>Es necesario que incluya el http://.",
+            "include_subdomains"        : "Incluir Subdominios <strong>(Recomendado)</strong>",
+            "include_subdomains_help"   : "Un subdominio es todo lo que va antes del primer punto<br>Ejemplos: <strong>tienda</strong>.apple.com, <strong>blog</strong>.apple.com, <strong>www</strong>.apple.com."
+        }
+    },
+ 
+    "campaign_pixel_key_modal": {
+        "install": {
+            "header"                    : "Instalar Pixel",
+            "subheader"                 : "1) Ve a tu Administrador Nube, y luego a <br> <code>Configuraciones -> Códigos externos -> Códigos de Tracking</code>.<br>2) Copia y pega el siguiente código Javascript dentro del cuadro de texto.<br><br><font color=\"red\">Importante:</font> Si has instalado la aplicación mediante la Tienda de Aplicaciones Nube, <strong>es probable que el código se haya insertado automáticamente</strong>. <br> Si experimentas problemas con notificaciones duplicadas, intenta eliminando el código que pegaste manualmente.",
+            "copy"                      : "Copiar Pixel",
+            "copied"                    : "¡Copiado!"
+        }
+    },
+ 
+    "campaign_delete_modal": {
+        "header"                        : "Eliminar campaña",
+        "subheader"                     : "Si eliminas tu campaña, todos los datos asociados también serán borrados. Esta acción no puede deshacerse."
+    },
+ 
+    "notification": {
+        "breadcrumb"                        : "Notificación",
+        "title"                             : "Notificación: %s",
+        "duplicate"							: "Duplicar",
+ 
+        "preview": {
+            "header"                        : "Vista previa",
+            "subheader"                     : "Así se verá esta increíble notificación.."
+        },
+ 
+        "settings": {
+            "header"                        : "Ajustes",
+            "link"                          : "Ajustes",
+ 
+            "tab_basic"                     : "Básico",
+            "tab_triggers"                  : "Disparadores",
+            "tab_display"                   : "Display",
+            "tab_customize"                 : "Personalizar",
+            "tab_data"                      : "Data",
+ 
+            "name"                          : "Nombre de notificación",
+            "title"                         : "Mensaje de título",
+            "description"                   : "Mensaje de descripción",
+            "content_title"                 : "Contenido de título",
+            "content_description"           : "Contenido de descripción",
+            "video"                         : "URL de YouTube",
+            "video_help"                    : "Formatos permitidos: https://www.youtube.com/embed/VIDEO_ID o https://www.youtube.com/watch?v=VIDEO_ID",
+            "last_activity"                 : "Contar desde los últimos X %s",
+            "conversion_title"              : "Título de conversión",
+            "conversion_title_help"         : "Puedes ingresar variables dinámicas de tus datos de conversiones. Ejemplo: Si hay un campo llamado <code>full_name</code>, puedes usarlo como <code>{full_name}</code>.",
+            "conversion_description"        : "Descripción de conversión",
+            "conversion_active_help"        : "Puedes utilizar variables dinámicas.",
+            "conversions_count"             : "¿Cuántas conversiones te gustaría mostrar?",
+            "conversions_count_help"        : "",
+            "in_between_delay"              : "Retraso entre ellas",
+            "in_between_delay_help"  		: "Escrito en segundos",
+            "reviews_count"                 : "¿Cuántas calificaciones te gustaría mostrar?",
+            "reviews_count_help"            : "",
+            "input_placeholder"             : "Input",
+            "email_placeholder"             : "Email",
+            "image"                         : "URL de Imagen",
+            "image_help"                    : "Dejar vacío si no hay imagen. Pista: icons8.com tiene una buena librería de iconos que puedes utilizar.",
+            "image_alt"						: "Texto alternativo de imagen",
+			"image_alt_help"				: "Descripción de imagen.",
+            "url"                           : "URL de Notificación",
+            "url_help"                      : "La URL a la cual irá el usuario después de hacer clic. Dejar en blanco para desactivar.",
+            "url_new_tab"                   : "Abrir en nueva pestaña",
+            "url_new_tab_help"              : "",
+            "url_link"                      : "Enlace de URL",
+            "url_link_text"                 : "Texto de URL",
+            "thank_you_url"                 : "URL de ‘Gracias’ ",
+            "thank_you_url_help"            : "La URL a la cual irá el usuario después de enviar formulario. Dejar en blanco para desactivar..",
+            "coupon_code"                   : "Cupón",
+            "button_url"                    : "URL de botón",
+            "button_text"                   : "Texto de botón",
+            "button_text_help"              : "Dejar en blanco para eliminar el botón.",
+            "footer_text"                   : "Texto del pie de página",
+            "share_url"                     : "URL para compartir",
+            "share_url_help"                : "Dejar en blanco si quieres que la URL sea la página en la que se imprime la notificación.",
+            "share_facebook"                : "Compartir en Facebook",
+            "share_twitter"                 : "Compartir en Share",
+            "share_linkedin"                : "Compartir en Linkedin",
+            "show_angry"                    : "Mostrar enojo",
+            "show_sad"                  : "Mostrar tristeza",
+            "show_neutral"                  : "Mostrar neutral",
+            "show_happy"                    : "Mostrar felicidad",
+            "show_excited"                  : "Mostrar exitación",
+            "end_date"                      : "Fecha de finalización",
+            "show_agreement"                : "Mostrar términos",
+            "show_agreement_help"           : "Requiere que el usuario confirme los términos tildando este checkbox.",
+            "agreement_url"                 : "URL de los términos",
+            "agreement_text"                : "Texto de los términos",
+            "trigger_all_pages"             : "Ejecutar en todas las páginas",
+            "trigger_all_pages_help"        : "¿Dónde se mostrará esta notificación?",
+            "trigger_add"                   : "Agregar nuevo disparador",
+            "trigger_type_exact"            : "Coincidencia exacta",
+            "trigger_type_not_exact"        : "No coincide exactamente",
+            "trigger_type_contains"         : "Contiene",
+            "trigger_type_not_contains"     : "No contiene",
+            "trigger_type_starts_with"      : "Empieza con",
+            "trigger_type_not_starts_with"  : "No empieza con",
+            "trigger_type_ends_with"        : "Termina con",
+            "trigger_type_not_ends_with"    : "No termina con",
+            "trigger_type_page_contains"    : "La página contiene",
+            "trigger_type_exact_placeholder": "Full URL ( ej: https://domain.com )",
+            "trigger_type_not_exact_placeholder": "Full URL ( ej: https://domain.com )",
+            "trigger_type_contains_placeholder"             : "Parte de la URL ( ej: /producto/102481 )",
+            "trigger_type_not_contains_placeholder"         : "Parte de la URL ( ej: /producto/102481 )",
+            "trigger_type_starts_with_placeholder"          : "Parte de la URL",
+            "trigger_type_not_starts_with_placeholder"      : "Parte de la URL",
+            "trigger_type_ends_with_placeholder"            : "Parte de la URL",
+            "trigger_type_not_ends_with_placeholder"        : "Parte de la URL",
+            "trigger_type_page_contains_placeholder"        : "Texto que se muestra en la página",
+            "display_trigger"               : "Activador de display",
+            "display_trigger_help"          : "¿En qué evento se mostrará la notificación?.",
+            "display_trigger_delay"         : "Retraso",
+            "display_trigger_delay_placeholder" : "Número de segundos a esperar hasta mostrar notificación",
+            "display_trigger_scroll"        : "Porcentaje de desplazamiento",
+            "display_trigger_scroll_placeholder" : "Porcentaje de desplazamiento desde arriba",
+            "display_trigger_exit_intent"   : "Intento de salida",
+            "display_frequency"             : "Frecuencia",
+            "display_frequency_help"        : "¿Qué tan a menudo se mostrará la notificación?.",
+            "display_frequency_all_time"    : "Todas las veces",
+            "display_frequency_once_per_session"    : "Una vez por sesión",
+            "display_frequency_once_per_browser"    : "Una vez por explorador",
+            "display_mobile"                : "Mostrar en pantallas pequeñas",
+            "display_mobile_help"           : "Mostrar en pantalla cuyos píxeles sean menores a 768px. (Ej: Moviles)",
+            "display_desktop"               : "Mostrar en pantalla grandes",
+            "display_desktop_help"          : "Mostrar en pantalla cuyos píxeles sean mayores a 768px.(Ej: Computadoras)",
+            "display_duration"              : "Duración",
+            "display_duration_help"         : "Cuántos segundos mostrar la notificación. Establece -1 para mostrar por siempre.",
+            "display_position"              : "Posición",
+            "display_position_help"         : "Posición de la notificación en la pantalla. La posición no cambia en la vista previa.",
+            "display_position_top_left"     : "Superior izquierdo",
+            "display_position_top_center"   : "Superior centro",
+            "display_position_top_right"    : "Superior derecho",
+            "display_position_middle_left"  : "Medio izquierdo",
+            "display_position_middle_center"    : "Medio centro",
+            "display_position_middle_right" : "Medio derecho",
+            "display_position_bottom_left"  : "Inferior izquierdo",
+            "display_position_bottom_center"    : "Inferior centro",
+            "display_position_bottom_right" : "Inferior derecho",
+            "display_position_top"          : "Superior",
+            "display_position_bottom"       : "Inferior",
+            "display_position_top_floating" : "Flotante superior",
+            "display_position_bottom_floating"  : "Flotante inferior",
+            "display_minimum_activity"      : "Actividad mínima",
+            "display_minimum_activity_help" : "Datos mínimos para mostrar la notificación.",
+            "display_close_button"          : "Mostrar X para cerrar",
+            "display_branding"              : "Mostrar marca",
+            "on_animation"                  : "Animación de entrada",
+            "on_animation_fadeIn"           : "Fade In",
+            "on_animation_slideInUp"        : "Slide In Up",
+            "on_animation_slideInDown"      : "Slide In Down",
+            "on_animation_zoomIn"           : "Zoom In",
+            "on_animation_bounceIn"         : "Bounce In",
+            "off_animation"                 : "Animación de salida",
+            "off_animation_fadeOut"         : "Fade Out",
+            "off_animation_slideOutUp"      : "Slide Out Up",
+            "off_animation_slideOutDown"    : "Slide Out Down",
+            "off_animation_zoomOut"         : "Zoom Out",
+            "off_animation_bounceOut"       : "Bounce Out",
+            "title_color"                   : "Color de título",
+            "description_color"             : "Color de descripción",
+            "content_title_color"           : "Color contenido de título",
+            "content_description_color"     : "Color contenido de descripción",
+            "background_color"              : "Color de fondo",
+            "background_pattern"            : "Patrón de fondo",
+            "background_pattern_none"       : "Ninguno",
+            "background_pattern_jupiter"    : "Jupiter",
+            "background_pattern_wavy"       : "Wavy",
+            "background_pattern_hexagons"   : "Hexagons",
+            "background_pattern_autumn"     : "Autumn",
+            "background_pattern_shapes"     : "Shapes",
+            "background_pattern_anchors"    : "Anchors",
+            "background_pattern_plus"       : "Plus",
+            "background_pattern_bubbles"    : "Bubbles",
+            "background_pattern_wiggle"     : "Wiggle",
+            "button_background_color"       : "Color de fondo de botón",
+            "button_color"                  : "Color de botón",
+            "number_color"                  : "Color de número",
+            "coupon_code_color"             : "Color de código",
+            "coupon_code_background_color"  : "Color de fondo de código",
+            "coupon_code_border_color"      : "Color del borde del código",
+            "number_background_color"       : "Color del fondo del número",
+            "pulse_background_color"        : "Color de fondo del pulso",
+            "time_color"                    : "Color del tiempo",
+            "time_background_color"         : "Color del fondo del tiempo",
+            "border_width"                  : "Ancho del borde",
+            "border_width_help"             : "Puedes elegir entre 0 y 5.",
+            "border_color"                  : "Color del borde",
+            "border_radius"                 : "Radio del borde",
+            "border_radius_help"            : "Cambia las formas de las esquinas de la notificación",
+            "border_radius_straight"        : "Recta",
+            "border_radius_rounded"         : "Redondeada",
+            "border_radius_round"           : "Redonda",
+            "shadow"                        : "Mostrar sombra",
+            "shadow_help"                   : "Muestra una sombra moderna alrededor de la notificación",
+            "engagement_links_categories"   : "Categorías",
+            "engagement_links_categories_links": "Links",
+ 
+            "data_send_is_enabled"          : "Enviar datos obtenidos a fuentes externas",
+            "data_send_webhook"             : "Webhook",
+            "data_send_webhook_help"        : "Dejar en blanco para deshabilitar este campo.",
+            "data_send_webhook_placeholder" : "Webhook URL",
+            "data_send_email"               : "Email",
+            "data_send_email_help"          : "Dejar en blanco para deshabilitar este campo.",
+            "data_send_email_placeholder"   : "Dirección de email válida",
+ 
+            "data_trigger_webhook"          : "Disparador de Webhook",
+            "data_trigger_webhook_help"     : "Envia una petición al endpoint para informarnos sobre un evento o conversión que ocurrió en tu tienda relacionado con esta notificación, nosotros haremos el resto. La llamada DEBE ser una solicitud POST y puede tener cualquier parámetro de datos de formulario.",
+            "data_trigger_type_webhook"     : "Webhook",
+            "data_trigger_input_webhook"    : "Full Webhook Url",
+ 
+            "data_trigger_auto"             : "Auto guardar datos",
+            "data_trigger_auto_help"        : "La captura automática intentará detectar automáticamente cuándo se ha enviado un formulario y registrará esos datos por ti. (Los campos de contraseña nunca serán capturados)",
+            "data_trigger_auto_add"         : "Agregar nueva regla"
+        },
+ 
+        "statistics": {
+            "disabled"                      : "Por ahora las estadísticas de notificaciones están deshabilitadas.",
+            "header"                        : "Estadísticas",
+            "link"                          : "Estadísticas",
+ 
+            "impressions_chart"             : "Impresiones",
+            "hovers_chart"                  : "Pasadas de mouse",
+            "clicks_chart"                  : "Clicks",
+            "form_submissions_chart"        : "Envío de formularios",
+            "feedback_chart"                : "Envíos de feedback",
+ 
+            "header_feedback"               : "Feedbacks",
+            "feedback"                      : "Feedback",
+            "feedback_total"                : "Cuántos",
+ 
+            "header_top_pages"              : "Mejores páginas",
+            "subheader_top_pages"           : "Tus páginas en las cuales las notificaciones han estado más activas.",
+ 
+            "url"                           : "URL",
+            "type"                          : "Tipo",
+            "pageviews"                     : "Vistas",
+ 
+            "impression"                    : "Impresión",
+            "hover"                         : "Pasada de mouse",
+            "form_submission"               : "Envío de formulario",
+            "click"                         : "Click",
+            "auto_capture"                  : "Auto capturada",
+            "feedback_emoji_angry"          : "Emoji Triste",
+            "feedback_emoji_sad"            : "Emoji Enojado",
+            "feedback_emoji_neutral"        : "Emoji Neutral",
+            "feedback_emoji_happy"          : "Emoji Feliz",
+            "feedback_emoji_excited"        : "Emoji Excitado",
+            "feedback_score_1"              : "Puntaje 1",
+            "feedback_score_2"              : "Puntaje 2",
+            "feedback_score_3"              : "Puntaje 3",
+            "feedback_score_4"              : "Puntaje 4",
+            "feedback_score_5"              : "Puntaje 5"
+        },
+ 
+        "data": {
+            "header"                        : "Data",
+            "link"                          : "Data",
+            "create"                        : "Importar datos",
+ 
+            "expand_data"                   : "Clic para expandir",
+            "no_data"                       : "No hay datos",
+            "data"                          : "Datos",
+            "url"                           : "URL",
+            "date"                          : "Fecha",
+            "ip"                            : "IP",
+            "country"                       : "País",
+            "city"                          : "Ciudad",
+            "country_code"                  : "Código de país",
+            "variable"                      : "Puede usarse también como variable {%s}",
+            "type"                          : "Tipo",
+            "type_auto_capture"             : "Auto capturado",
+            "type_webhook"                  : "Webhook",
+            "type_imported"                 : "Importado",
+            "type_email_collector"          : "Email Adquirido",
+            "type_collector"                : "Adquirido"
+        },
+ 
+        "create_data_modal": {
+            "header"                        : "Importar / Crear datos",
+            "create_key_value"              : "Agregar campo",
+ 
+            "input": {
+                "key"                       : "Llave / Campo",
+                "key_placeholder"           : "Nombre",
+                "value"                     : "Valor",
+                "value_placeholder"         : "Jhon Doe"
+            }
+        },
+ 
+        "create_review_data_modal": {
+            "header"                        : "Crear nueva calificación",
+ 
+            "input": {
+                "title"                     : "Nombre",
+                "description"               : "Texto",
+                "stars"                     : "Estrellas",
+                "stars_help"                : "Dejar en blanco para no mostrar estrellas."
+            }
+        },
+ 
+        "info_message": {
+            "no_data"                       : "No hay datos para esta fecha."
+ },
+ 
+        "error_message": {
+            "notifications_limit"           : "Has excedido el límite de notificaciones para tu plan. Considera mejorarlo.."
+        },
+ 
+ 
+        "informational": {
+            "name"                              : "Informativa",
+            "description"                       : "Mensaje totalmente personalizado para tus usuarios.",
+            "icon"                              : "fa fa-fw fa-info-circle",
+ 
+            "title_default"                     : "¡Hot Sale!",
+            "description_default"               : "¡Oferta limitada solo por hoy, consiguela!",
+            "image_default"                     : "https://img.icons8.com/dusk/2x/sale.png"
+        },
+ 
+        "coupon": {
+            "name"                              : "Cupón",
+            "description"                       : "¿Hay ofertas? Los cupones de descuento pueden generar hasta el doble de ventas.",
+            "icon"                              : "fa fa-fw fa-piggy-bank",
+ 
+            "title_default"                     : "35% OFF!",
+            "description_default"               : "¡Código limitado solo por este mes!",
+            "image_default"                     : "https://img.icons8.com/nolan/2x/cutting-coupon.png",
+            "coupon_code_default"               : "COUPON20",
+            "button_text_default"               : "Conseguir cupón",
+            "footer_text_default"               : "¡No, no quiero ahorrar!"
+        },
+ 
+        "live_counter": {
+            "name"                              : "Contador de visitas",
+            "description"                       : "Muestra a tus usuarios cuanta gente hay en la tienda para generar confianza.",
+            "icon"                              : "fa fa-fw fa-globe",
+ 
+            "description_default"               : "Visitantes en la tienda.",
+            "image_default"                     : "https://img.icons8.com/nolan/2x/cutting-coupon.png",
+            "number_default"                    : "35"
+        },
+ 
+        "email_collector": {
+            "name"                              : "Imán de Leads",
+            "description"                       : "Captura fácilmente los emails de tus visitantes y genera leads de calidad..",
+            "icon"                              : "fa fa-fw fa-envelope-open",
+ 
+            "title_default"                     : "¡Lo nuevo en zapatillas!",
+            "description_default"               : "No te enviaremos SPAM y puedes desuscribirte cuando quieras.",
+            "email_placeholder_default"         : "Tu email",
+            "button_text_default"               : "Suscribirme",
+            "agreement_text_default"            : "He leído y acepto la política de privacidad"
+        },
+ 
+        "latest_conversion": {
+            "name"                              : "Última conversión",
+            "description"                       : "Crea prueba social mostrando las conversiones más recientes en tu tienda..",
+            "icon"                              : "fa fa-fw fa-funnel-dollar",
+ 
+            "title_default"                     : "Roxana de Mendoza",
+            "description_default"               : "Ha comprado Falda Cream M.",
+            "image_default"                     : "https://www.hola.com/imagenes/seleccion/20201214181023/faldas-de-lana-moda-otono-invierno/0-900-390/falda-midi-beige-a.jpg",
+            "time_ago_default"                  : "Hace 7 minutos.."
+        },
+ 
+        "conversions_counter": {
+            "name"                              : "Contador de ventas",
+            "description"                       : "Crea confianza y lealtad mostrando cuántos clientes ya te han comprado",
+            "icon"                              : "fa fa-fw fa-comment-dollar",
+ 
+            "title_default"                     : "Personas han comprado este producto",
+            "image_default"                     : "https://img.icons8.com/officel/2x/return-purchase.png",
+            "number_default"                    : "23",
+            "time_default"                      : "en las últimas %s horas"
+        },
+ 
+        "video": {
+            "name"                              : "Video",
+            "description"                       : "Crea fácilmente un video informativo acerca de tu producto o servicio.",
+            "icon"                              : "fa fa-fw fa-video",
+ 
+            "title_default"                     : "Demostración del producto",
+            "thumbnail_default"                 : "https://i3.ytimg.com/vi/3WxQgvuT6ZI/maxresdefault.jpg",
+            "button_text_default"               : "Registrarme"
+        },
+ 
+        "social_share": {
+            "name"                              : "Social Share",
+            "description"                       : "Atrae toneladas de tráfico dejando que tus clientes compartan tu tienda en las redes.",
+            "icon"                              : "fa fa-fw fa-share-alt",
+ 
+            "title_default"                     : "¡Cuéntale a tus amigos!",
+            "description_default"               : "¡Agradecemos que compartas nuestra tienda! ¡Muchísimas gracias!❤️"
+        },
+ 
+        "random_review": {
+            "name"                              : "Calificaciones",
+            "description"                       : "Nada más poderoso que un cliente satisfecho",
+            "icon"                              : "fa fa-fw fa-random",
+ 
+            "title_default"                     : "Alejandra Ortega",
+            "description_default"               : "El envío suuuper rápido y el producto fenomenal! Me encanta!!! ",
+            "image_default"                     : "https://i.ibb.co/S799bfq/100.jpg"
+        },
+ 
+        "emoji_feedback": {
+            "name"                              : "Feedback con emojis",
+            "description"                       : "Una manera interactiva de obtener feedback sobre tu producto o servicio.",
+            "icon"                              : "fa fa-fw fa-smile-beam",
+ 
+            "title_default"                     : "¿Te ha gustado nuestra tienda?",
+            "feedback_emoji_angry"              : "Triste",
+            "feedback_emoji_sad"                : "Enojado",
+            "feedback_emoji_neutral"            : "Neutral",
+            "feedback_emoji_happy"              : "Feliz",
+            "feedback_emoji_excited"            : "Excitado"
+        },
+ 
+        "cookie_notification": {
+            "name"                              : "Notificación de Cookies",
+            "description"                       : "Cumple con la norma RGPD avisando a tus usuarios acerca de las cookies..",
+            "icon"                              : "fa fa-fw fa-cookie",
+ 
+            "description_default"               : "Utilizamos cookies para asegurarte la mejor experiencia en nuestra tienda.",
+            "button_text_default"               : "Okay",
+            "url_text_default"                  : "Saber más",
+            "image_default"                     : "https://img.icons8.com/plasticine/2x/cookie.png"
+        },
+ 
+        "score_feedback": {
+            "name"                              : "Feedback de puntuación",
+            "description"                       : "La manera más común de obtener feedback masivo.",
+            "icon"                              : "fa fa-fw fa-sort-numeric-up",
+ 
+            "title_default"                     : "¿Recomendarías nuestra tienda?",
+            "description_default"               : "¿Qué tan probable es que nos recomiendes a tus amigos?",
+            "feedback_score_1"                  : "1",
+            "feedback_score_2"                  : "2",
+            "feedback_score_3"                  : "3",
+            "feedback_score_4"                  : "4",
+            "feedback_score_5"                  : "5"
+        },
+ 
+        "request_collector": {
+            "name"                              : "Potenciales clientes",
+            "description"                       : "Comunicarte con tus Leads nunca fue tan fácil con este widget especial.",
+            "icon"                              : "fa fa-fw fa-user-plus",
+ 
+            "title_default"                     : "Eduardo Gomez",
+            "description_default"               : "Atención al cliente",
+            "image_default"                     : "https://img.icons8.com/dusk/64/000000/winner.png",
+            "content_title_default"             : "¿Tienes alguna pregunta?",
+            "content_description_default"       : "¡Nos comunicaremos contigo en breve!",
+            "input_placeholder_default"         : "Número de teléfono válido",
+            "button_text_default"               : "Whatsapeame ⚡️",
+            "agreement_text_default"            : "El leído y estoy de acuerdo con la política de privacidad."
+        },
+ 
+        "countdown_collector": {
+            "name"                              : "Cuenta regresiva",
+            "description"                       : "Crea urgencia/FOMO con un formulario para generación de leads regresivo..",
+            "icon"                              : "fa fa-fw fa-clock",
+ 
+            "title_default"                     : "¿Creando tu blog? 💻",
+            "description_default"               : "Webinar exclusivo gratuito.",
+            "content_title_default"             : "¡Apresúrate! Los cupos son limitados.",
+            "input_placeholder_default"         : "Email válido",
+            "button_text_default"               : "Registrarse ✅",
+            "agreement_text_default"            : "El leído y acepto la política de privacidad",
+ 
+            "days"                              : "días",
+            "hours"                             : "horas",
+            "minutes"                           : "minutos",
+            "seconds"                           : "segundos"
+        },
+ 
+ 
+        "informational_bar": {
+            "name"                              : "Barra informativa",
+            "description"                       : "Barra totalmente personalizable para tu tienda.",
+            "icon"                              : "fa fa-fw fa-info",
+ 
+            "title_default"                     : "¡Llegó lo nuevo!",
+            "description_default"               : "¡La nueva temporada de pantalones está aquí!",
+            "image_default"                     : "https://img.icons8.com/cute-clipart/2x/info.png"
+        },
+ 
+        "image": {
+            "name"                              : "Imagen",
+            "description"                       : "Una imagen dice más que mil palabras.",
+            "icon"                              : "fa fa-fw fa-image",
+ 
+            "title_default"                     : "Título demostrativo",
+            "image_default"                     : "https://images.unsplash.com/photo-1592142484268-342bdc296658?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80",
+            "button_text_default"               : "Registrarme"
+        },
+ 
+        "collector_bar": {
+            "name"                              : "Barra de Leads",
+            "description"                       : "Adquiere emails o leads sin distraer a tus visitantes.",
+            "icon"                              : "fa fa-fw fa-inbox",
+ 
+            "title_default"                     : "Regístrate para recibir actualizaciones y descuentos por email",
+            "input_placeholder_default"         : "Tu email",
+            "button_text_default"               : "Suscribirme",
+            "agreement_text_default"            : "El leído y acepto la política de privacidad"
+        },
+ 
+        "coupon_bar": {
+            "name"                              : "Barra de cupón",
+            "description"                       : "¿Hay ofertas? Los cupones de descuento pueden generar hasta el doble de ventas..",
+            "icon"                              : "fa fa-fw fa-money-check-alt",
+ 
+            "title_default"                     : "Descuento limitado solo por hoy 🙌",
+            "coupon_code_default"               : "SALE15"
+        },
+ 
+        "button_bar": {
+            "name"                              : "Barra de botón",
+            "description"                       : "Excelente barra para promover algo entre tus usuarios..",
+            "icon"                              : "fa fa-fw fa-newspaper",
+ 
+            "title_default"                     : "Hemos lanzado una nueva función en nuestro servicio",
+            "button_text_default"               : "Chequear característica"
+        },
+ 
+        "collector_modal": {
+            "name"                              : "Modal de Leads",
+            "description"                       : "Adquiere leads con una excelente ventana modal.",
+            "icon"                              : "fa fa-fw fa-fire",
+ 
+            "title_default"                     : "Registrarme",
+            "description_default"               : "No enviamos SPAM y puedes darte de baja en cualquier momento",
+            "image_default"                     : "",
+            "input_placeholder_default"         : "Tu Email",
+            "button_text_default"               : "Suscribirme",
+            "agreement_text_default"            : "He leído y acepto la política de privacidad"
+        },
+ 
+        "collector_two_modal": {
+            "name"                              : "Modal de Leads 2",
+            "description"                       : "Si esto no llama la atención ¿Qué lo haría?.",
+            "icon"                              : "fa fa-fw fa-dice",
+ 
+            "title_default"                     : "Consigue descuentos y últimas ofertas vía email",
+            "description_default"               : "No enviamos SPAM y puedes darte de baja en cualquier momento.",
+            "image_default"                     : "",
+            "input_placeholder_default"         : "Tú email",
+            "button_text_default"               : "Suscribirme",
+            "agreement_text_default"            : "He leído y acepto la política de privacidad"
+        },
+ 
+        "button_modal": {
+            "name"                              : "CTA : Llamada a la acción",
+            "description"                       : "Crea conciencia y llama la atención con un CTA.",
+            "icon"                              : "fa fa-fw fa-cloud",
+ 
+            "title_default"                     : "¡Nuevo producto!",
+            "description_default"               : "Hemos lanzado el nuevo libro!, ¿Quieres saber de qué se trata?",
+            "image_default"                     : "https://assets-ouch.icons8.com/preview/255/675cef88-9340-42a9-a5b0-52c240cc965a.png",
+            "button_text_default"               : "Descárgalo gratis"
+        },
+ 
+        "text_feedback": {
+            "name"                              : "Feedback de texto",
+            "description"                       : "Para crecer, necesitas saber qué piensan tus visitantes.",
+            "icon"                              : "fa fa-fw fa-heading",
+ 
+            "title_default"                     : "¿Tienes alguna sugerencia?",
+            "description_default"               : "Haznos saber cómo podríamos mejorar🙏.",
+            "input_placeholder_default"         : "Tu honesta opinión",
+            "button_text_default"               : "Enviar"
+        },
+ 
+        "engagement_links": {
+            "name"                              : "Links de interacción",
+            "description"                       : "Muestra un widget que contenga todos tus links relevantes.",
+            "icon"                              : "fa fa-fw fa-link",
+ 
+            "title"                             : "Conecta con nosotros 👁",
+            "categories": [
+                {
+                    "title"                     : "Redes sociales",
+                    "description"               : "Nuestras redes sociales.",
+ 
+                    "links": [
+                        {
+                            "title"             : "Twitter",
+                            "description"       : "Síguenos en Twitter!",
+                            "image"             : "https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../assets/preview/2012/png/iconmonstr-twitter-1.png&r=0&g=0&b=0",
+                            "url"               : "https://domain.com/"
+                        },
+ 
+                        {
+                            "title"             : "Facebook",
+                            "description"       : "¡Únete a nuestro grupo de Facebook!",
+                            "image"             : "https://cdns.iconmonstr.com/wp-content/assets/preview/2017/240/iconmonstr-facebook-6.png",
+                            "url"               : "https://domain.com/"
+                        }
+                    ]
+                },
+ 
+                {
+                    "title"                     : "Contactanos",
+                    "description"               : "",
+ 
+                    "links": [
+                        {
+                            "title"             : "Email",
+                            "description"       : "Email de soporte técnico.",
+                            "image"             : "",
+                            "url"               : "https://domain.com/"
+                        },
+ 
+                        {
+                            "title"             : "Whatsapp",
+                            "description"       : "¡Envíanos un mensajito!.",
+                            "image"             : "",
+                            "url"               : "https://domain.com/"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+ 
+    "notification_delete_modal": {
+        "header"                        : "Borrar notificación",
+        "subheader"                     : "Si borras esta notificación todos los datos desaparecerán. Esta acción es irreversible."
+    },
+
+
+    "notification_duplicate_modal": {
+		"header"						: "Duplicar notificación"
+	},
+ 
+    "notification_create": {
+        "breadcrumb"                    : "Crear nueva notificación",
+        "title"                         : "Crear nueva notificación",
+        "header"                        : "Crear nueva notificación",
+        "default_name"                  : "Nueva notificación"
+    },
+ 
+    "index": {
+        "title"                         : "Cartelitos.app - Herramienta N°1 en Prueba Social",
+        "meta_description"              : "",
+        "meta_keywords"                 : "",
+        "header"                        : "<span class=\"underline\">Aumenta</span> tus ingresos<br/> y <span class=\"underline\">genera</span> confianza </br> con Prueba Social.",
+        "subheader"                     : "<strong>%s notificaciones</strong> han sido creadas y personalizadas por nuestros usuarios.<br /><br>Crea notificaciones dinámicas e interactivas</br> para los visitantes de tu tienda online.",
+        "sign_up"                       : "Empezar ➡",
+        "breadcrumb"                    : "Inicio",
+ 
+        "steps": {
+            "header"                    : "Más interacción, crecimiento y leads.",
+ 
+            "one"                       : "Instalar pixel",
+            "one_text"                  : "Instala la aplicación en cualquier página web.",
+ 
+            "two"                       : "Crea tu notificación",
+            "two_text"                  : "Crea y personaliza tu notificacion como más te guste.",
+ 
+            "three"                     : "Crece y aumenta ingresos",
+            "three_text"                : "Genera más prospectos, conversiones y crecimiento. Es así de fácil."
+        },
+ 
+        "setup": {
+            "header"                    : "Fácil instalación e integración a cualquier sitio web.",
+            "description"               : "Todos los sitios pueden correr nuestras notificaciones.",
+ 
+            "shopify"                   : "Shopify",
+            "wordpress"                 : "Wordpress",
+            "zapier"                    : "Zapier",
+            "squarespace"               : "Squarespace"
+        },
+ 
+        "tools": {
+            "header"                    : "%s notificaciones",
+            "subheader"                 : "Han sido impresos en todos los sitios web de nuestros clientes!",
+ 
+            "preview"                   : "Tipos de notificación",
+            "preview_description"       : "Elige cualquiera de estas para una una vista previa."
+        },
+ 
+        "pricing": {
+            "header"                    : "Elige tu plan",
+            "subheader"                 : "Selecciona un plan basado en tus necesidades"
+        },
+ 
+        "cta": {
+            "header"                    : "Regístrate ahora",
+            "subheader"                 : "Aquí empieza el verdadero crecimiento.",
+            "sign_up"                   : "Empezar"
+        }
+    },
+ 
+    "api": {
+        "error_message": {
+            "no_bearer"                 : "The request is missing the Bearer Authentication header.",
+            "no_access"                 : "You do not have access to the API.",
+            "rate_limit"                : "You reached the limit of requests in one minute, please wait.",
+            "not_found"                 : "The resource you are looking for does not exist."
+        }
+    },
+ 
+    "api_documentation": {
+        "breadcrumb"                    : "Documentación de la API",
+        "title"                         : "Documentación de la API",
+        "header"                        : "Documentación de la API",
+        "subheader"                     : "Esto es avanzado. Aquí te mostraremos la documentación para los endpoints de nuestra API, que están construidos con la<strong>arquitectura REST</strong>. Todos los endpoints devolverán una <strong>respuesta en JSON</strong> con los <strong>códigos de respuesta HTTP</strong>estándar. Necesitas una <strong>Bearer Authentication vía API</strong>.",
+ 
+        "endpoint"                      : "Endpoint",
+        "example"                       : "Ejemplo",
+        "response"                      : "Respuesta de ejemplo",
+        "api_key"                       : "Generar API Key",
+        "base_url"                      : "Base URL",
+        "parameters"                    : "Parámetros",
+        "required"                      : "Requerido",
+        "optional"                      : "Opcional",
+        "details"                       : "Detalles",
+        "description"                   : "Descripción",
+        "string"						: "String",
+		"int"							: "Integer",
+		"float"							: "Float",
+		"boolean"						: "Boolean",
+		"file"							: "Archivo",
+ 
+        "authentication": {
+            "header"                    : "Autenticación",
+            "subheader"                 : "Todos los endpoints de la API requieren una petición enviada con el método <strong>Bearer Authentication.</strong>"
+        },
+ 
+        "filters": {
+            "page"                      : "El número de la página de la cual quiere resultados. Por defecto es <code>1</code>.",
+            "results_per_page"          : "Cuántos resultados quiere por página. Valores permitidos: %s. Por defecto <code>%s</code>.",
+            "search"                    : "La cadena a buscar.",
+            "search_by"                 : "Qué campo se está buscando. Los valores permitidos son: %s.",
+            "order_by"                  : "Porque campos quieres ordenar los resultados. Los valores permitidos son: %s.",
+            "order_by_type"             : "El orden de los resultados. Los valores permitidos son: <code>ASC</code> para orden ascendente, y <code>DESC</code> para orden descendente."
+        },
+
+        "user": {
+			"breadcrumb"				: "User",
+			"title"						: "User API Documentation",
+			"header"					: "User",
+			"read_header"				: "Retrieve user"
+		},
+ 
+        "campaigns": {
+			"breadcrumb"				: "Campañas",
+			"title"						: "Campaigns API Documentation",
+			"header"					: "Campaigns",
+			"read_all_header"			: "Retrieve campaigns",
+			"read_header"				: "Retrieve a campaign"
+		},
+ 
+        "notifications": {
+			"breadcrumb"				: "Notifications",
+			"title"						: "Notifications API Documentation",
+			"header"					: "Notifications",
+			"read_all_header"			: "Retrieve notifications",
+			"read_header"				: "Retrieve a notification"
+		},
+ 
+        "payments": {
+			"breadcrumb"				: "Payments",
+			"title"						: "Payments API Documentation",
+			"header"					: "Payments",
+			"read_all_header"			: "Retrieve payments",
+			"read_header"				: "Retrieve a payment"
+		},
+ 
+        "users_logs": {
+			"breadcrumb"				: "Logs",
+			"title"						: "Logs API Documentation",
+			"header"					: "Logs",
+			"read_all_header"			: "Retrieve logs"
+		}
+    },
+
+    "affiliate": {
+		"breadcrumb"					: "Affiliate",
+		"title"							: "Affiliate",
+		"menu"							: "Affiliate",
+		"header"						: "The affiliates program",
+		"subheader"						: "Easiest way to earn commission from people that you bring to the platform.",
+
+		"commission_percentage": {
+			"header"					: "%s commission",
+			"subheader_once"			: "Earn commission from the first payment of any user that you bring to the platform.",
+			"subheader_forever"			: "Earn commission from all of the payments of any user that you bring to the platform."
+		},
+
+		"minimum_withdrawal_amount": {
+			"header"					: "%s minimum withdrawal",
+			"subheader"					: "Once your approved balance reaches the minimum withdrawal amount, you can request a withdrawal."
+		},
+
+		"how": {
+			"header"					: "How does it work?",
+			"one"						: "Sign up",
+			"one_help"					: "Simply register for an account on our platform.",
+			"two"						: "Share your link",
+			"two_help"					: "Start promoting your referral link and bring new users.",
+			"three"						: "Start earning",
+			"three_help"				: "Once your referred users start paying, you'll get paid as well.",
+			"four"						: "Withdraw your money",
+			"four_help"					: "Request a withdrawal and you'll get paid."
+		},
+
+		"cta": {
+			"header"					: "Start earning money 💰",
+			"subheader"					: "Create an account and start in just a few minutes.",
+			"register"					: "Sign up"
+		}
+    },
+ 
+    "notfound": {
+        "title"                         : "No encontrado",
+        "header"                        : "404 Not Found",
+        "subheader"                     : "La página que buscas no ha sido encontrada."
+    }
+}
