@@ -1,0 +1,57 @@
+/* Cookie Notification */
+.altumcode-cookie-notification-wrapper {
+}
+
+@media (min-width: 576px) {
+    .altumcode-cookie-notification-wrapper {
+        max-width: 400px !important;
+    }
+}
+
+.altumcode-cookie-notification-content {
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.altumcode-cookie-notification-header {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+}
+
+.altumcode-cookie-notification-image {
+    min-width: 50px !important;
+    height: 50px !important;
+    margin-right: 8px !important;
+}
+
+.altumcode-cookie-notification-description {
+    font-size: 14px !important;
+    margin-bottom: 0 !important;
+}
+
+.altumcode-cookie-notification-close {
+    align-self: end !important;
+}
+
+.altumcode-cookie-notification-url {
+    font-weight: bold !important;
+}
+
+.altumcode-cookie-notification-button {
+    border-radius: 4px !important;
+    padding: 6px !important;
+    text-align: center !important;
+    font-weight: bold !important;
+    font-size: 16px !important;
+    margin: 10px 0 !important;
+    display: block !important;
+    width: 100% !important;
+    border: 0 !important;
+    transition: opacity .3s !important;
+}
+
+.altumcode-cookie-notification-button:hover {
+    opacity: .9 !important;
+    cursor: pointer !important;
+}
