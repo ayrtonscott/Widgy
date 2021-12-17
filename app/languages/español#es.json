@@ -459,7 +459,7 @@
         "menu"                          : "Mi cuenta",
  
         "plan": {
-            "header"                    : "Plan:%s",
+            "header"                    : "Plan: %s",
             "subheader"                 : "termina el %s",
             "upgrade_plan"          : "Mejorar plan",
             "renew_plan"                : "Renovar/Cambiar plan",
@@ -846,12 +846,12 @@
             "header"                        : "Campañas",
             "create"                        : "Crear campaña",
  
-            "name"                          : "Campaña",
+            "name"                          : "Sitio web",
             "date"                          : "Creada el",
             "is_enabled"                    : "Estado",
             "is_enabled_tooltip"            : "Cambia el estado de la campaña",
  
-            "no_data"                       : "No hay campañas por el momento, ¿Por qué no creamos una?"
+            "no_data"                       : "No hay campañas por el momento, ¿Por qué no creamos una? <br> <center>Cada campaña es un sitio web para incluir notificaciones..</center></br>"
         },
  
         "filters": {
@@ -1384,7 +1384,7 @@
             "icon"                              : "fa fa-fw fa-sort-numeric-up",
  
             "title_default"                     : "¿Cuánto te ha gustado nuestro sitio?",
-            "description_default"               : "Rate from 1 to 5. 5 being excellent.",
+            "description_default"               : "Del 1 al 5, donde 5 es excelente.",
             "feedback_score_1"                  : "1",
             "feedback_score_2"                  : "2",
             "feedback_score_3"                  : "3",
