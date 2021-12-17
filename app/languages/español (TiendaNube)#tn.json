@@ -72,7 +72,7 @@
             "logout"                    : "Salir",
             "settings"                  : "Ajustes",
             "admin"                     : "Admin",
-            "website"                   : "Sitio web",
+            "website"                   : "Tienda",
             "admin_others"              : "Otros"
         },
  
@@ -262,7 +262,7 @@
             "no_ads"                                    : "Soporte premium",
             "removable_branding"                        : "Sin 'By Cartelitos'",
             "custom_branding"                           : "Marca propia",
-            "campaigns_limit"                           : "<strong>%s</strong> Sitios web",
+            "campaigns_limit"                           : "<strong>%s</strong> Tiendas",
             "notifications_limit"                       : "<strong>%s</strong> Notificaciones simultaneas",
             "notifications_impressions_limit"           : "<strong>%s</strong> Impresiones / mes",
             "track_notifications_retention"			    : "<strong>%s</strong> días de estadísticas",
@@ -364,7 +364,7 @@
  
         "custom_plan": {
             "header"                    : "Suscribirte al plan %s",
-            "subheader"                 : "⚡ ¡Estás punto de mejorar tu sitio! Completa el siguiente formulario..",
+            "subheader"                 : "⚡ ¡Estás punto de mejorar tu tienda! Completa el siguiente formulario..",
  
             "paypal"                    : "PayPal",
             "stripe"                    : "Stripe",
@@ -846,12 +846,12 @@
             "header"                        : "Campañas",
             "create"                        : "Crear campaña",
  
-            "name"                          : "Sitio web",
+            "name"                          : "Tienda",
             "date"                          : "Creada el",
             "is_enabled"                    : "Estado",
             "is_enabled_tooltip"            : "Cambia el estado de la campaña",
  
-            "no_data"                       : "No hay campañas por el momento, ¿Por qué no creamos una? <br> <center>Cada campaña es un sitio web para incluir notificaciones..</center></br>"
+            "no_data"                       : "No hay campañas por el momento, ¿Por qué no creamos una? <br> <center>Cada campaña es una tienda para incluir notificaciones..</center></br>"
         },
  
         "filters": {
@@ -928,11 +928,11 @@
         "input": {
             "name"                      : "Nombre",
             "domain"                    : "Dominio / Subdominio",
-            "domain_placeholder"        : "ej: domain.com o subdomain.domain.com",
-            "domain_help"               : "El dominio del sitio donde correrá la campaña.",
-            "domain_help2"              : "Las notificaciones NO FUNCIONARÁN en otros dominios que no especifiques aquí.",
+            "domain_placeholder"        : "ej: apple.com o apple.mitiendanube.com",
+            "domain_help"               : "El dominio de la tienda donde se instalarán las notificaciones.",
+            "domain_help2"              : "Puedes ver tu dominio real en tu <strong>Administrador Nube</strong> <br>(Configuraciones -> Dominios)<br><br>Es necesario que incluya el http://.",
             "include_subdomains"        : "Incluir Subdominios <strong>(Recomendado)</strong>",
-            "include_subdomains_help"   : "Todos los subdominios funcionarán en esta campaña."
+            "include_subdomains_help"   : "Un subdominio es todo lo que va antes del primer punto<br>Ejemplos: <strong>tienda</strong>.apple.com, <strong>blog</strong>.apple.com, <strong>www</strong>.apple.com."
         }
     },
  
@@ -943,18 +943,18 @@
         "input": {
             "name"                      : "Nombre",
             "domain"                    : "Dominio / Subdominio",
-            "domain_placeholder"        : "ej: domain.com o subdomain.domain.com",
-            "domain_help"               : "El dominio del sitio donde correrá la campaña.",
-            "domain_help2"              : "Las notificaciones NO FUNCIONARÁN en otros dominios que no especifiques aquí.",
-            "include_subdomains"        : "Incluir Subdominios (Recomendado)",
-            "include_subdomains_help"   : "Todos los subdominios funcionarán en esta campaña."
+            "domain_placeholder"        : "ej: apple.com o apple.mitiendanube.com",
+            "domain_help"               : "El dominio de la tienda donde se instalarán las notificaciones.",
+            "domain_help2"              : "Puedes ver tu dominio real en tu <strong>Administrador Nube</strong> <br>(Configuraciones -> Dominios)<br><br>Es necesario que incluya el http://.",
+            "include_subdomains"        : "Incluir Subdominios <strong>(Recomendado)</strong>",
+            "include_subdomains_help"   : "Un subdominio es todo lo que va antes del primer punto<br>Ejemplos: <strong>tienda</strong>.apple.com, <strong>blog</strong>.apple.com, <strong>www</strong>.apple.com."
         }
     },
  
     "campaign_pixel_key_modal": {
         "install": {
             "header"                    : "Instalar Pixel",
-            "subheader"                 : "Copia y pega el siguiente código Javascript antes de la etiqueta <code>&lt;/head&gt;</code> de tu sitio web.",
+            "subheader"                 : "1) Ve a tu Administrador Nube, y luego a <br> <code>Configuraciones -> Códigos externos -> Códigos de Tracking</code>.<br>2) Copia y pega el siguiente código Javascript dentro del cuadro de texto.<br><br><font color=\"red\">Importante:</font> Si has instalado la aplicación mediante la Tienda de Aplicaciones Nube, <strong>es probable que el código se haya insertado automáticamente</strong>. <br> Si experimentas problemas con notificaciones duplicadas, intenta eliminando el código que pegaste manualmente.",
             "copy"                      : "Copiar Pixel",
             "copied"                    : "¡Copiado!"
         }
@@ -1155,7 +1155,7 @@
             "data_send_email_placeholder"   : "Dirección de email válida",
  
             "data_trigger_webhook"          : "Disparador de Webhook",
-            "data_trigger_webhook_help"     : "Envia una petición al endpoint para informarnos sobre un evento o conversión que ocurrió en tu sitio web relacionado con esta notificación, nosotros haremos el resto. La llamada DEBE ser una solicitud POST y puede tener cualquier parámetro de datos de formulario.",
+            "data_trigger_webhook_help"     : "Envia una petición al endpoint para informarnos sobre un evento o conversión que ocurrió en tu tienda relacionado con esta notificación, nosotros haremos el resto. La llamada DEBE ser una solicitud POST y puede tener cualquier parámetro de datos de formulario.",
             "data_trigger_type_webhook"     : "Webhook",
             "data_trigger_input_webhook"    : "Full Webhook Url",
  
@@ -1283,10 +1283,10 @@
  
         "live_counter": {
             "name"                              : "Contador de visitas",
-            "description"                       : "Muestra a tus usuarios cuanta gente hay en el sitio para generar confianza.",
+            "description"                       : "Muestra a tus usuarios cuanta gente hay en la tienda para generar confianza.",
             "icon"                              : "fa fa-fw fa-globe",
  
-            "description_default"               : "Visitantes en linea.",
+            "description_default"               : "Visitantes en la tienda.",
             "image_default"                     : "https://img.icons8.com/nolan/2x/cutting-coupon.png",
             "number_default"                    : "35"
         },
@@ -1296,7 +1296,7 @@
             "description"                       : "Captura fácilmente los emails de tus visitantes y genera leads de calidad..",
             "icon"                              : "fa fa-fw fa-envelope-open",
  
-            "title_default"                     : "Noticias semanales",
+            "title_default"                     : "¡Lo nuevo en zapatillas!",
             "description_default"               : "No te enviaremos SPAM y puedes desuscribirte cuando quieras.",
             "email_placeholder_default"         : "Tu email",
             "button_text_default"               : "Suscribirme",
@@ -1305,13 +1305,13 @@
  
         "latest_conversion": {
             "name"                              : "Última conversión",
-            "description"                       : "Crea prueba social mostrando tus más recientes conversiones en tu sitio..",
+            "description"                       : "Crea prueba social mostrando las conversiones más recientes en tu tienda..",
             "icon"                              : "fa fa-fw fa-funnel-dollar",
  
-            "title_default"                     : "Roxana de Chicago",
+            "title_default"                     : "Roxana de Mendoza",
             "description_default"               : "Ha comprado Falda Cream M.",
             "image_default"                     : "https://www.hola.com/imagenes/seleccion/20201214181023/faldas-de-lana-moda-otono-invierno/0-900-390/falda-midi-beige-a.jpg",
-            "time_ago_default"                  : "Hace 3 minutos.."
+            "time_ago_default"                  : "Hace 7 minutos.."
         },
  
         "conversions_counter": {
@@ -1321,7 +1321,7 @@
  
             "title_default"                     : "Personas han comprado este producto",
             "image_default"                     : "https://img.icons8.com/officel/2x/return-purchase.png",
-            "number_default"                    : "5",
+            "number_default"                    : "23",
             "time_default"                      : "en las últimas %s horas"
         },
  
@@ -1337,11 +1337,11 @@
  
         "social_share": {
             "name"                              : "Social Share",
-            "description"                       : "Atrae toneladas de tráfico dejando que tus clientes compartan tu sitio en las redes.",
+            "description"                       : "Atrae toneladas de tráfico dejando que tus clientes compartan tu tienda en las redes.",
             "icon"                              : "fa fa-fw fa-share-alt",
  
             "title_default"                     : "¡Cuéntale a tus amigos!",
-            "description_default"               : "¡Agradecemos que compartas nuestro sitio! ¡Muchísimas gracias!"
+            "description_default"               : "¡Agradecemos que compartas nuestra tienda! ¡Muchísimas gracias!❤️"
         },
  
         "random_review": {
@@ -1349,9 +1349,9 @@
             "description"                       : "Nada más poderoso que un cliente satisfecho",
             "icon"                              : "fa fa-fw fa-random",
  
-            "title_default"                     : "Brad 'el loco' Pit",
-            "description_default"               : "¡¡¡Cartelitos es el mejor servicio que he probado!!! ¡¡I f#$%ing love it!! ",
-            "image_default"                     : "https://r4.abcimg.es/resizer/resizer.php?imagen=https%3A%2F%2Fstatic3.abc.es%2Fmedia%2Fciencia%2F2020%2F02%2F12%2Fbrad-pitt-k5rG--220x220%40abc.jpg"
+            "title_default"                     : "Alejandra Ortega",
+            "description_default"               : "El envío suuuper rápido y el producto fenomenal! Me encanta!!! ",
+            "image_default"                     : "https://i.ibb.co/S799bfq/100.jpg"
         },
  
         "emoji_feedback": {
@@ -1359,7 +1359,7 @@
             "description"                       : "Una manera interactiva de obtener feedback sobre tu producto o servicio.",
             "icon"                              : "fa fa-fw fa-smile-beam",
  
-            "title_default"                     : "¿Te ha gustado nuestro sitio?",
+            "title_default"                     : "¿Te ha gustado nuestra tienda?",
             "feedback_emoji_angry"              : "Triste",
             "feedback_emoji_sad"                : "Enojado",
             "feedback_emoji_neutral"            : "Neutral",
@@ -1372,7 +1372,7 @@
             "description"                       : "Cumple con la norma RGPD avisando a tus usuarios acerca de las cookies..",
             "icon"                              : "fa fa-fw fa-cookie",
  
-            "description_default"               : "Utilizamos cookies para asegurarte la mejor experiencia en nuestro sitio.",
+            "description_default"               : "Utilizamos cookies para asegurarte la mejor experiencia en nuestra tienda.",
             "button_text_default"               : "Okay",
             "url_text_default"                  : "Saber más",
             "image_default"                     : "https://img.icons8.com/plasticine/2x/cookie.png"
@@ -1383,8 +1383,8 @@
             "description"                       : "La manera más común de obtener feedback masivo.",
             "icon"                              : "fa fa-fw fa-sort-numeric-up",
  
-            "title_default"                     : "¿Cuánto te ha gustado nuestro sitio?",
-            "description_default"               : "Del 1 al 5, donde 5 es excelente.",
+            "title_default"                     : "¿Recomendarías nuestra tienda?",
+            "description_default"               : "¿Qué tan probable es que nos recomiendes a tus amigos?",
             "feedback_score_1"                  : "1",
             "feedback_score_2"                  : "2",
             "feedback_score_3"                  : "3",
@@ -1398,13 +1398,13 @@
             "icon"                              : "fa fa-fw fa-user-plus",
  
             "title_default"                     : "Eduardo Gomez",
-            "description_default"               : "Equipo de Cartelitos",
+            "description_default"               : "Atención al cliente",
             "image_default"                     : "https://img.icons8.com/dusk/64/000000/winner.png",
             "content_title_default"             : "¿Tienes alguna pregunta?",
             "content_description_default"       : "¡Nos comunicaremos contigo en breve!",
             "input_placeholder_default"         : "Número de teléfono válido",
-            "button_text_default"               : "Llámenme ⚡️",
-            "agreement_text_default"            : "El leído y estoy de acuerdo con la política de privacidad"
+            "button_text_default"               : "Whatsapeame ⚡️",
+            "agreement_text_default"            : "El leído y estoy de acuerdo con la política de privacidad."
         },
  
         "countdown_collector": {
@@ -1428,7 +1428,7 @@
  
         "informational_bar": {
             "name"                              : "Barra informativa",
-            "description"                       : "Barra totalmente personalizable para tu sitio.",
+            "description"                       : "Barra totalmente personalizable para tu tienda.",
             "icon"                              : "fa fa-fw fa-info",
  
             "title_default"                     : "¡Llegó lo nuevo!",
@@ -1593,11 +1593,11 @@
     },
  
     "index": {
-        "title"                         : "Cartelitos - Herramienta N°1 en Prueba Social",
+        "title"                         : "Cartelitos.app - Herramienta N°1 en Prueba Social",
         "meta_description"              : "",
         "meta_keywords"                 : "",
         "header"                        : "<span class=\"underline\">Aumenta</span> tus ingresos<br/> y <span class=\"underline\">genera</span> confianza </br> con Prueba Social.",
-        "subheader"                     : "<strong>%s cartelitos</strong> han sido creados y personalizados por nuestros usuarios.<br />Crea notificaciones dinámicas e interactivas</br> para los visitantes de tu sitio web.",
+        "subheader"                     : "<strong>%s notificaciones</strong> han sido creadas y personalizadas por nuestros usuarios.<br /><br>Crea notificaciones dinámicas e interactivas</br> para los visitantes de tu tienda online.",
         "sign_up"                       : "Empezar ➡",
         "breadcrumb"                    : "Inicio",
  
@@ -1619,14 +1619,14 @@
             "description"               : "Todos los sitios pueden correr nuestras notificaciones.",
  
             "shopify"                   : "Shopify",
-            "wordpress"             : "Wordpress",
+            "wordpress"                 : "Wordpress",
             "zapier"                    : "Zapier",
             "squarespace"               : "Squarespace"
         },
  
         "tools": {
-            "header"                    : "%s notificaciones mostradas",
-            "subheader"                 : "Han sido impresas en todos los sitios web de nuestros clientes",
+            "header"                    : "%s notificaciones",
+            "subheader"                 : "Han sido impresos en todos los sitios web de nuestros clientes!",
  
             "preview"                   : "Tipos de notificación",
             "preview_description"       : "Elige cualquiera de estas para una una vista previa."

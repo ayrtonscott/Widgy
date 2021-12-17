@@ -362,7 +362,7 @@
 
 			"paypal"					: "PayPal",
 			"stripe"					: "Stripe",
-			"offline_payment"			: "Offline payment",
+			"offline_payment"           : "<img src=\"https://http2.mlstatic.com/frontend-assets/ui-navigation/5.15.2/mercadopago/logo__large.png\">MercadoPago (<strong>Argentina</strong>)",
 			"coinbase"					: "Coinbase",
 			"payu"						: "PayU",
 			"paystack"					: "Paystack",
