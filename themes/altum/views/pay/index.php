@@ -193,18 +193,6 @@
                                 <?php endforeach ?>
                             </div>
 
-                            <div id="offline_payment_processor_wrapper" style="display: none;">
-                                <div class="form-group mt-4">
-                                    <label><?= language()->pay->custom_plan->offline_payment_instructions ?></label>
-                                    <div class="card"><div class="card-body"><?= nl2br(settings()->offline_payment->instructions) ?></div></div>
-                                </div>
-
-                                <div class="form-group mt-4">
-                                    <label><?= language()->pay->custom_plan->offline_payment_proof ?></label>
-                                    <input id="offline_payment_proof" type="file" name="offline_payment_proof" accept="<?= \Altum\Uploads::get_whitelisted_file_extensions_accept('offline_payment_proofs') ?>" class="form-control" />
-                                    <div class="mt-2"><span class="text-muted"><?= sprintf(language()->global->accessibility->whitelisted_file_extensions, \Altum\Uploads::get_whitelisted_file_extensions_accept('offline_payment_proofs')) ?></span></div>
-                                </div>
-                            </div>
                         </div>
                     <?php endif ?>
 
@@ -218,9 +206,9 @@
 
                                 <div class="card">
                                     <div class="card-body d-flex align-items-center justify-content-between">
-
-                                        <div class="card-title mb-0"><?= language()->pay->custom_plan->one_time_type ?></div>
-
+                                        <?php // * Modificado 16/12 en 10.0.0 - (Establecemos la ID de tipo) INICIO. ?>
+                                        <div id="tipo" class="card-title mb-0"><?= language()->pay->custom_plan->one_time_type ?></div>
+                                        <?php // * Modificado 16/12 en 10.0.0 - (Establecemos la ID de tipo) FIN. ?>
                                         <div class="">
                                             <span class="custom-radio-box-main-icon"><i class="fa fa-fw fa-hand-holding-usd"></i></span>
                                         </div>
@@ -247,8 +235,29 @@
 
                         </div>
                     </div>
+                    <?php // * Modificado 17/12 en 10.0.0 - Reubicado el div para que aparezca al final- INICIO. ?>
+                    <div id="offline_payment_processor_wrapper" style="display: none;">
+                                <div class="form-group mt-4">
+                                    <label><?= language()->pay->custom_plan->offline_payment_instructions ?></label>
+                                    <?php // * Modificado 13/8 en 7.1.0 - (Agregue ID Instrucciones) INICIO. 
+                                    ?>
+                                    <div class="card">
+                                        <div id="instrucciones" class="card-body"><?= nl2br(settings()->offline_payment->instructions) ?></div>
+                                    </div>
+                                    <?php // * Modificado 13/8 en 7.1.0 - (Agregue ID Instrucciones) FIN. 
+                                    ?>
+                                </div>
 
-                </div>
+                                <div class="form-group mt-4">
+                                    <label><?= language()->pay->custom_plan->offline_payment_proof ?></label>
+                                    <input id="offline_payment_proof" type="file" name="offline_payment_proof" accept="<?= \Altum\Uploads::get_whitelisted_file_extensions_accept('offline_payment_proofs') ?>" class="form-control" />
+                                    <div class="mt-2"><span class="text-muted"><?= sprintf(language()->global->accessibility->whitelisted_file_extensions, \Altum\Uploads::get_whitelisted_file_extensions_accept('offline_payment_proofs')) ?></span></div>
+                                </div>
+                    </div>
+                    
+               
+                        </div>
+                        <?php // * Modificado 17/12 en 10.0.0 - Reubicado el div para que aparezca al final- FIN. ?>
 
                 <div class="mt-5 mt-xl-0 col-12 col-xl-4">
                     <div class="">
@@ -699,8 +708,18 @@
 
         if(payment_processor == 'offline_payment') {
             $('#offline_payment_processor_wrapper').show();
+            <?php // * Modificado 17/12 en 10.0.0 - Agregado para que muestre mensaje si es offline payment- INICIO. ?>
+            $("#tipo").html("Se cobrará automáticamente los 5 de cada mes");
+            $('#summary_payment_type_one_time').hide();
+            $('#summary_payment_type_recurring').show();
+            <?php // * Modificado 17/12 en 10.0.0 - Agregado para que muestre mensaje si es offline payment- FIN. ?>
         } else {
             $('#offline_payment_processor_wrapper').hide();
+            <?php // * Modificado 17/12 en 10.0.0 - Agregado para que muestre mensaje si es offline payment- INICIO. ?>
+            $("#tipo").html("<?= language()->pay->custom_plan->one_time_type ?>");
+            $('#summary_payment_type_one_time').show();
+            $('#summary_payment_type_recurring').hide();
+            <?php // * Modificado 17/12 en 10.0.0 - Agregado para que muestre mensaje si es offline payment- FIN. ?>
         }
 
         $('[name="payment_type"]').filter(':visible:first').click();
@@ -824,11 +843,135 @@
 
         /* Display the total */
         $('#summary_total').html(nr(price, 2));
+        <?php // * Modificado 13/8 en 7.1.0 - INICIO. 
+        ?>
+        // Cada vez que calculamos precio, ejecutamos la función CHEQUEAR.
+        chequear();
+        <?php // * Modificado 13/8 en 7.1.0 - FIN. 
+        ?>
     }
 
     /* Select default values */
     $('[name="payment_frequency"]:first').click();
     $('[name="payment_processor"]:first').click();
     $('[name="payment_type"]').filter(':visible:first').click();
+    <?php // * Modificado 13/8 en 7.1.0 - INICIO. 
+    ?>
+
+    function chequear() {
+        <?php // ? Si seleccionamos el MES. 
+        ?>
+        if ($('#monthly_price').is(':checked')) {
+            switch ($(summary_total).html()) {
+                /*Standard packages*/
+                case '9.99':
+                    var plan = "Basic";
+                    var link = "https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c938084740ab1f901740d5e1a060765";
+                    break;
+                case '15.99':
+                    var plan = "Business";
+                    var link = "https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c93808472e484950173542324be44ef";
+                    break;
+                case '24.99':
+                    var plan = "Enterprise";
+                    var link = "https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c93808472e48495017333df68ae1033";
+                    break;
+                case '42.99':
+                    var plan = "Growth Hacker";
+                    var link = "https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c93808473fb8ded01741889163c3c8a";
+                    break;
+                case '60.99':
+                    var plan = "Big Whale";
+                    var link = "https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c93808473fb8ded0174188a2bc43c8e";
+                    break;
+                case '73.99':
+                    var plan = "Unicorn";
+                    var link = "https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c9380847415a4cf0174188ab344034b";
+                    break;
+                case '89.99':
+                    var plan = "Shenzhen";
+                    var link = "https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c9380847415a4cf0174188b4ed9034e";
+                    break;
+
+                    // 25% OFF
+                case '7.49':
+                    var plan = "Basic";
+                    var link = "https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c9380847b3a39f5017b420343660952";
+                    break;
+                case '11.99':
+                    var plan = "Business";
+                    var link = "https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c9380847b3a39f5017b4232b3180966";
+                    break;
+                case '18.74':
+                    var plan = "Enterprise";
+                    var link = "https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c9380847ac5c717017b4233a57e629c";
+                    break;
+                case '32.24':
+                    var plan = "Growth Hacker";
+                    var link = "https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c9380847ac5c27d017b42344e6362d7";
+                    break;
+                case '45.74':
+                    var plan = "Big Whale";
+                    var link = "https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c9380847ac5c717017b42350b93629d";
+                    break;
+                case '55.49':
+                    var plan = "Unicorn";
+                    var link = "https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c9380847ac5c27d017b4235b18162d8";
+                    break;
+                case '67.49':
+                    var plan = "Shenzhen";
+                    var link = "https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c9380847b3a39f5017b423658c40968";
+                    break;
+
+                    // 50% OFF
+                case '4.99':
+                    var plan = "Basic";
+                    var link = "https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c9380847415a4cf0174188f7a090353";
+                    break;
+                case '7.99':
+                    var plan = "Business";
+                    var link = "https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c9380847415a4cf017418901cbe0354";
+                    break;
+                case '12.50':
+                    var plan = "Enterprise";
+                    var link = "https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c93808473fb8ded0174189078843c9b";
+                    break;
+                case '21.49':
+                    var plan = "Growth Hacker";
+                    var link = "https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c93808473fb8ded01741890c7f53c9c";
+                    break;
+                case '30.49':
+                    var plan = "Big Whale";
+                    var link = "https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c9380847415a4cf017418912c830355";
+                    break;
+                case '37.00':
+                    var plan = "Unicorn";
+                    var link = "https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c9380847415a4cf01741891e7d00357";
+                    break;
+                case '45.00':
+                    var plan = "Shenzhen";
+                    var link = "https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c9380847415a4cf017418927eec035a";
+                    break;
+                default:
+            }
+        }
+        var USD = 190
+        var ARS = $(summary_total).html() * USD;
+        var ARS = parseInt(ARS);
+
+        var ins = '1) <strong>Ingresa</strong> en el siguiente enlace: <a class="text-info" target="_blank" href=" ' + link + ' " >Suscribirse a ' + plan + '</a><br><br> 2) <strong>Confirma la suscripción</strong> de <strong><span class="text-success">$' + parseInt(ARS) + '</span></strong> (ARS) finales.<br><small> Impuestos incluidos</small><br><br>3) <strong>Saca una captura</strong> del comprobante de pago.<br><br>4) Click en <strong>seleccionar archivo</strong> aquí debajo y sube foto el comprobante.<br><br>5) No te olvides de hacer click en <strong>enviar datos</strong>.<br><br><small>Para más información acerca de los cobros podes ver nuestras <a class="text-info" target="_blank" href="<?= SITE_URL . "page/preguntas-frecuentes" ?>" >preguntas frecuentes</a>.</small>';
+        $("#instrucciones").html(ins);
+
+        <?php // ? Si seleccionamos el AÑO. 
+        ?>
+        if ($('#annual_price').is(':checked')) {
+            var link = "https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c9380847ac5c27d017b40a69fe7611b";
+            var ins = '1) <strong>Ingresa</strong> en el siguiente enlace: <a class="text-info" target="_blank" href=" ' + link + ' " >Suscribirse (ANUAL)</a><br><br> 2) <strong>Confirma la suscripción</strong> de <strong><span class="text-success">$' + parseInt(ARS) + '</span></strong> (ARS) finales.<br><small> Impuestos incluidos</small><br><br>3) <strong>Saca una captura</strong> del comprobante de pago.<br><br>4) Click en <strong>seleccionar archivo</strong> aquí debajo y sube foto el comprobante.<br><br>5) No te olvides de hacer click en <strong>enviar datos</strong> aquí debajo.<br><br><small>Para más información acerca de los cobros podes ver nuestras <a class="text-info" target="_blank" href="<?= SITE_URL . "page/preguntas-frecuentes" ?>" >preguntas frecuentes</a>.</small>';
+            $("#instrucciones").html(ins);
+        }
+    }
+
+    <?php // * Modificado 13/8 en 7.1.0 - FIN. 
+    ?>
 </script>
 <?php \Altum\Event::add_content(ob_get_clean(), 'javascript') ?>
