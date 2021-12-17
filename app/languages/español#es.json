@@ -368,7 +368,7 @@
  
             "paypal"                    : "PayPal",
             "stripe"                    : "Stripe",
-            "offline_payment"           : "<img src=\"https://http2.mlstatic.com/frontend-assets/ui-navigation/5.15.2/mercadopago/logo__large.png\">MercadoPago (Argentina)",
+            "offline_payment"           : "<img src=\"https://http2.mlstatic.com/frontend-assets/ui-navigation/5.15.2/mercadopago/logo__large.png\">MercadoPago (<strong>Argentina</strong>)",
             "coinbase"					: "Coinbase",
 			"payu"						: "PayU",
 			"paystack"					: "Paystack",
@@ -376,9 +376,9 @@
 			"mollie"					: "Mollie",
 			"yookassa"					: "Yookassa",
 
-            "payment_frequency"         : "Frecuencia de pago",
-            "monthly"                   : "Pagos mensuales",
-            "annual"                    : "Pagos anuales",
+            "payment_frequency"         : "<small>[1/3]</small> Frecuencia de cobros",
+            "monthly"                   : "Cobros mensuales",
+            "annual"                    : "Cobros anuales <small><font color=\"green\">(2 meses gratis)</font></small>",
             "annual_savings"            : "%s %s",
             "lifetime"                  : "De por vida",
             "lifetime_help"             : "Un solo pago",
@@ -386,14 +386,14 @@
             "code_button"               : "Tengo un cupón de descuento",
             "code"                      : "Código de descuento",
  
-            "payment_processor"         : "Método de pago",
+            "payment_processor"         : "<small>[2/3]</small> Método de pago",
             "no_processor"              : "No hay procesadores de pago disponibles por el momento.",
-            "offline_payment_instructions": "Instrucciones para el pago",
-            "offline_payment_proof"     : "Prueba de pago",
+            "offline_payment_instructions": "Instrucciones para suscribirse:",
+            "offline_payment_proof"     : "Envianos el comprobante de pago..",
             "offline_payment_proof_help": "Envianos la foto del comprobante de pago (jpg, jpeg, png or pdf).",
  
-            "payment_type"              : "Tipo de pago",
-            "one_time_type"             : "Tramite de una sola vez",
+            "payment_type"              : "<small>[3/3]</small> Tipo de pago",
+            "one_time_type"             : "Pago único",
             "recurring_type"            : "Pago recurrente",
  
             "summary": {
@@ -411,8 +411,8 @@
                 "payment_processor"     : "Pagado por",
  
                 "payment_type"          : "Tipo",
-                "one_time"              : "Tramite único",
-                "one_time_help"         : "Solo se procesará una vez",
+                "one_time"              : "Único",
+                "one_time_help"         : "Solo se cobrará una vez",
                 "recurring"             : "Recurrente",
                 "recurring_help"        : "Cobro automático",
  
@@ -439,7 +439,7 @@
             "code_used"                 : "Ya has utilizado este código..",
             "canceled_payment"          : "Aparentemente has cancelado el pago por alguna razón.",
             "failed_payment"            : "Algo no está funcionando bien, por favor intenta nuevamente y si esto continúa comunicate por el chat.",
-            "offline_payment_proof_missing": "Necesitas enviarnos una prueba de pago antes de continuar."
+            "offline_payment_proof_missing": "Necesitas enviarnos una prueba de pago antes de continuar, podrás hacerlo al final de esta página."
         }
     },
  
