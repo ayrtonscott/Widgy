@@ -18,6 +18,9 @@ const ASSETS_URL_PATH = THEME_URL_PATH . 'assets/';
 const UPLOADS_PATH = ROOT_PATH . 'uploads/';
 const UPLOADS_URL_PATH = 'uploads/';
 const CACHE_DEFAULT_SECONDS = 2592000;
+// * Agregado 17/12 en 10.0.0 - (HELPCENTER_URL) INICIO.
+define('HELPCENTER_URL', 'https://intercom.help/cartelitos/');
+// * Agregado 17/12 en 10.0.0 - (HELPCENTER_URL) FIN.
 
 /* Config file */
 require_once ROOT_PATH . 'config.php';
