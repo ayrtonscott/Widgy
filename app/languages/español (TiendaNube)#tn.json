@@ -465,7 +465,7 @@
             "renew_plan"                : "Renovar/Cambiar plan",
             "renew"                     : "Renovar/mejorar",
  
-            "notifications_impressions_limit" : "Has utilizado %s impresiones de las %s disponibles para este mes."
+            "notifications_impressions_limit" : "Has utilizado %s impresiones de las %s disponibles para este mes. Se reinician el primer día de cada mes."
         },
  
         "settings": {
