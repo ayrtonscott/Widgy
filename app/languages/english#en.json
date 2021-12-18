@@ -1,5 +1,11 @@
 {
 	"direction": "ltr",
+
+	"custom": {
+
+        "helpcenter"                    : "Help Center"
+    },
+
 	"global": {
 		"submit"						: "Submit",
 		"create"						: "Create",
