@@ -9,7 +9,9 @@
         )
     ): ?>
         <?php $has_announcements = true; ?>
-        <div data-announcement="<?= $type ?>" class="w-100 py-3" style="background-color: <?= settings()->announcements->{$type . '_background_color'} ?>;">
+        <?php // * Modificado el 19/12 en 10.0.0 (Agregado mt-5 en class) Inicio. ?>
+        <div data-announcement="<?= $type ?>" class="mt-5 w-100 py-3" style="background-color: <?= settings()->announcements->{$type . '_background_color'} ?>;">
+        <?php // * Modificado el 19/12 en 10.0.0 (Agregado mt-5 en class) Fin. ?>
             <div class="container d-flex justify-content-center position-relative">
                 <div style="color: <?= settings()->announcements->{$type . '_text_color'} ?>;"><?= settings()->announcements->{$type . '_content'} ?></div>
 
