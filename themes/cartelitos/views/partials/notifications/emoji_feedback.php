@@ -11,25 +11,27 @@
         </div>
 
         <div class="altumcode-emoji-feedback-emojis">
+        <?php // * INICIO - Modificado 21/12 en 10.0.0 - Cambiamos los SVG por PNG ?> 
             <?php if($notification->settings->show_angry): ?>
-                <img src="<?= ASSETS_FULL_URL . 'images/emojis/angry.svg' ?>" class="altumcode-emoji-feedback-emoji" data-type="angry" loading="lazy" />
+                <img src="<?= ASSETS_FULL_URL . 'images/emojis/angry.png' ?>" class="altumcode-emoji-feedback-emoji" data-type="angry" loading="lazy" />
             <?php endif ?>
 
             <?php if($notification->settings->show_sad): ?>
-                <img src="<?= ASSETS_FULL_URL . 'images/emojis/sad.svg' ?>" class="altumcode-emoji-feedback-emoji" data-type="sad" loading="lazy" />
+                <img src="<?= ASSETS_FULL_URL . 'images/emojis/sad.png' ?>" class="altumcode-emoji-feedback-emoji" data-type="sad" loading="lazy" />
             <?php endif ?>
 
             <?php if($notification->settings->show_neutral): ?>
-                <img src="<?= ASSETS_FULL_URL . 'images/emojis/neutral.svg' ?>" class="altumcode-emoji-feedback-emoji" data-type="neutral" loading="lazy" />
+                <img src="<?= ASSETS_FULL_URL . 'images/emojis/neutral.png' ?>" class="altumcode-emoji-feedback-emoji" data-type="neutral" loading="lazy" />
             <?php endif ?>
 
             <?php if($notification->settings->show_happy): ?>
-                <img src="<?= ASSETS_FULL_URL . 'images/emojis/happy.svg' ?>" class="altumcode-emoji-feedback-emoji" data-type="happy" loading="lazy" />
+                <img src="<?= ASSETS_FULL_URL . 'images/emojis/happy.png' ?>" class="altumcode-emoji-feedback-emoji" data-type="happy" loading="lazy" />
             <?php endif ?>
 
             <?php if($notification->settings->show_excited): ?>
-                <img src="<?= ASSETS_FULL_URL . 'images/emojis/excited.svg' ?>" class="altumcode-emoji-feedback-emoji" data-type="excited" loading="lazy" />
+                <img src="<?= ASSETS_FULL_URL . 'images/emojis/excited.png' ?>" class="altumcode-emoji-feedback-emoji" data-type="excited" loading="lazy" />
             <?php endif ?>
+            <?php // * FIN - Modificado 21/12 en 10.0.0 - Cambiamos los SVG por PNG ?>
         </div>
 
         <?php if($notification->settings->display_branding): ?>
