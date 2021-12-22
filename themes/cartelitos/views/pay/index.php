@@ -955,7 +955,7 @@
                 default:
             }
         }
-        var USD = 190
+        var USD = 191
         var ARS = $(summary_total).html() * USD;
         var ARS = parseInt(ARS);
 
