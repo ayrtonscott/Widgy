@@ -46,7 +46,7 @@
     <div class="mt-5 d-flex justify-content-between">
         <h2 class="h3"><?= language()->dashboard->campaigns->header ?></h2>
 
-        <div class="col-auto p-0 d-flex">
+        <div class="col-lg-auto p-2 d-flex"> <?php // * Modificado 24/12 en 10.0.0 - Fix versión mobile ?>
             <div>
                 <?php if($this->user->plan_settings->campaigns_limit != -1 && $data->campaigns_total >= $this->user->plan_settings->campaigns_limit): ?>
                     <button type="button" data-toggle="tooltip" title="<?= language()->campaign->error_message->campaigns_limit ?>" class="btn btn-primary rounded-pill disabled">
