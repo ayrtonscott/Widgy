@@ -1,6 +1,6 @@
 <?php defined('ALTUMCODE') || die() ?>
 
-<div class="mt-5 d-flex justify-content-between">
+<div class="mt-5 justify-content-between"><?php // * Modificado el 24/12 en 10.0.0 - Borre d-flex Fix mobile ?>
         <h2 class="h3"><?= language()->campaign->notifications->header ?></h2>
 
         <div class="col-auto p-0 d-flex">
