@@ -51,7 +51,7 @@
                         </div>
 
                         <div class="dropdown">
-                            <button type="button" class="btn btn-link text-secondary dropdown-toggle dropdown-toggle-simple" data-toggle="dropdown" data-boundary="viewport">
+                            <button type="button" class="btn btn-link text-secondary dropdown-toggle dropdown-toggle-simple" data-toggle="dropdown" data-boundary="scrollParent"> <?php // * Modificado 24/12 en 10.0.0 - Cambiado viewport por scrollParent ?>
                                 <i class="fa fa-fw fa-ellipsis-v"></i>
                             </button>
 
