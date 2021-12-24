@@ -132,7 +132,7 @@
     </div>
 
     <?php if(count($data->campaigns)): ?>
-        <div class="table-responsive table-custom-container mt-3">
+        <div class="table-responsive-sm table-custom-container mt-3"> <?php // * Modificado 24/12 en 10.0.0 - Agregado -sm para que solo sea responsive en mobile ?>
             <table class="table table-custom">
                 <thead>
                 <tr>
