@@ -106,10 +106,37 @@ use Altum\Middlewares\Authentication;
                     </svg>
 
                     <div class="pricing-price">
-                        <span class="d-none" data-plan-payment-frequency="monthly"><?= $plan->monthly_price ?></span>
-                        <span class="d-none" data-plan-payment-frequency="annual"><?= $plan->annual_price ?></span>
-                        <span class="d-none" data-plan-payment-frequency="lifetime"><?= $plan->lifetime_price ?></span>
-                        <span class="pricing-currency"><?= settings()->payment->currency ?></span>
+                    <?php // * INICIO - Modificado 22/12 en 10.0.0 - Establecemos los precios en ARS ?> 
+                        <span class="d-none" data-plan-payment-frequency="monthly">
+                        <?php if (\Altum\Language::$language_code == "tn") : ?>
+                            <?= number_format($plan->monthly_price * 191, 0, ",", ".") ?>
+                            <?php else : ?>
+                            <?= $plan->monthly_price ?>
+                          <?php endif ?>
+                        </span>
+                        <span class="d-none" data-plan-payment-frequency="annual">
+                        <?php if (\Altum\Language::$language_code == "tn") : ?>
+                            <?= number_format($plan->annual_price * 191, 0, ",", ".") ?>
+                            <?php else : ?>
+                            <?= $plan->annual_price ?>
+                          <?php endif ?>
+                    </span>
+                        <span class="d-none" data-plan-payment-frequency="lifetime">
+                        <?php if (\Altum\Language::$language_code == "tn") : ?>
+                            <?= number_format($plan->lifetime_price * 191, 0, ",", ".") ?>
+                            <?php else : ?>
+                            <?= $plan->lifetime_price ?>
+                          <?php endif ?>
+
+                        </span>
+                        <span class="pricing-currency">
+                        <?php if (\Altum\Language::$language_code == "tn") : ?>
+                            ARS
+                            <?php else : ?>
+                            <?= settings()->payment->currency ?>
+                          <?php endif ?>
+                        </span>
+                    <?php // * FIN - Modificado 22/12 en 10.0.0 - Establecemos los precios en ARS ?> 
                     </div>
 
                     <div class="pricing-sub">
