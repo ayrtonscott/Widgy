@@ -270,7 +270,7 @@
 			"custom_branding"				: "Custom Branding",
 			"campaigns_limit"				: "%s Campaigns",
 			"notifications_limit"			: "%s Notifications",
-			"notifications_impressions_limit"		: "%s Notifications Impressions / month",
+			"notifications_impressions_limit"		: "%s Impressions / month",
 			"track_notifications_retention"			: "%s days statistics retention",
 			"enabled_notifications_all"				: "All Notifications Enabled",
 			"enabled_notifications_x"				: "%s Enabled Notifications",
@@ -357,7 +357,7 @@
 		},
 
 		"trial": {
-			"header"					: "Start the %s plan",
+			"header"					: "Start the %s plan trial",
 			"subheader"					: "You are almost there, no strings attached.",
 			"trial_start"				: "Start my %s days trial"
 		},
@@ -1008,7 +1008,7 @@
 			"input_placeholder"				: "Input Placeholder",
 			"email_placeholder"				: "Email Placeholder",
 			"image"							: "Image URL",
-			"image_help"					: "Leave empty for no image. Hint: icons8.com has a good library of small icons that you can use.",
+			"image_help"					: "Leave empty for no image. Hint: <a href=\"https://icons8.com\" target=_BLANK >icons8.com</a> has a good library of small icons that you can use.",
 			"image_alt"						: "Image Alt",
 			"image_alt_help"				: "Image description for accessibility and SEO purposes.",
 			"url"							: "Notification URL",
@@ -1276,7 +1276,7 @@
 
 			"title_default"            			: "35% OFF!",
 			"description_default"           	: "Limited summer sale coupon code!",
-			"image_default"       				: "https://img.icons8.com/nolan/2x/cutting-coupon.png",
+			"image_default"       				: "https://img.icons8.com/bubbles/150/000000/discount.png",
 			"coupon_code_default"				: "COUPON20",
 			"button_text_default"				: "Get Coupon",
 			"footer_text_default"				: "No, I don't want to save money!"
@@ -1597,8 +1597,8 @@
 		"title"							: "Increase Conversions & Site Growth",
 		"meta_description"				: "",
 		"meta_keywords"					: "",
-		"header"						: "<span class=\"underline\">Skyrocket</span> Conversions<br /> & Increase <span class=\"underline\">Growth</span>.",
-		"subheader"						: "<strong>%s notifications</strong> were created & customized by our users.<br />Increase your website's growth by using our notification widgets.",
+		"header"						: "<strong>Skyrocket</strong> Conversions<br /> & Increase <strong>Growth</strong>.",
+		"subheader"						: "Cartelitos is an application to <strong> generate trust </strong> in your brand and <strong> increase your sales </strong>. <br><br>Increase your website's growth by using our notification widgets.",
 		"sign_up"						: "Get started ➡",
 		"breadcrumb"					: "Home",
 
@@ -1626,8 +1626,8 @@
 		},
 
 		"tools": {
-			"header"					: "%s notifications displayed",
-			"subheader"					: "The proper social proof and utility widgets",
+			"header"					: "How it works?",
+			"subheader"					: "Cartelitos is an application that integrates with most known services like WooCommerce, Magento, Prestashop and more. <br>It helps you get conversions, bring trust to your site and build customer loyalty through the psychological phenomenon of social proof. <br><font color = \"orange\">% s </font> notifications have already been printed on all our clients' websites. <br> <br> Oops! we are already applying it! ❤️ ",
 
 			"preview"					: "Notification Preview",
 			"preview_description"		: "Choose any type of notification and preview it live."
@@ -1642,7 +1642,17 @@
 			"header"					: "Sign up now",
 			"subheader"					: "Start upgrading your website with our widgets.",
 			"sign_up"					: "Get started"
-		}
+		},
+
+		"custom": {
+            "nav_item1"                  : "HOME",
+            "nav_item2"                  : "ABOUT US",
+            "nav_item3"                  : "WIDGETS",
+            "nav_item4"                  : "PRICING",
+            "feature1_title"             : "¿Social proof?",
+            "feature1_desc"              : "Social proof, also known as informational social influence, is a psychological phenomenon where <font color = \"orange\"> people assume that other people's actions reflect correct behavior </font> in a specific situation. <br> <br>",
+			"register_link"             : "register"       
+		 }
 	},
 
 	"api": {

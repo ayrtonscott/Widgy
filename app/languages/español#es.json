@@ -265,10 +265,10 @@
  
         "plan_settings": {
             "no_ads"                                    : "Soporte premium",
-            "removable_branding"                        : "Sin 'By Cartelitos'",
+            "removable_branding"                        : "Sin marca de agua",
             "custom_branding"                           : "Marca propia",
-            "campaigns_limit"                           : "<strong>%s</strong> Sitios web",
-            "notifications_limit"                       : "<strong>%s</strong> Notificaciones simultaneas",
+            "campaigns_limit"                           : "<strong>%s</strong> Sitio/s web",
+            "notifications_limit"                       : "<strong>%s</strong> Notificaciones simultáneas",
             "notifications_impressions_limit"           : "<strong>%s</strong> Impresiones / mes",
             "track_notifications_retention"			    : "<strong>%s</strong> días de estadísticas",
             "enabled_notifications_all"                 : "Todos los estilos de notificaciones",
@@ -359,7 +359,7 @@
         },
  
         "trial": {
-            "header"                    : "Inicia la %s",
+            "header"                    : "Inicia la prueba del plan %s",
             "subheader"                 : "Ya casi estamos.",
  
             "trial_done"                : "Ya has completado la prueba, no puedes repetirla.",
@@ -1011,7 +1011,7 @@
             "input_placeholder"             : "Input",
             "email_placeholder"             : "Email",
             "image"                         : "URL de Imagen",
-            "image_help"                    : "Dejar vacío si no hay imagen. Pista: icons8.com tiene una buena librería de iconos que puedes utilizar.",
+            "image_help"                    : "Dejar vacío si no hay imagen. Pista: <a href=\"https://icons8.com\" target=_BLANK >icons8.com</a> tiene una buena librería de iconos que puedes utilizar.",
             "image_alt"						: "Texto alternativo de imagen",
 			"image_alt_help"				: "Descripción de imagen.",
             "url"                           : "URL de Notificación",
@@ -1265,7 +1265,7 @@
  
         "informational": {
             "name"                              : "Informativa",
-            "description"                       : "Mensaje totalmente personalizado para tus usuarios.",
+            "description"                       : "Llama la atención con un mensaje totalmente personalizado para tus usuarios.",
             "icon"                              : "fa fa-fw fa-info-circle",
  
             "title_default"                     : "¡Hot Sale!",
@@ -1280,7 +1280,7 @@
  
             "title_default"                     : "35% OFF!",
             "description_default"               : "¡Código limitado solo por este mes!",
-            "image_default"                     : "https://img.icons8.com/nolan/2x/cutting-coupon.png",
+            "image_default"                     : "https://img.icons8.com/bubbles/150/000000/discount.png",
             "coupon_code_default"               : "COUPON20",
             "button_text_default"               : "Conseguir cupón",
             "footer_text_default"               : "¡No, no quiero ahorrar!"
@@ -1351,7 +1351,7 @@
  
         "random_review": {
             "name"                              : "Calificaciones",
-            "description"                       : "Nada más poderoso que un cliente satisfecho",
+            "description"                       : "Muestrate al mundo. Nada más poderoso que un cliente satisfecho",
             "icon"                              : "fa fa-fw fa-random",
  
             "title_default"                     : "Brad 'el loco' Pit",
@@ -1385,7 +1385,7 @@
  
         "score_feedback": {
             "name"                              : "Feedback de puntuación",
-            "description"                       : "La manera más común de obtener feedback masivo.",
+            "description"                       : "La manera más común de obtener feedback masivo. Escucha a tu comunidad.",
             "icon"                              : "fa fa-fw fa-sort-numeric-up",
  
             "title_default"                     : "¿Cuánto te ha gustado nuestro sitio?",
@@ -1599,10 +1599,10 @@
  
     "index": {
         "title"                         : "Cartelitos - Herramienta N°1 en Prueba Social",
-        "meta_description"              : "",
-        "meta_keywords"                 : "",
-        "header"                        : "<span class=\"underline\">Aumenta</span> tus ingresos<br/> y <span class=\"underline\">genera</span> confianza </br> con Prueba Social.",
-        "subheader"                     : "<strong>%s cartelitos</strong> han sido creados y personalizados por nuestros usuarios.<br />Crea notificaciones dinámicas e interactivas</br> para los visitantes de tu sitio web.",
+        "meta_description"              : "Crea notificaciones dinámicas e interactivas para los visitantes de tu sitio web.",
+        "meta_keywords"                 : "prueba social, marketing, conversiones, vender más, como vender más, como publicitar en facebook, marketing digital, ",
+        "header"                        : "Aumenta tus conversiones y genera confianza con Prueba Social.",
+        "subheader"                     : "Cartelitos es una aplicación para que te permite <strong>aumentar hasta un 45%</strong> las conversiones de tu sitio web.<br/><br><strong>Aumenta tus ventas</strong> con nuestras notificaciones dinámicas e interactivas.</br>",
         "sign_up"                       : "Empezar ➡",
         "breadcrumb"                    : "Inicio",
  
@@ -1630,23 +1630,34 @@
         },
  
         "tools": {
-            "header"                    : "%s notificaciones mostradas",
-            "subheader"                 : "Han sido impresas en todos los sitios web de nuestros clientes",
+            "header"                    : "¿De qué se trata?",
+            "subheader"                 : "Cartelitos es una robusta aplicación que se integra con tu TiendaNube y te ayuda a obtener conversiones, generar confianza en tu tienda y crear fidelización de tus clientes mediante el fenómeno psicologico de la prueba social. <br><br>Sin ir más lejos, te contamos que <font color=\"orange\">%s</font> notificaciones ya han sido impresas en todos los sitios web de nuestros clientes.<br><br>Ups! Sin darnos cuenta, ya la estamos aplicando! ❤️",
  
-            "preview"                   : "Tipos de notificación",
-            "preview_description"       : "Elige cualquiera de estas para una una vista previa."
+            "preview"                   : "¿Cuál puedo elegir?",
+            "preview_description"       : "Elige cualquiera de estas para obtener una vista previa."
         },
  
         "pricing": {
             "header"                    : "Elige tu plan",
-            "subheader"                 : "Selecciona un plan basado en tus necesidades"
+            "subheader"                 : "Selecciona un plan basado en tus necesidades.."
         },
  
         "cta": {
             "header"                    : "Regístrate ahora",
             "subheader"                 : "Aquí empieza el verdadero crecimiento.",
             "sign_up"                   : "Empezar"
+        },
+
+        "custom": {
+            "nav_item1"                  : "INICIO",
+            "nav_item2"                  : "QUÉ HACEMOS",
+            "nav_item3"                  : "NOTIFICACIONES",
+            "nav_item4"                  : "PRECIOS",
+            "feature1_title"            : "¿Prueba social?",
+            "feature1_desc"             : "La prueba social, conocida también como influencia social informativa, es un fenómeno psicológico donde <font color=\"orange\">las personas asumen que la acción de otras personas refleja un comportamiento correcto</font> en una situación especifica. <br><br>",
+            "register_link"             : "register"
         }
+    
     },
  
     "api": {
