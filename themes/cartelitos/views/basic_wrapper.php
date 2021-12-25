@@ -39,6 +39,11 @@
             <link href="<?= ASSETS_FULL_URL . 'css/' . $file . '?v=' . PRODUCT_CODE ?>" rel="stylesheet" media="screen">
         <?php endforeach ?>
 
+        <?php // * Agregado 17/12 en 10.0.0 - (Links a assets de dore) INICIO. ?>
+        <link rel="stylesheet" href="themes/cartelitos/assets/font/simple-line-icons/css/simple-line-icons.css" />
+        <link rel="stylesheet" href="themes/cartelitos/assets/css/vendor/bootstrap.min.css" />
+        <?php // * Agregado 17/12 en 10.0.0 - (Links a assets de dore) FIN. ?>
+
         <?= \Altum\Event::get_content('head') ?>
 
         <?php if(!empty(settings()->custom->head_js)): ?>
@@ -79,9 +84,23 @@
 
         <?php require THEME_PATH . 'views/partials/js_global_variables.php' ?>
 
-        <?php foreach(['libraries/jquery.min.js', 'libraries/popper.min.js', 'libraries/bootstrap.min.js', 'main.js', 'functions.js', 'libraries/fontawesome.min.js', 'libraries/fontawesome-solid.min.js', 'libraries/fontawesome-brands.modified.js'] as $file): ?>
+        <?php // * Agregado 17/12 en 10.0.0 - (Links a assets de dore) INICIO. ?>
+        <script src="themes/cartelitos/assets/js/vendor/jquery-3.3.1.min.js"></script>
+        <script src="themes/cartelitos/assets/js/vendor/bootstrap.bundle.min.js"></script>
+        <script src="themes/cartelitos/assets/js/dore.script.js"></script>
+        <script src="themes/cartelitos/assets/js/scripts.single.theme.js"></script>
+        <?php // * Agregado 17/12 en 10.0.0 - (Links a assets de dore) FIN. ?>
+
+        <?php // * Modificado 17/12 en 10.0.0 - (Eliminamos algunas cosas) INICIO.
+        /* Original: (3 Lineas)
+        //<?php foreach(['libraries/jquery.min.js', 'libraries/popper.min.js', 'libraries/bootstrap.min.js', 'main.js', 'functions.js', 'libraries/fontawesome.min.js', 'libraries/fontawesome-solid.min.js', 'libraries/fontawesome-brands.modified.js'] as $file): ?>
+        //<script src="<?= ASSETS_FULL_URL ?>js/<?= $file ?>?v=<?= PRODUCT_CODE ?>"></script>
+        //<?php endforeach ?>
+        */ ?>
+        <?php foreach(['libraries/popper.min.js', 'main.js', 'functions.js', 'libraries/fontawesome.min.js', 'libraries/fontawesome-solid.min.js', 'libraries/fontawesome-brands.modified.js'] as $file): ?>
             <script src="<?= ASSETS_FULL_URL ?>js/<?= $file ?>?v=<?= PRODUCT_CODE ?>"></script>
         <?php endforeach ?>
+        <?php // * Modificado 17/12 en 10.0.0 - (Eliminamos algunas cosas) FIN. ?>
 
         <?= \Altum\Event::get_content('javascript') ?>
     </body>
