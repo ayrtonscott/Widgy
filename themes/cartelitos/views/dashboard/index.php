@@ -1,5 +1,17 @@
 <?php defined('ALTUMCODE') || die() ?>
+<?php // * INICIO - Agregado el 25/12 en 10.0.0 - Alerta para cuando te quedas sin impresiones ?>
+<?php
+    $progress_percentage = $this->user->plan_settings->notifications_impressions_limit == '0' ? 100 : ($this->user->current_month_notifications_impressions / $this->user->plan_settings->notifications_impressions_limit) * 100;
+    $progress_class = $progress_percentage > 60 ? ($progress_percentage > 85 ? 'badge-danger' : 'badge-warning') : 'badge-success';
+?>
 
+<?php if($progress_percentage >= 99): ?>
+    <div class="alert alert-danger animated fadeInDown">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <span><?= language()->custom->dashboard_cust_notifications_not_shown ?></span>
+    </div>
+<?php endif ?>
+<?php // * FIN - Agregado el 25/12 en 10.0.0 - Alerta para cuando te quedas sin impresiones ?>
 <header class="header">
     <div class="container">
 
