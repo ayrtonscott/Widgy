@@ -11,11 +11,17 @@
             <span class="badge badge-success"><?= sprintf(language()->account->plan->header, $this->user->plan->name) ?></span>
 
             <?php if($this->user->plan_id != 'free'): ?>
-                <span><?= sprintf(language()->account->plan->subheader, '<strong>' . \Altum\Date::get($this->user->plan_expiration_date, 2) . '</strong>') ?></span>
+                <?php // * INICIO - Modificado 24/12 en 10.0.0 - Si es mayor a 2050 mostrar mensaje de MP ?>
+                <?php if($this->user->plan_expiration_date >= '2050-01-01') : ?>
+                    El <strong>débito automático</strong> ha sido establecido en tu cuenta de MercadoPago.
+                <?php else : ?>
+                    <span><?= sprintf(language()->account->plan->subheader, '<strong>' . \Altum\Date::get($this->user->plan_expiration_date, 2) . '</strong>') ?></span>
+                <?php endif ?>
+                <?php // * FIN - Modificado 24/12 en 10.0.0 - Si es mayor a 2050 mostrar mensaje de MP ?>
             <?php endif ?>
 
             <?php if(settings()->payment->is_enabled): ?>
-                <span>(<a href="<?= url('plan/upgrade') ?>"><?= language()->account->plan->renew ?></a>)</span>
+                <span class="badge badge-info mt-1">(<a href="<?= url('plan/upgrade') ?>"><?= language()->account->plan->renew ?></a>)</span><?php // * Agregado 24/12 en 10.0.0 - class="badge badge-info" ?>
             <?php endif ?>
         </p>
 
