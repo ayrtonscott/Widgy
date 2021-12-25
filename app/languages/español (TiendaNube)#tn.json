@@ -360,7 +360,7 @@
  
         "trial": {
             "header"                    : "Inicia la prueba del plan %s",
-            "subheader"                 : "Ya casi estamos.",
+            "subheader"                 : "<p>En este momento activaremos tu cuenta con el plan de prueba.<p> Vencido este plazo deberás elegir un plan para poder continuar con el servicio.<p> En el caso de las TiendaNube, solo se permite una prueba por tienda.",
  
             "trial_done"                : "Ya has completado la prueba, no puedes repetirla.",
             "other_plan_not_expired"    : "¡Tu plan actual todavía no ha expirado, si eliges otro se sobrescribirá!",
@@ -470,7 +470,7 @@
             "renew_plan"                : "Renovar/Cambiar plan",
             "renew"                     : "Renovar/mejorar",
  
-            "notifications_impressions_limit" : "Has utilizado %s impresiones de las %s disponibles para este mes. Se reinician el primer día de cada mes."
+            "notifications_impressions_limit" : "<p>Has utilizado %s de las %s impresiones de notificaciones disponibles para este mes. </p><p>Las impresiones se reinician el día 1 (uno) de cada mes para todas las tiendas.</p>"
         },
  
         "settings": {
@@ -1436,9 +1436,9 @@
             "description"                       : "Barra totalmente personalizable para tu tienda.",
             "icon"                              : "fa fa-fw fa-info",
  
-            "title_default"                     : "¡Llegó lo nuevo!",
-            "description_default"               : "¡La nueva temporada de pantalones está aquí!",
-            "image_default"                     : "https://img.icons8.com/cute-clipart/2x/info.png"
+            "title_default"                     : "Atención: ¡Envíos con normalidad!",
+            "description_default"               : "Nos informa nuestro socio logístico que los envíos siguen funcionando con normalidad!",
+            "image_default"                     : "https://img.icons8.com/office/150/000000/truck.png"
         },
  
         "image": {
@@ -1446,9 +1446,9 @@
             "description"                       : "Una imagen dice más que mil palabras.",
             "icon"                              : "fa fa-fw fa-image",
  
-            "title_default"                     : "Título demostrativo",
-            "image_default"                     : "https://images.unsplash.com/photo-1592142484268-342bdc296658?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80",
-            "button_text_default"               : "Registrarme"
+            "title_default"                     : "50% de descuento en Remeras off-season",
+            "image_default"                     : "https://images.unsplash.com/photo-1562157873-818bc0726f68?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80",
+            "button_text_default"               : "Quiero verlas!"
         },
  
         "collector_bar": {
@@ -1456,28 +1456,28 @@
             "description"                       : "Adquiere emails o leads sin distraer a tus visitantes.",
             "icon"                              : "fa fa-fw fa-inbox",
  
-            "title_default"                     : "Regístrate para recibir actualizaciones y descuentos por email",
+            "title_default"                     : "Regístrate para recibir actualizaciones y descuentos en nuestra tienda!",
             "input_placeholder_default"         : "Tu email",
             "button_text_default"               : "Suscribirme",
             "agreement_text_default"            : "El leído y acepto la política de privacidad"
         },
  
         "coupon_bar": {
-            "name"                              : "Barra de cupón",
+            "name"                              : "Barra con cupón",
             "description"                       : "¿Hay ofertas? Los cupones de descuento pueden generar hasta el doble de ventas..",
             "icon"                              : "fa fa-fw fa-money-check-alt",
  
-            "title_default"                     : "Descuento limitado solo por hoy 🙌",
-            "coupon_code_default"               : "SALE15"
+            "title_default"                     : "Envíos GRATIS solo por hoy!!! 🚚",
+            "coupon_code_default"               : "ENVIOFREE20"
         },
  
         "button_bar": {
-            "name"                              : "Barra de botón",
-            "description"                       : "Excelente barra para promover algo entre tus usuarios..",
+            "name"                              : "Barra con botón",
+            "description"                       : "Excelente barra para promover algo entre tus visitantes..",
             "icon"                              : "fa fa-fw fa-newspaper",
  
-            "title_default"                     : "Hemos lanzado una nueva función en nuestro servicio",
-            "button_text_default"               : "Chequear característica"
+            "title_default"                     : "Nuestra tienda ahora acepta \"Ahora 12\" y \"Ahora 18\" ",
+            "button_text_default"               : "Ver entrada en blog"
         },
  
         "collector_modal": {
@@ -1487,7 +1487,7 @@
  
             "title_default"                     : "Registrarme",
             "description_default"               : "No enviamos SPAM y puedes darte de baja en cualquier momento",
-            "image_default"                     : "",
+            "image_default"                     : "https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80",
             "input_placeholder_default"         : "Tu Email",
             "button_text_default"               : "Suscribirme",
             "agreement_text_default"            : "He leído y acepto la política de privacidad"
@@ -1500,7 +1500,7 @@
  
             "title_default"                     : "Consigue descuentos y últimas ofertas vía email",
             "description_default"               : "No enviamos SPAM y puedes darte de baja en cualquier momento.",
-            "image_default"                     : "",
+            "image_default"                     : "https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80",
             "input_placeholder_default"         : "Tú email",
             "button_text_default"               : "Suscribirme",
             "agreement_text_default"            : "He leído y acepto la política de privacidad"
@@ -1511,10 +1511,10 @@
             "description"                       : "Crea conciencia y llama la atención con un CTA.",
             "icon"                              : "fa fa-fw fa-cloud",
  
-            "title_default"                     : "¡Nuevo producto!",
-            "description_default"               : "Hemos lanzado el nuevo libro!, ¿Quieres saber de qué se trata?",
-            "image_default"                     : "https://assets-ouch.icons8.com/preview/255/675cef88-9340-42a9-a5b0-52c240cc965a.png",
-            "button_text_default"               : "Descárgalo gratis"
+            "title_default"                     : "¡Nuevos Auriculares VZK 3.0!",
+            "description_default"               : "Lo más reciente en tecnología envolvente!, ¿Quieres saber de qué se trata?",
+            "image_default"                     : "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80",
+            "button_text_default"               : "Ir al producto"
         },
  
         "text_feedback": {
@@ -1533,24 +1533,31 @@
             "description"                       : "Muestra un widget que contenga todos tus links relevantes.",
             "icon"                              : "fa fa-fw fa-link",
  
-            "title"                             : "Conecta con nosotros 👁",
+            "title"                             : "Conecta con nosotros",
             "categories": [
                 {
                     "title"                     : "Redes sociales",
-                    "description"               : "Nuestras redes sociales.",
+                    "description"               : "Enterate de todo",
  
                     "links": [
                         {
                             "title"             : "Twitter",
                             "description"       : "Síguenos en Twitter!",
-                            "image"             : "https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../assets/preview/2012/png/iconmonstr-twitter-1.png&r=0&g=0&b=0",
+                            "image"             : "https://img.icons8.com/fluency/96/000000/twitter.png",
+                            "url"               : "https://domain.com/"
+                        },
+
+                        {
+                            "title"             : "instagram",
+                            "description"       : "Síguenos en instagram!",
+                            "image"             : "https://img.icons8.com/color/96/000000/instagram-new--v1.png",
                             "url"               : "https://domain.com/"
                         },
  
                         {
                             "title"             : "Facebook",
                             "description"       : "¡Únete a nuestro grupo de Facebook!",
-                            "image"             : "https://cdns.iconmonstr.com/wp-content/assets/preview/2017/240/iconmonstr-facebook-6.png",
+                            "image"             : "https://img.icons8.com/fluency/48/000000/facebook-new.png",
                             "url"               : "https://domain.com/"
                         }
                     ]
