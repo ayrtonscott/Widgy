@@ -1,0 +1,37 @@
+/* Informational */
+.altumcode-informational-wrapper {
+}
+
+@media (min-width: 576px) {
+    .altumcode-informational-wrapper {
+        max-width: 400px !important;
+    }
+}
+
+.altumcode-informational-content {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+}
+
+.altumcode-informational-header {
+    display: flex !important;
+    width: 100% !important;
+}
+
+.altumcode-informational-title {
+    flex-grow: 1 !important;
+    font-weight: bold !important;
+    margin-bottom: 0 !important;
+}
+
+.altumcode-informational-description {
+    font-size: 14px !important;
+    margin-bottom: 0 !important;
+}
+
+.altumcode-informational-image {
+    min-width: 65px !important;
+    height: 65px !important;
+    margin-right: 8px !important;
+}

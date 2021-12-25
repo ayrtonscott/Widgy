@@ -1,5 +1,11 @@
 {
     "direction": "ltr",
+
+    "custom": {
+
+        "helpcenter"                    : "Centro de Ayuda",
+        "dashboard_cust_notifications_not_shown" : "🔥🚀 <strong>Wow! Felicidades, tu sitio está on-fire!</strong><br>Has excedido el limite de impresiones para este mes, puedes esperar o <a href=\"plan/upgrade\">mejorar</a> tu plan.<br><small>Atención: Renovar el mismo plan no reiniciará el contador.</small>"
+    },
     
     "global": {
         "submit"                        : "Enviar",
@@ -259,11 +265,11 @@
         },
  
         "plan_settings": {
-            "no_ads"                                    : "Soporte premium",
-            "removable_branding"                        : "Sin 'By Cartelitos'",
+            "no_ads"                                    : "Ejecutivo de cuenta",
+            "removable_branding"                        : "Sin marca de agua",
             "custom_branding"                           : "Marca propia",
-            "campaigns_limit"                           : "<strong>%s</strong> Sitios web",
-            "notifications_limit"                       : "<strong>%s</strong> Notificaciones simultaneas",
+            "campaigns_limit"                           : "<strong>%s</strong> Sitio/s web",
+            "notifications_limit"                       : "<strong>%s</strong> Notificaciones simultáneas",
             "notifications_impressions_limit"           : "<strong>%s</strong> Impresiones / mes",
             "track_notifications_retention"			    : "<strong>%s</strong> días de estadísticas",
             "enabled_notifications_all"                 : "Todos los estilos de notificaciones",
@@ -354,8 +360,8 @@
         },
  
         "trial": {
-            "header"                    : "Inicia la %s",
-            "subheader"                 : "Ya casi estamos.",
+            "header"                    : "Inicia la prueba del plan %s",
+            "subheader"                 : "Ya casi estamos...",
  
             "trial_done"                : "Ya has completado la prueba, no puedes repetirla.",
             "other_plan_not_expired"    : "¡Tu plan actual todavía no ha expirado, si eliges otro se sobrescribirá!",
@@ -465,7 +471,7 @@
             "renew_plan"                : "Renovar/Cambiar plan",
             "renew"                     : "Renovar/mejorar",
  
-            "notifications_impressions_limit" : "Has utilizado %s impresiones de las %s disponibles para este mes."
+            "notifications_impressions_limit" : "<p>Has utilizado %s de las %s impresiones de notificaciones disponibles para este mes. </p><p>Las impresiones se reinician el día 1 (uno) de cada mes para todos los sitios.</p>"
         },
  
         "settings": {
@@ -1006,7 +1012,7 @@
             "input_placeholder"             : "Input",
             "email_placeholder"             : "Email",
             "image"                         : "URL de Imagen",
-            "image_help"                    : "Dejar vacío si no hay imagen. Pista: icons8.com tiene una buena librería de iconos que puedes utilizar.",
+            "image_help"                    : "Dejar vacío si no hay imagen. Pista: <a href=\"https://icons8.com\" target=_BLANK >icons8.com</a> tiene una buena librería de iconos que puedes utilizar.",
             "image_alt"						: "Texto alternativo de imagen",
 			"image_alt_help"				: "Descripción de imagen.",
             "url"                           : "URL de Notificación",
@@ -1260,7 +1266,7 @@
  
         "informational": {
             "name"                              : "Informativa",
-            "description"                       : "Mensaje totalmente personalizado para tus usuarios.",
+            "description"                       : "Llama la atención con un mensaje totalmente personalizado para tus usuarios.",
             "icon"                              : "fa fa-fw fa-info-circle",
  
             "title_default"                     : "¡Hot Sale!",
@@ -1275,7 +1281,7 @@
  
             "title_default"                     : "35% OFF!",
             "description_default"               : "¡Código limitado solo por este mes!",
-            "image_default"                     : "https://img.icons8.com/nolan/2x/cutting-coupon.png",
+            "image_default"                     : "https://img.icons8.com/bubbles/150/000000/discount.png",
             "coupon_code_default"               : "COUPON20",
             "button_text_default"               : "Conseguir cupón",
             "footer_text_default"               : "¡No, no quiero ahorrar!"
@@ -1346,7 +1352,7 @@
  
         "random_review": {
             "name"                              : "Calificaciones",
-            "description"                       : "Nada más poderoso que un cliente satisfecho",
+            "description"                       : "Muestrate al mundo. Nada más poderoso que un cliente satisfecho",
             "icon"                              : "fa fa-fw fa-random",
  
             "title_default"                     : "Brad 'el loco' Pit",
@@ -1380,7 +1386,7 @@
  
         "score_feedback": {
             "name"                              : "Feedback de puntuación",
-            "description"                       : "La manera más común de obtener feedback masivo.",
+            "description"                       : "La manera más común de obtener feedback masivo. Escucha a tu comunidad.",
             "icon"                              : "fa fa-fw fa-sort-numeric-up",
  
             "title_default"                     : "¿Cuánto te ha gustado nuestro sitio?",
@@ -1431,8 +1437,8 @@
             "description"                       : "Barra totalmente personalizable para tu sitio.",
             "icon"                              : "fa fa-fw fa-info",
  
-            "title_default"                     : "¡Llegó lo nuevo!",
-            "description_default"               : "¡La nueva temporada de pantalones está aquí!",
+            "title_default"                     : "¡Un título llamativo!",
+            "description_default"               : "¡Una descripción encantadora!",
             "image_default"                     : "https://img.icons8.com/cute-clipart/2x/info.png"
         },
  
@@ -1482,7 +1488,7 @@
  
             "title_default"                     : "Registrarme",
             "description_default"               : "No enviamos SPAM y puedes darte de baja en cualquier momento",
-            "image_default"                     : "",
+            "image_default"                     : "https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80",
             "input_placeholder_default"         : "Tu Email",
             "button_text_default"               : "Suscribirme",
             "agreement_text_default"            : "He leído y acepto la política de privacidad"
@@ -1495,7 +1501,7 @@
  
             "title_default"                     : "Consigue descuentos y últimas ofertas vía email",
             "description_default"               : "No enviamos SPAM y puedes darte de baja en cualquier momento.",
-            "image_default"                     : "",
+            "image_default"                     : "https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80",
             "input_placeholder_default"         : "Tú email",
             "button_text_default"               : "Suscribirme",
             "agreement_text_default"            : "He leído y acepto la política de privacidad"
@@ -1507,9 +1513,9 @@
             "icon"                              : "fa fa-fw fa-cloud",
  
             "title_default"                     : "¡Nuevo producto!",
-            "description_default"               : "Hemos lanzado el nuevo libro!, ¿Quieres saber de qué se trata?",
-            "image_default"                     : "https://assets-ouch.icons8.com/preview/255/675cef88-9340-42a9-a5b0-52c240cc965a.png",
-            "button_text_default"               : "Descárgalo gratis"
+            "description_default"               : "Hemos lanzado un nuevo producto!, ¿Quieres saber de qué se trata?",
+            "image_default"                     : "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+            "button_text_default"               : "Ir al producto"
         },
  
         "text_feedback": {
@@ -1528,24 +1534,31 @@
             "description"                       : "Muestra un widget que contenga todos tus links relevantes.",
             "icon"                              : "fa fa-fw fa-link",
  
-            "title"                             : "Conecta con nosotros 👁",
+            "title"                             : "Conecta con nosotros",
             "categories": [
                 {
                     "title"                     : "Redes sociales",
-                    "description"               : "Nuestras redes sociales.",
+                    "description"               : "Enterate de todo",
  
                     "links": [
                         {
                             "title"             : "Twitter",
                             "description"       : "Síguenos en Twitter!",
-                            "image"             : "https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../assets/preview/2012/png/iconmonstr-twitter-1.png&r=0&g=0&b=0",
+                            "image"             : "https://img.icons8.com/fluency/96/000000/twitter.png",
+                            "url"               : "https://domain.com/"
+                        },
+
+                        {
+                            "title"             : "instagram",
+                            "description"       : "Síguenos en instagram!",
+                            "image"             : "https://img.icons8.com/color/96/000000/instagram-new--v1.png",
                             "url"               : "https://domain.com/"
                         },
  
                         {
                             "title"             : "Facebook",
                             "description"       : "¡Únete a nuestro grupo de Facebook!",
-                            "image"             : "https://cdns.iconmonstr.com/wp-content/assets/preview/2017/240/iconmonstr-facebook-6.png",
+                            "image"             : "https://img.icons8.com/fluency/48/000000/facebook-new.png",
                             "url"               : "https://domain.com/"
                         }
                     ]
@@ -1594,10 +1607,10 @@
  
     "index": {
         "title"                         : "Cartelitos - Herramienta N°1 en Prueba Social",
-        "meta_description"              : "",
-        "meta_keywords"                 : "",
-        "header"                        : "<span class=\"underline\">Aumenta</span> tus ingresos<br/> y <span class=\"underline\">genera</span> confianza </br> con Prueba Social.",
-        "subheader"                     : "<strong>%s cartelitos</strong> han sido creados y personalizados por nuestros usuarios.<br />Crea notificaciones dinámicas e interactivas</br> para los visitantes de tu sitio web.",
+        "meta_description"              : "Crea notificaciones dinámicas e interactivas para los visitantes de tu sitio web.",
+        "meta_keywords"                 : "prueba social, marketing, conversiones, vender más, como vender más, como publicitar en facebook, marketing digital, ",
+        "header"                        : "Aumenta tus conversiones y genera confianza con Prueba Social.",
+        "subheader"                     : "Cartelitos es una aplicación para que te permite <strong>aumentar hasta un 45%</strong> las conversiones de tu sitio web.<br/><br><strong>Aumenta tus ventas</strong> con nuestras notificaciones dinámicas e interactivas.</br>",
         "sign_up"                       : "Empezar ➡",
         "breadcrumb"                    : "Inicio",
  
@@ -1625,23 +1638,34 @@
         },
  
         "tools": {
-            "header"                    : "%s notificaciones mostradas",
-            "subheader"                 : "Han sido impresas en todos los sitios web de nuestros clientes",
+            "header"                    : "¿De qué se trata?",
+            "subheader"                 : "Cartelitos es una robusta aplicación que se integra con tu TiendaNube y te ayuda a obtener conversiones, generar confianza en tu tienda y crear fidelización de tus clientes mediante el fenómeno psicologico de la prueba social. <br><br>Sin ir más lejos, te contamos que <font color=\"orange\">%s</font> notificaciones ya han sido impresas en todos los sitios web de nuestros clientes.<br><br>Ups! Sin darnos cuenta, ya la estamos aplicando! ❤️",
  
-            "preview"                   : "Tipos de notificación",
-            "preview_description"       : "Elige cualquiera de estas para una una vista previa."
+            "preview"                   : "¿Cuál puedo elegir?",
+            "preview_description"       : "Elige cualquiera de estas para obtener una vista previa."
         },
  
         "pricing": {
             "header"                    : "Elige tu plan",
-            "subheader"                 : "Selecciona un plan basado en tus necesidades"
+            "subheader"                 : "Selecciona un plan basado en tus necesidades.."
         },
  
         "cta": {
             "header"                    : "Regístrate ahora",
             "subheader"                 : "Aquí empieza el verdadero crecimiento.",
             "sign_up"                   : "Empezar"
+        },
+
+        "custom": {
+            "nav_item1"                  : "INICIO",
+            "nav_item2"                  : "QUÉ HACEMOS",
+            "nav_item3"                  : "NOTIFICACIONES",
+            "nav_item4"                  : "PRECIOS",
+            "feature1_title"            : "¿Prueba social?",
+            "feature1_desc"             : "La prueba social, conocida también como influencia social informativa, es un fenómeno psicológico donde <font color=\"orange\">las personas asumen que la acción de otras personas refleja un comportamiento correcto</font> en una situación especifica. <br><br>",
+            "register_link"             : "register"
         }
+    
     },
  
     "api": {

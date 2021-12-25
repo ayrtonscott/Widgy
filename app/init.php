@@ -11,13 +11,16 @@ const ALTUMCODE = 1;
 define('ROOT_PATH', realpath(__DIR__ . '/..') . '/');
 const APP_PATH = ROOT_PATH . 'app/';
 const PLUGINS_PATH = ROOT_PATH . 'plugins/';
-const THEME_PATH = ROOT_PATH . 'themes/altum/';
-const THEME_URL_PATH = 'themes/altum/';
+const THEME_PATH = ROOT_PATH . 'themes/cartelitos/';
+const THEME_URL_PATH = 'themes/cartelitos/';
 const ASSETS_PATH = THEME_PATH . 'assets/';
 const ASSETS_URL_PATH = THEME_URL_PATH . 'assets/';
 const UPLOADS_PATH = ROOT_PATH . 'uploads/';
 const UPLOADS_URL_PATH = 'uploads/';
 const CACHE_DEFAULT_SECONDS = 2592000;
+// * Agregado 17/12 en 10.0.0 - (HELPCENTER_URL) INICIO.
+define('HELPCENTER_URL', 'https://intercom.help/cartelitos/');
+// * Agregado 17/12 en 10.0.0 - (HELPCENTER_URL) FIN.
 
 /* Config file */
 require_once ROOT_PATH . 'config.php';

@@ -1,5 +1,12 @@
 {
 	"direction": "ltr",
+
+	"custom": {
+
+        "helpcenter"                    : "Help Center",
+		"dashboard_cust_notifications_not_shown" : "🔥🚀 <strong>Wow! Your site is on fire!</strong><br>You have exceeded the impression limit for this month, you can wait or <a href=\"plan/upgrade\">upgrade</a> your plan.<br><small>Important: Renewing the same plan will not reset the counter. </small>"
+    },
+
 	"global": {
 		"submit"						: "Submit",
 		"create"						: "Create",
@@ -264,7 +271,7 @@
 			"custom_branding"				: "Custom Branding",
 			"campaigns_limit"				: "%s Campaigns",
 			"notifications_limit"			: "%s Notifications",
-			"notifications_impressions_limit"		: "%s Notifications Impressions / month",
+			"notifications_impressions_limit"		: "%s Impressions / month",
 			"track_notifications_retention"			: "%s days statistics retention",
 			"enabled_notifications_all"				: "All Notifications Enabled",
 			"enabled_notifications_x"				: "%s Enabled Notifications",
@@ -351,7 +358,7 @@
 		},
 
 		"trial": {
-			"header"					: "Start the %s plan",
+			"header"					: "Start the %s plan trial",
 			"subheader"					: "You are almost there, no strings attached.",
 			"trial_start"				: "Start my %s days trial"
 		},
@@ -458,7 +465,7 @@
 			"renew_plan"				: "Renew/Change Plan",
 			"renew"						: "Renew/Upgrade",
 
-			"notifications_impressions_limit" : "You have used %1$s impressions out of %2$s this month"
+			"notifications_impressions_limit" : "You have used %1$s impressions out of %2$s this month. This amount will be reset on the 1st day of each month.."
 		},
 
 		"settings": {
@@ -1002,7 +1009,7 @@
 			"input_placeholder"				: "Input Placeholder",
 			"email_placeholder"				: "Email Placeholder",
 			"image"							: "Image URL",
-			"image_help"					: "Leave empty for no image. Hint: icons8.com has a good library of small icons that you can use.",
+			"image_help"					: "Leave empty for no image. Hint: <a href=\"https://icons8.com\" target=_BLANK >icons8.com</a> has a good library of small icons that you can use.",
 			"image_alt"						: "Image Alt",
 			"image_alt_help"				: "Image description for accessibility and SEO purposes.",
 			"url"							: "Notification URL",
@@ -1270,7 +1277,7 @@
 
 			"title_default"            			: "35% OFF!",
 			"description_default"           	: "Limited summer sale coupon code!",
-			"image_default"       				: "https://img.icons8.com/nolan/2x/cutting-coupon.png",
+			"image_default"       				: "https://img.icons8.com/bubbles/150/000000/discount.png",
 			"coupon_code_default"				: "COUPON20",
 			"button_text_default"				: "Get Coupon",
 			"footer_text_default"				: "No, I don't want to save money!"
@@ -1477,7 +1484,7 @@
 
 			"title_default"            			: "Sign up",
 			"description_default"           	: "We do not send out spam emails & you can unsubscribe at any point.",
-			"image_default"            			: "",
+			"image_default"            			: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80",
 			"input_placeholder_default"       	: "Your valid email",
 			"button_text_default"       		: "Sign me up",
 			"agreement_text_default"			: "I read & agree the Privacy Policy"
@@ -1490,7 +1497,7 @@
 
 			"title_default"            			: "Get discounts & latest offers via email",
 			"description_default"           	: "We do not send out spam emails & you can unsubscribe at any point.",
-			"image_default"            			: "",
+			"image_default"            			: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80",
 			"input_placeholder_default"       	: "Your valid email",
 			"button_text_default"       		: "Sign up",
 			"agreement_text_default"			: "I read & agree the Privacy Policy"
@@ -1503,7 +1510,7 @@
 
 			"title_default"            			: "New product",
 			"description_default"           	: "We just launched our new product, check it out right now!",
-			"image_default"            			: "https://assets-ouch.icons8.com/preview/255/675cef88-9340-42a9-a5b0-52c240cc965a.png",
+			"image_default"            			: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
 			"button_text_default"       		: "Download for free"
 		},
 
@@ -1519,55 +1526,62 @@
 		},
 
 		"engagement_links": {
-			"name"                              : "Engagement Links",
-			"description"                       : "Display a subtle widget which contains all of your relevant links.",
-			"icon"								: "fa fa-fw fa-link",
+            "name"                              : "Engagement links",
+            "description"                       : "Display a subtle widget which contains all of your relevant links.",
+            "icon"                              : "fa fa-fw fa-link",
+ 
+            "title"                             : "Connect with us",
+            "categories": [
+                {
+                    "title"                     : "Social media",
+                    "description"               : "Find out",
+ 
+                    "links": [
+                        {
+                            "title"             : "Twitter",
+                            "description"       : "Follow us on Twitter!",
+                            "image"             : "https://img.icons8.com/fluency/96/000000/twitter.png",
+                            "url"               : "https://domain.com/"
+                        },
 
-			"title"								: "Connect with us 👁",
-			"categories": [
-				{
-					"title"						: "Social Media",
-					"description"				: "Our social media pages.",
-
-					"links": [
-						{
-							"title"				: "Twitter",
-							"description"		: "Follow us on Twitter!",
-							"image"				: "https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../assets/preview/2012/png/iconmonstr-twitter-1.png&r=0&g=0&b=0",
-							"url"				: "https://domain.com/"
-						},
-
-						{
-							"title"				: "Facebook",
-							"description"		: "Like our page on Facebook!",
-							"image"				: "https://cdns.iconmonstr.com/wp-content/assets/preview/2017/240/iconmonstr-facebook-6.png",
-							"url"				: "https://domain.com/"
-						}
-					]
-				},
-
-				{
-					"title"						: "Contact",
-					"description"				: "",
-
-					"links": [
-						{
-							"title"				: "Email",
-							"description"		: "Our support email.",
-							"image"				: "",
-							"url"				: "https://domain.com/"
-						},
-
-						{
-							"title"				: "Whatsapp",
-							"description"		: "Send us a message.",
-							"image"				: "",
-							"url"				: "https://domain.com/"
-						}
-					]
-				}
-			]
-		}
+                        {
+                            "title"             : "instagram",
+                            "description"       : "Follow us on instagram!",
+                            "image"             : "https://img.icons8.com/color/96/000000/instagram-new--v1.png",
+                            "url"               : "https://domain.com/"
+                        },
+ 
+                        {
+                            "title"             : "Facebook",
+                            "description"       : "Join our Facebook group!",
+                            "image"             : "https://img.icons8.com/fluency/48/000000/facebook-new.png",
+                            "url"               : "https://domain.com/"
+                        }
+                    ]
+                },
+ 
+                {
+                    "title"                     : "Contact us",
+                    "description"               : "",
+ 
+                    "links": [
+                        {
+                            "title"             : "Email",
+                            "description"       : "Tech support email.",
+                            "image"             : "",
+                            "url"               : "https://domain.com/"
+                        },
+ 
+                        {
+                            "title"             : "Whatsapp",
+                            "description"       : "Send us a message!.",
+                            "image"             : "",
+                            "url"               : "https://domain.com/"
+                        }
+                    ]
+                }
+            ]
+        }
 	},
 
 	"notification_delete_modal": {
@@ -1591,8 +1605,8 @@
 		"title"							: "Increase Conversions & Site Growth",
 		"meta_description"				: "",
 		"meta_keywords"					: "",
-		"header"						: "<span class=\"underline\">Skyrocket</span> Conversions<br /> & Increase <span class=\"underline\">Growth</span>.",
-		"subheader"						: "<strong>%s notifications</strong> were created & customized by our users.<br />Increase your website's growth by using our notification widgets.",
+		"header"						: "<strong>Skyrocket</strong> Conversions<br /> & Increase <strong>Growth</strong>.",
+		"subheader"						: "Cartelitos is an application to <strong> generate trust </strong> in your brand and <strong> increase your sales </strong>. <br><br>Increase your website's growth by using our notification widgets.",
 		"sign_up"						: "Get started ➡",
 		"breadcrumb"					: "Home",
 
@@ -1620,8 +1634,8 @@
 		},
 
 		"tools": {
-			"header"					: "%s notifications displayed",
-			"subheader"					: "The proper social proof and utility widgets",
+			"header"					: "How it works?",
+			"subheader"					: "Cartelitos is an application that integrates with most known services like WooCommerce, Magento, Prestashop and more. <br>It helps you get conversions, bring trust to your site and build customer loyalty through the psychological phenomenon of social proof. <br><font color = \"orange\">% s </font> notifications have already been printed on all our clients' websites. <br> <br> Oops! we are already applying it! ❤️ ",
 
 			"preview"					: "Notification Preview",
 			"preview_description"		: "Choose any type of notification and preview it live."
@@ -1636,7 +1650,17 @@
 			"header"					: "Sign up now",
 			"subheader"					: "Start upgrading your website with our widgets.",
 			"sign_up"					: "Get started"
-		}
+		},
+
+		"custom": {
+            "nav_item1"                  : "HOME",
+            "nav_item2"                  : "ABOUT US",
+            "nav_item3"                  : "WIDGETS",
+            "nav_item4"                  : "PRICING",
+            "feature1_title"             : "¿Social proof?",
+            "feature1_desc"              : "Social proof, also known as informational social influence, is a psychological phenomenon where <font color = \"orange\"> people assume that other people's actions reflect correct behavior </font> in a specific situation. <br> <br>",
+			"register_link"             : "register"       
+		 }
 	},
 
 	"api": {
