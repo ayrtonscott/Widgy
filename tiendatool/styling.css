@@ -1,0 +1,36 @@
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 3em 15%;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 3em;
+  max-width: 200px;
+}
+
+section form > * {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+
+section button, section input {
+  border: none;
+  border-radius: 6px;
+  width: 100%;
+}
+
+section button {
+  font-weight: bold;
+  font-size: 1.2em;
+  border: 1px solid rgba(0,0,0,0.5);
+  padding: 0.5em 0;
+}
+
+section input {
+  padding: 0.3em 0.5em;
+  background: rgba(0,0,0,0.1);
+}
