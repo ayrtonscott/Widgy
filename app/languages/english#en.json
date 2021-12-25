@@ -464,7 +464,7 @@
 			"renew_plan"				: "Renew/Change Plan",
 			"renew"						: "Renew/Upgrade",
 
-			"notifications_impressions_limit" : "You have used %1$s impressions out of %2$s this month"
+			"notifications_impressions_limit" : "You have used %1$s impressions out of %2$s this month. This amount will be reset on the 1st day of each month.."
 		},
 
 		"settings": {
@@ -1483,7 +1483,7 @@
 
 			"title_default"            			: "Sign up",
 			"description_default"           	: "We do not send out spam emails & you can unsubscribe at any point.",
-			"image_default"            			: "",
+			"image_default"            			: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80",
 			"input_placeholder_default"       	: "Your valid email",
 			"button_text_default"       		: "Sign me up",
 			"agreement_text_default"			: "I read & agree the Privacy Policy"
@@ -1496,7 +1496,7 @@
 
 			"title_default"            			: "Get discounts & latest offers via email",
 			"description_default"           	: "We do not send out spam emails & you can unsubscribe at any point.",
-			"image_default"            			: "",
+			"image_default"            			: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80",
 			"input_placeholder_default"       	: "Your valid email",
 			"button_text_default"       		: "Sign up",
 			"agreement_text_default"			: "I read & agree the Privacy Policy"
@@ -1509,7 +1509,7 @@
 
 			"title_default"            			: "New product",
 			"description_default"           	: "We just launched our new product, check it out right now!",
-			"image_default"            			: "https://assets-ouch.icons8.com/preview/255/675cef88-9340-42a9-a5b0-52c240cc965a.png",
+			"image_default"            			: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
 			"button_text_default"       		: "Download for free"
 		},
 
@@ -1525,55 +1525,62 @@
 		},
 
 		"engagement_links": {
-			"name"                              : "Engagement Links",
-			"description"                       : "Display a subtle widget which contains all of your relevant links.",
-			"icon"								: "fa fa-fw fa-link",
+            "name"                              : "Engagement links",
+            "description"                       : "Display a subtle widget which contains all of your relevant links.",
+            "icon"                              : "fa fa-fw fa-link",
+ 
+            "title"                             : "Connect with us",
+            "categories": [
+                {
+                    "title"                     : "Social media",
+                    "description"               : "Find out",
+ 
+                    "links": [
+                        {
+                            "title"             : "Twitter",
+                            "description"       : "Follow us on Twitter!",
+                            "image"             : "https://img.icons8.com/fluency/96/000000/twitter.png",
+                            "url"               : "https://domain.com/"
+                        },
 
-			"title"								: "Connect with us 👁",
-			"categories": [
-				{
-					"title"						: "Social Media",
-					"description"				: "Our social media pages.",
-
-					"links": [
-						{
-							"title"				: "Twitter",
-							"description"		: "Follow us on Twitter!",
-							"image"				: "https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../assets/preview/2012/png/iconmonstr-twitter-1.png&r=0&g=0&b=0",
-							"url"				: "https://domain.com/"
-						},
-
-						{
-							"title"				: "Facebook",
-							"description"		: "Like our page on Facebook!",
-							"image"				: "https://cdns.iconmonstr.com/wp-content/assets/preview/2017/240/iconmonstr-facebook-6.png",
-							"url"				: "https://domain.com/"
-						}
-					]
-				},
-
-				{
-					"title"						: "Contact",
-					"description"				: "",
-
-					"links": [
-						{
-							"title"				: "Email",
-							"description"		: "Our support email.",
-							"image"				: "",
-							"url"				: "https://domain.com/"
-						},
-
-						{
-							"title"				: "Whatsapp",
-							"description"		: "Send us a message.",
-							"image"				: "",
-							"url"				: "https://domain.com/"
-						}
-					]
-				}
-			]
-		}
+                        {
+                            "title"             : "instagram",
+                            "description"       : "Follow us on instagram!",
+                            "image"             : "https://img.icons8.com/color/96/000000/instagram-new--v1.png",
+                            "url"               : "https://domain.com/"
+                        },
+ 
+                        {
+                            "title"             : "Facebook",
+                            "description"       : "Join our Facebook group!",
+                            "image"             : "https://img.icons8.com/fluency/48/000000/facebook-new.png",
+                            "url"               : "https://domain.com/"
+                        }
+                    ]
+                },
+ 
+                {
+                    "title"                     : "Contact us",
+                    "description"               : "",
+ 
+                    "links": [
+                        {
+                            "title"             : "Email",
+                            "description"       : "Tech support email.",
+                            "image"             : "",
+                            "url"               : "https://domain.com/"
+                        },
+ 
+                        {
+                            "title"             : "Whatsapp",
+                            "description"       : "Send us a message!.",
+                            "image"             : "",
+                            "url"               : "https://domain.com/"
+                        }
+                    ]
+                }
+            ]
+        }
 	},
 
 	"notification_delete_modal": {
