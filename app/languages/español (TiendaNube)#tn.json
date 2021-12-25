@@ -3,7 +3,8 @@
 
     "custom": {
 
-        "helpcenter"                    : "Centro de Ayuda"
+        "helpcenter"                    : "Centro de Ayuda",
+        "dashboard_cust_notifications_not_shown" : "🔥🚀 <strong>Wow! Felicidades, tu tienda está on-fire!</strong><br>Has excedido el limite de impresiones para este mes, puedes esperar o <a href=\"plan/upgrade\">mejorar</a> tu plan.<br><small>Atención: Renovar el mismo plan no reiniciará el contador.</small>"
     },
     
     "global": {
@@ -264,7 +265,7 @@
         },
  
         "plan_settings": {
-            "no_ads"                                    : "Soporte premium",
+            "no_ads"                                    : "Ejecutivo de cuenta",
             "removable_branding"                        : "Sin marca de agua",
             "custom_branding"                           : "Marca propia",
             "campaigns_limit"                           : "<strong>%s</strong> Tienda/s",

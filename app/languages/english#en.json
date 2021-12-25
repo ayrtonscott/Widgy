@@ -3,7 +3,8 @@
 
 	"custom": {
 
-        "helpcenter"                    : "Help Center"
+        "helpcenter"                    : "Help Center",
+		"dashboard_cust_notifications_not_shown" : "🔥🚀 <strong>Wow! Your site is on fire!</strong><br>You have exceeded the impression limit for this month, you can wait or <a href=\"plan/upgrade\">upgrade</a> your plan.<br><small>Important: Renewing the same plan will not reset the counter. </small>"
     },
 
 	"global": {
