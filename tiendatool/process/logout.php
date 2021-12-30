@@ -4,5 +4,5 @@
   $_SESSION["user"]["loggedIn"] = false;
   $_SESSION["user"] = array();
   unset($_SESSION["user"]);
-  header('Location: ../login-page.php?message=loggedOutSuccessfully');
+  header('Location: ../index.php?message=loggedOutSuccessfully');
   exit();
