@@ -46,7 +46,7 @@ $javascript = '';
 
         <div class="form-group">
             <label for="settings_agreement_url"><?= language()->notification->settings->agreement_url ?></label>
-            <input type="url" id="settings_agreement_url" name="agreement_url" class="form-control" value="<?= $data->notification->settings->agreement_url ?>" maxlength="2048" />
+            <input id="settings_agreement_url" name="agreement_url" class="form-control" value="<?= $data->notification->settings->agreement_url ?>" maxlength="2048" /><?php // INICIO - Modificación 02/01/22 en 10.0.0 - Borramos el type URL para que funcionen las dyn vars ?>
         </div>
     </div>
 

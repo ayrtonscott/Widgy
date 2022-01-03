@@ -18,7 +18,7 @@ $javascript = '';
 
     <div class="form-group">
         <label for="settings_url"><?= language()->notification->settings->url ?></label>
-        <input type="url" id="settings_url" name="url" class="form-control" value="<?= $data->notification->settings->url ?>" maxlength="2048" />
+        <input id="settings_url" name="url" class="form-control" value="<?= $data->notification->settings->url ?>" maxlength="2048" /><?php // Modificación 02/01/22 en 10.0.0 - Borramos el type URL ?>
         <small class="form-text text-muted"><?= language()->notification->settings->url_help ?></small>
     </div>
 

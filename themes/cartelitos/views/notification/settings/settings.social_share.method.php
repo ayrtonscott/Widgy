@@ -27,7 +27,7 @@ $javascript = '';
 
     <div class="form-group">
         <label for="settings_share_url"><?= language()->notification->settings->share_url ?></label>
-        <input type="url" id="settings_share_url" name="share_url" class="form-control" value="<?= $data->notification->settings->share_url ?>" maxlength="2048" />
+        <input id="settings_share_url" name="share_url" class="form-control" value="<?= $data->notification->settings->share_url ?>" maxlength="2048" /><?php // Modificación 02/01/22 en 10.0.0 - Borramos el type URL ?>
         <small class="form-text text-muted"><?= language()->notification->settings->share_url_help ?></small>
     </div>
 

@@ -22,13 +22,13 @@ $javascript = '';
 
     <div class="form-group">
         <label for="settings_video"><?= language()->notification->settings->video ?></label>
-        <input type="url" id="settings_video" name="video" class="form-control" value="<?= $data->notification->settings->video ?>" />
+        <input id="settings_video" name="video" class="form-control" value="<?= $data->notification->settings->video ?>" /><?php // Modificación 02/01/22 en 10.0.0 - Borramos el type URL ?>
         <small class="form-text text-muted"><?= language()->notification->settings->video_help ?></small>
     </div>
 
     <div class="form-group">
         <label for="settings_button_url"><?= language()->notification->settings->button_url ?></label>
-        <input type="url" id="settings_button_url" name="button_url" class="form-control" value="<?= $data->notification->settings->button_url ?>" maxlength="2048" />
+        <input id="settings_button_url" name="button_url" class="form-control" value="<?= $data->notification->settings->button_url ?>" maxlength="2048" /><?php // Modificación 02/01/22 en 10.0.0 - Borramos el type URL ?>
     </div>
 
     <div class="form-group">

@@ -22,7 +22,7 @@ $javascript = '';
 
     <div class="form-group">
         <label for="settings_image"><?= language()->notification->settings->image ?></label>
-        <input type="url" id="settings_image" name="image" class="form-control" value="<?= $data->notification->settings->image ?>" maxlength="2048" />
+        <input id="settings_image" name="image" class="form-control" value="<?= $data->notification->settings->image ?>" maxlength="2048" /><?php // Modificación 02/01/22 en 10.0.0 - Borramos el type URL ?>
     </div>
 
     <div class="form-group">
@@ -33,7 +33,7 @@ $javascript = '';
 
     <div class="form-group">
         <label for="settings_button_url"><?= language()->notification->settings->button_url ?></label>
-        <input type="url" id="settings_button_url" name="button_url" class="form-control" value="<?= $data->notification->settings->button_url ?>" maxlength="2048" />
+        <input id="settings_button_url" name="button_url" class="form-control" value="<?= $data->notification->settings->button_url ?>" maxlength="2048" /><?php // Modificación 02/01/22 en 10.0.0 - Borramos el type URL ?>
     </div>
 
     <div class="form-group">
