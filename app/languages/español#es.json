@@ -84,7 +84,7 @@
  
         "accessibility": {
             "toggle_navigation"         : "Activar navegación",
-            "logo_alt"                  : "Cartelitos.app Logo",
+            "logo_alt"                  : "Widgy.app Logo",
             "captcha_alt"               : "Captcha",
             "captcha_input"             : "Campo de Captcha"
         },
@@ -838,7 +838,7 @@
  
         "success_message": {
             "registration"              : "Tu cuenta ha sido creada. ¡Revisa tu email para encontrar el link de activación! (¡Asegurate de verificar tu correo no deseado!)",
-            "login"                     : "¡Bienvenido a Cartelitos, nos encanta tenerte aquí!"
+            "login"                     : "¡Bienvenido a Widgy, nos encanta tenerte aquí!"
         }
     },
  
@@ -1356,7 +1356,7 @@
             "icon"                              : "fa fa-fw fa-random",
  
             "title_default"                     : "Brad 'el loco' Pit",
-            "description_default"               : "¡¡¡Cartelitos es el mejor servicio que he probado!!! ¡¡I f#$%ing love it!! ",
+            "description_default"               : "¡¡¡Widgy es el mejor servicio que he probado!!! ¡¡I f#$%ing love it!! ",
             "image_default"                     : "https://r4.abcimg.es/resizer/resizer.php?imagen=https%3A%2F%2Fstatic3.abc.es%2Fmedia%2Fciencia%2F2020%2F02%2F12%2Fbrad-pitt-k5rG--220x220%40abc.jpg"
         },
  
@@ -1404,7 +1404,7 @@
             "icon"                              : "fa fa-fw fa-user-plus",
  
             "title_default"                     : "Eduardo Gomez",
-            "description_default"               : "Equipo de Cartelitos",
+            "description_default"               : "Equipo de Widgy",
             "image_default"                     : "https://img.icons8.com/dusk/64/000000/winner.png",
             "content_title_default"             : "¿Tienes alguna pregunta?",
             "content_description_default"       : "¡Nos comunicaremos contigo en breve!",
@@ -1606,11 +1606,11 @@
     },
  
     "index": {
-        "title"                         : "Cartelitos - Herramienta N°1 en Prueba Social",
+        "title"                         : "Widgy - Herramienta N°1 en Prueba Social",
         "meta_description"              : "Crea notificaciones dinámicas e interactivas para los visitantes de tu sitio web.",
         "meta_keywords"                 : "prueba social, marketing, conversiones, vender más, como vender más, como publicitar en facebook, marketing digital, ",
-        "header"                        : "Aumenta tus conversiones y genera confianza con Prueba Social.",
-        "subheader"                     : "Cartelitos es una aplicación para que te permite <strong>aumentar hasta un 45%</strong> las conversiones de tu sitio web.<br/><br><strong>Aumenta tus ventas</strong> con nuestras notificaciones dinámicas e interactivas.</br>",
+        "header"                        : "Aumenta tus conversiones<br/>con <strong>Prueba Social</strong>",
+        "subheader"                     : "Widgy es una aplicación para que te permite <strong>aumentar hasta un 45%</strong> las conversiones de tu sitio web.<br/><br><strong>Aumenta tus ventas</strong> mostrando notificaciones dinámicas e interactivas directamente a los ojos de tus clientes.</br>",
         "sign_up"                       : "Empezar ➡",
         "breadcrumb"                    : "Inicio",
  
@@ -1639,7 +1639,7 @@
  
         "tools": {
             "header"                    : "¿De qué se trata?",
-            "subheader"                 : "Cartelitos es una robusta aplicación que se integra con tu TiendaNube y te ayuda a obtener conversiones, generar confianza en tu tienda y crear fidelización de tus clientes mediante el fenómeno psicologico de la prueba social. <br><br>Sin ir más lejos, te contamos que <font color=\"orange\">%s</font> notificaciones ya han sido impresas en todos los sitios web de nuestros clientes.<br><br>Ups! Sin darnos cuenta, ya la estamos aplicando! ❤️",
+            "subheader"                 : "Widgy es una robusta aplicación que se integra con tu TiendaNube y te ayuda a obtener conversiones, generar confianza en tu tienda y crear fidelización de tus clientes mediante el fenómeno psicologico de la prueba social. <br><br>Sin ir más lejos, te contamos que <font color=\"orange\">%s</font> notificaciones ya han sido impresas en todos los sitios web de nuestros clientes.<br><br>Ups! Sin darnos cuenta, ya la estamos aplicando! ❤️",
  
             "preview"                   : "¿Cuál puedo elegir?",
             "preview_description"       : "Elige cualquiera de estas para obtener una vista previa."
@@ -1662,7 +1662,7 @@
             "nav_item3"                  : "NOTIFICACIONES",
             "nav_item4"                  : "PRECIOS",
             "feature1_title"            : "¿Prueba social?",
-            "feature1_desc"             : "La prueba social, conocida también como influencia social informativa, es un fenómeno psicológico donde <font color=\"orange\">las personas asumen que la acción de otras personas refleja un comportamiento correcto</font> en una situación especifica. <br><br>",
+            "feature1_desc"             : "La prueba social, conocida también como influencia social informativa, es un fenómeno psicológico donde <font color=\"orange\">las personas asumen que la acción de otras personas refleja un comportamiento correcto</font> en una situación especifica. <br><br>Preguntate, ¿Alguna vez te ha sucedido este fenómeno? Puede ser con un restaurante, una tienda online o simplemente el supermercado.<br><br> Saber que una persona compró y obtuvo buenos resultados o una calificación de 5 estrellas seguramente fueron <font color=\"orange\">factores decisivos a la hora de realizar una compra</font>.",
             "register_link"             : "register"
         }
     
