@@ -52,7 +52,7 @@ function createWebhookOnTiendaNube($sEvent, $mEndpoint)
     $Body = array(
         'event' => $sEvent,
         // TODO cambiar la URL por SITE_URL
-        'url' => "https://cartelitos.ddns.net" . '/integrations/tiendanube/webhook_handler.php?endpoint=' . $mEndpoint
+        'url' => SITE_URL . '/integrations/tiendanube/webhook_handler.php?endpoint=' . $mEndpoint
     );
     $Body = json_encode($Body, true);
 
@@ -178,7 +178,7 @@ switch ($_GET['action']) {
     case 'delete':
         // si La acción es DELETE
 
-        // Vemos cual es el WebhookID de el $sEvent según Cartelitos.
+        // Vemos cual es el WebhookID de el $sEvent según Widgy.
         $iWebhookID = searchWebhookIDinDB($iStoreID, $sEvent);
 
         $iWebhookID == 0 ? die("No hay webhook para eliminar. Comunicate por el chat.") : "";

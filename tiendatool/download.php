@@ -9,7 +9,7 @@ if (!isset($_GET["storeid"])) {
     die("No ID Selected");
 }
 
-$obj_conexion = mysqli_connect('127.0.0.1', 'ayrton', 'ayrton123', 'cartelitos.app');
+$obj_conexion = mysqli_connect('127.0.0.1', 'ayrton', 'ayrton123', 'widgy_v1');
 if (!$obj_conexion) {
     echo "<h3>No se ha podido conectar PHP - MySQL, verifique sus datos.</h3><hr><br>";
 }
@@ -48,7 +48,7 @@ $var_resultado = $obj_conexion->query($var_consulta);
                   'header' => [
                     0 => [
                       'key' => 'User-Agent',
-                      'value' => 'Cartelitos (Cartelitos.app@gmail.com)',
+                      'value' => 'Widgy (api@widgy.app)',
                       'type' => 'text',
                     ],
                     1 => [
@@ -95,7 +95,7 @@ $var_resultado = $obj_conexion->query($var_consulta);
                   'header' => [
                     0 => [
                       'key' => 'User-Agent',
-                      'value' => 'Cartelitos (Cartelitos.app@gmail.com)',
+                      'value' => 'Widgy (api@widgy.app)',
                       'type' => 'text',
                     ],
                     1 => [
@@ -152,7 +152,7 @@ $var_resultado = $obj_conexion->query($var_consulta);
                   'header' => [
                     0 => [
                       'key' => 'User-Agent',
-                      'value' => 'Cartelitos (Cartelitos.app@gmail.com)',
+                      'value' => 'Widgy (api@widgy.app)',
                       'type' => 'text',
                     ],
                     1 => [
@@ -200,7 +200,7 @@ $var_resultado = $obj_conexion->query($var_consulta);
                     0 => [
                       'key' => 'User-Agent',
                       'type' => 'text',
-                      'value' => 'Cartelitos (Cartelitos.app@gmail.com)',
+                      'value' => 'Widgy (api@widgy.app)',
                     ],
                     1 => [
                       'key' => 'Content-Type',
@@ -268,7 +268,7 @@ $var_resultado = $obj_conexion->query($var_consulta);
                     0 => [
                       'key' => 'User-Agent',
                       'type' => 'text',
-                      'value' => 'Cartelitos (Cartelitos.app@gmail.com)',
+                      'value' => 'Widgy (api@widgy.app)',
                     ],
                     1 => [
                       'key' => 'Content-Type',
@@ -284,7 +284,7 @@ $var_resultado = $obj_conexion->query($var_consulta);
                   'body' => [
                     'mode' => 'raw',
                     'raw' => '{
-            "src" : "https://cartelitos.app/pixel/REEMPLAZARPORLAIDDECAMPAÑA",
+            "src" : "https://widgy.app/pixel/REEMPLAZARPORLAIDDECAMPAÑA",
             "event" : "onload",
             "where" : "store,checkout"
           }',
@@ -323,7 +323,7 @@ $var_resultado = $obj_conexion->query($var_consulta);
                     0 => [
                       'key' => 'User-Agent',
                       'type' => 'text',
-                      'value' => 'Cartelitos (Cartelitos.app@gmail.com)',
+                      'value' => 'Widgy (api@widgy.app)',
                     ],
                     1 => [
                       'key' => 'Content-Type',
@@ -339,7 +339,7 @@ $var_resultado = $obj_conexion->query($var_consulta);
                   'body' => [
                     'mode' => 'raw',
                     'raw' => '{
-            "url" : "https://cartelitos.app/pixel-webhook/ÑÑPRUEBA",
+            "url" : "https://widgy.app/pixel-webhook/ÑÑPRUEBA",
             "event": "order/created"
           }',
                     'options' => [
@@ -394,7 +394,7 @@ $var_resultado = $obj_conexion->query($var_consulta);
                     0 => [
                       'key' => 'User-Agent',
                       'type' => 'text',
-                      'value' => 'Cartelitos (Cartelitos.app@gmail.com)',
+                      'value' => 'Widgy (api@widgy.app)',
                     ],
                     1 => [
                       'key' => 'Content-Type',
@@ -466,7 +466,7 @@ $var_resultado = $obj_conexion->query($var_consulta);
                     0 => [
                       'key' => 'User-Agent',
                       'type' => 'text',
-                      'value' => 'Cartelitos (Cartelitos.app@gmail.com)',
+                      'value' => 'Widgy (api@widgy.app)',
                     ],
                     1 => [
                       'key' => 'Content-Type',
@@ -537,7 +537,7 @@ $var_resultado = $obj_conexion->query($var_consulta);
                   'header' => [
                     0 => [
                       'key' => 'User-Agent',
-                      'value' => 'Cartelitos (Cartelitos.app@gmail.com)',
+                      'value' => 'Widgy (api@widgy.app)',
                       'type' => 'text',
                     ],
                     1 => [
@@ -566,11 +566,11 @@ $var_resultado = $obj_conexion->query($var_consulta);
                     ],
                   ],
                   'url' => [
-                    'raw' => 'https://cartelitos.app/integrations/tiendanube/webhook_handler.php?webhook=https://cartelitos.app/pixel-webhook/REEMPLAZAR POR EL PIXEL',
+                    'raw' => 'https://widgy.app/integrations/tiendanube/webhook_handler.php?webhook=https://widgy.app/pixel-webhook/REEMPLAZAR POR EL PIXEL',
                     'protocol' => 'https',
                     'host' => [
                       0 => 'app',
-                      1 => 'cartelitos',
+                      1 => 'widgy',
                       2 => 'io',
                     ],
                     'path' => [
@@ -581,7 +581,7 @@ $var_resultado = $obj_conexion->query($var_consulta);
                     'query' => [
                       0 => [
                         'key' => 'webhook',
-                        'value' => 'https://cartelitos.app/pixel-webhook/e57a3dfe6c00f0217641cbfa83d3268c',
+                        'value' => 'https://widgy.app/pixel-webhook/e57a3dfe6c00f0217641cbfa83d3268c',
                       ],
                     ],
                   ],

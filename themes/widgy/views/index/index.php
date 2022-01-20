@@ -43,16 +43,16 @@
   <?php endif ?>
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="themes/cartelitos/assets/font/iconsmind-s/css/iconsminds.css" />
-  <link rel="stylesheet" href="themes/cartelitos/assets/font/simple-line-icons/css/simple-line-icons.css" />
-  <link rel="stylesheet" href="themes/cartelitos/assets/css/vendor/bootstrap-stars.css" />
-  <link rel="stylesheet" href="themes/cartelitos/assets/css/vendor/bootstrap.min.css" />
-  <link rel="stylesheet" href="themes/cartelitos/assets/css/vendor/owl.carousel.min.css" />
-  <link rel="stylesheet" href="themes/cartelitos/assets/css/vendor/bootstrap-stars.css" />
-  <link rel="stylesheet" href="themes/cartelitos/assets/css/vendor/video-js.css" />
-  <link rel="stylesheet" href="themes/cartelitos/assets/css/dore.light.blueyale.min.css" />
-  <link rel="stylesheet" href="themes/cartelitos/assets/css/main.css" />
-  <link rel="stylesheet" href="themes/cartelitos/assets/css/custom.css" />
+  <link rel="stylesheet" href="themes/widgy/assets/font/iconsmind-s/css/iconsminds.css" />
+  <link rel="stylesheet" href="themes/widgy/assets/font/simple-line-icons/css/simple-line-icons.css" />
+  <link rel="stylesheet" href="themes/widgy/assets/css/vendor/bootstrap-stars.css" />
+  <link rel="stylesheet" href="themes/widgy/assets/css/vendor/bootstrap.min.css" />
+  <link rel="stylesheet" href="themes/widgy/assets/css/vendor/owl.carousel.min.css" />
+  <link rel="stylesheet" href="themes/widgy/assets/css/vendor/bootstrap-stars.css" />
+  <link rel="stylesheet" href="themes/widgy/assets/css/vendor/video-js.css" />
+  <link rel="stylesheet" href="themes/widgy/assets/css/dore.light.blueyale.min.css" />
+  <link rel="stylesheet" href="themes/widgy/assets/css/main.css" />
+  <link rel="stylesheet" href="themes/widgy/assets/css/custom.css" />
 
   <?php if (!empty(settings()->custom->head_js)) : ?>
     <?= settings()->custom->head_js ?>
@@ -158,7 +158,7 @@
             <div class="row home-row">
               <div class="col-12 d-block d-md-none">
                 <a>
-                  <img alt="mobile hero" class="mobile-hero" src="themes/cartelitos/assets/img/landing-page/home-hero-mobile_<?= \Altum\Language::$language_code  ?>.png" />
+                  <img alt="mobile hero" class="mobile-hero" src="themes/widgy/assets/img/landing-page/home-hero-mobile_<?= \Altum\Language::$language_code  ?>.png" />
                 </a>
               </div>
 
@@ -174,7 +174,7 @@
               </div>
               <div class="col-12 col-xl-7 offset-xl-1 col-lg-7 col-md-6  d-none d-md-block">
                 <a>
-                  <img alt="hero" src="themes/cartelitos/assets/img/landing-page/home-hero_<?= \Altum\Language::$language_code  ?>.png" />
+                  <img alt="hero" src="themes/widgy/assets/img/landing-page/home-hero_<?= \Altum\Language::$language_code  ?>.png" />
                 </a>
               </div>
             </div>
@@ -188,7 +188,7 @@
                     <div class="card">
                       <div class="card-body text-center">
                         <div>
-                          <img src="themes/cartelitos/assets/img/landing-page/banner1_<?= \Altum\Language::$language_code ?>.jpg">
+                          <img src="themes/widgy/assets/img/landing-page/banner1_<?= \Altum\Language::$language_code ?>.jpg">
                         </div>
                       </div>
                     </div>
@@ -196,7 +196,7 @@
                     <div class="card">
                       <div class="card-body text-center">
                         <div>
-                          <img src="themes/cartelitos/assets/img/landing-page/banner2_<?= \Altum\Language::$language_code ?>.jpg">
+                          <img src="themes/widgy/assets/img/landing-page/banner2_<?= \Altum\Language::$language_code ?>.jpg">
                         </div>
                       </div>
                     </div>
@@ -204,7 +204,7 @@
                     <div class="card">
                       <div class="card-body text-center">
                         <div>
-                          <img src="themes/cartelitos/assets/img/landing-page/banner3_<?= \Altum\Language::$language_code ?>.jpg">
+                          <img src="themes/widgy/assets/img/landing-page/banner3_<?= \Altum\Language::$language_code ?>.jpg">
                         </div>
                       </div>
                     </div>
@@ -212,7 +212,7 @@
                     <div class="card">
                       <div class="card-body text-center">
                         <div>
-                          <img src="themes/cartelitos/assets/img/landing-page/banner4_<?= \Altum\Language::$language_code ?>.jpg">
+                          <img src="themes/widgy/assets/img/landing-page/banner4_<?= \Altum\Language::$language_code ?>.jpg">
                         </div>
                       </div>
                     </div>
@@ -220,7 +220,7 @@
                     <div class="card">
                       <div class="card-body text-center">
                         <div>
-                          <img src="themes/cartelitos/assets/img/landing-page/banner5_<?= \Altum\Language::$language_code ?>.jpg">
+                          <img src="themes/widgy/assets/img/landing-page/banner5_<?= \Altum\Language::$language_code ?>.jpg">
                         </div>
                       </div>
                     </div>
@@ -228,7 +228,7 @@
                     <div class="card">
                       <div class="card-body text-center">
                         <div>
-                          <img src="themes/cartelitos/assets/img/landing-page/banner6_<?= \Altum\Language::$language_code ?>.jpg">
+                          <img src="themes/widgy/assets/img/landing-page/banner6_<?= \Altum\Language::$language_code ?>.jpg">
                         </div>
                       </div>
                     </div>
@@ -261,7 +261,7 @@
 
             <div class="row" id="socialproof">
               <div class="col-12 col-md-6 col-lg-6 order-2 order-md-1">
-                <img alt="feature" class="feature-image-left feature-image-charts" src="themes/cartelitos/assets/img/landing-page/features/plesant-design.png" />
+                <img alt="feature" class="feature-image-left feature-image-charts" src="themes/widgy/assets/img/landing-page/features/plesant-design.png" />
               </div>
 
               <div class="col-12 col-md-6 offset-md-0 col-lg-5 offset-lg-1 d-flex align-items-center order-1 order-md-2">
@@ -468,7 +468,7 @@
               </div>
               <div class="col-12 text-center footer-content">
                 <a href="#home" class="scrollTo">
-                  <img class="footer-logo" alt="footer logo" src="themes/cartelitos/assets/logos/white-full.svg" />
+                  <img class="footer-logo" alt="footer logo" src="themes/widgy/assets/logos/white-full.svg" />
                 </a>
               </div>
             </div>
@@ -480,7 +480,7 @@
             <div class="row">
               <div class="col-12"></div>
               <div class="col-12 text-center">
-                <p class="mb-0">Copyright &copy Cartelitos.app 2019 - 2022</p>
+                <p class="mb-0">Copyright &copy Widgy.app 2019 - 2022</p>
               </div>
 
             </div>
@@ -491,17 +491,17 @@
     </div>
   </div>
 
-  <script src="themes/cartelitos/assets/js/vendor/jquery-3.3.1.min.js"></script>
-  <script src="themes/cartelitos/assets/js/vendor/bootstrap.bundle.min.js"></script>
-  <script src="themes/cartelitos/assets/js/vendor/owl.carousel.min.js"></script>
-  <script src="themes/cartelitos/assets/js/vendor/jquery.barrating.min.js"></script>
-  <script src="themes/cartelitos/assets/js/vendor/jquery.barrating.min.js"></script>
-  <script src="themes/cartelitos/assets/js/vendor/landing-page/headroom.min.js"></script>
-  <script src="themes/cartelitos/assets/js/vendor/landing-page/jQuery.headroom.js"></script>
-  <script src="themes/cartelitos/assets/js/vendor/landing-page/jquery.scrollTo.min.js"></script>
-  <script src="themes/cartelitos/assets/js/vendor/landing-page/jquery.autoellipsis.js"></script>
-  <script src="themes/cartelitos/assets/js/dore.scripts.landingpage.js"></script>
-  <script src="themes/cartelitos/assets/js/scripts.single.theme.js"></script>
+  <script src="themes/widgy/assets/js/vendor/jquery-3.3.1.min.js"></script>
+  <script src="themes/widgy/assets/js/vendor/bootstrap.bundle.min.js"></script>
+  <script src="themes/widgy/assets/js/vendor/owl.carousel.min.js"></script>
+  <script src="themes/widgy/assets/js/vendor/jquery.barrating.min.js"></script>
+  <script src="themes/widgy/assets/js/vendor/jquery.barrating.min.js"></script>
+  <script src="themes/widgy/assets/js/vendor/landing-page/headroom.min.js"></script>
+  <script src="themes/widgy/assets/js/vendor/landing-page/jQuery.headroom.js"></script>
+  <script src="themes/widgy/assets/js/vendor/landing-page/jquery.scrollTo.min.js"></script>
+  <script src="themes/widgy/assets/js/vendor/landing-page/jquery.autoellipsis.js"></script>
+  <script src="themes/widgy/assets/js/dore.scripts.landingpage.js"></script>
+  <script src="themes/widgy/assets/js/scripts.single.theme.js"></script>
 </body>
 
 </html>

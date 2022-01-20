@@ -43,7 +43,7 @@ function webhookGetKey($SQL_StoreID, $SQL_Access_Token, $iWebhookID)
   $Headers = array(
     'Content-Type' => 'application/json',
     'Authentication' => 'bearer ' . $SQL_Access_Token,
-    'User-Agent' => 'Cartelitos (Cartelitos.app@gmail.com)'
+    'User-Agent' => 'Widgy (api@widgy.app)'
   );
   $Response = Requests::get($Url, $Headers);
   $Response = json_decode($Response->body, true);
@@ -77,7 +77,7 @@ function webhookGetKey($SQL_StoreID, $SQL_Access_Token, $iWebhookID)
 
     <section class="align-items-center justify-content-center" id="Instalar">
       <div class="d-flex justify-content-center align-items-center">
-        <h3>¡Integra tu <span class="glow">TiendaNube</span> con Cartelitos!</h3>
+        <h3>¡Integra tu <span class="glow">TiendaNube</span> con Widgy!</h3>
       </div>
       <div class="d-flex justify-content-center">
         <h6 class="text-center">Por ejemplo, puedes crear confianza en tu marca <b>mostrando tus últimas ventas</b> o también generar interacción con tus clientes <b>avisando de un nuevo producto</b>

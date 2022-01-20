@@ -22,7 +22,7 @@ if (!isset($_SESSION["user"]["loggedIn"]) or $_SESSION["user"]["loggedIn"] != tr
 
 //Creas una variable de tipo objeto mysqli con los datos de la bd y el charset que quieras
 
-$obj_conexion = mysqli_connect('127.0.0.1', 'ayrton', 'ayrton123', 'cartelitos.app');
+$obj_conexion = mysqli_connect('127.0.0.1', 'ayrton', 'ayrton123', 'widgy_v1');
 if (!$obj_conexion) {
     echo "<h3>No se ha podido conectar PHP - MySQL, verifique sus datos.</h3><hr><br>";
 } else {
@@ -65,7 +65,7 @@ if ($var_resultado->num_rows > 0) {
         echo "<td>" . $var_fila["store_description"] . "</td>";
         echo "<td>" . $var_fila["domain"] . "</td>";
         echo "<td>" . $var_fila["access_token"] . "</td>";
-        echo "<td><a href=\"https://cartelitos.ddns.net/tiendatool/download.php?storeid=".$var_fila["store_id"]."\">PM</a></td></tr>";
+        echo "<td><a href=\"https://widgy.app/tiendatool/download.php?storeid=".$var_fila["store_id"]."\">PM</a></td></tr>";
     }
 } else {
     echo "No hay Registros";

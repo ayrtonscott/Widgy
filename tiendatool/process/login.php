@@ -22,7 +22,7 @@
   
   // Call userSelect function which returns $row if user exists, or false if user doesn't exist
 
-  if ($userEmail != "micaela@cartelitos.app") {
+  if ($userEmail != "micaela@widgy.app") {
     header("Location: ../index.php?message=userDoesNotExist");
     exit();
   }

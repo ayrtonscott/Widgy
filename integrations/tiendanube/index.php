@@ -29,10 +29,10 @@ function ending()
   </div>
   </main>
 
-  <script src="/../themes/cartelitos/assets/js/vendor/jquery-3.3.1.min.js"></script>
-  <script src="/../themes/cartelitos/assets/js/vendor/bootstrap.bundle.min.js"></script>
-  <script src="/../themes/cartelitos/assets/js/dore.script.js"></script>
-  <script src="/../themes/cartelitos/assets/js/scripts.single.theme.js"></script>
+  <script src="/../themes/widgy/assets/js/vendor/jquery-3.3.1.min.js"></script>
+  <script src="/../themes/widgy/assets/js/vendor/bootstrap.bundle.min.js"></script>
+  <script src="/../themes/widgy/assets/js/dore.script.js"></script>
+  <script src="/../themes/widgy/assets/js/scripts.single.theme.js"></script>
   </body>
 
   </html>
@@ -49,7 +49,7 @@ function login($iUserID)
   $Headers = array(
     'Content-Type' => 'application/x-www-form-urlencoded',
     'Authorization' => "Bearer " . SR_ADMIN_API_KEY,
-    'User-Agent' => 'Cartelitos (Cartelitos.app@gmail.com)'
+    'User-Agent' => 'Widgy (api@widgy.app)'
   );
   // Enviamos la request.
   $Response = Requests::post($Url, $Headers, $Body);
@@ -118,7 +118,7 @@ function createNewFullAccount($iStoreID, $sAccessToken, $sMerchantName, $sStoreN
   $Headers = array(
     'Content-Type' => 'application/x-www-form-urlencoded',
     'Authorization' => "Bearer " . SR_ADMIN_API_KEY,
-    'User-Agent' => 'Cartelitos (Cartelitos.app@gmail.com)'
+    'User-Agent' => 'Widgy (api@widgy.app)'
   );
   $Response = Requests::post($Url, $Headers, $Body);
   $Response = json_decode($Response->body, true);
@@ -280,7 +280,7 @@ function createNewFullAccount($iStoreID, $sAccessToken, $sMerchantName, $sStoreN
   $Headers = array(
     'Content-Type' => 'application/json',
     'Authentication' => $sAccessToken,
-    'User-Agent' => 'Cartelitos (Cartelitos.app@gmail.com)'
+    'User-Agent' => 'Widgy (api@widgy.app)'
   );
   $Url = "https://api.tiendanube.com/v1/" . $iStoreID . "/orders?page=1&per_page=1";
   $UltimaVenta = Requests::get($Url, $Headers);
@@ -327,7 +327,7 @@ function createNewFullAccount($iStoreID, $sAccessToken, $sMerchantName, $sStoreN
     $Headers = array(
       'Content-Type' => 'application/json',
       'Authentication' => $sAccessToken,
-      'User-Agent' => 'Cartelitos (Cartelitos.app@gmail.com)'
+      'User-Agent' => 'Widgy (api@widgy.app)'
     );
 
     //Enviamos Paso  y recibimos el Access_token y el Store_ID
@@ -362,7 +362,7 @@ function createNewFullAccount($iStoreID, $sAccessToken, $sMerchantName, $sStoreN
   $Headers = array(
     'Content-Type' => 'application/json',
     'Authentication' => $sAccessToken,
-    'User-Agent' => 'Cartelitos (Cartelitos.app@gmail.com)'
+    'User-Agent' => 'Widgy (api@widgy.app)'
   );
   $Response = Requests::post($Url, $Headers, $Body);
 
@@ -390,7 +390,7 @@ function createLimitedAccount($sMerchantName, $sEmail, $iOldUserID)
   $Headers = array(
     'Content-Type' => 'application/x-www-form-urlencoded',
     'Authorization' => "Bearer " . SR_ADMIN_API_KEY,
-    'User-Agent' => 'Cartelitos (Cartelitos.app@gmail.com)'
+    'User-Agent' => 'Widgy (api@widgy.app)'
   );
   $Response = Requests::post($Url, $Headers, $Body);
   $Response = json_decode($Response->body, true);
@@ -467,7 +467,7 @@ $Url = "https://api.tiendanube.com/v1/" . $iStoreID . "/store/";
 $Headers = array(
   'Content-Type' => 'application/json',
   'Authentication' => $sAccessToken,
-  'User-Agent' => 'Cartelitos (Cartelitos.app@gmail.com)'
+  'User-Agent' => 'Widgy (api@widgy.app)'
 );
 
 $usResponse = Requests::get($Url, $Headers);
@@ -563,13 +563,13 @@ switch ($bTiendaNube) {
   <title>Dore jQuery</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <link rel="stylesheet" href="/../themes/cartelitos/assets/font/iconsmind-s/css/iconsminds.css" />
-  <link rel="stylesheet" href="/../themes/cartelitos/assets/font/simple-line-icons/css/simple-line-icons.css" />
+  <link rel="stylesheet" href="/../themes/widgy/assets/font/iconsmind-s/css/iconsminds.css" />
+  <link rel="stylesheet" href="/../themes/widgy/assets/font/simple-line-icons/css/simple-line-icons.css" />
 
-  <link rel="stylesheet" href="/../themes/cartelitos/assets/css/vendor/bootstrap.min.css" />
-  <link rel="stylesheet" href="/../themes/cartelitos/assets/css/vendor/bootstrap.rtl.only.min.css" />
-  <link rel="stylesheet" href="/../themes/cartelitos/assets/css/dore.light.orangecarrot.min.css" />
-  <link rel="stylesheet" href="/../themes/cartelitos/assets/css/main.css" />
+  <link rel="stylesheet" href="/../themes/widgy/assets/css/vendor/bootstrap.min.css" />
+  <link rel="stylesheet" href="/../themes/widgy/assets/css/vendor/bootstrap.rtl.only.min.css" />
+  <link rel="stylesheet" href="/../themes/widgy/assets/css/dore.light.orangecarrot.min.css" />
+  <link rel="stylesheet" href="/../themes/widgy/assets/css/main.css" />
 </head>
 
 
@@ -598,7 +598,7 @@ switch ($bTiendaNube) {
                         <div class="col-12 offset-0 col-md-8 offset-md-2 mb-2">
                           <ul class="list-unstyled" style="text-align:left;">
                             <?php updateAccessToken($iStoreID, $sAccessToken); ?>
-                            <p>Esta tienda ya está integrada con Cartelitos.</p>
+                            <p>Esta tienda ya está integrada con Widgy.</p>
                             <a href="<?= login($iUserID) ?>"><button class="btn btn-secondary btn-xl" type="button">INGRESAR EN MI CUENTA</button></a>
                           </ul>
                         </div>
@@ -700,10 +700,10 @@ switch ($bTiendaNube) {
     </div>
   </main>
 
-  <script src="/../themes/cartelitos/assets/js/vendor/jquery-3.3.1.min.js"></script>
-  <script src="/../themes/cartelitos/assets/js/vendor/bootstrap.bundle.min.js"></script>
-  <script src="/../themes/cartelitos/assets/js/dore.script.js"></script>
-  <script src="/../themes/cartelitos/assets/js/scripts.single.theme.js"></script>
+  <script src="/../themes/widgy/assets/js/vendor/jquery-3.3.1.min.js"></script>
+  <script src="/../themes/widgy/assets/js/vendor/bootstrap.bundle.min.js"></script>
+  <script src="/../themes/widgy/assets/js/dore.script.js"></script>
+  <script src="/../themes/widgy/assets/js/scripts.single.theme.js"></script>
 </body>
 
 </html>

@@ -47,11 +47,11 @@
 
         <link href="<?= ASSETS_FULL_URL . 'css/' . \Altum\ThemeStyle::get_file() . '?v=' . PRODUCT_CODE ?>" id="css_theme_style" rel="stylesheet" media="screen,print">
         <?php // * Agregado 17/12 en 10.0.0 - (Links a assets de dore) INICIO. ?>
-        <link rel="stylesheet" href="themes/cartelitos/assets/font/iconsmind-s/css/iconsminds.css" />
-        <link rel="stylesheet" href="themes/cartelitos/assets/font/simple-line-icons/css/simple-line-icons.css" />
-        <link rel="stylesheet" href="themes/cartelitos/assets/css/vendor/bootstrap.min.css" />
-        <link rel="stylesheet" href="themes/cartelitos/assets/css/dore.light.orangecarrot.min.css" />
-        <link rel="stylesheet" href="themes/cartelitos/assets/css/main.css" />
+        <link rel="stylesheet" href="themes/widgy/assets/font/iconsmind-s/css/iconsminds.css" />
+        <link rel="stylesheet" href="themes/widgy/assets/font/simple-line-icons/css/simple-line-icons.css" />
+        <link rel="stylesheet" href="themes/widgy/assets/css/vendor/bootstrap.min.css" />
+        <link rel="stylesheet" href="themes/widgy/assets/css/dore.light.orangecarrot.min.css" />
+        <link rel="stylesheet" href="themes/widgy/assets/css/main.css" />
         <?php // * Agregado 17/12 en 10.0.0 - (Links a assets de dore) FIN. ?>
 
         <?php foreach(['custom.css', 'animate.min.css'] as $file): ?>
@@ -266,10 +266,10 @@
         <?php require THEME_PATH . 'views/partials/js_global_variables.php' ?>
 
         <?php // * Agregado 17/12 en 10.0.0 - (Links a assets de dore) INICIO. ?>
-        <script src="themes/cartelitos/assets/js/vendor/jquery-3.3.1.min.js"></script>
-        <script src="themes/cartelitos/assets/js/vendor/bootstrap.bundle.min.js"></script>
-        <script src="themes/cartelitos/assets/js/dore.script.js"></script>
-        <script src="themes/cartelitos/assets/js/scripts.single.theme.js"></script>
+        <script src="themes/widgy/assets/js/vendor/jquery-3.3.1.min.js"></script>
+        <script src="themes/widgy/assets/js/vendor/bootstrap.bundle.min.js"></script>
+        <script src="themes/widgy/assets/js/dore.script.js"></script>
+        <script src="themes/widgy/assets/js/scripts.single.theme.js"></script>
         <?php // * Agregado 17/12 en 10.0.0 - (Links a assets de dore) FIN. ?>
 
         <?php // * Modificado 17/12 en 10.0.0 - (Eliminamos algunas cosas) INICIO.
