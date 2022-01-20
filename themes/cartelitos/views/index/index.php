@@ -50,7 +50,7 @@
   <link rel="stylesheet" href="themes/cartelitos/assets/css/vendor/owl.carousel.min.css" />
   <link rel="stylesheet" href="themes/cartelitos/assets/css/vendor/bootstrap-stars.css" />
   <link rel="stylesheet" href="themes/cartelitos/assets/css/vendor/video-js.css" />
-  <link rel="stylesheet" href="themes/cartelitos/assets/css/dore.light.orangecarrot.min.css" />
+  <link rel="stylesheet" href="themes/cartelitos/assets/css/dore.light.blueyale.min.css" />
   <link rel="stylesheet" href="themes/cartelitos/assets/css/main.css" />
   <link rel="stylesheet" href="themes/cartelitos/assets/css/custom.css" />
 
