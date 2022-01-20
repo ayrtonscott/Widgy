@@ -195,6 +195,11 @@ $settings = require THEME_PATH . 'views/notification/settings/settings.' . mb_st
 
 <?php $notification_settings_default_html['customize'] = ob_get_clean() ?>
 
+<?php /* INICIO - Agregado 01/01 en 10.0.0 - Inserción de TiendaNube */ ?>
+<?php ob_start() ?>
+<?php  require ROOT_PATH . 'integrations/tiendanube/settings.method.tiendanube1.php'; ?>
+<?php $notification_settings_default_html['tiendanube'] = ob_get_clean() ?>
+<?php /* FIN - Agregado 01/01 en 10.0.0 - Inserción de TiendaNube */ ?>
 <div class="mt-5 mb-3 d-flex flex-column flex-md-row justify-content-between align-items-md-center">
     <div>
         <h2 class="h3"><?= language()->notification->preview->header ?></h2>
@@ -255,6 +260,9 @@ $settings = require THEME_PATH . 'views/notification/settings/settings.' . mb_st
                     </a>
                 </li>
             <?php endif ?>
+            <?php /* INICIO - Agregado 01/01 en 10.0.0 - Inserción de TiendaNube */ ?>
+                <?php  require ROOT_PATH . 'integrations/tiendanube/settings.method.tiendanube2.php'; ?>
+            <?php /* FIN - Agregado 01/01 en 10.0.0 - Inserción de TiendaNube */ ?>
         </ul>
     </div>
 
@@ -297,6 +305,9 @@ $settings = require THEME_PATH . 'views/notification/settings/settings.' . mb_st
 
                 </div>
 
+                <?php /* INICIO - Agregado 01/01 en 10.0.0 - Inserción de TiendaNube */ ?>
+                    <?php require ROOT_PATH . 'integrations/tiendanube/settings.method.tiendanube3.php'; ?>
+                <?php /* FIN - Agregado 01/01 en 10.0.0 - Inserción de TiendaNube */ ?>
             </div>
 
             <div class="mt-4">
