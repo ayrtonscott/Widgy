@@ -1,1 +1,0 @@
-a:6:{s:1:"k";s:36:"api-1337cambiame1337cambiame1337camb";s:1:"d";i:58;s:1:"g";a:0:{}s:1:"e";O:8:"DateTime":3:{s:4:"date";s:26:"2021-12-30 11:47:24.347162";s:13:"timezone_type";i:3;s:8:"timezone";s:3:"UTC";}s:1:"m";N;s:1:"c";N;}
