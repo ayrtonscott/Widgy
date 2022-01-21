@@ -1012,7 +1012,7 @@
             "input_placeholder"             : "Input",
             "email_placeholder"             : "Email",
             "image"                         : "URL de Imagen",
-            "image_help"                    : "Dejar vacío si no hay imagen. Pista: <a href=\"https://icons8.com\" target=_BLANK >icons8.com</a> tiene una buena librería de iconos que puedes utilizar.",
+            "image_help"                    : "Dejar vacío si no hay imagen. <br>Pista: <a href=\"https://icons8.com\" target=_BLANK >icons8.com</a> tiene una buena librería de iconos que puedes utilizar.<br>También puedes subir tus propias imágenes a <a href=\"https://es.imgbb.com/\" target=_BLANK >imgbb.com</a>",
             "image_alt"						: "Texto alternativo de imagen",
 			"image_alt_help"				: "Descripción de imagen.",
             "url"                           : "URL de Notificación",
