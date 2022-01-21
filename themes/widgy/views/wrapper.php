@@ -1,3 +1,13 @@
+<?php // * Agregado 21/01 en 10.0.0 - (Agregamos Intercom) INICIO. ?>
+<?php
+    $hash = hash_hmac(
+    'sha256', // hash function
+    $this->user->user_id, // user's id
+    'a5edqk3IEE_hhIILFborw4_7wRz1N9RroK9g-a0V' // secret key (keep safe!)
+    );
+?>
+<?php // * Agregado 21/01 en 10.0.0 - (Agregamos Intercom) FIN. ?>
+
 <?php defined('ALTUMCODE') || die() ?>
 <?php if(\Altum\Routing\Router::$controller_key != 'index'): // * Agregado 19/12 en 10.0.0 (Eliminamos todo en el index) INICIO. ?>
 <!DOCTYPE html>
@@ -287,5 +297,30 @@
         <?= \Altum\Event::get_content('javascript') ?>
 <?php if(\Altum\Routing\Router::$controller_key != 'index'): // * Agregado 19/12 en 10.0.0 (Eliminamos todo en el index) INICIO. ?>
     </body>
+
+    <?php // * Agregado 21/01 en 10.0.0 - (Agregamos Intercom) INICIO. ?>
+    <script>
+    window.intercomSettings = {
+        app_id: "nds4bz0l",
+        name: "<?= $this->user->name; ?>",
+        language: "<?= $this->user->language ?>",
+        user_id: <?= $this->user->user_id ?>,
+        email: "<?= $this->user->email ?>",
+        user_hash: "<?= $hash ?>",
+        executive: "<?= $this->user->plan_settings->no_ads ?>",
+        created_at: "<?php echo strtotime($this->user->datetime) ?>",
+        plan: <?= $this->user->plan_id ?>,
+        trial: <?= $this->user->plan_trial_done ?>,
+        current_impressions: <?= $this->user->current_month_notifications_impressions ?>,
+        impressions_limit: "<?= $this->user->plan_settings->notifications_impressions_limit ?>",
+        Vencimiento: "<?= $this->user->plan_expiration_date ?>"
+    };
+    </script>
+    <script>
+    // We pre-filled your app ID in the widget URL: 'https://widget.intercom.io/widget/nds4bz0l'
+    (function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/nds4bz0l';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(document.readyState==='complete'){l();}else if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+    </script>
+    <?php // * Agregado 21/01 en 10.0.0 - (Agregamos Intercom) FIN. ?>
+
 </html>
 <?php endif // * Agregado 19/12 en 10.0.0 (Eliminamos todo en el index) Fin. ?>
