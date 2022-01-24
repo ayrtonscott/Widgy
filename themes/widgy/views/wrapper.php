@@ -58,6 +58,7 @@
         <link href="<?= ASSETS_FULL_URL . 'css/' . \Altum\ThemeStyle::get_file() . '?v=' . PRODUCT_CODE ?>" id="css_theme_style" rel="stylesheet" media="screen,print">
         <?php // * Agregado 17/12 en 10.0.0 - (Links a assets de dore) INICIO. ?>
         <link rel="stylesheet" href="themes/widgy/assets/font/iconsmind-s/css/iconsminds.css" />
+        <link rel="stylesheet" href="themes/widgy/assets/css/vendor/perfect-scrollbar.css" />  <?php // * Agregado 24/1 en 10.0.0 - (Fix de Scroll) FIN. ?>
         <link rel="stylesheet" href="themes/widgy/assets/font/simple-line-icons/css/simple-line-icons.css" />
         <link rel="stylesheet" href="themes/widgy/assets/css/vendor/bootstrap.min.css" />
         <link rel="stylesheet" href="themes/widgy/assets/css/dore.light.orangecarrot.min.css" />
@@ -214,9 +215,9 @@
                         </a>
                     </li>
                     <li class="">
-                        <a href="<?= HELPCENTER_URL ?>">
+                        <a href="<?= HELPCENTER_URL ?><?= \Altum\Language::$language_code == "tn" ? "es" : \Altum\Language::$language_code // * Agregado 24/1 en 10.0.0 (Fix language code) INICIO. ?> ">
                             <i class="iconsminds-library"></i>
-                            <span><?= language()->custom->helpcenter ?></span>
+                            <span><?= language()->custom->helpcenter ?> </span>
                         </a>
                     </li>
                 </ul>
@@ -277,6 +278,7 @@
 
         <?php // * Agregado 17/12 en 10.0.0 - (Links a assets de dore) INICIO. ?>
         <script src="themes/widgy/assets/js/vendor/jquery-3.3.1.min.js"></script>
+        <script src="themes/widgy/assets/js/vendor/perfect-scrollbar.min.js"></script>  <?php // * Agregado 24/1 en 10.0.0 - (Fix de Scroll) FIN. ?>
         <script src="themes/widgy/assets/js/vendor/bootstrap.bundle.min.js"></script>
         <script src="themes/widgy/assets/js/dore.script.js"></script>
         <script src="themes/widgy/assets/js/scripts.single.theme.js"></script>
