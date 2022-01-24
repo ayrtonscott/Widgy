@@ -1639,7 +1639,7 @@
  
         "tools": {
             "header"                    : "¿De qué se trata?",
-            "subheader"                 : "Widgy es una robusta aplicación que se integra con tu TiendaNube y te ayuda a obtener conversiones, generar confianza en tu tienda y crear fidelización de tus clientes mediante el fenómeno psicologico de la prueba social. <br><br>Sin ir más lejos, te contamos que <font color=\"orange\">%s</font> notificaciones ya han sido impresas en todos los sitios web de nuestros clientes.<br><br>Ups! Sin darnos cuenta, ya la estamos aplicando! ❤️",
+            "subheader"                 : "Widgy es una robusta aplicación que se integra con tu TiendaNube y te ayuda a obtener conversiones, generar confianza en tu tienda y crear fidelización de tus clientes mediante el fenómeno psicológico de la prueba social. <br><br>Sin ir más lejos, te contamos que <font color=\"orange\">%s</font> notificaciones ya han sido impresas en todos los sitios web de nuestros clientes.<br><br>Ups! Sin darnos cuenta, ya la estamos aplicando! ❤️",
  
             "preview"                   : "¿Cuál puedo elegir?",
             "preview_description"       : "Elige cualquiera de estas para obtener una vista previa."
@@ -1681,7 +1681,7 @@
         "breadcrumb"                    : "Documentación de la API",
         "title"                         : "Documentación de la API",
         "header"                        : "Documentación de la API",
-        "subheader"                     : "Esto es avanzado. Aquí te mostraremos la documentación para los endpoints de nuestra API, que están construidos con la<strong>arquitectura REST</strong>. Todos los endpoints devolverán una <strong>respuesta en JSON</strong> con los <strong>códigos de respuesta HTTP</strong>estándar. Necesitas una <strong>Bearer Authentication vía API</strong>.",
+        "subheader"                     : "Aquí te mostraremos la documentación para los endpoints de nuestra API, que están construidos con la <strong>arquitectura REST</strong>. <br>Todos los endpoints devolverán una <strong>respuesta en JSON</strong> con los <strong>códigos de respuesta HTTP</strong> estándar. Necesitas una <strong>Bearer Authentication</strong> para comunicarte con nuestra API.",
  
         "endpoint"                      : "Endpoint",
         "example"                       : "Ejemplo",
@@ -1701,7 +1701,7 @@
  
         "authentication": {
             "header"                    : "Autenticación",
-            "subheader"                 : "Todos los endpoints de la API requieren una petición enviada con el método <strong>Bearer Authentication.</strong>"
+            "subheader"                 : "Todos los endpoints de la API requieren que la request sea enviada con el método <strong>Bearer Authentication.</strong>"
         },
  
         "filters": {
