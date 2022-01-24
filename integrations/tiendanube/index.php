@@ -16,32 +16,12 @@ if(isset($_COOKIE['wait'])) {
 
 #region Funciones
 
-function ending()
-{ ?>
-  </div>
-  </div>
-  </div>
-  </div>
-  </div>
-  </div>
-  </div>
-  </div>
-  </div>
-  </main>
-
-  <script src="/../themes/widgy/assets/js/vendor/jquery-3.3.1.min.js"></script>
-  <script src="/../themes/widgy/assets/js/vendor/bootstrap.bundle.min.js"></script>
-  <script src="/../themes/widgy/assets/js/dore.script.js"></script>
-  <script src="/../themes/widgy/assets/js/scripts.single.theme.js"></script>
-  </body>
-
-  </html>
-
-<?php }
-
-function login($iUserID)
+function login($iUserID) // Devuelve la URL de one-time-login
 {
   $Url = SITE_URL . "admin-api/users/" . $iUserID . "/one-time-login-code";
+  $Options = [
+    'verify' => false
+  ];
   $Body = array(
     '0x' => '0x'
   );
@@ -52,17 +32,39 @@ function login($iUserID)
     'User-Agent' => 'Widgy (api@widgy.app)'
   );
   // Enviamos la request.
-  $Response = Requests::post($Url, $Headers, $Body);
+  $Response = Requests::post($Url, $Headers, $Body, $Options);
   $decodedResponse = json_decode($Response->body, true);
 
   if ($Response->status_code != 200) {
-    return "#";
+    return "
+    <div class=\"blog-slider__item swiper-slide\">
+    <div class=\"blog-slider__img\">
+      <img src=\"img/undraw_server_down_s4lk.png\" alt=\"\">
+    </div>
+    <div class=\"blog-slider__content\">
+      <div class=\"blog-slider__title\">Error</div>
+      <div class=\"blog-slider__text\">No pudimos obtener el enlace de acceso para tu cuenta.</div>
+      <a href=\"#\" onclick=\"Intercom('show');\" class=\"blog-custom__button \">Habla con nosotros</a>
+    </div>
+  </div>
+  ";
   } else {
-    return $decodedResponse['data']['url'];
+    return "
+    <div class=\"blog-slider__item swiper-slide\">
+    <div class=\"blog-slider__img\">
+      <img src=\"img/undraw_secure_login_pdn4.png\" alt=\"\">
+    </div>
+    <div class=\"blog-slider__content\">
+      <div class=\"blog-slider__title\">Ingresa</div>
+      <div class=\"blog-slider__text\">Click para ingresar con tu cuenta de Widgy.</div>
+    <a href=\"" . $decodedResponse['data']['url'] . "\" class=\"blog-custom__button\">Ingresar con mi cuenta</a>
+    </div>
+  </div>
+  ";
   }
 }
 
-function install($iUserID, $iStoreID, $sStoreName, $txtStoreDescription, $sStoreDomain, $sAccessToken)
+function insertOnDB($iUserID, $iStoreID, $sStoreName, $txtStoreDescription, $sStoreDomain, $sAccessToken)
 {
   // Insertamos en la Tabla TiendaNube los datos.
   $con = new ConnectionMySQL();
@@ -73,9 +75,31 @@ function install($iUserID, $iStoreID, $sStoreName, $txtStoreDescription, $sStore
     VALUES ( '" . $iUserID . "', '" . $iStoreID . "', '" . $sStoreName . "', '" . $txtStoreDescription . "', '" . $sStoreDomain . "', '" . $sAccessToken . "', '0', '0', '0', '0', '0', '0')";
 
   if ($con->ExecuteQuery($SQL)) {
-    echo "<li><i class=\"iconsminds-add-basket btn text-success\"></i> Datos recolectados de TiendaNube.</li>";
+    return "
+    <div class=\"blog-slider__item swiper-slide\">
+    <div class=\"blog-slider__img\">
+      <img src=\"img/undraw_The_world_is_mine_re_j5cr.png\" alt=\"\">
+    </div>
+    <div class=\"blog-slider__content\">
+      <div class=\"blog-slider__title\">¡Integración completa!</div>
+      <div class=\"blog-slider__text\">Has conectado tu tienda a Widgy correctamente!<br><br>Ya puedes volver a editar tus geniales notificaciones.</div>
+      <a href=\"#\" class=\"blog-slider__button \">Siguiente</a>
+    </div>
+  </div>
+  ";
   } else {
-    echo "<li><i class=\"iconsminds-add-basket btn text-danger\"></i>ERROR: No pudimos guardar los datos de TiendaNube.</li>";
+    return "
+    <div class=\"blog-slider__item swiper-slide\">
+    <div class=\"blog-slider__img\">
+      <img src=\"img/undraw_server_down_s4lk.png\" alt=\"\">
+    </div>
+    <div class=\"blog-slider__content\">
+      <div class=\"blog-slider__title\">Error en DB</div>
+      <div class=\"blog-slider__text\">No pudimos guardar los datos de TiendaNube.</div>
+      <a href=\"#\" onclick=\"Intercom('show');\" class=\"blog-custom__button \">Habla con nosotros</a>
+    </div>
+  </div>
+  ";
   }
 }
 
@@ -86,14 +110,20 @@ function updateAccessToken($iStoreID, $sAccessToken)
   $SQL = "UPDATE tiendanube
     SET access_token = '$sAccessToken'
     WHERE store_id = '$iStoreID'";
-  $con->ExecuteQuery($SQL);
 
-  if ($con->ExecuteQuery($SQL)) {
-    echo "<li><i class=\"iconsminds-profile btn text-success\"></i>Tu código de acceso ha sido restaurado.</li>";
-  } else {
-    echo "<li><i class=\"iconsminds-profile btn text-danger\"></i>ERROR: No pudimos editar tu código de acceso en nuestra base de datos.</li>";
-    ending();
-    die();
+  if (!$con->ExecuteQuery($SQL)) {
+    return "
+    <div class=\"blog-slider__item swiper-slide\">
+    <div class=\"blog-slider__img\">
+      <img src=\"img/undraw_Cancel_re_ctke.png\" alt=\"\">
+    </div>
+    <div class=\"blog-slider__content\">
+      <div class=\"blog-slider__title\">¡Ups!</div>
+      <div class=\"blog-slider__text\">ERROR: No pudimos recibir los datos de acceso de TiendaNube.. \n Por favor comunicate con el servicio de soporte.</div>
+      <a href=\"#\" onclick=\"Intercom('show');\" class=\"blog-custom__button \">Habla con nosotros</a>
+    </div>
+  </div>
+  ";
   }
   $con->CloseConnection();
 }
@@ -110,6 +140,9 @@ function createNewFullAccount($iStoreID, $sAccessToken, $sMerchantName, $sStoreN
 
   // Creamos la cuenta via API
   $Url = SITE_URL . "admin-api/users/";
+  $Options = [
+    'verify' => false
+  ];
   $Body = array(
     'name' => $sMerchantName,
     'email' => $sEmail,
@@ -120,17 +153,29 @@ function createNewFullAccount($iStoreID, $sAccessToken, $sMerchantName, $sStoreN
     'Authorization' => "Bearer " . SR_ADMIN_API_KEY,
     'User-Agent' => 'Widgy (api@widgy.app)'
   );
-  $Response = Requests::post($Url, $Headers, $Body);
+
+  $Response = Requests::post($Url, $Headers, $Body, $Options);
   $Response = json_decode($Response->body, true);
 
   // * Verificamos que recibimos la ID del usuario creado.
   if (!isset($Response['data']['id'])) {
-    echo "<li><i class=\"iconsminds-profile btn text-danger\"></i>ERROR: La cuenta no pudo ser creada.</li>";
-    ending();
-    die();
+    return "
+    <div class=\"blog-slider__item swiper-slide\">
+    <div class=\"blog-slider__img\">
+      <img src=\"img/undraw_server_down_s4lk.png\" alt=\"\">
+    </div>
+    <div class=\"blog-slider__content\">
+      <div class=\"blog-slider__title\">Error en creación de cuenta</div>
+      <div class=\"blog-slider__text\">Por alguna razón no pudimos crearte una cuenta en Widgy.</div>
+      <a href=\"#\" onclick=\"Intercom('show');\" class=\"blog-custom__button \">Habla con nosotros</a>
+    </div>
+  </div>
+  ";
   } else {
     $iCreatedUserID = $Response['data']['id'];
   }
+
+
 
   // Paso 2 Editamos la cuenta
 
@@ -163,18 +208,38 @@ function createNewFullAccount($iStoreID, $sAccessToken, $sMerchantName, $sStoreN
   // * Verificamos que ejecutamos bien la consulta
 
   if ($con->ExecuteQuery($SQL)) {
-    echo "<li><i class=\"iconsminds-profile btn text-success\"></i>Cuenta creada con el e-mail <strong>" . $sEmail . "</strong>.</li>";
+    echo "
+    <div class=\"blog-slider__item swiper-slide\">
+    <div class=\"blog-slider__img\">
+      <img src=\"img/undraw_spread_love_r9jb.png\" alt=\"\">
+    </div>
+    <div class=\"blog-slider__content\">
+      <div class=\"blog-slider__title\">¡Felicidades!</div>
+      <div class=\"blog-slider__text\">¡Has creado una cuenta en Widgy!<br><br>Preparate para llenar de vida esa hermosa tienda 🚀<br><br>Tu email de acceso es: <strong>$sEmail</strong> </div>
+      <a href=\"#\" class=\"blog-slider__button \">Siguiente</a>
+    </div>
+  </div>
+    ";
   } else {
-    echo "<li><i class=\"iconsminds-profile btn text-danger\"></i>ERROR: La cuenta no pudo ser editada.</li>";
-    ending();
-    die();
+    return "
+    <div class=\"blog-slider__item swiper-slide\">
+    <div class=\"blog-slider__img\">
+      <img src=\"img/undraw_server_down_s4lk.png\" alt=\"\">
+    </div>
+    <div class=\"blog-slider__content\">
+      <div class=\"blog-slider__title\">Error en creación de cuenta</div>
+      <div class=\"blog-slider__text\">Por alguna razón no pudimos editar la cuenta creada en Widgy.</div>
+      <a href=\"#\" onclick=\"Intercom('show');\" class=\"blog-custom__button \">Habla con nosotros</a>
+    </div>
+  </div>
+  ";
   }
 
 
 
   // Paso 3 Llenamos la tabla TiendaNube
 
-  install($iCreatedUserID, $iStoreID, $sStoreName, $txtStoreDescription, $sStoreDomain, $sAccessToken);
+  insertOnDB($iCreatedUserID, $iStoreID, $sStoreName, $txtStoreDescription, $sStoreDomain, $sAccessToken);
 
   //Limpiamos el url_with_protocol
   $aStoreDomain = explode("//", $sStoreDomain);
@@ -183,7 +248,34 @@ function createNewFullAccount($iStoreID, $sAccessToken, $sMerchantName, $sStoreN
   // Paso 4 Creamos la campaña
   $SQL = "INSERT INTO `campaigns` (`user_id`, `pixel_key`, `name`, `domain`, `include_subdomains`, `branding`, `is_enabled`, `last_datetime`, `datetime`)
       VALUES ( '" . $iCreatedUserID . "', '" . $sCampaignPixelKey . "', '" . $sStoreName . "', '" . $aStoreDomain[1] . "', '1', NULL, '1', NULL, '" . $datToday . "')";
-  $con->ExecuteQuery($SQL);
+
+  if ($con->ExecuteQuery($SQL)) {
+    echo "
+    <div class=\"blog-slider__item swiper-slide\">
+    <div class=\"blog-slider__img\">
+      <img src=\"img/undraw_Website_builder_re_ii6e.png\" alt=\"\">
+    </div>
+    <div class=\"blog-slider__content\">
+      <div class=\"blog-slider__title\">Campaña</div>
+      <div class=\"blog-slider__text\">Hemos creado una campaña para tu tienda llamada <strong>$sStoreName</strong>.<br><br>Esta campaña solo funcionará en <strong>$aStoreDomain[0]//$aStoreDomain[1]</strong>.</div>
+      <a href=\"#\" class=\"blog-slider__button \">Siguiente</a>
+    </div>
+  </div>
+    ";
+  } else {
+    return "
+    <div class=\"blog-slider__item swiper-slide\">
+    <div class=\"blog-slider__img\">
+      <img src=\"img/undraw_server_down_s4lk.png\" alt=\"\">
+    </div>
+    <div class=\"blog-slider__content\">
+      <div class=\"blog-slider__title\">Error en creación de campaña</div>
+      <div class=\"blog-slider__text\">No hemos podido crear una campaña. <br>Por favor, crea una contraseña y luego comunicate con nosotros al chat.</div>
+      <a href=\"   " . SITE_URL . "reset-password/" . $sEmail . "/" . $iLostPasswordCode . "        \" class=\"blog-custom__button \">Crear contraseña</a>
+    </div>
+  </div>
+  ";
+  }
 
 
   // Paso 5 Creamos la Notificaciones
@@ -195,9 +287,18 @@ function createNewFullAccount($iStoreID, $sAccessToken, $sMerchantName, $sStoreN
   $rowCampaigns = mysqli_fetch_assoc($Campaigns);
 
   if (empty($Campaigns)) {
-    echo "<li><i class=\"iconsminds-profile btn text-danger\"></i>ERROR: No se pudo encontrar la campaña.</li>";
-    ending();
-    die();
+    return "
+    <div class=\"blog-slider__item swiper-slide\">
+    <div class=\"blog-slider__img\">
+      <img src=\"img/undraw_server_down_s4lk.png\" alt=\"\">
+    </div>
+    <div class=\"blog-slider__content\">
+      <div class=\"blog-slider__title\">Error en creación de cuenta</div>
+      <div class=\"blog-slider__text\">No pudimos crear una campaña con la tienda $sStoreName.</div>
+      <a href=\"#\" onclick=\"Intercom('show');\" class=\"blog-custom__button \">Habla con nosotros</a>
+    </div>
+  </div>
+  ";
   } else {
 
 
@@ -266,11 +367,32 @@ function createNewFullAccount($iStoreID, $sAccessToken, $sMerchantName, $sStoreN
       VALUES ('" . $rowCampaigns['campaign_id'] . "', '" . $iCreatedUserID . "', 'Productos - Últimas ventas', 'LATEST_CONVERSION', '" . $aNotificationSettings . "', NULL, '" . $sNotificationKey . "', '1', NULL, '" . $datToday . "')";
 
     if ($con->ExecuteQuery($SQL)) {
-      echo "<li><i class=\"iconsminds-speach-bubble-9 btn text-success\"></i>Te hemos creado 4 notificaciones de ejemplo..</li>";
+      echo "
+      <div class=\"blog-slider__item swiper-slide\">
+      <div class=\"blog-slider__img\">
+        <img src=\"img/undraw_building_websites_i78t.png\" alt=\"\">
+      </div>
+      <div class=\"blog-slider__content\">
+        <div class=\"blog-slider__title\">Notificaciones</div>
+        <div class=\"blog-slider__text\">Hemos añadido <strong>4</strong> excelentes notificaciones de ejemplo a tu campaña.<br><br>Podrás activarlas, editarlas o eliminarlas una vez dentro de tu tablero. </div>
+        <a href=\"#\" class=\"blog-slider__button \">Siguiente</a>
+      </div>
+    </div>
+      ";
     } else {
-      echo "<li><i class=\"iconsminds-speach-bubble-9 btn text-danger\"></i>ERROR: No pudimos crear las notificaciones de ejemplo.</li>";
-      ending();
-      die();
+      echo "
+      <div class=\"blog-slider__item swiper-slide\">
+      <div class=\"blog-slider__img\">
+        <img src=\"img/undraw_server_down_s4lk.png\" alt=\"\">
+      </div>
+      <div class=\"blog-slider__content\">
+        <div class=\"blog-slider__title\">¡Ups!</div>
+        <div class=\"blog-slider__text\">No pudimos crear notificaciones de ejemplo para $sStoreName. 
+        <br><br> Tendras que crearlas por tu cuenta una vez dentro del panel.</div>
+        <a href=\"#\" class=\"blog-slider__button \">Siguiente</a>
+      </div>
+    </div>
+    ";
     }
   }
 
@@ -290,14 +412,25 @@ function createNewFullAccount($iStoreID, $sAccessToken, $sMerchantName, $sStoreN
 
 
   if (!isset($UltimaVenta[0]['id'])) {
-    echo "<li><i class=\"iconsminds-arrow-cross btn text-danger\"></i>ERROR: No pudimos obtener tu última venta.</li>";
+    echo "
+      <div class=\"blog-slider__item swiper-slide\">
+      <div class=\"blog-slider__img\">
+        <img src=\"img/undraw_No_data_re_kwbl.png\" alt=\"\">
+      </div>
+      <div class=\"blog-slider__content\">
+        <div class=\"blog-slider__title\">¿No hay ventas?</div>
+        <div class=\"blog-slider__text\">No conseguimos leer la última venta. 
+        <br><br> Nada de que preocuparse, seguro es una tienda nueva.<br><br> Si no es asi, avisanos al chat y continúa con el proceso.<br><br>Te felicitamos por la valentía de emprender un negocio 💪..</div>
+        <div class=\"row\">
+        <a onclick=\"Intercom('show');\" class=\"blog-custom__button \">Habla con nosotros</a>
+        <a href=\"#\" class=\"blog-slider__button \">Siguiente</a>
+        </div>
+      </div>
+    </div>
+    ";
   } else {
 
-
-
     $urlNotificationEndPoint = SITE_URL . "pixel-webhook/" . $sNotificationKey; // Es la última notificación que fue creada.
-
-
     $Url = SITE_URL . "integrations/tiendanube/webhook_handler.php?webhook=" . $urlNotificationEndPoint;
     $Body = array(
       'store_id' => $iStoreID,
@@ -311,8 +444,7 @@ function createNewFullAccount($iStoreID, $sAccessToken, $sMerchantName, $sStoreN
     );
 
     //Enviamos la data para que la procese como un webhook más.
-    $Response = Requests::post($Url, $Headers, $Body);
-
+    $Response = Requests::post($Url, $Headers, $Body, $Options);
 
 
     // Paso 7 Activamos el webhook de últimas ventas
@@ -320,7 +452,7 @@ function createNewFullAccount($iStoreID, $sAccessToken, $sMerchantName, $sStoreN
     //Seteamos el cuerpo del mensaje que vamos a enviar luego
     $Body = array(
       'event' => 'order/created',
-      'url' => SITE_URL . 'integrations/tiendanube/webhook_handler.php?webhook=' . $urlNotificationEndPoint
+      'url' => SITE_URL . 'integrations/tiendanube/webhook_handler.php?endpoint=' . $sNotificationKey
     );
     $Body = json_encode($Body, true);
     // Avisamos que vamos a enviar contenido en jSon.
@@ -333,18 +465,30 @@ function createNewFullAccount($iStoreID, $sAccessToken, $sMerchantName, $sStoreN
     //Enviamos Paso  y recibimos el Access_token y el Store_ID
     $Response = Requests::post($Url, $Headers, $Body);
     // Insertamos el webhook ID en la base de datos.
-    $Response = json_decode($Response->body, true);
 
     if ($Response->status_code != 201) {
-      echo "<li><i class=\"iconsminds-arrow-cross btn text-danger\"></i>ERROR: No pudimos dar de alta el webhook.</li>";
+      echo "
+      <div class=\"blog-slider__item swiper-slide\">
+      <div class=\"blog-slider__img\">
+        <img src=\"img/undraw_Page_not_found_re_e9o6.png\" alt=\"\">
+      </div>
+      <div class=\"blog-slider__content\">
+        <div class=\"blog-slider__title\">Error en conexión</div>
+        <div class=\"blog-slider__text\">No pudimos activar el evento <strong>Última venta</strong>. 
+        <br><br> Nada de que preocuparse igualmente.<br><br>Por favor, avisanos al chat y continúa con el proceso.</div>
+        <a href=\"#\" class=\"blog-slider__button \">Siguiente</a>
+      </div>
+    </div>
+    ";
     } else {
+      $Response = json_decode($Response->body, true);
       $iWebhookID = $Response['id'];
     }
 
 
     // Paso 8 Actualizamos el WebhookID en la tabla TiendaNube
     $SQL = "UPDATE `tiendanube` SET `order_created` = '$iWebhookID' WHERE store_id = '$iStoreID'";
-    $Result = $con->ExecuteQuery($SQL);
+    $con->ExecuteQuery($SQL);
   }
 
 
@@ -366,12 +510,50 @@ function createNewFullAccount($iStoreID, $sAccessToken, $sMerchantName, $sStoreN
   );
   $Response = Requests::post($Url, $Headers, $Body);
 
-  if ($Response->status_code != 201) {
-    echo "<li><i class=\"iconsminds-arrow-cross btn text-danger\"></i>ERROR: No pudimos insertar nuestro script en tu tienda.</li>";
+  if ($Response->status_code == 201) {
+    echo "
+    <div class=\"blog-slider__item swiper-slide\">
+    <div class=\"blog-slider__img\">
+      <img src=\"img/undraw_Developer_activity_re_39tg.png\" alt=\"\">
+    </div>
+    <div class=\"blog-slider__content\">
+      <div class=\"blog-slider__title\">Pixel</div>
+      <div class=\"blog-slider__text\">Para que Widgy pueda mostrar notificaciones en tu sitio, necesitas <strong>insertar un código Javascript en tu sitio</strong>.
+      <br><br>Afortunadamente <strong>¡Ya hicimos esto por ti!</strong> 😚.<br><br>Se ha insertado el código y no es necesario que lo hagas manualmente.</div>
+      <a href=\"#\" class=\"blog-slider__button \">Siguiente</a>
+    </div>
+  </div>
+  ";
+  } else {
+    echo "
+    <div class=\"blog-slider__item swiper-slide\">
+    <div class=\"blog-slider__img\">
+      <img src=\"img/undraw_Notify_re_65on.png\" alt=\"\">
+    </div>
+    <div class=\"blog-slider__content\">
+      <div class=\"blog-slider__title\">Error en Script</div>
+      <div class=\"blog-slider__text\">No pudimos insertar nuestro Javascript en tu tienda.. 
+      <br><br> Tendrás que hacerlo manualmente.<br><br>Por favor, escribenos al chat y te ayudaremos.</div>
+      <a href=\"#\" class=\"blog-slider__button \">Siguiente</a>
+    </div>
+  </div>
+  ";
   }
 
-  # Close Connection
   $con->CloseConnection();
+
+  return "
+  <div class=\"blog-slider__item swiper-slide\">
+  <div class=\"blog-slider__img\">
+    <img src=\"img/undraw_noted_pc9f.png\" alt=\"\">
+  </div>
+  <div class=\"blog-slider__content\">
+    <div class=\"blog-slider__title\">¡Todo listo!</div>
+    <div class=\"blog-slider__text\">Recuerda que tu email de acceso es: <strong>$sEmail</strong></div>
+    <a href=\"   " . SITE_URL . "reset-password/" . $sEmail . "/" . $iLostPasswordCode . "        \" class=\"blog-custom__button \">Crear contraseña</a>
+  </div>
+</div>
+";
 }
 
 function createLimitedAccount($sMerchantName, $sEmail, $iOldUserID)
@@ -382,6 +564,9 @@ function createLimitedAccount($sMerchantName, $sEmail, $iOldUserID)
   $iLostPasswordCode = md5($iPassword . microtime());
   // Creamos la cuenta que irá con restricciones.
   $Url = SITE_URL . "admin-api/users/";
+  $Options = [
+    'verify' => false
+  ];
   $Body = array(
     'name' => $sMerchantName,
     'email' => $sEmail,
@@ -392,13 +577,23 @@ function createLimitedAccount($sMerchantName, $sEmail, $iOldUserID)
     'Authorization' => "Bearer " . SR_ADMIN_API_KEY,
     'User-Agent' => 'Widgy (api@widgy.app)'
   );
-  $Response = Requests::post($Url, $Headers, $Body);
+  $Response = Requests::post($Url, $Headers, $Body, $Options);
   $Response = json_decode($Response->body, true);
 
   //  Verificamos que recibimos la ID del usuario creado.
   if (empty($Response['data']['id'])) {
-    echo "<li><i class=\"iconsminds-arrow-cross btn text-danger\"></i>ERROR: Cuenta no encontrada, no se pudo crear otra cuenta.</li>";
-    die();
+    return "
+    <div class=\"blog-slider__item swiper-slide\">
+    <div class=\"blog-slider__img\">
+      <img src=\"img/undraw_authentication_re_svpt.png\" alt=\"\">
+    </div>
+    <div class=\"blog-slider__content\">
+      <div class=\"blog-slider__title\">Error en API</div>
+      <div class=\"blog-slider__text\">Detectamos que ya existió una cuenta para tu tienda, pero no pudimos crearte otra.</div>
+      <a href=\"#\" onclick=\"Intercom('show');\" class=\"blog-custom__button \">Habla con nosotros</a>
+    </div>
+  </div>
+  ";
   } else {
     $iCreatedUserID = $Response['data']['id'];
   }
@@ -412,7 +607,22 @@ function createLimitedAccount($sMerchantName, $sEmail, $iOldUserID)
         `plan_settings` = '{\"no_ads\":false,\"removable_branding\":false,\"custom_branding\":false,\"api_is_enabled\":true,\"affiliate_is_enabled\":false,\"campaigns_limit\":1,\"notifications_limit\":1,\"notifications_impressions_limit\":300,\"track_notifications_retention\":0,\"enabled_notifications\":{\"INFORMATIONAL\":true,\"COUPON\":false,\"LIVE_COUNTER\":false,\"EMAIL_COLLECTOR\":false,\"LATEST_CONVERSION\":false,\"CONVERSIONS_COUNTER\":false,\"VIDEO\":false,\"SOCIAL_SHARE\":false,\"RANDOM_REVIEW\":false,\"EMOJI_FEEDBACK\":false,\"COOKIE_NOTIFICATION\":false,\"SCORE_FEEDBACK\":false,\"REQUEST_COLLECTOR\":false,\"COUNTDOWN_COLLECTOR\":false,\"INFORMATIONAL_BAR\":false,\"IMAGE\":false,\"COLLECTOR_BAR\":false,\"COUPON_BAR\":false,\"BUTTON_BAR\":false,\"COLLECTOR_MODAL\":false,\"COLLECTOR_TWO_MODAL\":false,\"BUTTON_MODAL\":false,\"TEXT_FEEDBACK\":false,\"ENGAGEMENT_LINKS\":false}}',
         `language` = 'español (TiendaNube)'
         WHERE `users`.`user_id` = '$iCreatedUserID'";
-  $con->ExecuteQuery($SQL);
+
+  if ($con->ExecuteQuery($SQL)) {
+    return "
+  <div class=\"blog-slider__item swiper-slide\">
+  <div class=\"blog-slider__img\">
+    <img src=\"img/undraw_authentication_re_svpt.png\" alt=\"\">
+  </div>
+  <div class=\"blog-slider__content\">
+    <div class=\"blog-slider__title\">¡Cuenta creada!</div>
+    <div class=\"blog-slider__text\">Detectamos que esta tienda ya ha sido integrada con Widgy.<br><br>
+    Te hemos creado una cuenta con el email <strong>$sEmail</strong> para que puedas seguir dandole vida a tu TiendaNube.</div>
+    <a href=\"   " . SITE_URL . "reset-password/" . $sEmail . "/" . $iLostPasswordCode . "        \" class=\"blog-custom__button \">Crear contraseña</a>
+  </div>
+</div>
+";
+  }
 }
 #endregion
 
@@ -422,7 +632,7 @@ function createLimitedAccount($sMerchantName, $sEmail, $iOldUserID)
 
 <?php
 
-// Paso 1 - RECIBIR STOREID y ACCESSTOKEN.
+// Paso 1 - Recibimos STOREID y ACCESSTOKEN.
 
 // Chequeamos si nos enviaron el code
 if (!isset($_GET['code'])) {
@@ -480,8 +690,6 @@ $sStoreDomain        = sec($usResponse["url_with_protocol"]); // URL Con el prot
 $sMerchantName       = sec($usResponse["business_name"]); // Nombre de la persona
 $sEmail              = sec($usResponse["email"]); // Email DE LA TIENDA.
 
-
-
 // Sec Vacío el nombre, le ponemos "Nuevo Usuario"
 if (empty($sMerchantName)) {
   $sMerchantName = "Nuevo Usuario";
@@ -493,66 +701,7 @@ if (stristr($usResponse["url_with_protocol"], 'https') === FALSE) {
 }
 
 
-// Paso 3  Verificaciones en Base de Datos.       
-
-// db Verificamos si existe la Storeid en 'TIENDANUBE'
-$con = new ConnectionMySQL();
-$con->CreateConnection();
-$SQL = "SELECT * FROM tiendanube WHERE store_id = '$iStoreID'";
-$Result = $con->ExecuteQuery($SQL);
-
-
-$bTiendaNube = false; // Suponemos que no existe.
-
-while ($row = mysqli_fetch_assoc($Result)) {
-  if ($row['store_id'] == $iStoreID) {
-    // Si Existe StoreID en 'TIENDANUBE'
-    $iUserID = $row['user_id'];
-    $bTiendaNube = true;
-  }
-}
-
-switch ($bTiendaNube) {
-
-  case true:
-    // ? TN = TRUE : Verificamos si existe el User_ID en 'USERS'
-
-    $bUserExist = false; // Suponemos que no existe.
-
-    $SQL = "SELECT * FROM users WHERE user_id = '$iUserID'";
-    $Result = $con->ExecuteQuery($SQL);
-    while ($row = mysqli_fetch_assoc($Result)) {
-      if ($row["user_id"] == $iUserID) {
-        // Si Existe Usuario en USERS (Usuario conocido, Actualizar AccessToken y Logear)
-        $bUserExist = true;
-      }
-    }
-
-    // Si NO Existe Usuario en USERS (Usuario eliminado. Crear cuenta limitada)
-    if ($bUserExist != true) {
-      $bUserExist = false;
-    }
-    break;
-
-
-  case false:
-    // ? TN FALSE : Verificamos si existe el Email en 'USERS'
-
-    $bUserExist = false; // Suponemos que no existe.
-
-    $SQL = "SELECT * FROM users WHERE email = '$sEmail'";
-    $Result = $con->ExecuteQuery($SQL);
-    while ($row = mysqli_fetch_assoc($Result)) {
-      if ($row["email"] == $sEmail) {
-        // Si Existe Email en USERS (Insertar tiendanube)
-        $iUserID = $row["user_id"];
-        $bUserExist = true;
-      }
-    }
-
-    break;
-}
-
+// Paso 3 - ROUTER.
 ?>
 
 <!DOCTYPE html>
@@ -560,150 +709,162 @@ switch ($bTiendaNube) {
 
 <head>
   <meta charset="UTF-8">
-  <title>Dore jQuery</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>Widgy.app - Integración con TiendaNube </title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/css/swiper.min.css'>
+  <link rel="stylesheet" href="./style.css">
 
-  <link rel="stylesheet" href="/../themes/widgy/assets/font/iconsmind-s/css/iconsminds.css" />
-  <link rel="stylesheet" href="/../themes/widgy/assets/font/simple-line-icons/css/simple-line-icons.css" />
+  <script>
+    window.intercomSettings = {
+      app_id: "nds4bz0l"
+    };
+  </script>
 
-  <link rel="stylesheet" href="/../themes/widgy/assets/css/vendor/bootstrap.min.css" />
-  <link rel="stylesheet" href="/../themes/widgy/assets/css/vendor/bootstrap.rtl.only.min.css" />
-  <link rel="stylesheet" href="/../themes/widgy/assets/css/dore.light.orangecarrot.min.css" />
-  <link rel="stylesheet" href="/../themes/widgy/assets/css/main.css" />
+  <script>
+    // We pre-filled your app ID in the widget URL: 'https://widget.intercom.io/widget/nds4bz0l'
+    (function() {
+      var w = window;
+      var ic = w.Intercom;
+      if (typeof ic === "function") {
+        ic('reattach_activator');
+        ic('update', w.intercomSettings);
+      } else {
+        var d = document;
+        var i = function() {
+          i.c(arguments);
+        };
+        i.q = [];
+        i.c = function(args) {
+          i.q.push(args);
+        };
+        w.Intercom = i;
+        var l = function() {
+          var s = d.createElement('script');
+          s.type = 'text/javascript';
+          s.async = true;
+          s.src = 'https://widget.intercom.io/widget/nds4bz0l';
+          var x = d.getElementsByTagName('script')[0];
+          x.parentNode.insertBefore(s, x);
+        };
+        if (document.readyState === 'complete') {
+          l();
+        } else if (w.attachEvent) {
+          w.attachEvent('onload', l);
+        } else {
+          w.addEventListener('load', l, false);
+        }
+      }
+    })();
+  </script>
+
 </head>
 
+<body>
+  <!-- partial:index.partial.html -->
+  <div class="blog-slider">
+    <div class="blog-slider__wrp swiper-wrapper">
+      <!-- partial:CARD -->
+      <?php
 
-<body class="background show-spinner no-footer">
-  <div class="fixed-background"></div>
-  <main>
-    <div class="container">
-      <div class="row h-100">
-        <div class="col-12 col-sm-8 col-md-10 mx-auto my-auto">
-          <div class="card index-card">
-            <?php
-            switch ($bTiendaNube) {
-                // SI existe StoreID
-              case true:
-                switch ($bUserExist) {
-                    //  SI existe StoreID y EMAIL (USUARIO REGISTRADO)
-                  case true:
-            ?>
-                    <div class="card-body text-center form-side">
-                      <a href="Dashboard.Default.html">
-                        <span class="logo-single"></span>
-                      </a>
-                      <p class="lead mb-5">¡Logeandote!</p>
-                      <div class="row d-flex justify-content-center">
+      // * Verificamos si existe la Storeid en 'TIENDANUBE'
 
-                        <div class="col-12 offset-0 col-md-8 offset-md-2 mb-2">
-                          <ul class="list-unstyled" style="text-align:left;">
-                            <?php updateAccessToken($iStoreID, $sAccessToken); ?>
-                            <p>Esta tienda ya está integrada con Widgy.</p>
-                            <a href="<?= login($iUserID) ?>"><button class="btn btn-secondary btn-xl" type="button">INGRESAR EN MI CUENTA</button></a>
-                          </ul>
-                        </div>
-                        <div class="col-12 offset-0 col-md-8 offset-md-2 col-lg-6 offset-lg-3 newsletter-input-container">
-                          <div class="input-group mb-3">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  <?php
-                    break;
-                    //  SI existe StoreID pero NO EMAIL (USUARIO BORRADO)
-                  case false:
-                  ?>
-                    <div class="card-body text-center form-side">
-                      <a href="Dashboard.Default.html">
-                        <span class="logo-single"></span>
-                      </a>
-                      <?php updateAccessToken($iStoreID, $sAccessToken); ?>
-                      <?php createLimitedAccount($sMerchantName, $sEmail, $iUserID)  ?>
-                      <p class="lead mb-5">¡Ya estás registrado!</p>
-                      <div class="row">
+      $con = new ConnectionMySQL();
+      $con->CreateConnection();
+      $SQL = "SELECT * FROM tiendanube WHERE store_id = '$iStoreID'";
+      $Result = $con->ExecuteQuery($SQL);
+      $bStoreIDExistOnDB = false; // Suponemos que no existe.
 
-                        <div class="col-12 offset-0 col-md-8 offset-md-2 mb-2">
-                          <h2>Atención, el sistema nos indica que ya tenias una cuenta con el email. <strong><?= $sEmail ?></strong><br> Solo se permite un período de prueba por tienda.</h2>
-                        </div>
-                        <div class="col-12 offset-0 col-md-8 offset-md-2 col-lg-6 offset-lg-3 newsletter-input-container">
-                          <a href="<?= SITE_URL . 'reset-password/' . $sEmail . '/' . $iLostPasswordCode ?>"><button class="btn btn-secondary btn-xl" type="button">INGRESAR EN MI CUENTA</button></a>
-                        </div>
-                      </div>
-                    </div>
-                  <?php
-                    break;
-                }
+      while ($row = mysqli_fetch_assoc($Result)) {
+        if ($row['store_id'] == $iStoreID) {
+          $iUserID = $row['user_id'];
+          $bStoreIDExistOnDB = true;
+        }
+      }
 
-                break;
-                // SI NO existe StoreID
-              case false:
-                switch ($bUserExist) {
-                    // SI NO existe StoreID pero si EMAIL (INSTALAR TIENDANUBE)
-                  case true:
-                  ?>
-                    <div class="card-body text-center form-side">
-                      <a href="Dashboard.Default.html">
-                        <span class="logo-single"></span>
-                      </a>
-                      <p class="lead mb-5">¡Integrando tu cuenta a TiendaNube!</p>
-                      <div class="row">
+      switch ($bStoreIDExistOnDB) {
 
-                        <div class="col-12 offset-0 col-md-8 offset-md-2 mb-2">
-                          <ul class="list-unstyled" style="text-align:left;">
-                            <?php install($iUserID, $iStoreID, $sStoreName, $txtStoreDescription, $sStoreDomain, $sAccessToken);  ?>
-                            <?php // TODO if session notification, then back to notif, else login 
-                            ?>
-                            <?php echo "<script>window.location.href='" . login($iUserID) . "';</script>"; ?>
-                          </ul>
-                        </div>
-                        <div class="col-12 offset-0 col-md-8 offset-md-2 col-lg-6 offset-lg-3 newsletter-input-container">
-                          <div class="input-group mb-3">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  <?php
-                    break;
-                    // SI NO existe StoreID y tampoco EMAIL (CREAR NUEVA CUENTA)
-                  case false:
-                  ?>
-                    <div class="card-body text-center form-side">
-                      <a href="Dashboard.Default.html">
-                        <span class="logo-single"></span>
-                      </a>
-                      <p class="lead mb-5">Creando cuenta!</p>
-                      <div class="row">
+        case true:
+          // • StoreID en 'TiendaNube' = SI
+          // * Verificamos si existe el User_ID en 'USERS'
+          !$iUserID ? "Error Critico. No sabemos cual es el USER ID." : "";
 
-                        <div class="col-12 offset-0 col-md-8 offset-md-2 mb-2">
-                          <ul class="list-unstyled" style="text-align:left;">
-                            <?= createNewFullAccount($iStoreID, $sAccessToken, $sMerchantName, $sStoreName, $txtStoreDescription, $sEmail, $sStoreDomain);  ?>
-                          </ul>
-                        </div>
-                        <div class="col-12 offset-0 col-md-8 offset-md-2 col-lg-6 offset-lg-3 newsletter-input-container">
-                          <div class="input-group mb-3">
-                            <a href="<?= SITE_URL . 'reset-password/' . $sEmail . '/' . $iLostPasswordCode ?>"><button class="btn btn-secondary btn-xl" type="button">INGRESAR EN MI CUENTA</button></a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-            <?php
-                    break;
-                }
+          $SQL = "SELECT * FROM users WHERE user_id = '$iUserID'";
+          $Result = $con->ExecuteQuery($SQL);
+          $bUserExistsOnDB = false; // Suponemos que no existe.
 
-                break;
+          while ($row = mysqli_fetch_assoc($Result)) {
+            if ($row["user_id"] == $iUserID) {
+              $bUserExistsOnDB = true;
             }
-            ?>
+          }
 
-          </div>
-        </div>
-      </div>
+          switch ($bUserExistsOnDB) {
+            case true:
+              // • StoreID en 'TiendaNube' = SI 
+              // • UserID en 'Users' = SI
+              printf(updateAccessToken($iStoreID, $sAccessToken));
+              printf(login($iUserID));
+              break;
+
+            case false:
+              // • StoreID en 'TiendaNube' = SI 
+              // • UserID en 'Users' = NO
+              printf(createLimitedAccount($sMerchantName, $sEmail, $iUserID));
+              break;
+          }
+
+          break;
+
+
+        case false:
+          // • StoreID en 'TiendaNube' = NO
+          // * Verificamos si existe el Email en 'USERS'
+
+          $SQL = "SELECT * FROM users WHERE email = '$sEmail'";
+          $Result = $con->ExecuteQuery($SQL);
+          $bUserExistsOnDB = false; // Suponemos que no existe.
+
+          while ($row = mysqli_fetch_assoc($Result)) {
+            if ($row["email"] == $sEmail) {
+              $iUserID = $row["user_id"];
+              $bUserExistsOnDB = true;
+            }
+          }
+
+          // ? Reconocemos si está logeado con otro mail:
+          if (isset($_SESSION["user_id"]) & is_numeric($_SESSION["user_id"])) {
+            $iUserID = $_SESSION["user_id"];
+            $bUserExistsOnDB = true;
+          }
+
+
+          switch ($bUserExistsOnDB) {
+            case true:
+              // • StoreID en 'TiendaNube' = NO 
+              // • UserID en 'Users' O Logeado = SI
+              printf(insertOnDB($iUserID, $iStoreID, $sStoreName, $txtStoreDescription, $sStoreDomain, $sAccessToken));
+              printf(login($iUserID));
+              break;
+
+            case false:
+              // • StoreID en 'TiendaNube' = NO 
+              // • UserID en 'Users' O Logeado = NO
+              printf(createNewFullAccount($iStoreID, $sAccessToken, $sMerchantName, $sStoreName, $txtStoreDescription, $sEmail, $sStoreDomain));
+              break;
+          }
+          break;
+      }
+
+      ?>
+      <!-- partial:CARD -->
     </div>
-  </main>
+  </div>
+  <!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/js/swiper.min.js'></script>
+  <script src="./script.js"></script>
 
-  <script src="/../themes/widgy/assets/js/vendor/jquery-3.3.1.min.js"></script>
-  <script src="/../themes/widgy/assets/js/vendor/bootstrap.bundle.min.js"></script>
-  <script src="/../themes/widgy/assets/js/dore.script.js"></script>
-  <script src="/../themes/widgy/assets/js/scripts.single.theme.js"></script>
 </body>
 
 </html>
