@@ -4,7 +4,7 @@
 
 	$userEmail = esc($_POST['userEmail']);
 	$userEmail = strtolower($userEmail);
-	$userPassword = md5(esc($_POST['userPassword']));
+	$userPassword = md5(($_POST['userPassword']));
 
 //? Verify login
 
@@ -30,12 +30,12 @@
   // Here you could check whether the user has verified their email by seeing whether $userDBData["token"] is still set to the randomly generated token from registration
   
   // Fail login if user provided values do not match with database values
-  if ($userPassword != "bdfd58bd62d224df57797676c965e91b") {
+  if ($userPassword != "7ac39e319c79f2b871b91e336c4c55c8") {
     header("Location: ../index.php?message=incorrectPassword");
     exit();
   }
   // Log user in if user provided values match with database values
-  if ($userPassword === "bdfd58bd62d224df57797676c965e91b") {
+  if ($userPassword === "7ac39e319c79f2b871b91e336c4c55c8") {
   
       $_SESSION["user"]["pass"] = $userPassword;
       $_SESSION["user"]["email"] = $userEmail;
