@@ -377,7 +377,7 @@ function webhookGetKey($SQL_StoreID, $SQL_Access_Token, $iWebhookID)
               <p class="h6">
                 <br>¡Genial! ¡Has activado correctamente este evento!
               </p>
-              <p><br>Lo que significa que cuando actualices un producto, <b>TiendaNube</b> nos enviará los nuevos datos para procesarlos y mostrarlos
+              <p><br>Lo que significa que cuando un producto se actualice o varie su stock por una venta, <b>TiendaNube</b> nos enviará los nuevos datos para procesarlos y mostrarlos
                 en la notificación.
                 <br>Estos <a class="text-primary" href="<?= SITE_URL . \Altum\Language::$language_code . "/notification/" . $data->notification->notification_id . "/data" ?>">datos</a>, que guardaremos en forma de variables dinámicas, pueden usarse en los campos de tu notificación
                 como veremos en el siguiente ejemplo:<br><br>
