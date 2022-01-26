@@ -296,21 +296,21 @@
 
     <?php // * Agregado 21/01 en 10.0.0 - (Agregamos Intercom) INICIO. ?>
     <script>
-    window.intercomSettings = {
-        app_id: "nds4bz0l",
-        name: "<?= $this->user->name; ?>",
-        language: "<?= $this->user->language ?>",
-        user_id: <?= isset($this->user->user_id) ? $this->user->user_id : "" ?>,
-        email: "<?= $this->user->email ?>",
-        user_hash: "<?= $hash ?>",
-        executive: "<?= $this->user->plan_settings->no_ads ?>",
-        created_at: "<?php echo strtotime($this->user->datetime) ?>",
-        plan: <?= $this->user->plan_id ?>,
-        trial: <?= $this->user->plan_trial_done ?>,
-        current_impressions: <?= $this->user->current_month_notifications_impressions ?>,
-        impressions_limit: "<?= $this->user->plan_settings->notifications_impressions_limit ?>",
-        Vencimiento: "<?= $this->user->plan_expiration_date ?>"
-    };
+        window.intercomSettings = {
+            app_id: "nds4bz0l",
+            name: "<?= $this->user->name; ?>",
+            language: "<?= isset($this->user->language) ? $this->user->language : "" ?>",
+            user_id: <?= isset($this->user->user_id) ? $this->user->user_id : "" ?>,
+            email: "<?= isset($this->user->email) ? $this->user->email : "" ?>",
+            user_hash: "<?= isset($hash) ? $hash : "" ?>",
+            executive: "<?= isset($this->user->plan_settings->no_ads) ? $this->user->plan_settings->no_ads : "" ?>",
+            created_at: "<?= isset($this->user->datetime) ? strtotime($this->user->datetime) : "" ?>",
+            plan: <?= isset($this->user->plan_id) ? $this->user->plan_id : "" ?>,
+            trial: <?= isset($this->user->plan_trial_done) ? $this->user->plan_trial_done : "" ?>,
+            current_impressions: <?= isset($this->user->current_month_notifications_impressions) ? $this->user->current_month_notifications_impressions : "" ?>,
+            impressions_limit: "<?= isset($this->user->plan_settings->notifications_impressions_limit) ? $this->user->plan_settings->notifications_impressions_limit :"" ?>",
+            Vencimiento: "<?= isset($this->user->plan_expiration_date) ? $this->user->plan_expiration_date : "" ?>"
+        };
     </script>
     <script>
     // We pre-filled your app ID in the widget URL: 'https://widget.intercom.io/widget/nds4bz0l'
