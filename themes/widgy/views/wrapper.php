@@ -1,11 +1,5 @@
 <?php // * Agregado 21/01 en 10.0.0 - (Agregamos Intercom) INICIO. ?>
-<?php
-    $hash = hash_hmac(
-    'sha256', // hash function
-    $this->user->user_id, // user's id
-    'a5edqk3IEE_hhIILFborw4_7wRz1N9RroK9g-a0V' // secret key (keep safe!)
-    );
-?>
+<?php isset($this->user->user_id) ? $hash = hash_hmac('sha256', $this->user->user_id,'a5edqk3IEE_hhIILFborw4_7wRz1N9RroK9g-a0V') : "" ?>
 <?php // * Agregado 21/01 en 10.0.0 - (Agregamos Intercom) FIN. ?>
 
 <?php defined('ALTUMCODE') || die() ?>
@@ -306,7 +300,7 @@
         app_id: "nds4bz0l",
         name: "<?= $this->user->name; ?>",
         language: "<?= $this->user->language ?>",
-        user_id: <?= $this->user->user_id ?>,
+        user_id: <?= isset($this->user->user_id) ? $this->user->user_id : "" ?>,
         email: "<?= $this->user->email ?>",
         user_hash: "<?= $hash ?>",
         executive: "<?= $this->user->plan_settings->no_ads ?>",
