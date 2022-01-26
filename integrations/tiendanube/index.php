@@ -325,7 +325,7 @@ function createNewFullAccount($iStoreID, $sAccessToken, $sMerchantName, $sStoreN
     \"off_animation\": \"bounceOut\",
     \"background_pattern\": false,
     \"background_pattern_svg\": false,
-    \"display_duration\": -1,
+    \"display_duration\": 3,
     \"display_position\": \"bottom_left\",
     \"display_close_button\": true,
     \"display_branding\": true,
