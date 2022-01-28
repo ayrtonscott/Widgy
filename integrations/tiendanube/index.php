@@ -542,6 +542,20 @@ function createNewFullAccount($iStoreID, $sAccessToken, $sMerchantName, $sStoreN
 
   $con->CloseConnection();
 
+  // Paso 10 Enviamos el webhook a la notificación para prueba social
+  $Headers = array(
+    'Content-Type' => 'application/x-www-form-urlencoded',
+    'User-Agent' => 'Widgy (api@widgy.app)'
+  );
+  $aData = array(
+    'nombre' => $sMerchantName,
+    'empresa' => $sStoreName,
+    'dominio' => $sStoreDomain
+  );
+  $Response = Requests::post(SITE_URL . "/pixel-webhook/abb73091a0d999978c0df4e103461eb0", $Headers, $aData, $Options);
+
+  // Paso 11 Permitimos crear password
+
   return "
   <div class=\"blog-slider__item swiper-slide\">
   <div class=\"blog-slider__img\">
@@ -692,7 +706,7 @@ $sEmail              = sec($usResponse["email"]); // Email DE LA TIENDA.
 
 // Sec Vacío el nombre, le ponemos "Nuevo Usuario"
 if (empty($sMerchantName)) {
-  $sMerchantName = "Nuevo Usuario";
+  $sMerchantName = "Emprendedor/a";
 }
 
 // sec Chequeamos el certificado SSL
