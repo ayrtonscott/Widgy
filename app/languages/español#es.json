@@ -868,7 +868,7 @@
     },
  
     "campaign": {
-        "title"                             : "Campaña:%s",
+        "title"                             : "Campaña: %s",
         "breadcrumb"                        : "Campaña",
  
         "header": {
@@ -935,7 +935,7 @@
             "name"                      : "Nombre",
             "domain"                    : "Dominio / Subdominio",
             "domain_placeholder"        : "ej: domain.com o subdomain.domain.com",
-            "domain_help"               : "El dominio del sitio donde correrá la campaña.",
+            "domain_help"               : "El dominio del sitio donde funcionará la campaña.",
             "domain_help2"              : "Las notificaciones NO FUNCIONARÁN en otros dominios que no especifiques aquí.",
             "include_subdomains"        : "Incluir Subdominios <strong>(Recomendado)</strong>",
             "include_subdomains_help"   : "Todos los subdominios funcionarán en esta campaña."
@@ -950,7 +950,7 @@
             "name"                      : "Nombre",
             "domain"                    : "Dominio / Subdominio",
             "domain_placeholder"        : "ej: domain.com o subdomain.domain.com",
-            "domain_help"               : "El dominio del sitio donde correrá la campaña.",
+            "domain_help"               : "El dominio del sitio donde funcionará la campaña.",
             "domain_help2"              : "Las notificaciones NO FUNCIONARÁN en otros dominios que no especifiques aquí.",
             "include_subdomains"        : "Incluir Subdominios (Recomendado)",
             "include_subdomains_help"   : "Todos los subdominios funcionarán en esta campaña."
@@ -992,8 +992,8 @@
             "tab_data"                      : "Data",
  
             "name"                          : "Nombre de notificación",
-            "title"                         : "Mensaje de título",
-            "description"                   : "Mensaje de descripción",
+            "title"                         : "Título",
+            "description"                   : "Descripción",
             "content_title"                 : "Contenido de título",
             "content_description"           : "Contenido de descripción",
             "video"                         : "URL de YouTube",
@@ -1015,7 +1015,7 @@
             "image_help"                    : "Dejar vacío si no hay imagen. <br>Pista: <a href=\"https://icons8.com\" target=_BLANK >icons8.com</a> tiene una buena librería de iconos que puedes utilizar.<br>También puedes subir tus propias imágenes a <a href=\"https://es.imgbb.com/\" target=_BLANK >imgbb.com</a>",
             "image_alt"						: "Texto alternativo de imagen",
 			"image_alt_help"				: "Descripción de imagen.",
-            "url"                           : "URL de Notificación",
+            "url"                           : "URL de Objetivo",
             "url_help"                      : "La URL a la cual irá el visitante después de hacer clic en la notificación. Dejar en blanco para desactivar.",
             "url_new_tab"                   : "Abrir en nueva pestaña",
             "url_new_tab_help"              : "",
@@ -1024,7 +1024,7 @@
             "thank_you_url"                 : "URL de ‘Gracias’ ",
             "thank_you_url_help"            : "La URL a la cual irá el visitante después de enviar formulario. Dejar en blanco para desactivar..",
             "coupon_code"                   : "Cupón",
-            "button_url"                    : "URL de botón",
+            "button_url"                    : "URL objetivo de botón",
             "button_text"                   : "Texto de botón",
             "button_text_help"              : "Dejar en blanco para eliminar el botón.",
             "footer_text"                   : "Texto del pie de página",
