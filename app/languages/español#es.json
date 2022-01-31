@@ -989,7 +989,7 @@
             "tab_triggers"                  : "Disparadores",
             "tab_display"                   : "Display",
             "tab_customize"                 : "Personalizar",
-            "tab_data"                      : "Data",
+            "tab_data"                      : "Webhook",
  
             "name"                          : "Nombre de notificación",
             "title"                         : "Título",
@@ -1210,8 +1210,8 @@
         },
  
         "data": {
-            "header"                        : "Data",
-            "link"                          : "Data",
+            "header"                        : "Datos",
+            "link"                          : "Datos",
             "create"                        : "Importar datos",
  
             "expand_data"                   : "Clic para expandir",
