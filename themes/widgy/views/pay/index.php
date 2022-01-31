@@ -974,4 +974,19 @@
     <?php // * Modificado 13/8 en 7.1.0 - FIN. 
     ?>
 </script>
+
+<?php // * INICIO - Agregado el 24/1 en 10.0.0 - (Evitamos el enter para el descuento) 
+    ?>
+<script>
+$(document).ready(function() {
+  $(window).keydown(function(event){
+    if(event.keyCode == 13) {
+      return false;
+    }
+  });
+});
+</script>
+<?php // * FIN - Agregado el 24/1 en 10.0.0 - (Evitamos el enter para el descuento) 
+    ?>
+
 <?php \Altum\Event::add_content(ob_get_clean(), 'javascript') ?>

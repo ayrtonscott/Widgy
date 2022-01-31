@@ -15,6 +15,19 @@ $javascript = '';
         <input type="text" id="settings_name" name="name" class="form-control" value="<?= $data->notification->name ?>" maxlength="256" required="required" />
     </div>
 
+    <?php // * INICIO - Agregado el 28/1 en 10.0.0 - Autorelleno para TiendaNube ?>
+     <?php if(\Altum\Language::$language_code == "tn") : ?>
+    <div class="form-group mb-3">
+    <label for="inputGroupSelect01">Auto-Rellenar:</label>
+                                <select class="custom-select" id="inputGroupSelect01" placeholder="sda" onchange="autofill()">
+                                    <option selected value="0">Seleccionar..</option>
+                                    <option value="1">Nueva Venta</option>
+                                    <option value="2">Nuevo Producto</option>
+                                </select>
+                                <small class="text-muted"><?= sprintf("Rellena automáticamente tu notificación con las variables más utilizadas por usuarios de TiendaNube. Estas <b>variables</b> se encuentran en la pestaña %s", "  <a href=\"".url('notification/' . $data->notification->notification_id . '/data')."\">datos</a>."); ?></small>
+    </div>
+    <?php endif ?>
+    <?php // * FIN - Agregado el 28/1 en 10.0.0 - Autorelleno para TiendaNube ?>
     <div class="form-group">
         <label for="settings_title"><?= language()->notification->settings->conversion_title ?></label>
         <input type="text" id="settings_title" name="title" class="form-control" value="<?= $data->notification->settings->title ?>" maxlength="256" />
@@ -75,6 +88,38 @@ $javascript = '';
         <input type="text" id="settings_in_between_delay" name="in_between_delay" class="form-control" value="<?= $data->notification->settings->in_between_delay ?>" />
         <small class="form-text text-muted"><?= language()->notification->settings->in_between_delay_help ?></small>
     </div>
+    <?php // * INICIO - Agregado el 28/1 en 10.0.0 - Autorelleno para TiendaNube ?>
+      <script>
+        function autofill(){
+            var x = document.getElementById("inputGroupSelect01").value;
+            if (x == 0) { //Defecto
+                document.getElementById("settings_title").value = "<?= $data->notification->settings->title ?>";
+                document.getElementById("settings_description").value = "<?= $data->notification->settings->description ?>";
+                document.getElementById("settings_image").value = "<?= $data->notification->settings->image ?>";
+                document.getElementById("settings_url").value = "<?= $data->notification->settings->url ?>";
+                document.getElementById("settings_conversions_count").value = "<?= $data->notification->settings->conversions_count ?>";
+            }
+            if (x == 1) { //Tiendanube(Ventas)
+                document.getElementById("settings_title").value = "{nombre} de {ciudad} llevó...";
+                document.getElementById("settings_description").value = "{producto} a sólo: ${precio}";
+                document.getElementById("settings_image").value = "{imagen}";
+                document.getElementById("settings_url").value = "{enlace}?utm_source=Widgy&utm_medium=<?= $data->notification->domain ?>&utm_campaign=<?= $data->notification->name ?>";
+                document.getElementById("settings_conversions_count").value = "3";
+                document.getElementById("settings_image_alt").value = "{producto}";
+                document.getElementById("settings_in_between_delay").value = "5";
+            }
+            if (x == 2) { //Tiendanube(Productos)
+                document.getElementById("settings_title").value = "¿Ya viste lo nuevo?";
+                document.getElementById("settings_description").value = "{producto} a sólo: ${precio}";
+                document.getElementById("settings_image").value = "{imagen}";
+                document.getElementById("settings_url").value = "{url}?utm_source=Widgy&utm_medium=<?= $data->notification->domain ?>&utm_campaign=<?= $data->notification->name ?>";
+                document.getElementById("settings_image_alt").value = "{producto}";
+                document.getElementById("settings_conversions_count").value = "1";
+                document.getElementById("settings_in_between_delay").value = "5";
+            }
+        }
+    </script>     
+    <?php // * FIN - Agregado el 28/1 en 10.0.0 - Autorelleno para TiendaNube ?>      
 <?php $html['basic'] = ob_get_clean() ?>
 
 

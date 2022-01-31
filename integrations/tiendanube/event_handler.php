@@ -6,14 +6,9 @@ require $_SERVER['DOCUMENT_ROOT'] . '/integrations/tiendanube/con_mysql.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 require_once  $_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php';
 
-// !isset($_SESSION['step'])  // Declaramos un step para no duplicar las requests.
-//     ? die("ERROR 89162271 - Su IP " . $_SERVER['REMOTE_ADDR'] . " ha sido guardada por seguridad.")
-//     : ($_SESSION['step'] == 1
-//         ? die("Demasiados intentos. <a href=\"" . $_SESSION['notification_url'] . "\">Volver a tu notificación. </a>")
-//         : $_SESSION['step'] = 1);
 
 // sec Verificamos que existen las variables SESSION y GET
-if (!isset($_SESSION['store_id']) || !isset($_SESSION['access_token']) || !isset($_GET['action']) || !isset($_GET['event']) || !isset($_SESSION["notification_url"])) {
+if (!isset($_SESSION['store_id']) || !isset($_SESSION['access_token']) || !isset($_GET['action']) || !isset($_GET['event'])) {
     die("ERROR #001 - Faltan variables.");
 }
 
@@ -52,14 +47,14 @@ function createWebhookOnTiendaNube($sEvent, $mEndpoint)
     $Body = array(
         'event' => $sEvent,
         // TODO cambiar la URL por SITE_URL
-        'url' => SITE_URL . '/integrations/tiendanube/webhook_handler.php?endpoint=' . $mEndpoint
+        'url' => SITE_URL . 'integrations/tiendanube/webhook_handler.php?endpoint=' . $mEndpoint
     );
     $Body = json_encode($Body, true);
 
     $Headers = array(
         'Content-Type' => 'application/json',
         'Authentication' => $Authentication,
-        'User-Agent' => 'Socialroot (msproof.app@gmail.com)'
+        'User-Agent' => 'Widgy (api@widgy.app)'
     );
     $Response = Requests::post($Url, $Headers, $Body);
 
@@ -77,7 +72,7 @@ function deleteFromTiendaNube($iStoreID, $iWebhookID)
     $Headers = array(
         'Content-Type' => 'application/json',
         'Authentication' => $Authentication,
-        'User-Agent' => 'Socialroot (msproof.app@gmail.com)'
+        'User-Agent' => 'Widgy (api@widgy.app)'
     );
     $Response = Requests::delete($Url, $Headers);
     return $Response;
@@ -90,14 +85,11 @@ function createWebhookInDB($iStoreID, $sEvent, $iWebhookID)
     $SQL = "UPDATE tiendanube
   SET $sEvent = '$iWebhookID'
   WHERE store_id = '$iStoreID'";
-    $Result = $con->ExecuteQuery($SQL);
 
-    var_dump($SQL);
-
-    if ($Result = $con->ExecuteQuery($SQL)) {
-        echo "El webhook ID " . $iWebhookID . " fue actualizado.";
+    if ($con->ExecuteQuery($SQL)) {
+        echo "¡El evento fue creado correctamente con el ID: N°" . $iWebhookID ."!";
     } else {
-        echo "ERROR SQL";
+        echo "ERROR SQL - No se pudo guardar el Webhook ID";
     }
     $con->CloseConnection();
 }
@@ -107,17 +99,15 @@ function deleteWebhookFromDB($iStoreID, $sEvent)
     $con = new ConnectionMySQL();
     $con->CreateConnection();
     $SQL = "UPDATE tiendanube
-  SET $sEvent = '0'
-  WHERE store_id = '$iStoreID'";
-    $Result = $con->ExecuteQuery($SQL);
+    SET $sEvent = '0'
+    WHERE store_id = '$iStoreID'";
 
-    var_dump($SQL); // TODO BORRAR
-
-    if ($Result = $con->ExecuteQuery($SQL)) {
-        echo "El webhook ID de $sEvent fue reseteado a 0."; // TODO ACA REDIRIGIMOS A NOTIFICACIÓN
+    if ($con->ExecuteQuery($SQL)) {
+        echo "¡El evento fue borrado correctamente!";
     } else {
-        echo "ERROR SQL";
+        echo "ERROR SQL - No se pudo borrar el Webhook ID";
     }
+
     $con->CloseConnection();
 }
 
@@ -130,9 +120,9 @@ function searchWebhookIDinDB($iStoreID, $sEvent)
     $sEvent = str_replace("-", "_", $sEvent);
     while ($fila = mysqli_fetch_assoc($Result)) {
         $con->CloseConnection();
-        return $fila["$sEvent"];        
-        }
+        return $fila["$sEvent"];
     }
+}
 
 // Paso 2 MAIN
 switch ($_GET['action']) {
@@ -152,7 +142,7 @@ switch ($_GET['action']) {
         $mEndpoint = sec($_GET['endpoint']);
 
         $iWebhookID = searchWebhookIDinDB($iStoreID, $sEvent);
-        $iWebhookID != 0 ? die("Ya se encuentra un webhook asignado, comunicate por el chat.") : "";
+        $iWebhookID != 0 ? die("Ya hay un evento asignado para $sEvent, comunicate por el chat.") : "";
 
         // Preparamos el evento para enviarlo a TiendaNube.
         $sEvent = str_replace("_", "/", $sEvent);
@@ -186,7 +176,7 @@ switch ($_GET['action']) {
         // Enviamos la petición a TiendaNube para que lo borre.
         $Response = deleteFromTiendaNube($iStoreID, $iWebhookID);
 
-        // ? Si se pudo borrar el webhook, entonces lo eliminamos de la DB.
+        // Si se pudo borrar el webhook, entonces lo eliminamos de la DB.
         $Response->status_code == 200 ? deleteWebhookFromDB($iStoreID, $sEvent) : die("Código error:" . $Response->status_code . "<br>El webhook no existe. <br>Por favor comunicate con nosotros al chat para solucionarlo.");
 
         break;

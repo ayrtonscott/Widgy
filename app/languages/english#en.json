@@ -1009,7 +1009,7 @@
 			"input_placeholder"				: "Input Placeholder",
 			"email_placeholder"				: "Email Placeholder",
 			"image"							: "Image URL",
-			"image_help"					: "Leave empty for no image. Hint: <a href=\"https://icons8.com\" target=_BLANK >icons8.com</a> has a good library of small icons that you can use.",
+			"image_help"					: "Leave empty for no image.<br>Hint: <a href=\"https://icons8.com\" target=_BLANK >icons8.com</a> has a good library of small icons that you can use.<br>Also, you can upload your own images to <a href=\"https://es.imgbb.com/\" target=_BLANK >imgbb.com</a>",
 			"image_alt"						: "Image Alt",
 			"image_alt_help"				: "Image description for accessibility and SEO purposes.",
 			"url"							: "Notification URL",

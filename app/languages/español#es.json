@@ -868,7 +868,7 @@
     },
  
     "campaign": {
-        "title"                             : "Campaña:%s",
+        "title"                             : "Campaña: %s",
         "breadcrumb"                        : "Campaña",
  
         "header": {
@@ -935,7 +935,7 @@
             "name"                      : "Nombre",
             "domain"                    : "Dominio / Subdominio",
             "domain_placeholder"        : "ej: domain.com o subdomain.domain.com",
-            "domain_help"               : "El dominio del sitio donde correrá la campaña.",
+            "domain_help"               : "El dominio del sitio donde funcionará la campaña.",
             "domain_help2"              : "Las notificaciones NO FUNCIONARÁN en otros dominios que no especifiques aquí.",
             "include_subdomains"        : "Incluir Subdominios <strong>(Recomendado)</strong>",
             "include_subdomains_help"   : "Todos los subdominios funcionarán en esta campaña."
@@ -950,7 +950,7 @@
             "name"                      : "Nombre",
             "domain"                    : "Dominio / Subdominio",
             "domain_placeholder"        : "ej: domain.com o subdomain.domain.com",
-            "domain_help"               : "El dominio del sitio donde correrá la campaña.",
+            "domain_help"               : "El dominio del sitio donde funcionará la campaña.",
             "domain_help2"              : "Las notificaciones NO FUNCIONARÁN en otros dominios que no especifiques aquí.",
             "include_subdomains"        : "Incluir Subdominios (Recomendado)",
             "include_subdomains_help"   : "Todos los subdominios funcionarán en esta campaña."
@@ -989,11 +989,11 @@
             "tab_triggers"                  : "Disparadores",
             "tab_display"                   : "Display",
             "tab_customize"                 : "Personalizar",
-            "tab_data"                      : "Data",
+            "tab_data"                      : "Webhook",
  
             "name"                          : "Nombre de notificación",
-            "title"                         : "Mensaje de título",
-            "description"                   : "Mensaje de descripción",
+            "title"                         : "Título",
+            "description"                   : "Descripción",
             "content_title"                 : "Contenido de título",
             "content_description"           : "Contenido de descripción",
             "video"                         : "URL de YouTube",
@@ -1012,19 +1012,19 @@
             "input_placeholder"             : "Input",
             "email_placeholder"             : "Email",
             "image"                         : "URL de Imagen",
-            "image_help"                    : "Dejar vacío si no hay imagen. Pista: <a href=\"https://icons8.com\" target=_BLANK >icons8.com</a> tiene una buena librería de iconos que puedes utilizar.",
+            "image_help"                    : "Dejar vacío si no hay imagen. <br>Pista: <a href=\"https://icons8.com\" target=_BLANK >icons8.com</a> tiene una buena librería de iconos que puedes utilizar.<br>También puedes subir tus propias imágenes a <a href=\"https://es.imgbb.com/\" target=_BLANK >imgbb.com</a>",
             "image_alt"						: "Texto alternativo de imagen",
 			"image_alt_help"				: "Descripción de imagen.",
-            "url"                           : "URL de Notificación",
-            "url_help"                      : "La URL a la cual irá el usuario después de hacer clic. Dejar en blanco para desactivar.",
+            "url"                           : "URL de Objetivo",
+            "url_help"                      : "La URL a la cual irá el visitante después de hacer clic en la notificación. Dejar en blanco para desactivar.",
             "url_new_tab"                   : "Abrir en nueva pestaña",
             "url_new_tab_help"              : "",
             "url_link"                      : "Enlace de URL",
             "url_link_text"                 : "Texto de URL",
             "thank_you_url"                 : "URL de ‘Gracias’ ",
-            "thank_you_url_help"            : "La URL a la cual irá el usuario después de enviar formulario. Dejar en blanco para desactivar..",
+            "thank_you_url_help"            : "La URL a la cual irá el visitante después de enviar formulario. Dejar en blanco para desactivar..",
             "coupon_code"                   : "Cupón",
-            "button_url"                    : "URL de botón",
+            "button_url"                    : "URL objetivo de botón",
             "button_text"                   : "Texto de botón",
             "button_text_help"              : "Dejar en blanco para eliminar el botón.",
             "footer_text"                   : "Texto del pie de página",
@@ -1048,8 +1048,8 @@
             "trigger_add"                   : "Agregar nuevo disparador",
             "trigger_type_exact"            : "Coincidencia exacta",
             "trigger_type_not_exact"        : "No coincide exactamente",
-            "trigger_type_contains"         : "Contiene",
-            "trigger_type_not_contains"     : "No contiene",
+            "trigger_type_contains"         : "URL Contiene",
+            "trigger_type_not_contains"     : "URL No contiene",
             "trigger_type_starts_with"      : "Empieza con",
             "trigger_type_not_starts_with"  : "No empieza con",
             "trigger_type_ends_with"        : "Termina con",
@@ -1063,10 +1063,10 @@
             "trigger_type_not_starts_with_placeholder"      : "Parte de la URL",
             "trigger_type_ends_with_placeholder"            : "Parte de la URL",
             "trigger_type_not_ends_with_placeholder"        : "Parte de la URL",
-            "trigger_type_page_contains_placeholder"        : "Texto que se muestra en la página",
+            "trigger_type_page_contains_placeholder"        : "Texto que se muestra en el contenido de la página web",
             "display_trigger"               : "Activador de display",
             "display_trigger_help"          : "¿En qué evento se mostrará la notificación?.",
-            "display_trigger_delay"         : "Retraso",
+            "display_trigger_delay"         : "Por segundos",
             "display_trigger_delay_placeholder" : "Número de segundos a esperar hasta mostrar notificación",
             "display_trigger_scroll"        : "Porcentaje de desplazamiento",
             "display_trigger_scroll_placeholder" : "Porcentaje de desplazamiento desde arriba",
@@ -1210,8 +1210,8 @@
         },
  
         "data": {
-            "header"                        : "Data",
-            "link"                          : "Data",
+            "header"                        : "Datos",
+            "link"                          : "Datos",
             "create"                        : "Importar datos",
  
             "expand_data"                   : "Clic para expandir",
@@ -1639,7 +1639,7 @@
  
         "tools": {
             "header"                    : "¿De qué se trata?",
-            "subheader"                 : "Widgy es una robusta aplicación que se integra con tu TiendaNube y te ayuda a obtener conversiones, generar confianza en tu tienda y crear fidelización de tus clientes mediante el fenómeno psicologico de la prueba social. <br><br>Sin ir más lejos, te contamos que <font color=\"orange\">%s</font> notificaciones ya han sido impresas en todos los sitios web de nuestros clientes.<br><br>Ups! Sin darnos cuenta, ya la estamos aplicando! ❤️",
+            "subheader"                 : "Widgy es una robusta aplicación que se integra con tu TiendaNube y te ayuda a obtener conversiones, generar confianza en tu tienda y crear fidelización de tus clientes mediante el fenómeno psicológico de la prueba social. <br><br>Sin ir más lejos, te contamos que <font color=\"orange\">%s</font> notificaciones ya han sido impresas en todos los sitios web de nuestros clientes.<br><br>Ups! Sin darnos cuenta, ya la estamos aplicando! ❤️",
  
             "preview"                   : "¿Cuál puedo elegir?",
             "preview_description"       : "Elige cualquiera de estas para obtener una vista previa."
@@ -1681,7 +1681,7 @@
         "breadcrumb"                    : "Documentación de la API",
         "title"                         : "Documentación de la API",
         "header"                        : "Documentación de la API",
-        "subheader"                     : "Esto es avanzado. Aquí te mostraremos la documentación para los endpoints de nuestra API, que están construidos con la<strong>arquitectura REST</strong>. Todos los endpoints devolverán una <strong>respuesta en JSON</strong> con los <strong>códigos de respuesta HTTP</strong>estándar. Necesitas una <strong>Bearer Authentication vía API</strong>.",
+        "subheader"                     : "Aquí te mostraremos la documentación para los endpoints de nuestra API, que están construidos con la <strong>arquitectura REST</strong>. <br>Todos los endpoints devolverán una <strong>respuesta en JSON</strong> con los <strong>códigos de respuesta HTTP</strong> estándar. Necesitas una <strong>Bearer Authentication</strong> para comunicarte con nuestra API.",
  
         "endpoint"                      : "Endpoint",
         "example"                       : "Ejemplo",
@@ -1701,7 +1701,7 @@
  
         "authentication": {
             "header"                    : "Autenticación",
-            "subheader"                 : "Todos los endpoints de la API requieren una petición enviada con el método <strong>Bearer Authentication.</strong>"
+            "subheader"                 : "Todos los endpoints de la API requieren que la request sea enviada con el método <strong>Bearer Authentication.</strong>"
         },
  
         "filters": {

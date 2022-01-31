@@ -1,8 +1,42 @@
+<script src="themes/widgy/assets/js/vendor/jquery-3.3.1.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script type="text/javascript">
+
+function send(url) {
+  $.ajax({
+    type: "GET",
+    url: url,
+    success: function(response) {
+      Swal.fire({
+        title: 'Atención',
+        text: response,
+        icon: 'info',
+        confirmButtonText: 'Recargar Página'
+      }).then((result) => {
+        if (result.value) {
+          location.reload();
+        }
+      });
+    },
+    error: function(error) {
+      Swal.fire({
+        title: '¡Error!',
+        text: 'No se ha podido enviar la petición.',
+        icon: 'error',
+        confirmButtonText: 'Ok'
+      })
+    }
+  });
+};
+</script>
+
 <?php
 require $_SERVER['DOCUMENT_ROOT'] . '/integrations/tiendanube/con_mysql.php';
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 ini_set('error_reporting', 1);
+
 // Declaramos variables especiales.
 $sStoreDomain = sec($data->notification->domain);
 $iUserID = $this->user->user_id;
@@ -13,7 +47,7 @@ $_SESSION['step'] = 0; // Declaramos un step para no duplicar las requests.
 
 $con = new ConnectionMySQL();
 $con->CreateConnection();
-$SQL = "SELECT * FROM tiendanube WHERE user_id = '$iUserID' ";
+$SQL = "SELECT * FROM tiendanube WHERE user_id = '$iUserID' AND domain = 'https://$sStoreDomain'";
 $Result = $con->ExecuteQuery($SQL);
 
 // Obtenemos el array asociativo de la columna
@@ -30,7 +64,6 @@ while ($row = mysqli_fetch_assoc($Result)) {
 
   $_SESSION['store_id'] = sec($row['store_id']);
   $_SESSION['access_token'] = sec($row['access_token']);
-  $_SESSION['notification_url'] =  SITE_URL . \Altum\Language::$language_code . "/notification/" . $data->notification->notification_id;
 }
 
 function webhookGetKey($SQL_StoreID, $SQL_Access_Token, $iWebhookID)
@@ -69,6 +102,8 @@ function webhookGetKey($SQL_StoreID, $SQL_Access_Token, $iWebhookID)
   ?>
   <?php if (empty($SQL_StoreID)) { ?>
 
+    <?php $_SESSION['notification_url'] =  SITE_URL . \Altum\Language::$language_code . "/notification/" . $data->notification->notification_id; ?>
+
     <script>
       function Handle_TN_Auth() {
         location.href = "https://<?= $data->notification->domain ?>/admin/apps/<?= TN_CLIENT_ID ?>/authorize/";
@@ -77,28 +112,24 @@ function webhookGetKey($SQL_StoreID, $SQL_Access_Token, $iWebhookID)
 
     <section class="align-items-center justify-content-center" id="Instalar">
       <div class="d-flex justify-content-center align-items-center">
-        <h3>¡Integra tu <span class="glow">TiendaNube</span> con Widgy!</h3>
-      </div>
-      <div class="d-flex justify-content-center">
-        <h6 class="text-center">Por ejemplo, puedes crear confianza en tu marca <b>mostrando tus últimas ventas</b> o también generar interacción con tus clientes <b>avisando de un nuevo producto</b>
-          <p>
-          <p>Todo esto al alcance de un click.</p></a>
-        </h6>
+        <h2>¡Integra tu <span class="glow">TiendaNube</span> con Widgy!</h2>
+      </div><br>
+      <div>
+        <h6 class="text-center">Por ejemplo, puedes crear confianza en tu marca <b>mostrando tus últimas ventas</b> o también generar intención de compra <b>avisando de un nuevo producto</b>.</h6>
+        <p>
+          <li>Para que esto funcione, tu tienda debe ser accesible vía <a target="_blank" href="https://<?= $data->notification->domain ?>">
+              <font class="text-primary">https://<?= $data->notification->domain ?></font>
+            </a>.</li>
+          <li>Asegurate que tu dominio tenga un certificado SSL (<font class="text-primary">https://</font>).</li>
       </div>
       <hr>
       <div class="d-flex justify-content-center align-items-center">
         <img class="" src="https://img.icons8.com/clouds/150/000000/shop.png">
       </div>
-      <div class=" input-group py-1">
-        <div class="input-group-prepend">
-          <span class="input-group-text">https://</span>
-        </div>
-        <input type="text" id="dominio" readonly="readonly" value="<?= $data->notification->domain ?>" data-toggle="tooltip" data-placement="top" title="Se integrará con <?= $data->notification->domain ?> o puedes crear otra campaña, con otro dominio..." class="form-control text-uppercase">
-      </div>
 
       <div name="Integrar" class=" mt-1 mb-2 d-flex justify-content-center" data-width="fit">
         <button class="btn btn-success shadow glow col-lg-8 col-md-6 col-sm-6 col-xs-6" type="button" onclick="Handle_TN_Auth()" name="integrar">
-          <div class="d-flex align-items-center justify-content-center"><span>¡Integrar con mi tienda!<span></div>
+          <div class="d-flex align-items-center justify-content-center"><span>¡Instalar Widgy en mi tienda!<span></div>
         </button>
       </div>
       <hr>
@@ -159,7 +190,6 @@ function webhookGetKey($SQL_StoreID, $SQL_Access_Token, $iWebhookID)
 
         <?php $PHPSESSIDhash = md5($_COOKIE["PHPSESSID"] . "r00t4m0r") ?>
 
-        <!-- // TODO establecer CSRF -->
         <div class="d-flex justify-content-center">
           <h2>Configuración de eventos de TiendaNube</h2>
         </div>
@@ -168,7 +198,6 @@ function webhookGetKey($SQL_StoreID, $SQL_Access_Token, $iWebhookID)
 
 
         <?php if ($msNotificationKey != $data->notification->notification_key) : ?>
-
 
           <div class="container">
             <div class="d-flex justify-content-start">
@@ -179,33 +208,60 @@ function webhookGetKey($SQL_StoreID, $SQL_Access_Token, $iWebhookID)
           <div>
             <div class="row mt-2 d-flex align-items-center justify-content-center">
               <div class="text-center col-xs-12 col-md-4">
-                <p><a <?= $SQL_Order_Created != 0 ? "" : "href=\"" . SITE_URL . "integrations/tiendanube/event_handler.php?action=create&endpoint=" . urlencode($data->notification->notification_key) . "&event=order-created&state=" . $PHPSESSIDhash . " \" " ?>><span class="badge bg-<?= $SQL_Order_Created != 0 ? "dark" : "primary" ?> btn-block" <?= $SQL_Order_Created != 0 ? " data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Este evento ha sido activado en otra notificación.\"" : "" ?>><img src="https://img.icons8.com/bubbles/150/000000/buy.png" /></span></a></p>
+                <p><a <?= $SQL_Order_Created != 0 ? "" : "style=\"cursor: pointer;\" onclick=\"send('" . SITE_URL . "integrations/tiendanube/event_handler.php?action=create&endpoint=" . urlencode($data->notification->notification_key) . "&event=order-created&state=" . $PHPSESSIDhash . " ')\" " ?>><span class="badge bg-<?= $SQL_Order_Created != 0 ? "dark" : "primary" ?> btn-block" <?= $SQL_Order_Created != 0 ? " data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Este evento ha sido activado en otra notificación.\"" : "" ?>><img src="https://img.icons8.com/bubbles/150/000000/buy.png" /></span></a></p>
                 <p><strong>Orden Creada</strong></p>
               </div>
               <div class="text-center col-md-4">
-                <p><a <?= $SQL_Order_Paid != 0 ? "" : "href=\"" . SITE_URL . "integrations/tiendanube/event_handler.php?action=create&endpoint=" . urlencode($data->notification->notification_key) . "&event=order-paid&state=" . $PHPSESSIDhash . " \" " ?>><span class="badge bg-<?= $SQL_Order_Paid != 0 ? "dark" : "primary" ?> btn-block" <?= $SQL_Order_Paid != 0 ? " data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Este evento ha sido activado en otra notificación.\"" : "" ?>><img src="https://img.icons8.com/bubbles/150/000000/check.png" /></span></a></p>
+                <p><a <?= $SQL_Order_Paid != 0 ? "" : "style=\"cursor: pointer;\" onclick=\"send('" . SITE_URL . "integrations/tiendanube/event_handler.php?action=create&endpoint=" . urlencode($data->notification->notification_key) . "&event=order-paid&state=" . $PHPSESSIDhash . " ')\" " ?>><span class="badge bg-<?= $SQL_Order_Paid != 0 ? "dark" : "primary" ?> btn-block" <?= $SQL_Order_Paid != 0 ? " data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Este evento ha sido activado en otra notificación.\"" : "" ?>><img src="https://img.icons8.com/bubbles/150/000000/check.png" /></span></a></p>
                 <p><strong>Orden Pagada</strong></p>
               </div>
               <div class="text-center col-md-4">
-                <p><a <?= $SQL_Order_Packed != 0 ? "" : "href=\"" . SITE_URL . "integrations/tiendanube/event_handler.php?action=create&endpoint=" . urlencode($data->notification->notification_key) . "&event=order-packed&state=" . $PHPSESSIDhash . " \" " ?>><span class="badge bg-<?= $SQL_Order_Packed != 0 ? "dark" : "primary" ?> btn-block" <?= $SQL_Order_Packed != 0 ? " data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Este evento ha sido activado en otra notificación.\"" : "" ?>><img src="https://img.icons8.com/bubbles/150/000000/product.png" /></span></a></p>
+                <p><a <?= $SQL_Order_Packed != 0 ? "" : "style=\"cursor: pointer;\" onclick=\"send('" . SITE_URL . "integrations/tiendanube/event_handler.php?action=create&endpoint=" . urlencode($data->notification->notification_key) . "&event=order-packed&state=" . $PHPSESSIDhash . " ')\" " ?>><span class="badge bg-<?= $SQL_Order_Packed != 0 ? "dark" : "primary" ?> btn-block" <?= $SQL_Order_Packed != 0 ? " data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Este evento ha sido activado en otra notificación.\"" : "" ?>><img src="https://img.icons8.com/bubbles/150/000000/product.png" /></span></a></p>
                 <p><strong>Orden Empaquetada</strong></p>
               </div>
             </div>
             <div class="row mt-2 d-flex align-items-center justify-content-center">
               <div class="text-center col-xs-12 col-md-4">
-                <p><a <?= $SQL_Order_Fulfilled != 0 ? "" : "href=\"" . SITE_URL . "integrations/tiendanube/event_handler.php?action=create&endpoint=" . urlencode($data->notification->notification_key) . "&event=order-fulfilled&state=" . $PHPSESSIDhash . " \" " ?>><span class="badge bg-<?= $SQL_Order_Fulfilled != 0 ? "dark" : "primary" ?> btn-block" <?= $SQL_Order_Fulfilled != 0 ? " data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Este evento ha sido activado en otra notificación.\"" : "" ?>><img src="https://img.icons8.com/bubbles/150/000000/truck.png" /></span></a></p>
+                <p><a <?= $SQL_Order_Fulfilled != 0 ? "" : "style=\"cursor: pointer;\" onclick=\"send('" . SITE_URL . "integrations/tiendanube/event_handler.php?action=create&endpoint=" . urlencode($data->notification->notification_key) . "&event=order-fulfilled&state=" . $PHPSESSIDhash . " ')\" " ?>><span class="badge bg-<?= $SQL_Order_Fulfilled != 0 ? "dark" : "primary" ?> btn-block" <?= $SQL_Order_Fulfilled != 0 ? " data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Este evento ha sido activado en otra notificación.\"" : "" ?>><img src="https://img.icons8.com/bubbles/150/000000/truck.png" /></span></a></p>
                 <p><strong>Orden Cumplida</strong></p>
               </div>
               <div class="text-center col-md-4">
-                <p><a <?= $SQL_Product_Created != 0 ? "" : "href=\"" . SITE_URL . "integrations/tiendanube/event_handler.php?action=create&endpoint=" . urlencode($data->notification->notification_key) . "&event=product-created&state=" . $PHPSESSIDhash . " \" " ?>><span class="badge bg-<?= $SQL_Product_Created != 0 ? "dark" : "primary" ?> btn-block" <?= $SQL_Product_Created != 0 ? " data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Este evento ha sido activado en otra notificación.\"" : "" ?>><img src="https://img.icons8.com/bubbles/150/000000/new.png" /></span></a></p>
+                <p><a <?= $SQL_Product_Created != 0 ? "" : "style=\"cursor: pointer;\" onclick=\"send('" . SITE_URL . "integrations/tiendanube/event_handler.php?action=create&endpoint=" . urlencode($data->notification->notification_key) . "&event=product-created&state=" . $PHPSESSIDhash . " ')\" " ?>><span class="badge bg-<?= $SQL_Product_Created != 0 ? "dark" : "primary" ?> btn-block" <?= $SQL_Product_Created != 0 ? " data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Este evento ha sido activado en otra notificación.\"" : "" ?>><img src="https://img.icons8.com/bubbles/150/000000/new.png" /></span></a></p>
                 <p><strong>Producto Creado</strong></p>
               </div>
               <div class="text-center col-md-4">
-                <p><a <?= $SQL_Product_Updated != 0 ? "" : "href=\"" . SITE_URL . "integrations/tiendanube/event_handler.php?action=create&endpoint=" . urlencode($data->notification->notification_key) . "&event=product-updated&state=" . $PHPSESSIDhash . " \" " ?>><span class="badge bg-<?= $SQL_Product_Updated != 0 ? "dark" : "primary" ?> btn-block" <?= $SQL_Product_Updated != 0 ? " data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Este evento ha sido activado en otra notificación.\"" : "" ?>><img src="https://img.icons8.com/bubbles/150/000000/price-tag.png" /></span></a></p>
+                <p><a <?= $SQL_Product_Updated != 0 ? "" : "style=\"cursor: pointer;\" onclick=\"send('" . SITE_URL . "integrations/tiendanube/event_handler.php?action=create&endpoint=" . urlencode($data->notification->notification_key) . "&event=product-updated&state=" . $PHPSESSIDhash . " ')\" " ?>><span class="badge bg-<?= $SQL_Product_Updated != 0 ? "dark" : "primary" ?> btn-block" <?= $SQL_Product_Updated != 0 ? " data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Este evento ha sido activado en otra notificación.\"" : "" ?>><img src="https://img.icons8.com/bubbles/150/000000/price-tag.png" /></span></a></p>
                 <p><strong>Producto Actualizado</strong></p>
               </div>
             </div>
           </div>
+          <hr>
+          <div class="d-flex justify-content-center">
+            <a href="#" class="btn btn-outline-primary rounded mb-1" data-toggle="modal" data-target="#modalWebhook" data-align="center"><small>Restaurar todos los eventos</small></a>
+          </div>
+
+
+
+          <!-- Modal -->
+          <div class="modal fade" id="modalWebhook" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modalWebhookLabel">Atención</h5>
+                </div>
+                <div class="modal-body">
+                  Se borrarán todos los eventos (Webhooks) de TiendaNube y también de nuestra base de datos.<br><br>
+                  No se borrarán tus notificaciones, solo dejarán de recibir eventos desde TiendaNube.<br><br>
+                  Este procedimiento suele solucionar la mayoria de los problemas con Webhooks.<br>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                  <button type="button" onclick="send('integrations/tiendanube/delete_all_webhooks.php?state=<?= $PHPSESSIDhash ?>')" name="restore" id="restore" class="btn btn-primary">Si, restaurar.</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
         <?php endif ?>
 
         <?php if ($msNotificationKey == $data->notification->notification_key) : ?>
@@ -228,7 +284,7 @@ function webhookGetKey($SQL_StoreID, $SQL_Access_Token, $iWebhookID)
                 como veremos en el siguiente ejemplo:<br><br>
                 <input type="text" id="example" class="form-control" value="{nombre} de {ciudad} compro...">
                 <hr>Si quieres recibir otro tipo de evento, puedes <a class="text-primary" href="<?= SITE_URL . \Altum\Language::$language_code . "/dashboard/" ?>">crear otra notificación</a>,
-                o directamente <a class="text-danger" href="<?= SITE_URL . "integrations/tiendanube/event_handler.php?state=" . $PHPSESSIDhash . "&action=delete&event=" . str_replace("/", "-", $msWebhookEvent)  ?>">desactivar este evento</a>.
+                o directamente <a class="text-danger" style="cursor: pointer;" onclick="send('<?= SITE_URL . "integrations/tiendanube/event_handler.php?state=" . $PHPSESSIDhash . "&action=delete&event=" . str_replace("/", "-", $msWebhookEvent)  ?>')">desactivar este evento</a>.
               </p>
             <?php break;
 
@@ -247,7 +303,7 @@ function webhookGetKey($SQL_StoreID, $SQL_Access_Token, $iWebhookID)
                 como veremos en el siguiente ejemplo:<br><br>
                 <input type="text" id="example" class="form-control" value="{nombre} de {ciudad} ha abonado...">
                 <hr>Si quieres recibir otro tipo de evento, puedes <a class="text-primary" href="<?= SITE_URL . \Altum\Language::$language_code . "/dashboard/" ?>">crear otra notificación</a>,
-                o directamente <a class="text-danger" href="<?= SITE_URL . "integrations/tiendanube/event_handler.php?state=" . $PHPSESSIDhash . "&action=delete&event=" . str_replace("/", "-", $msWebhookEvent)  ?>">desactivar este evento</a>.
+                o directamente <a class="text-danger" style="cursor: pointer;" onclick="send('<?= SITE_URL . "integrations/tiendanube/event_handler.php?state=" . $PHPSESSIDhash . "&action=delete&event=" . str_replace("/", "-", $msWebhookEvent)  ?>')">desactivar este evento</a>.
               </p>
 
             <?php break;
@@ -267,7 +323,7 @@ function webhookGetKey($SQL_StoreID, $SQL_Access_Token, $iWebhookID)
                 como veremos en el siguiente ejemplo:<br><br>
                 <input type="text" id="example" class="form-control" value="{producto} está listo para enviarse a {nombre} de {ciudad}">
                 <hr>Si quieres recibir otro tipo de evento, puedes <a class="text-primary" href="<?= SITE_URL . \Altum\Language::$language_code . "/dashboard/" ?>">crear otra notificación</a>,
-                o directamente <a class="text-danger" href="<?= SITE_URL . "integrations/tiendanube/event_handler.php?state=" . $PHPSESSIDhash . "&action=delete&event=" . str_replace("/", "-", $msWebhookEvent)  ?>">desactivar este evento</a>.
+                o directamente <a class="text-danger" style="cursor: pointer;" onclick="send('<?= SITE_URL . "integrations/tiendanube/event_handler.php?state=" . $PHPSESSIDhash . "&action=delete&event=" . str_replace("/", "-", $msWebhookEvent)  ?>')">desactivar este evento</a>.
               </p>
 
             <?php break;
@@ -287,7 +343,7 @@ function webhookGetKey($SQL_StoreID, $SQL_Access_Token, $iWebhookID)
                 como veremos en el siguiente ejemplo:<br><br>
                 <input type="text" id="example" class="form-control" value="{producto} ha sido entregado en {ciudad} ...">
                 <hr>Si quieres recibir otro tipo de evento, puedes <a class="text-primary" href="<?= SITE_URL . \Altum\Language::$language_code . "/dashboard/" ?>">crear otra notificación</a>,
-                o directamente <a class="text-danger" href="<?= SITE_URL . "integrations/tiendanube/event_handler.php?state=" . $PHPSESSIDhash . "&action=delete&event=" . str_replace("/", "-", $msWebhookEvent)  ?>">desactivar este evento</a>.
+                o directamente <a class="text-danger" style="cursor: pointer;" onclick="send('<?= SITE_URL . "integrations/tiendanube/event_handler.php?state=" . $PHPSESSIDhash . "&action=delete&event=" . str_replace("/", "-", $msWebhookEvent)  ?>')">desactivar este evento</a>.
               </p>
 
             <?php break;
@@ -307,7 +363,7 @@ function webhookGetKey($SQL_StoreID, $SQL_Access_Token, $iWebhookID)
                 como veremos en el siguiente ejemplo:<br><br>
                 <input type="text" id="example" class="form-control" value="Atención! Llegaron los nuevos {producto} a solo ${precio}!">
                 <hr>Si quieres recibir otro tipo de evento, puedes <a class="text-primary" href="<?= SITE_URL . \Altum\Language::$language_code . "/dashboard/" ?>">crear otra notificación</a>,
-                o directamente <a class="text-danger" href="<?= SITE_URL . "integrations/tiendanube/event_handler.php?state=" . $PHPSESSIDhash . "&action=delete&event=" . str_replace("/", "-", $msWebhookEvent)  ?>">desactivar este evento</a>.
+                o directamente <a class="text-danger" style="cursor: pointer;" onclick="send('<?= SITE_URL . "integrations/tiendanube/event_handler.php?state=" . $PHPSESSIDhash . "&action=delete&event=" . str_replace("/", "-", $msWebhookEvent)  ?>')">desactivar este evento</a>.
               </p>
 
             <?php break;
@@ -321,13 +377,13 @@ function webhookGetKey($SQL_StoreID, $SQL_Access_Token, $iWebhookID)
               <p class="h6">
                 <br>¡Genial! ¡Has activado correctamente este evento!
               </p>
-              <p><br>Lo que significa que cuando actualices un producto, <b>TiendaNube</b> nos enviará los nuevos datos para procesarlos y mostrarlos
+              <p><br>Lo que significa que cuando un producto se actualice o varie su stock por una venta, <b>TiendaNube</b> nos enviará los nuevos datos para procesarlos y mostrarlos
                 en la notificación.
                 <br>Estos <a class="text-primary" href="<?= SITE_URL . \Altum\Language::$language_code . "/notification/" . $data->notification->notification_id . "/data" ?>">datos</a>, que guardaremos en forma de variables dinámicas, pueden usarse en los campos de tu notificación
                 como veremos en el siguiente ejemplo:<br><br>
                 <input type="text" id="example" class="form-control" value="{producto} ahora tiene un precio de ${precio}.">
                 <hr>Si quieres recibir otro tipo de evento, puedes <a class="text-primary" href="<?= SITE_URL . \Altum\Language::$language_code . "/dashboard/" ?>">crear otra notificación</a>,
-                o directamente <a class="text-danger" href="<?= SITE_URL . "integrations/tiendanube/event_handler.php?state=" . $PHPSESSIDhash . "&action=delete&event=" . str_replace("/", "-", $msWebhookEvent)  ?>">desactivar este evento</a>.
+                o directamente <a class="text-danger" style="cursor: pointer;" onclick="send('<?= SITE_URL . "integrations/tiendanube/event_handler.php?state=" . $PHPSESSIDhash . "&action=delete&event=" . str_replace("/", "-", $msWebhookEvent)  ?>')">desactivar este evento</a>.
               </p>
           <?php break;
           }
@@ -453,14 +509,14 @@ function webhookGetKey($SQL_StoreID, $SQL_Access_Token, $iWebhookID)
                               <td>¡Vendimos <span class="text-primary">{producto}</span> a solo $<span class="text-primary">{precio}</span>!</td>
                             </tr>
                             <tr>
-                              <td><span class="text-primary">imagen</span></td>
+                              <td><span class="text-primary">url-imagen</span></td>
                               <td>
                                 <...>/imagenes/medias.jpg
                               </td>
                               <td><u><span class="text-primary">Se utiliza en campos de IMAGEN</u></td>
                             </tr>
                             <tr>
-                              <td><span class="text-primary">enlace</span></td>
+                              <td><span class="text-primary">url-enlace</span></td>
                               <td>
                                 <...>/productos/medias-lana
                               </td>
@@ -508,7 +564,7 @@ function webhookGetKey($SQL_StoreID, $SQL_Access_Token, $iWebhookID)
                                       <tr>
                                         <td><span class="text-primary">nombre</span></td>
                                         <td>Roxana</td>
-                                        <td>¡<span class="text-primary">{nombre}</span> se ha registrado al newsletter!</td>
+                                        <td>¡<span class="text-primary">{nombre}</span> ha abonado la orden N°<span class="text-primary">{numero}</span>!</td>
                                       </tr>
                                       <tr>
                                         <td><span class="text-primary">ciudad</span></td>
@@ -546,14 +602,19 @@ function webhookGetKey($SQL_StoreID, $SQL_Access_Token, $iWebhookID)
                                         <td>¡Vendimos <span class="text-primary">{producto}</span> a solo $<span class="text-primary">{precio}</span>!</td>
                                       </tr>
                                       <tr>
-                                        <td><span class="text-primary">imagen</span></td>
+                                        <td><span class="text-primary">metodo</span></td>
+                                        <td>MercadoPago</td>
+                                        <td>¡Vendimos <span class="text-primary">{producto}</span> con <span class="text-primary">{metodo}</span>!</td>
+                                      </tr>
+                                      <tr>
+                                        <td><span class="text-primary">url-imagen</span></td>
                                         <td>
                                           <...>/imagenes/medias.jpg
                                         </td>
                                         <td><u><span class="text-primary">Se utiliza en campos de IMAGEN</u></td>
                                       </tr>
                                       <tr>
-                                        <td><span class="text-primary">enlace</span></td>
+                                        <td><span class="text-primary">url-enlace</span></td>
                                         <td>
                                           <...>/productos/medias-lana
                                         </td>
@@ -631,14 +692,14 @@ function webhookGetKey($SQL_StoreID, $SQL_Access_Token, $iWebhookID)
                                                   <td>¡Vendimos <span class="text-primary">{producto}</span> a solo $<span class="text-primary">{precio}</span>!</td>
                                                 </tr>
                                                 <tr>
-                                                  <td><span class="text-primary">imagen</span></td>
+                                                  <td><span class="text-primary">url-imagen</span></td>
                                                   <td>
                                                     <...>/imagenes/medias.jpg
                                                   </td>
                                                   <td><u><span class="text-primary">Se utiliza en campos de IMAGEN</u></td>
                                                 </tr>
                                                 <tr>
-                                                  <td><span class="text-primary">enlace</span></td>
+                                                  <td><span class="text-primary">url-enlace</span></td>
                                                   <td>
                                                     <...>/productos/medias-lana
                                                   </td>
@@ -717,28 +778,18 @@ function webhookGetKey($SQL_StoreID, $SQL_Access_Token, $iWebhookID)
                                                           </tr>
                                                           <tr>
                                                             <td><span class="text-primary">envio</span></td>
-                                                            <td>Correo Argentino</td>
+                                                            <td>Correo Argentino <span class="text-primary">-</span> <del>Sucursal Belgrano</del> </td>
                                                             <td>¡Enviamos <span class="text-primary">{producto}</span> a <span class="text-primary">{nombre}</span> vía <span class="text-primary">{envio}</span>!</td>
                                                           </tr>
                                                           <tr>
-                                                            <td><span class="text-primary">fecha</span></td>
-                                                            <td>04/07/21</td>
-                                                            <td>¡El pedido de <span class="text-primary">{nombre}</span> salió el <span class="text-primary">{fecha}</span>!</td>
-                                                          </tr>
-                                                          <tr>
-                                                            <td><span class="text-primary">hora</span></td>
-                                                            <td>15:32</td>
-                                                            <td>¡El pedido de <span class="text-primary">{nombre}</span> fue enviado el <span class="text-primary">{fecha}</span> a las <span class="text-primary">{hora}</span>!</td>
-                                                          </tr>
-                                                          <tr>
-                                                            <td><span class="text-primary">imagen</span></td>
+                                                            <td><span class="text-primary">url-imagen</span></td>
                                                             <td>
                                                               <...>/imagenes/medias.jpg
                                                             </td>
                                                             <td><u><span class="text-primary">Se utiliza en campos de IMAGEN</u></td>
                                                           </tr>
                                                           <tr>
-                                                            <td><span class="text-primary">enlace</span></td>
+                                                            <td><span class="text-primary">url-enlace</span></td>
                                                             <td>
                                                               <...>/productos/medias-lana
                                                             </td>
@@ -801,14 +852,14 @@ function webhookGetKey($SQL_StoreID, $SQL_Access_Token, $iWebhookID)
                                                                       <td>¡<span class="text-primary">{producto}</span> disponible a partir del <span class="text-primary">{fecha}</span>!</td>
                                                                     </tr>
                                                                     <tr>
-                                                                      <td><span class="text-primary">imagen</span></td>
+                                                                      <td><span class="text-primary">url-imagen</span></td>
                                                                       <td>
                                                                         <...>/imagenes/medias.jpg
                                                                       </td>
                                                                       <td><u><span class="text-primary">Se utiliza en campos de IMAGEN</u></td>
                                                                     </tr>
                                                                     <tr>
-                                                                      <td><span class="text-primary">enlace</span></td>
+                                                                      <td><span class="text-primary">url-enlace</span></td>
                                                                       <td>
                                                                         <...>/productos/medias-lana
                                                                       </td>
@@ -871,14 +922,14 @@ function webhookGetKey($SQL_StoreID, $SQL_Access_Token, $iWebhookID)
                                                                                 <td>¡A partir del <span class="text-primary">{fecha}</span> actualizamos <span class="text-primary">{producto}</span>!</td>
                                                                               </tr>
                                                                               <tr>
-                                                                                <td><span class="text-primary">imagen</span></td>
+                                                                                <td><span class="text-primary">url-imagen</span></td>
                                                                                 <td>
                                                                                   <...>/imagenes/medias.jpg
                                                                                 </td>
                                                                                 <td><u><span class="text-primary">Se utiliza en campos de IMAGEN</u></td>
                                                                               </tr>
                                                                               <tr>
-                                                                                <td><span class="text-primary">enlace</span></td>
+                                                                                <td><span class="text-primary">url-enlace</span></td>
                                                                                 <td>
                                                                                   <...>/productos/medias-lana
                                                                                 </td>
@@ -902,7 +953,9 @@ function webhookGetKey($SQL_StoreID, $SQL_Access_Token, $iWebhookID)
 
 
     <?php } else { ?>
+
     <?php } ?>
 
     </section>
+
     <!-- FIN SECCION TIENDANUBE -->

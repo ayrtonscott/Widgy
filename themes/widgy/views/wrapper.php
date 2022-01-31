@@ -1,3 +1,7 @@
+<?php // * Agregado 21/01 en 10.0.0 - (Agregamos Intercom) INICIO. ?>
+<?php isset($this->user->user_id) ? $hash = hash_hmac('sha256', $this->user->user_id,'a5edqk3IEE_hhIILFborw4_7wRz1N9RroK9g-a0V') : "" ?>
+<?php // * Agregado 21/01 en 10.0.0 - (Agregamos Intercom) FIN. ?>
+
 <?php defined('ALTUMCODE') || die() ?>
 <?php if(\Altum\Routing\Router::$controller_key != 'index'): // * Agregado 19/12 en 10.0.0 (Eliminamos todo en el index) INICIO. ?>
 <!DOCTYPE html>
@@ -48,6 +52,7 @@
         <link href="<?= ASSETS_FULL_URL . 'css/' . \Altum\ThemeStyle::get_file() . '?v=' . PRODUCT_CODE ?>" id="css_theme_style" rel="stylesheet" media="screen,print">
         <?php // * Agregado 17/12 en 10.0.0 - (Links a assets de dore) INICIO. ?>
         <link rel="stylesheet" href="themes/widgy/assets/font/iconsmind-s/css/iconsminds.css" />
+        <link rel="stylesheet" href="themes/widgy/assets/css/vendor/perfect-scrollbar.css" />  <?php // * Agregado 24/1 en 10.0.0 - (Fix de Scroll) FIN. ?>
         <link rel="stylesheet" href="themes/widgy/assets/font/simple-line-icons/css/simple-line-icons.css" />
         <link rel="stylesheet" href="themes/widgy/assets/css/vendor/bootstrap.min.css" />
         <link rel="stylesheet" href="themes/widgy/assets/css/dore.light.orangecarrot.min.css" />
@@ -120,7 +125,7 @@
 
         </div>
 
-        <a class="navbar-logo" href="Dashboard.Default.html">
+        <a class="navbar-logo" href="dashboard">
             <span class="logo d-none d-xs-block"></span>
             <span class="logo-mobile d-block d-xs-none"></span>
         </a>
@@ -204,9 +209,9 @@
                         </a>
                     </li>
                     <li class="">
-                        <a href="<?= HELPCENTER_URL ?>">
+                        <a href="<?= HELPCENTER_URL ?><?= \Altum\Language::$language_code == "tn" ? "es" : \Altum\Language::$language_code // * Agregado 24/1 en 10.0.0 (Fix language code) INICIO. ?> ">
                             <i class="iconsminds-library"></i>
-                            <span><?= language()->custom->helpcenter ?></span>
+                            <span><?= language()->custom->helpcenter ?> </span>
                         </a>
                     </li>
                 </ul>
@@ -267,6 +272,7 @@
 
         <?php // * Agregado 17/12 en 10.0.0 - (Links a assets de dore) INICIO. ?>
         <script src="themes/widgy/assets/js/vendor/jquery-3.3.1.min.js"></script>
+        <script src="themes/widgy/assets/js/vendor/perfect-scrollbar.min.js"></script>  <?php // * Agregado 24/1 en 10.0.0 - (Fix de Scroll) FIN. ?>
         <script src="themes/widgy/assets/js/vendor/bootstrap.bundle.min.js"></script>
         <script src="themes/widgy/assets/js/dore.script.js"></script>
         <script src="themes/widgy/assets/js/scripts.single.theme.js"></script>
@@ -287,5 +293,30 @@
         <?= \Altum\Event::get_content('javascript') ?>
 <?php if(\Altum\Routing\Router::$controller_key != 'index'): // * Agregado 19/12 en 10.0.0 (Eliminamos todo en el index) INICIO. ?>
     </body>
+
+    <?php // * Agregado 21/01 en 10.0.0 - (Agregamos Intercom) INICIO. ?>
+    <script>
+        window.intercomSettings = {
+            app_id: "nds4bz0l",
+            name: "<?= $this->user->name; ?>",
+            language: "<?= isset($this->user->language) ? $this->user->language : "" ?>",
+            user_id: <?= isset($this->user->user_id) ? $this->user->user_id : "" ?>,
+            email: "<?= isset($this->user->email) ? $this->user->email : "" ?>",
+            user_hash: "<?= isset($hash) ? $hash : "" ?>",
+            executive: "<?= isset($this->user->plan_settings->no_ads) ? $this->user->plan_settings->no_ads : "" ?>",
+            created_at: "<?= isset($this->user->datetime) ? strtotime($this->user->datetime) : "" ?>",
+            plan: <?= isset($this->user->plan_id) ? $this->user->plan_id : "" ?>,
+            trial: <?= isset($this->user->plan_trial_done) ? $this->user->plan_trial_done : "" ?>,
+            current_impressions: <?= isset($this->user->current_month_notifications_impressions) ? $this->user->current_month_notifications_impressions : "" ?>,
+            impressions_limit: "<?= isset($this->user->plan_settings->notifications_impressions_limit) ? $this->user->plan_settings->notifications_impressions_limit :"" ?>",
+            Vencimiento: "<?= isset($this->user->plan_expiration_date) ? $this->user->plan_expiration_date : "" ?>"
+        };
+    </script>
+    <script>
+    // We pre-filled your app ID in the widget URL: 'https://widget.intercom.io/widget/nds4bz0l'
+    (function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/nds4bz0l';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(document.readyState==='complete'){l();}else if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+    </script>
+    <?php // * Agregado 21/01 en 10.0.0 - (Agregamos Intercom) FIN. ?>
+
 </html>
 <?php endif // * Agregado 19/12 en 10.0.0 (Eliminamos todo en el index) Fin. ?>
