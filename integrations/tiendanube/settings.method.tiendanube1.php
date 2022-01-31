@@ -2,33 +2,32 @@
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script type="text/javascript">
-
-function send(url) {
-  $.ajax({
-    type: "GET",
-    url: url,
-    success: function(response) {
-      Swal.fire({
-        title: 'Atención',
-        text: response,
-        icon: 'info',
-        confirmButtonText: 'Recargar Página'
-      }).then((result) => {
-        if (result.value) {
-          location.reload();
-        }
-      });
-    },
-    error: function(error) {
-      Swal.fire({
-        title: '¡Error!',
-        text: 'No se ha podido enviar la petición.',
-        icon: 'error',
-        confirmButtonText: 'Ok'
-      })
-    }
-  });
-};
+  function send(url) {
+    $.ajax({
+      type: "GET",
+      url: url,
+      success: function(response) {
+        Swal.fire({
+          title: 'Atención',
+          text: response,
+          icon: 'info',
+          confirmButtonText: 'Recargar Página'
+        }).then((result) => {
+          if (result.value) {
+            location.reload();
+          }
+        });
+      },
+      error: function(error) {
+        Swal.fire({
+          title: '¡Error!',
+          text: 'No se ha podido enviar la petición.',
+          icon: 'error',
+          confirmButtonText: 'Ok'
+        })
+      }
+    });
+  };
 </script>
 
 <?php
@@ -174,12 +173,13 @@ function webhookGetKey($SQL_StoreID, $SQL_Access_Token, $iWebhookID)
 
       // Vemos si alguna key pertenece a esta notificación.
       foreach ($aNotificationKeys as $mKey[0]) {
-
-        if (isset($mKey[0][2]) == $data->notification->notification_key) {
-          // Entonces guardamos tanto la key como el evento.
-          $msWebhookID = $mKey[0][0];
-          $msWebhookEvent = $mKey[0][1];
-          $msNotificationKey = $mKey[0][2];
+        if ($mKey[0] != NULL) {
+          if ($mKey[0][2] == $data->notification->notification_key) {
+            // Entonces guardamos tanto la key como el evento.
+            $msWebhookID = $mKey[0][0];
+            $msWebhookEvent = $mKey[0][1];
+            $msNotificationKey = $mKey[0][2];
+          }
         }
       }
 
