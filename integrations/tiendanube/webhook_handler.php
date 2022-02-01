@@ -6,11 +6,11 @@ header('Access-Control-Allow-Headers: token, Content-Type');
 header('Access-Control-Max-Age: 1728000');
 
 session_start();
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
+ini_set('display_errors', 0);
+ini_set('display_startup_errors', 0);
 error_reporting(E_ALL);
 ini_set("allow_url_fopen", true);
-ini_set("zlib.output_compression", 1);
+ini_set("zlib.output_compression", 0);
 
 require $_SERVER['DOCUMENT_ROOT'] . '/integrations/tiendanube/con_mysql.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';

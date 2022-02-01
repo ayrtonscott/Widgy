@@ -22,7 +22,7 @@ if (!isset($_SESSION["user"]["loggedIn"]) or $_SESSION["user"]["loggedIn"] != tr
 
 //Creas una variable de tipo objeto mysqli con los datos de la bd y el charset que quieras
 
-$obj_conexion = mysqli_connect('127.0.0.1', 'ayrton', 'ayrton123', 'widgy_v1');
+$obj_conexion = mysqli_connect('162.213.255.212', 'widgy_XNca6AbPZbAmJHaKQo', 'takTEYAmAff6bydv4r', 'widgy_v1');
 if (!$obj_conexion) {
     echo "<h3>No se ha podido conectar PHP - MySQL, verifique sus datos.</h3><hr><br>";
 } else {
