@@ -130,35 +130,50 @@ function updateAccessToken($iStoreID, $sAccessToken)
 
 function createNewFullAccount($iStoreID, $sAccessToken, $sMerchantName, $sStoreName, $txtStoreDescription, $sEmail, $sStoreDomain)
 {
-  // Paso 1 Creamos la cuenta via API
+  // Paso 1 Creamos la cuenta via DATABASE
+
+  // Creamos la cuenta via API
+  // $Url = SITE_URL . "admin-api/users/";
+   $Options = [
+     'verify' => false
+   ];
+  // $Body = array(
+  //   'name' => $sMerchantName,
+  //   'email' => $sEmail,
+  //   'password' => $iPassword
+  // );
+  // $Headers = array(
+  //   'Content-Type' => 'application/x-www-form-urlencoded',
+  //   'Authorization' => "Bearer " . SR_ADMIN_API_KEY,
+  //   'User-Agent' => 'Widgy (api@widgy.app)'
+  // );
+
+  // $Response = Requests::post($Url, $Headers, $Body, $Options);
+  // $Response = json_decode($Response->body, true);
 
   //  Seteamos datos para crear cuenta
   global $iLostPasswordCode;
   $iPassword = rand(100000, 999999);
-  $iLostPasswordCode = md5($iPassword . microtime());
+  $iLostPasswordCode = md5($sEmail . microtime());
   $datToday = date("Y-m-d H:i:s"); // Fecha de hoy
 
-  // Creamos la cuenta via API
-  $Url = SITE_URL . "admin-api/users/";
-  $Options = [
-    'verify' => false
-  ];
-  $Body = array(
-    'name' => $sMerchantName,
-    'email' => $sEmail,
-    'password' => $iPassword
-  );
-  $Headers = array(
-    'Content-Type' => 'application/x-www-form-urlencoded',
-    'Authorization' => "Bearer " . SR_ADMIN_API_KEY,
-    'User-Agent' => 'Widgy (api@widgy.app)'
-  );
+  $con = new ConnectionMySQL();
+  $con->CreateConnection();
+  $SQL = "INSERT INTO `users` 
+  (`user_id`, `email`, `password`, `name`, `billing`, `api_key`, `token_code`, `twofa_secret`, `one_time_login_code`, `pending_email`, `email_activation_code`, `lost_password_code`, `type`, `status`, `plan_id`, `plan_expiration_date`, `plan_settings`, `plan_trial_done`, `plan_expiry_reminder`, `payment_subscription_id`, `payment_processor`, `payment_total_amount`, `payment_currency`, `referral_key`, `referred_by`, `referred_by_has_converted`, `current_month_notifications_impressions`, `total_notifications_impressions`, `language`, `timezone`, `datetime`, `ip`, `country`, `last_activity`, `last_user_agent`, `total_logins`, `user_deletion_reminder`) 
+  VALUES 
+  (NULL, '." . $sEmail . "', '" . $iPassword . "', '" . $sMerchantName . "', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '" . $iLostPasswordCode . "', '0', '1', 'free', '" . $datToday . "', NULL, '0', '0', NULL, NULL, NULL, NULL, NULL, NULL, '0', '0', '0', 'español (TiendaNube)', 'America/Argentina/Buenos_Aires', NULL, NULL, NULL, NULL, NULL, '0', '0')";
 
-  $Response = Requests::post($Url, $Headers, $Body, $Options);
-  $Response = json_decode($Response->body, true);
+
 
   // * Verificamos que recibimos la ID del usuario creado.
-  if (!isset($Response['data']['id'])) {
+  if ($con->ExecuteQuery($SQL)) {
+    $SQL = "SELECT `user_id` FROM `users` WHERE `email` = '$sEmail'";
+    $tableUsers = $con->ExecuteQuery($SQL);
+    $rowTableUsers = mysqli_fetch_assoc($tableUsers);
+    dump($rowTableUsers);
+    $iCreatedUserID = $rowTableUsers['user_id'];
+  } else {
     return "
     <div class=\"blog-slider__item swiper-slide\">
     <div class=\"blog-slider__img\">
@@ -171,8 +186,6 @@ function createNewFullAccount($iStoreID, $sAccessToken, $sMerchantName, $sStoreN
     </div>
   </div>
   ";
-  } else {
-    $iCreatedUserID = $Response['data']['id'];
   }
 
 
@@ -197,8 +210,6 @@ function createNewFullAccount($iStoreID, $sAccessToken, $sMerchantName, $sStoreN
 
 
   // * EDITAMOS LA CUENTA
-  $con = new ConnectionMySQL();
-  $con->CreateConnection();
   $SQL = "UPDATE `users` SET 
     `lost_password_code` = '$iLostPasswordCode',
     `plan_trial_done` = '0',
@@ -282,214 +293,213 @@ function createNewFullAccount($iStoreID, $sAccessToken, $sMerchantName, $sStoreN
 
   // Buscamos la campaign_id de la campaña previamente creada
 
-  $SQL = "SELECT `campaign_id` FROM `campaigns` WHERE `pixel_key` = '$sCampaignPixelKey'";
-  $Campaigns = $con->ExecuteQuery($SQL);
-  $rowCampaigns = mysqli_fetch_assoc($Campaigns);
+  // $SQL = "SELECT `campaign_id` FROM `campaigns` WHERE `pixel_key` = '$sCampaignPixelKey'";
+  // $Campaigns = $con->ExecuteQuery($SQL);
+  // $rowCampaigns = mysqli_fetch_assoc($Campaigns);
 
-  if (empty($Campaigns)) {
-    return "
-    <div class=\"blog-slider__item swiper-slide\">
-    <div class=\"blog-slider__img\">
-      <img src=\"img/undraw_server_down_s4lk.png\" alt=\"\">
-    </div>
-    <div class=\"blog-slider__content\">
-      <div class=\"blog-slider__title\">Error en creación de cuenta</div>
-      <div class=\"blog-slider__text\">No pudimos crear una campaña con la tienda $sStoreName.</div>
-      <a href=\"#\" onclick=\"Intercom('show');\" class=\"blog-custom__button \">Habla con nosotros</a>
-    </div>
-  </div>
-  ";
-  } else {
+  // if (empty($Campaigns)) {
+  //   return "
+  //   <div class=\"blog-slider__item swiper-slide\">
+  //   <div class=\"blog-slider__img\">
+  //     <img src=\"img/undraw_server_down_s4lk.png\" alt=\"\">
+  //   </div>
+  //   <div class=\"blog-slider__content\">
+  //     <div class=\"blog-slider__title\">Error en creación de cuenta</div>
+  //     <div class=\"blog-slider__text\">No pudimos crear una campaña con la tienda $sStoreName.</div>
+  //     <a href=\"#\" onclick=\"Intercom('show');\" class=\"blog-custom__button \">Habla con nosotros</a>
+  //   </div>
+  // </div>
+  // ";
+  // } else {
 
+  //   // Creamos Inicio - Hay descuentos
+  //   $sNotificationKey = md5($rowCampaigns['campaign_id'] . "INFORMATIONAL" . time() . rand(0, 1000));
+  //   $aNotificationSettings = '{
+  //   \"trigger_all_pages\": false,
+  //   \"triggers\": [
+  //       {
+  //           \"type\": \"starts_with\",
+  //           \"value\": \"' . $sStoreDomain . '\/\"
+  //       }
+  //   ],
+  //   \"display_trigger\": \"delay\",
+  //   \"display_trigger_value\": 1,
+  //   \"display_frequency\": \"once_per_session\",
+  //   \"display_mobile\": true,
+  //   \"display_desktop\": true,
+  //   \"shadow\": true,
+  //   \"border_radius\": \"rounded\",
+  //   \"border_width\": 1,
+  //   \"border_color\": \"#FFAB6E\",
+  //   \"on_animation\": \"bounceIn\",
+  //   \"off_animation\": \"bounceOut\",
+  //   \"background_pattern\": false,
+  //   \"background_pattern_svg\": false,
+  //   \"display_duration\": 3,
+  //   \"display_position\": \"bottom_left\",
+  //   \"display_close_button\": true,
+  //   \"display_branding\": true,
+  //   \"title\": \"\\\u00a1Bienvenid@!\",
+  //   \"description\": \"\\\u00a1' . $sStoreName . ' es la mejor TiendaNube!\",
+  //   \"image\": \"https:\/\/img.icons8.com\/bubbles\/100\/000000\/price-tag.png\",
+  //   \"image_alt\": \"\",
+  //   \"url\": \"\",
+  //   \"url_new_tab\": false,
+  //   \"title_color\": \"#FFAB6E\",
+  //   \"description_color\": \"#5B5B5B\",
+  //   \"background_color\": \"#f5f8ff\"}';
 
-    // Creamos Inicio - Hay descuentos
-    $sNotificationKey = md5($rowCampaigns['campaign_id'] . "INFORMATIONAL" . time() . rand(0, 1000));
-    $aNotificationSettings = '{
-    \"trigger_all_pages\": false,
-    \"triggers\": [
-        {
-            \"type\": \"starts_with\",
-            \"value\": \"' . $sStoreDomain . '\/\"
-        }
-    ],
-    \"display_trigger\": \"delay\",
-    \"display_trigger_value\": 1,
-    \"display_frequency\": \"once_per_session\",
-    \"display_mobile\": true,
-    \"display_desktop\": true,
-    \"shadow\": true,
-    \"border_radius\": \"rounded\",
-    \"border_width\": 1,
-    \"border_color\": \"#FFAB6E\",
-    \"on_animation\": \"bounceIn\",
-    \"off_animation\": \"bounceOut\",
-    \"background_pattern\": false,
-    \"background_pattern_svg\": false,
-    \"display_duration\": 3,
-    \"display_position\": \"bottom_left\",
-    \"display_close_button\": true,
-    \"display_branding\": true,
-    \"title\": \"\\\u00a1Bienvenid@!\",
-    \"description\": \"\\\u00a1' . $sStoreName . ' es la mejor TiendaNube!\",
-    \"image\": \"https:\/\/img.icons8.com\/bubbles\/100\/000000\/price-tag.png\",
-    \"image_alt\": \"\",
-    \"url\": \"\",
-    \"url_new_tab\": false,
-    \"title_color\": \"#FFAB6E\",
-    \"description_color\": \"#5B5B5B\",
-    \"background_color\": \"#f5f8ff\"}';
+  //   $SQL = "INSERT INTO `notifications` (`campaign_id`, `user_id`, `name`, `type`, `settings`,  `last_action_date`, `notification_key`, `is_enabled`, `last_datetime`, `datetime`)
+  //     VALUES ('" . $rowCampaigns['campaign_id'] . "', '" . $iCreatedUserID . "', 'Inicio', 'INFORMATIONAL', '" . $aNotificationSettings . "', NULL, '" . $sNotificationKey . "', '1', NULL, '" . $datToday . "')";
+  //   $con->ExecuteQuery($SQL);
 
-    $SQL = "INSERT INTO `notifications` (`campaign_id`, `user_id`, `name`, `type`, `settings`,  `last_action_date`, `notification_key`, `is_enabled`, `last_datetime`, `datetime`)
-      VALUES ('" . $rowCampaigns['campaign_id'] . "', '" . $iCreatedUserID . "', 'Inicio', 'INFORMATIONAL', '" . $aNotificationSettings . "', NULL, '" . $sNotificationKey . "', '1', NULL, '" . $datToday . "')";
-    $con->ExecuteQuery($SQL);
+  //   // Creamos Estado de Pedido - En Camino
+  //   $sNotificationKey = md5($rowCampaigns['campaign_id'] . "INFORMATIONAL" . time() . rand(0, 1000));
+  //   $aNotificationSettings = '{\"trigger_all_pages\":false,\"triggers\":[{\"type\":\"page_contains\",\"value\":\"Tu pedido est\\\u00e1 en camino\"}],\"display_trigger\":\"delay\",\"display_trigger_value\":1,\"display_frequency\":\"all_time\",\"display_mobile\":true,\"display_desktop\":true,\"shadow\":true,\"border_radius\":\"rounded\",\"border_width\":1,\"border_color\":\"#FFAB6E\",\"on_animation\":\"zoomIn\",\"off_animation\":\"zoomOut\",\"background_pattern\":false,\"background_pattern_svg\":false,\"display_duration\":5,\"display_position\":\"bottom_left\",\"display_close_button\":true,\"display_branding\":true,\"title\":\"\\\u00a1En camino!\",\"description\":\"Tu paquete est\\\u00e1 viajando a destino..\",\"image\":\"https:\/\/img.icons8.com\/bubbles\/100\/000000\/in-transit.png\",\"url\":\"\",\"title_color\":\"#FFAB6E\",\"description_color\":\"#474747\",\"background_color\":\"#f5f8ff\"}';
 
-    // Creamos Estado de Pedido - En Camino
-    $sNotificationKey = md5($rowCampaigns['campaign_id'] . "INFORMATIONAL" . time() . rand(0, 1000));
-    $aNotificationSettings = '{\"trigger_all_pages\":false,\"triggers\":[{\"type\":\"page_contains\",\"value\":\"Tu pedido est\\\u00e1 en camino\"}],\"display_trigger\":\"delay\",\"display_trigger_value\":1,\"display_frequency\":\"all_time\",\"display_mobile\":true,\"display_desktop\":true,\"shadow\":true,\"border_radius\":\"rounded\",\"border_width\":1,\"border_color\":\"#FFAB6E\",\"on_animation\":\"zoomIn\",\"off_animation\":\"zoomOut\",\"background_pattern\":false,\"background_pattern_svg\":false,\"display_duration\":5,\"display_position\":\"bottom_left\",\"display_close_button\":true,\"display_branding\":true,\"title\":\"\\\u00a1En camino!\",\"description\":\"Tu paquete est\\\u00e1 viajando a destino..\",\"image\":\"https:\/\/img.icons8.com\/bubbles\/100\/000000\/in-transit.png\",\"url\":\"\",\"title_color\":\"#FFAB6E\",\"description_color\":\"#474747\",\"background_color\":\"#f5f8ff\"}';
+  //   $SQL = "INSERT INTO `notifications` (`campaign_id`, `user_id`, `name`, `type`, `settings`, `last_action_date`, `notification_key`, `is_enabled`, `last_datetime`, `datetime`)
+  //     VALUES ('" . $rowCampaigns['campaign_id'] . "', '" . $iCreatedUserID . "', 'Estado de Pedido - En Camino', 'INFORMATIONAL', '" . $aNotificationSettings . "', NULL, '" . $sNotificationKey . "', '1', NULL, '" . $datToday . "')";
+  //   $con->ExecuteQuery($SQL);
 
-    $SQL = "INSERT INTO `notifications` (`campaign_id`, `user_id`, `name`, `type`, `settings`, `last_action_date`, `notification_key`, `is_enabled`, `last_datetime`, `datetime`)
-      VALUES ('" . $rowCampaigns['campaign_id'] . "', '" . $iCreatedUserID . "', 'Estado de Pedido - En Camino', 'INFORMATIONAL', '" . $aNotificationSettings . "', NULL, '" . $sNotificationKey . "', '1', NULL, '" . $datToday . "')";
-    $con->ExecuteQuery($SQL);
+  //   // Creamos Next Checkout - Promociones
+  //   $sNotificationKey = md5($rowCampaigns['campaign_id'] . "INFORMATIONAL" . time() . rand(0, 1000));
+  //   $aNotificationSettings = '{\"trigger_all_pages\":false,\"triggers\":[{\"type\":\"contains\",\"value\":\"checkout\/next\"},{\"type\":\"contains\",\"value\":\"checkout\/v3\/next\"}],\"display_trigger\":\"delay\",\"display_trigger_value\":1,\"display_frequency\":\"all_time\",\"display_mobile\":true,\"display_desktop\":true,\"shadow\":true,\"border_radius\":\"rounded\",\"border_width\":1,\"border_color\":\"#FFAB6E\",\"on_animation\":\"bounceIn\",\"off_animation\":\"bounceOut\",\"background_pattern\":false,\"background_pattern_svg\":false,\"display_duration\":6,\"display_position\":\"bottom_right\",\"display_close_button\":true,\"display_branding\":true,\"title\":\"Aceptamos todas las tarjetas..\",\"description\":\"Disponible en 3, 6, y 12 cuotas!\",\"image\":\"https:\/\/img.icons8.com\/bubbles\/100\/000000\/card-in-use.png\",\"url\":\"\",\"title_color\":\"#FFAB6E\",\"description_color\":\"#474747\",\"background_color\":\"#f5f8ff\"}';
 
-    // Creamos Next Checkout - Promociones
-    $sNotificationKey = md5($rowCampaigns['campaign_id'] . "INFORMATIONAL" . time() . rand(0, 1000));
-    $aNotificationSettings = '{\"trigger_all_pages\":false,\"triggers\":[{\"type\":\"contains\",\"value\":\"checkout\/next\"},{\"type\":\"contains\",\"value\":\"checkout\/v3\/next\"}],\"display_trigger\":\"delay\",\"display_trigger_value\":1,\"display_frequency\":\"all_time\",\"display_mobile\":true,\"display_desktop\":true,\"shadow\":true,\"border_radius\":\"rounded\",\"border_width\":1,\"border_color\":\"#FFAB6E\",\"on_animation\":\"bounceIn\",\"off_animation\":\"bounceOut\",\"background_pattern\":false,\"background_pattern_svg\":false,\"display_duration\":6,\"display_position\":\"bottom_right\",\"display_close_button\":true,\"display_branding\":true,\"title\":\"Aceptamos todas las tarjetas..\",\"description\":\"Disponible en 3, 6, y 12 cuotas!\",\"image\":\"https:\/\/img.icons8.com\/bubbles\/100\/000000\/card-in-use.png\",\"url\":\"\",\"title_color\":\"#FFAB6E\",\"description_color\":\"#474747\",\"background_color\":\"#f5f8ff\"}';
+  //   $SQL = "INSERT INTO `notifications` (`campaign_id`, `user_id`, `name`, `type`, `settings`, `last_action_date`, `notification_key`, `is_enabled`, `last_datetime`, `datetime`)
+  //     VALUES ('" . $rowCampaigns['campaign_id'] . "', '" . $iCreatedUserID . "', 'Checkout (Pago) - Promociones', 'INFORMATIONAL', '" . $aNotificationSettings . "', NULL, '" . $sNotificationKey . "', '0', NULL, '" . $datToday . "')";
+  //   $con->ExecuteQuery($SQL);
 
-    $SQL = "INSERT INTO `notifications` (`campaign_id`, `user_id`, `name`, `type`, `settings`, `last_action_date`, `notification_key`, `is_enabled`, `last_datetime`, `datetime`)
-      VALUES ('" . $rowCampaigns['campaign_id'] . "', '" . $iCreatedUserID . "', 'Checkout (Pago) - Promociones', 'INFORMATIONAL', '" . $aNotificationSettings . "', NULL, '" . $sNotificationKey . "', '0', NULL, '" . $datToday . "')";
-    $con->ExecuteQuery($SQL);
+  //   // Creamos Productos - Últimas ventas
+  //   $sNotificationKey = md5($rowCampaigns['campaign_id'] . "LATEST_CONVERSION" . time() . rand(0, 1000));
+  //   $aNotificationSettings = '{\"trigger_all_pages\":false,\"triggers\":[{\"type\":\"contains\",\"value\":\"\/productos\/\"}],\"display_trigger\":\"delay\",\"display_trigger_value\":4,\"display_frequency\":\"once_per_session\",\"display_mobile\":true,\"display_desktop\":true,\"shadow\":true,\"border_radius\":\"rounded\",\"border_width\":1,\"border_color\":\"#FFAB6E\",\"on_animation\":\"slideInUp\",\"off_animation\":\"slideOutDown\",\"background_pattern\":false,\"background_pattern_svg\":false,\"display_duration\":5,\"display_position\":\"bottom_left\",\"display_close_button\":true,\"display_branding\":true,\"title\":\"{nombre} de {ciudad} llev\\\u00f3...\",\"description\":\"{producto} a s\\\u00f3lo: ${precio}\",\"image\":\"{imagen}\",\"url\":\"{enlace}?utm_source=Socialroot&utm_medium=' . $sStoreName . '&utm_campaign=Ejemplo: Mostrar \\\u00faltimas ventas\",\"conversions_count\":3,\"title_color\":\"#FFAB6E\",\"description_color\":\"#515151\",\"background_color\":\"#f5f8ff\",\"data_trigger_auto\":false,\"data_triggers_auto\":[{\"type\":\"exact\",\"value\":\"\"}]}';
 
-    // Creamos Productos - Últimas ventas
-    $sNotificationKey = md5($rowCampaigns['campaign_id'] . "LATEST_CONVERSION" . time() . rand(0, 1000));
-    $aNotificationSettings = '{\"trigger_all_pages\":false,\"triggers\":[{\"type\":\"contains\",\"value\":\"\/productos\/\"}],\"display_trigger\":\"delay\",\"display_trigger_value\":4,\"display_frequency\":\"once_per_session\",\"display_mobile\":true,\"display_desktop\":true,\"shadow\":true,\"border_radius\":\"rounded\",\"border_width\":1,\"border_color\":\"#FFAB6E\",\"on_animation\":\"slideInUp\",\"off_animation\":\"slideOutDown\",\"background_pattern\":false,\"background_pattern_svg\":false,\"display_duration\":5,\"display_position\":\"bottom_left\",\"display_close_button\":true,\"display_branding\":true,\"title\":\"{nombre} de {ciudad} llev\\\u00f3...\",\"description\":\"{producto} a s\\\u00f3lo: ${precio}\",\"image\":\"{imagen}\",\"url\":\"{enlace}?utm_source=Socialroot&utm_medium=' . $sStoreName . '&utm_campaign=Ejemplo: Mostrar \\\u00faltimas ventas\",\"conversions_count\":3,\"title_color\":\"#FFAB6E\",\"description_color\":\"#515151\",\"background_color\":\"#f5f8ff\",\"data_trigger_auto\":false,\"data_triggers_auto\":[{\"type\":\"exact\",\"value\":\"\"}]}';
+  //   $SQL = "INSERT INTO `notifications` (`campaign_id`, `user_id`, `name`, `type`, `settings`, `last_action_date`, `notification_key`, `is_enabled`, `last_datetime`, `datetime`)
+  //     VALUES ('" . $rowCampaigns['campaign_id'] . "', '" . $iCreatedUserID . "', 'Productos - Últimas ventas', 'LATEST_CONVERSION', '" . $aNotificationSettings . "', NULL, '" . $sNotificationKey . "', '1', NULL, '" . $datToday . "')";
 
-    $SQL = "INSERT INTO `notifications` (`campaign_id`, `user_id`, `name`, `type`, `settings`, `last_action_date`, `notification_key`, `is_enabled`, `last_datetime`, `datetime`)
-      VALUES ('" . $rowCampaigns['campaign_id'] . "', '" . $iCreatedUserID . "', 'Productos - Últimas ventas', 'LATEST_CONVERSION', '" . $aNotificationSettings . "', NULL, '" . $sNotificationKey . "', '1', NULL, '" . $datToday . "')";
-
-    if ($con->ExecuteQuery($SQL)) {
-      echo "
-      <div class=\"blog-slider__item swiper-slide\">
-      <div class=\"blog-slider__img\">
-        <img src=\"img/undraw_building_websites_i78t.png\" alt=\"\">
-      </div>
-      <div class=\"blog-slider__content\">
-        <div class=\"blog-slider__title\">Notificaciones</div>
-        <div class=\"blog-slider__text\">Hemos añadido <strong>4</strong> excelentes notificaciones de ejemplo a tu campaña.<br><br>Podrás activarlas, editarlas o eliminarlas una vez dentro de tu tablero. </div>
-        <a href=\"#\" class=\"blog-slider__button \">Siguiente</a>
-      </div>
-    </div>
-      ";
-    } else {
-      echo "
-      <div class=\"blog-slider__item swiper-slide\">
-      <div class=\"blog-slider__img\">
-        <img src=\"img/undraw_server_down_s4lk.png\" alt=\"\">
-      </div>
-      <div class=\"blog-slider__content\">
-        <div class=\"blog-slider__title\">¡Ups!</div>
-        <div class=\"blog-slider__text\">No pudimos crear notificaciones de ejemplo para $sStoreName. 
-        <br><br> Tendras que crearlas por tu cuenta una vez dentro del panel.</div>
-        <a href=\"#\" class=\"blog-slider__button \">Siguiente</a>
-      </div>
-    </div>
-    ";
-    }
-  }
-
-
-  // Paso 6 Cargamos la última venta.
-  // Reconocemos la ultima venta de su tienda
-  $Headers = array(
-    'Content-Type' => 'application/json',
-    'Authentication' => $sAccessToken,
-    'User-Agent' => 'Widgy (api@widgy.app)'
-  );
-  $Url = "https://api.tiendanube.com/v1/" . $iStoreID . "/orders?page=1&per_page=1";
-  $UltimaVenta = Requests::get($Url, $Headers);
-  $UltimaVenta = json_decode($UltimaVenta->body, true);
-
-  // La enviamos a nuestro propio webhook general, de la misma forma que lo haría TiendaNube.
+  //   if ($con->ExecuteQuery($SQL)) {
+  //     echo "
+  //     <div class=\"blog-slider__item swiper-slide\">
+  //     <div class=\"blog-slider__img\">
+  //       <img src=\"img/undraw_building_websites_i78t.png\" alt=\"\">
+  //     </div>
+  //     <div class=\"blog-slider__content\">
+  //       <div class=\"blog-slider__title\">Notificaciones</div>
+  //       <div class=\"blog-slider__text\">Hemos añadido <strong>4</strong> excelentes notificaciones de ejemplo a tu campaña.<br><br>Podrás activarlas, editarlas o eliminarlas una vez dentro de tu tablero. </div>
+  //       <a href=\"#\" class=\"blog-slider__button \">Siguiente</a>
+  //     </div>
+  //   </div>
+  //     ";
+  //   } else {
+  //     echo "
+  //     <div class=\"blog-slider__item swiper-slide\">
+  //     <div class=\"blog-slider__img\">
+  //       <img src=\"img/undraw_server_down_s4lk.png\" alt=\"\">
+  //     </div>
+  //     <div class=\"blog-slider__content\">
+  //       <div class=\"blog-slider__title\">¡Ups!</div>
+  //       <div class=\"blog-slider__text\">No pudimos crear notificaciones de ejemplo para $sStoreName. 
+  //       <br><br> Tendras que crearlas por tu cuenta una vez dentro del panel.</div>
+  //       <a href=\"#\" class=\"blog-slider__button \">Siguiente</a>
+  //     </div>
+  //   </div>
+  //   ";
+  //   }
+  // }
 
 
-  if (!isset($UltimaVenta[0]['id'])) {
-    echo "
-      <div class=\"blog-slider__item swiper-slide\">
-      <div class=\"blog-slider__img\">
-        <img src=\"img/undraw_No_data_re_kwbl.png\" alt=\"\">
-      </div>
-      <div class=\"blog-slider__content\">
-        <div class=\"blog-slider__title\">¿No hay ventas?</div>
-        <div class=\"blog-slider__text\">No conseguimos leer la última venta. 
-        <br><br> Nada de que preocuparse, seguro es una tienda nueva.<br><br> Si no es asi, avisanos al chat y continúa con el proceso.<br><br>Te felicitamos por la valentía de emprender un negocio 💪..</div>
-        <div class=\"row\">
-        <a onclick=\"Intercom('show');\" class=\"blog-custom__button \">Habla con nosotros</a>
-        <a href=\"#\" class=\"blog-slider__button \">Siguiente</a>
-        </div>
-      </div>
-    </div>
-    ";
-  } else {
+  // // Paso 6 Cargamos la última venta.
+  // // Reconocemos la ultima venta de su tienda
+  // $Headers = array(
+  //   'Content-Type' => 'application/json',
+  //   'Authentication' => $sAccessToken,
+  //   'User-Agent' => 'Widgy (api@widgy.app)'
+  // );
+  // $Url = "https://api.tiendanube.com/v1/" . $iStoreID . "/orders?page=1&per_page=1";
+  // $UltimaVenta = Requests::get($Url, $Headers);
+  // $UltimaVenta = json_decode($UltimaVenta->body, true);
 
-    $urlNotificationEndPoint = SITE_URL . "pixel-webhook/" . $sNotificationKey; // Es la última notificación que fue creada.
-    $Url = SITE_URL . "integrations/tiendanube/webhook_handler.php?webhook=" . $urlNotificationEndPoint;
-    $Body = array(
-      'store_id' => $iStoreID,
-      'event' => 'order/created',
-      'id' => $UltimaVenta[0]['id']
-    );
-    $Body = json_encode($Body, true);
-    // Avisamos que nos vamos a enviar contenido en jSon.
-    $Headers = array(
-      'Content-Type' => 'application/json'
-    );
-
-    //Enviamos la data para que la procese como un webhook más.
-    $Response = Requests::post($Url, $Headers, $Body, $Options);
+  // // La enviamos a nuestro propio webhook general, de la misma forma que lo haría TiendaNube.
 
 
-    // Paso 7 Activamos el webhook de últimas ventas
-    $Url = "https://api.tiendanube.com/v1/" . $iStoreID . "/webhooks";
-    //Seteamos el cuerpo del mensaje que vamos a enviar luego
-    $Body = array(
-      'event' => 'order/created',
-      'url' => SITE_URL . 'integrations/tiendanube/webhook_handler.php?endpoint=' . $sNotificationKey
-    );
-    $Body = json_encode($Body, true);
-    // Avisamos que vamos a enviar contenido en jSon.
-    $Headers = array(
-      'Content-Type' => 'application/json',
-      'Authentication' => $sAccessToken,
-      'User-Agent' => 'Widgy (api@widgy.app)'
-    );
+  // if (!isset($UltimaVenta[0]['id'])) {
+  //   echo "
+  //     <div class=\"blog-slider__item swiper-slide\">
+  //     <div class=\"blog-slider__img\">
+  //       <img src=\"img/undraw_No_data_re_kwbl.png\" alt=\"\">
+  //     </div>
+  //     <div class=\"blog-slider__content\">
+  //       <div class=\"blog-slider__title\">¿No hay ventas?</div>
+  //       <div class=\"blog-slider__text\">No conseguimos leer la última venta. 
+  //       <br><br> Nada de que preocuparse, seguro es una tienda nueva.<br><br> Si no es asi, avisanos al chat y continúa con el proceso.<br><br>Te felicitamos por la valentía de emprender un negocio 💪..</div>
+  //       <div class=\"row\">
+  //       <a onclick=\"Intercom('show');\" class=\"blog-custom__button \">Habla con nosotros</a>
+  //       <a href=\"#\" class=\"blog-slider__button \">Siguiente</a>
+  //       </div>
+  //     </div>
+  //   </div>
+  //   ";
+  // } else {
 
-    //Enviamos Paso  y recibimos el Access_token y el Store_ID
-    $Response = Requests::post($Url, $Headers, $Body);
-    // Insertamos el webhook ID en la base de datos.
+  //   $urlNotificationEndPoint = SITE_URL . "pixel-webhook/" . $sNotificationKey; // Es la última notificación que fue creada.
+  //   $Url = SITE_URL . "integrations/tiendanube/webhook_handler.php?webhook=" . $urlNotificationEndPoint;
+  //   $Body = array(
+  //     'store_id' => $iStoreID,
+  //     'event' => 'order/created',
+  //     'id' => $UltimaVenta[0]['id']
+  //   );
+  //   $Body = json_encode($Body, true);
+  //   // Avisamos que nos vamos a enviar contenido en jSon.
+  //   $Headers = array(
+  //     'Content-Type' => 'application/json'
+  //   );
 
-    if ($Response->status_code != 201) {
-      echo "
-      <div class=\"blog-slider__item swiper-slide\">
-      <div class=\"blog-slider__img\">
-        <img src=\"img/undraw_Page_not_found_re_e9o6.png\" alt=\"\">
-      </div>
-      <div class=\"blog-slider__content\">
-        <div class=\"blog-slider__title\">Error en conexión</div>
-        <div class=\"blog-slider__text\">No pudimos activar el evento <strong>Última venta</strong>. 
-        <br><br> Nada de que preocuparse igualmente.<br><br>Por favor, avisanos al chat y continúa con el proceso.</div>
-        <a href=\"#\" class=\"blog-slider__button \">Siguiente</a>
-      </div>
-    </div>
-    ";
-    } else {
-      $Response = json_decode($Response->body, true);
-      $iWebhookID = $Response['id'];
-    }
+  //   //Enviamos la data para que la procese como un webhook más.
+  //   $Response = Requests::post($Url, $Headers, $Body, $Options);
 
 
-    // Paso 8 Actualizamos el WebhookID en la tabla TiendaNube
-    $SQL = "UPDATE `tiendanube` SET `order_created` = '$iWebhookID' WHERE store_id = '$iStoreID'";
-    $con->ExecuteQuery($SQL);
-  }
+  //   // Paso 7 Activamos el webhook de últimas ventas
+  //   $Url = "https://api.tiendanube.com/v1/" . $iStoreID . "/webhooks";
+  //   //Seteamos el cuerpo del mensaje que vamos a enviar luego
+  //   $Body = array(
+  //     'event' => 'order/created',
+  //     'url' => SITE_URL . 'integrations/tiendanube/webhook_handler.php?endpoint=' . $sNotificationKey
+  //   );
+  //   $Body = json_encode($Body, true);
+  //   // Avisamos que vamos a enviar contenido en jSon.
+  //   $Headers = array(
+  //     'Content-Type' => 'application/json',
+  //     'Authentication' => $sAccessToken,
+  //     'User-Agent' => 'Widgy (api@widgy.app)'
+  //   );
+
+  //   //Enviamos Paso  y recibimos el Access_token y el Store_ID
+  //   $Response = Requests::post($Url, $Headers, $Body);
+  //   // Insertamos el webhook ID en la base de datos.
+
+  //   if ($Response->status_code != 201) {
+  //     echo "
+  //     <div class=\"blog-slider__item swiper-slide\">
+  //     <div class=\"blog-slider__img\">
+  //       <img src=\"img/undraw_Page_not_found_re_e9o6.png\" alt=\"\">
+  //     </div>
+  //     <div class=\"blog-slider__content\">
+  //       <div class=\"blog-slider__title\">Error en conexión</div>
+  //       <div class=\"blog-slider__text\">No pudimos activar el evento <strong>Última venta</strong>. 
+  //       <br><br> Nada de que preocuparse igualmente.<br><br>Por favor, avisanos al chat y continúa con el proceso.</div>
+  //       <a href=\"#\" class=\"blog-slider__button \">Siguiente</a>
+  //     </div>
+  //   </div>
+  //   ";
+  //   } else {
+  //     $Response = json_decode($Response->body, true);
+  //     $iWebhookID = $Response['id'];
+  //   }
+
+
+  //   // Paso 8 Actualizamos el WebhookID en la tabla TiendaNube
+  //   $SQL = "UPDATE `tiendanube` SET `order_created` = '$iWebhookID' WHERE store_id = '$iStoreID'";
+  //   $con->ExecuteQuery($SQL);
+  // }
 
 
   // Paso 9 Insertamos el script de la campaña, en la tienda.
