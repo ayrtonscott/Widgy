@@ -754,7 +754,7 @@
  
         "info_message": {
             "twofa_token"               : "Utiliza tu aplicación de móvil para obtener el token de autenticación de dos factores.",
-            "logged_in"                 : "Bienvenido de nuevo, %s! Has ingresado correctamente."
+            "logged_in"                 : "Bienvenid@ %s! Has ingresado correctamente."
         },
  
         "error_message": {
@@ -838,7 +838,7 @@
  
         "success_message": {
             "registration"              : "Tu cuenta ha sido creada. ¡Revisa tu email para encontrar el link de activación! (¡Asegurate de verificar tu correo no deseado!)",
-            "login"                     : "¡Bienvenido a Widgy, nos encanta tenerte aquí!"
+            "login"                     : "¡Bienvenid@ a Widgy, nos encanta tenerte aquí!"
         }
     },
  
