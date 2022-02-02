@@ -142,7 +142,7 @@ switch ($_GET['action']) {
         $mEndpoint = sec($_GET['endpoint']);
 
         $iWebhookID = searchWebhookIDinDB($iStoreID, $sEvent);
-        $iWebhookID != 0 ? die("Ya hay un evento asignado para $sEvent, comunicate por el chat.") : "";
+        $iWebhookID != 0 ? die("Ya hay un evento asignado para $sEvent, si crees que esto es un problema comunicate por el chat.") : "";
 
         // Preparamos el evento para enviarlo a TiendaNube.
         $sEvent = str_replace("_", "/", $sEvent);
