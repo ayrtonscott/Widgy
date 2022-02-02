@@ -639,7 +639,7 @@ function createLimitedAccount($iStoreID, $sAccessToken, $iOldUserID, $sEmail, $s
     return "
     <div class=\"blog-slider__item swiper-slide\">
     <div class=\"blog-slider__img\">
-      <img src=\"img/undraw_authentication_re_svpt.png\" alt=\"\">
+      <img src=\"img/undraw_Authentication_re_svpt.png\" alt=\"\">
     </div>
     <div class=\"blog-slider__content\">
       <div class=\"blog-slider__title\">Error en API</div>
@@ -663,7 +663,7 @@ function createLimitedAccount($iStoreID, $sAccessToken, $iOldUserID, $sEmail, $s
     echo "
   <div class=\"blog-slider__item swiper-slide\">
   <div class=\"blog-slider__img\">
-    <img src=\"img/undraw_authentication_re_svpt.png\" alt=\"\">
+    <img src=\"img/undraw_Authentication_re_svpt.png\" alt=\"\">
   </div>
   <div class=\"blog-slider__content\">
     <div class=\"blog-slider__title\">¡Cuenta creada!</div>

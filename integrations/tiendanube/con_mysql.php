@@ -22,6 +22,7 @@ class ConnectionMySQL
     {
 
         $this->conn = new mysqli($this->host, $this->user, $this->password, $this->database);
+        $this->conn->set_charset("utf8");
     }
 
     public function CloseConnection()
