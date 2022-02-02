@@ -112,7 +112,7 @@
 <script>
         window.intercomSettings = {
             app_id: "nds4bz0l",
-            name: "<?= $this->user->name; ?>",
+            name: "<?= isset($this->user->name) ? $this->user->name : "" ?>",
             language: "<?= isset($this->user->language) ? $this->user->language : "" ?>",
             user_id: <?= isset($this->user->user_id) ? $this->user->user_id : "" ?>,
             email: "<?= isset($this->user->email) ? $this->user->email : "" ?>",

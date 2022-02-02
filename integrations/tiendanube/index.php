@@ -18,24 +18,31 @@ if(isset($_COOKIE['wait'])) {
 
 function login($iUserID) // Devuelve la URL de one-time-login
 {
-  $Url = SITE_URL . "admin-api/users/" . $iUserID . "/one-time-login-code";
-  $Options = [
-    'verify' => false
-  ];
-  $Body = array(
-    '0x' => '0x'
-  );
-  $Body = json_encode($Body, true);
-  $Headers = array(
-    'Content-Type' => 'application/x-www-form-urlencoded',
-    'Authorization' => "Bearer " . SR_ADMIN_API_KEY,
-    'User-Agent' => 'Widgy (api@widgy.app)'
-  );
-  // Enviamos la request.
-  $Response = Requests::post($Url, $Headers, $Body, $Options);
-  $decodedResponse = json_decode($Response->body, true);
+  // $Url = SITE_URL . "admin-api/users/" . $iUserID . "/one-time-login-code";
+  // $Options = [
+  //   'verify' => false
+  // ];
+  // $Body = array(
+  //   '0x' => '0x'
+  // );
+  // $Body = json_encode($Body, true);
+  // $Headers = array(
+  //   'Content-Type' => 'application/x-www-form-urlencoded',
+  //   'Authorization' => "Bearer " . SR_ADMIN_API_KEY,
+  //   'User-Agent' => 'Widgy (api@widgy.app)'
+  // );
+  // // Enviamos la request.
+  // $Response = Requests::post($Url, $Headers, $Body, $Options);
+  // $decodedResponse = json_decode($Response->body, true);
+  $con = new ConnectionMySQL();
+  $con->CreateConnection();
 
-  if ($Response->status_code != 200) {
+  $SQL = "SELECT `user_id` FROM `users` WHERE `user_id` = '$iUserID'";
+  $tableUsers = $con->ExecuteQuery($SQL);
+  $rowTableUsers = mysqli_fetch_assoc($tableUsers);
+  $iUserID = $rowTableUsers['user_id'];
+
+  if (!$rowTableUsers['user_id']) {
     return "
     <div class=\"blog-slider__item swiper-slide\">
     <div class=\"blog-slider__img\">
@@ -49,6 +56,22 @@ function login($iUserID) // Devuelve la URL de one-time-login
   </div>
   ";
   } else {
+    $mOneTimeLoginCode = md5($iUserID . microtime());
+    $SQL = "UPDATE users SET one_time_login_code = '$mOneTimeLoginCode'  WHERE user_id = '$iUserID'";
+    if (!$con->ExecuteQuery($SQL)) {
+      return "
+    <div class=\"blog-slider__item swiper-slide\">
+    <div class=\"blog-slider__img\">
+      <img src=\"img/undraw_server_down_s4lk.png\" alt=\"\">
+    </div>
+    <div class=\"blog-slider__content\">
+      <div class=\"blog-slider__title\">Error</div>
+      <div class=\"blog-slider__text\">No pudimos obtener guardar el enlace de acceso para tu cuenta en la DB.</div>
+      <a href=\"#\" onclick=\"Intercom('show');\" class=\"blog-custom__button \">Habla con nosotros</a>
+    </div>
+  </div>
+  ";
+    }
     return "
     <div class=\"blog-slider__item swiper-slide\">
     <div class=\"blog-slider__img\">
@@ -57,7 +80,7 @@ function login($iUserID) // Devuelve la URL de one-time-login
     <div class=\"blog-slider__content\">
       <div class=\"blog-slider__title\">Ingresa</div>
       <div class=\"blog-slider__text\">Click para ingresar con tu cuenta de Widgy.</div>
-    <a href=\"" . $decodedResponse['data']['url'] . "\" class=\"blog-custom__button\">Ingresar con mi cuenta</a>
+    <a href=\"" . SITE_URL . "login/one-time-login-code/" . $mOneTimeLoginCode . "\" class=\"blog-custom__button\">Ingresar con mi cuenta</a>
     </div>
   </div>
   ";
@@ -134,9 +157,9 @@ function createNewFullAccount($iStoreID, $sAccessToken, $sMerchantName, $sStoreN
 
   // Creamos la cuenta via API
   // $Url = SITE_URL . "admin-api/users/";
-   $Options = [
-     'verify' => false
-   ];
+  $Options = [
+    'verify' => false
+  ];
   // $Body = array(
   //   'name' => $sMerchantName,
   //   'email' => $sEmail,
@@ -153,16 +176,19 @@ function createNewFullAccount($iStoreID, $sAccessToken, $sMerchantName, $sStoreN
 
   //  Seteamos datos para crear cuenta
   global $iLostPasswordCode;
-  $iPassword = rand(100000, 999999);
+  $iPassword = password_hash(md5($sEmail . microtime()), PASSWORD_DEFAULT);
   $iLostPasswordCode = md5($sEmail . microtime());
   $datToday = date("Y-m-d H:i:s"); // Fecha de hoy
+  $mApiKey = md5($sEmail . microtime());
+  $mReferralKey = md5($sEmail . microtime());
 
   $con = new ConnectionMySQL();
   $con->CreateConnection();
+  $mBilling = "{\"type\":\"personal\",\"name\":\"\",\"address\":\"\",\"city\":\"\",\"county\":\"\",\"zip\":\"\",\"country\":\"\",\"phone\":\"\",\"tax_id\":\"\"}";
   $SQL = "INSERT INTO `users` 
   (`user_id`, `email`, `password`, `name`, `billing`, `api_key`, `token_code`, `twofa_secret`, `one_time_login_code`, `pending_email`, `email_activation_code`, `lost_password_code`, `type`, `status`, `plan_id`, `plan_expiration_date`, `plan_settings`, `plan_trial_done`, `plan_expiry_reminder`, `payment_subscription_id`, `payment_processor`, `payment_total_amount`, `payment_currency`, `referral_key`, `referred_by`, `referred_by_has_converted`, `current_month_notifications_impressions`, `total_notifications_impressions`, `language`, `timezone`, `datetime`, `ip`, `country`, `last_activity`, `last_user_agent`, `total_logins`, `user_deletion_reminder`) 
   VALUES 
-  (NULL, '." . $sEmail . "', '" . $iPassword . "', '" . $sMerchantName . "', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '" . $iLostPasswordCode . "', '0', '1', 'free', '" . $datToday . "', NULL, '0', '0', NULL, NULL, NULL, NULL, NULL, NULL, '0', '0', '0', 'español (TiendaNube)', 'America/Argentina/Buenos_Aires', NULL, NULL, NULL, NULL, NULL, '0', '0')";
+  (NULL, '" . $sEmail . "', '" . $iPassword . "', '" . $sMerchantName . "', '" . $mBilling . "', '" . $mApiKey . "', NULL, NULL, NULL, NULL, NULL, '" . $iLostPasswordCode . "', '0', '1', 'free', '" . $datToday . "', NULL, '0', '0', NULL, NULL, NULL, NULL, '" . $mReferralKey . "', NULL, '0', '0', '0', 'español (TiendaNube)', 'America/Argentina/Buenos_Aires', '" . $datToday . "', NULL, NULL, NULL, NULL, '0', '0')";
 
 
 
@@ -171,7 +197,6 @@ function createNewFullAccount($iStoreID, $sAccessToken, $sMerchantName, $sStoreN
     $SQL = "SELECT `user_id` FROM `users` WHERE `email` = '$sEmail'";
     $tableUsers = $con->ExecuteQuery($SQL);
     $rowTableUsers = mysqli_fetch_assoc($tableUsers);
-    dump($rowTableUsers);
     $iCreatedUserID = $rowTableUsers['user_id'];
   } else {
     return "
@@ -192,27 +217,8 @@ function createNewFullAccount($iStoreID, $sAccessToken, $sMerchantName, $sStoreN
 
   // Paso 2 Editamos la cuenta
 
-  // * CREAMOS LOS PRE-DATOS
-
-  // Datos de la tabla Users.
-
-  // Seteamos el Pixel Key
-  function string_generate($length)
-  {
-    $characters = str_split('abcdefghijklmnopqrstuvwxyz0123456789');
-    $content = '';
-    for ($i = 1; $i <= $length; $i++) {
-      $content .= $characters[array_rand($characters, 1)];
-    }
-    return $content;
-  }
-  $sCampaignPixelKey = string_generate(32);
-
-
   // * EDITAMOS LA CUENTA
-  $SQL = "UPDATE `users` SET 
-    `lost_password_code` = '$iLostPasswordCode',
-    `plan_trial_done` = '0',
+  $SQL = "UPDATE `users` SET
     `plan_settings` = '{\"no_ads\":false,\"removable_branding\":false,\"custom_branding\":false,\"api_is_enabled\":true,\"affiliate_is_enabled\":false,\"campaigns_limit\":1,\"notifications_limit\":1,\"notifications_impressions_limit\":300,\"track_notifications_retention\":0,\"enabled_notifications\":{\"INFORMATIONAL\":true,\"COUPON\":false,\"LIVE_COUNTER\":false,\"EMAIL_COLLECTOR\":false,\"LATEST_CONVERSION\":false,\"CONVERSIONS_COUNTER\":false,\"VIDEO\":false,\"SOCIAL_SHARE\":false,\"RANDOM_REVIEW\":false,\"EMOJI_FEEDBACK\":false,\"COOKIE_NOTIFICATION\":false,\"SCORE_FEEDBACK\":false,\"REQUEST_COLLECTOR\":false,\"COUNTDOWN_COLLECTOR\":false,\"INFORMATIONAL_BAR\":false,\"IMAGE\":false,\"COLLECTOR_BAR\":false,\"COUPON_BAR\":false,\"BUTTON_BAR\":false,\"COLLECTOR_MODAL\":false,\"COLLECTOR_TWO_MODAL\":false,\"BUTTON_MODAL\":false,\"TEXT_FEEDBACK\":false,\"ENGAGEMENT_LINKS\":false}}',
     `language` = 'español (TiendaNube)' WHERE `users`.`user_id` = '$iCreatedUserID'";
 
@@ -257,6 +263,10 @@ function createNewFullAccount($iStoreID, $sAccessToken, $sMerchantName, $sStoreN
 
 
   // Paso 4 Creamos la campaña
+
+  // Seteamos el Pixel Key
+  $sCampaignPixelKey = md5($sEmail . microtime());
+
   $SQL = "INSERT INTO `campaigns` (`user_id`, `pixel_key`, `name`, `domain`, `include_subdomains`, `branding`, `is_enabled`, `last_datetime`, `datetime`)
       VALUES ( '" . $iCreatedUserID . "', '" . $sCampaignPixelKey . "', '" . $sStoreName . "', '" . $aStoreDomain[1] . "', '1', NULL, '1', NULL, '" . $datToday . "')";
 
@@ -552,7 +562,7 @@ function createNewFullAccount($iStoreID, $sAccessToken, $sMerchantName, $sStoreN
 
   $con->CloseConnection();
 
-  // Paso 10 Enviamos el webhook a la notificación para prueba social
+  // Paso 10 Enviamos el payload a la notificación de Widgy para prueba social
   $Headers = array(
     'Content-Type' => 'application/x-www-form-urlencoded',
     'User-Agent' => 'Widgy (api@widgy.app)'
@@ -580,32 +590,52 @@ function createNewFullAccount($iStoreID, $sAccessToken, $sMerchantName, $sStoreN
 ";
 }
 
-function createLimitedAccount($sMerchantName, $sEmail, $iOldUserID)
+function createLimitedAccount($iStoreID, $sAccessToken, $iOldUserID, $sEmail, $sMerchantName, $sStoreName, $sStoreDomain)
 {
+
+  // PASO 1 - Le creamos la cuenta con restricciones
+
   //  Seteamos datos para crear cuenta
   global $iLostPasswordCode;
-  $iPassword = rand(100000, 999999);
+  $iPassword = password_hash(md5($sEmail . microtime()), PASSWORD_DEFAULT);
   $iLostPasswordCode = md5($iPassword . microtime());
-  // Creamos la cuenta que irá con restricciones.
-  $Url = SITE_URL . "admin-api/users/";
-  $Options = [
-    'verify' => false
-  ];
-  $Body = array(
-    'name' => $sMerchantName,
-    'email' => $sEmail,
-    'password' => $iPassword
-  );
-  $Headers = array(
-    'Content-Type' => 'application/x-www-form-urlencoded',
-    'Authorization' => "Bearer " . SR_ADMIN_API_KEY,
-    'User-Agent' => 'Widgy (api@widgy.app)'
-  );
-  $Response = Requests::post($Url, $Headers, $Body, $Options);
-  $Response = json_decode($Response->body, true);
+  $datToday = date("Y-m-d H:i:s"); // Fecha de hoy
+  $mApiKey = md5($sEmail . microtime());
+  $mReferralKey = md5($sEmail . microtime());
 
-  //  Verificamos que recibimos la ID del usuario creado.
-  if (empty($Response['data']['id'])) {
+  // Creamos la cuenta que irá con restricciones.
+  // $Url = SITE_URL . "admin-api/users/";
+  // $Options = [
+  //   'verify' => false
+  // ];
+  // $Body = array(
+  //   'name' => $sMerchantName,
+  //   'email' => $sEmail,
+  //   'password' => $iPassword
+  // );
+  // $Headers = array(
+  //   'Content-Type' => 'application/x-www-form-urlencoded',
+  //   'Authorization' => "Bearer " . SR_ADMIN_API_KEY,
+  //   'User-Agent' => 'Widgy (api@widgy.app)'
+  // );
+  // $Response = Requests::post($Url, $Headers, $Body, $Options);
+  // $Response = json_decode($Response->body, true);
+
+  $con = new ConnectionMySQL();
+  $con->CreateConnection();
+  $mBilling = "{\"type\":\"personal\",\"name\":\"\",\"address\":\"\",\"city\":\"\",\"county\":\"\",\"zip\":\"\",\"country\":\"\",\"phone\":\"\",\"tax_id\":\"\"}";
+  $SQL = "INSERT INTO `users` 
+  (`user_id`, `email`, `password`, `name`, `billing`, `api_key`, `token_code`, `twofa_secret`, `one_time_login_code`, `pending_email`, `email_activation_code`, `lost_password_code`, `type`, `status`, `plan_id`, `plan_expiration_date`, `plan_settings`, `plan_trial_done`, `plan_expiry_reminder`, `payment_subscription_id`, `payment_processor`, `payment_total_amount`, `payment_currency`, `referral_key`, `referred_by`, `referred_by_has_converted`, `current_month_notifications_impressions`, `total_notifications_impressions`, `language`, `timezone`, `datetime`, `ip`, `country`, `last_activity`, `last_user_agent`, `total_logins`, `user_deletion_reminder`) 
+  VALUES 
+  (NULL, '" . $sEmail . "', '" . $iPassword . "', '" . $sMerchantName . "', '" . $mBilling . "', '" . $mApiKey . "', NULL, NULL, NULL, NULL, NULL, '" . $iLostPasswordCode . "', '0', '1', 'free', '" . $datToday . "', NULL, '0', '0', NULL, NULL, NULL, NULL, '" . $mReferralKey . "', NULL, '0', '0', '0', 'español (TiendaNube)', 'America/Argentina/Buenos_Aires', '" . $datToday . "', NULL, NULL, NULL, NULL, '0', '0')";
+
+  // * Verificamos que recibimos la ID del usuario creado.
+  if ($con->ExecuteQuery($SQL)) {
+    $SQL = "SELECT `user_id` FROM `users` WHERE `email` = '$sEmail'";
+    $tableUsers = $con->ExecuteQuery($SQL);
+    $rowTableUsers = mysqli_fetch_assoc($tableUsers);
+    $iCreatedUserID = $rowTableUsers['user_id'];
+  } else {
     return "
     <div class=\"blog-slider__item swiper-slide\">
     <div class=\"blog-slider__img\">
@@ -618,13 +648,10 @@ function createLimitedAccount($sMerchantName, $sEmail, $iOldUserID)
     </div>
   </div>
   ";
-  } else {
-    $iCreatedUserID = $Response['data']['id'];
   }
+  // PASO 2 - Le editamos la cuenta aplicando restricciones
 
   //  EDITAMOS LA CUENTA
-  $con = new ConnectionMySQL();
-  $con->CreateConnection();
   $SQL = "UPDATE `users` SET `user_id` = '$iOldUserID',
         `lost_password_code` = '$iLostPasswordCode',
         `plan_trial_done` = '1',
@@ -633,7 +660,7 @@ function createLimitedAccount($sMerchantName, $sEmail, $iOldUserID)
         WHERE `users`.`user_id` = '$iCreatedUserID'";
 
   if ($con->ExecuteQuery($SQL)) {
-    return "
+    echo "
   <div class=\"blog-slider__item swiper-slide\">
   <div class=\"blog-slider__img\">
     <img src=\"img/undraw_authentication_re_svpt.png\" alt=\"\">
@@ -642,11 +669,100 @@ function createLimitedAccount($sMerchantName, $sEmail, $iOldUserID)
     <div class=\"blog-slider__title\">¡Cuenta creada!</div>
     <div class=\"blog-slider__text\">Detectamos que esta tienda ya ha sido integrada con Widgy.<br><br>
     Te hemos creado una cuenta con el email <strong>$sEmail</strong> para que puedas seguir dandole vida a tu TiendaNube.</div>
-    <a href=\"   " . SITE_URL . "reset-password/" . $sEmail . "/" . $iLostPasswordCode . "        \" class=\"blog-custom__button \">Crear contraseña</a>
+    <a href=\"#\" class=\"blog-slider__button \">Siguiente</a>
   </div>
 </div>
 ";
   }
+
+  // PASO 3 - Creamos campaña
+
+  // Seteamos el Pixel Key
+  $sCampaignPixelKey = md5($sEmail . microtime());
+
+  //Limpiamos el url_with_protocol
+  $aStoreDomain = explode("//", $sStoreDomain);
+
+  $SQL = "INSERT INTO `campaigns` (`user_id`, `pixel_key`, `name`, `domain`, `include_subdomains`, `branding`, `is_enabled`, `last_datetime`, `datetime`)
+        VALUES ( '" . $iOldUserID . "', '" . $sCampaignPixelKey . "', '" . $sStoreName . "', '" . $aStoreDomain[1] . "', '1', NULL, '1', NULL, '" . $datToday . "')";
+
+  if ($con->ExecuteQuery($SQL)) {
+    echo "
+      <div class=\"blog-slider__item swiper-slide\">
+      <div class=\"blog-slider__img\">
+        <img src=\"img/undraw_Website_builder_re_ii6e.png\" alt=\"\">
+      </div>
+      <div class=\"blog-slider__content\">
+        <div class=\"blog-slider__title\">Campaña</div>
+        <div class=\"blog-slider__text\">Hemos creado una campaña para tu tienda llamada <strong>$sStoreName</strong>.<br><br>Esta campaña solo funcionará en <strong>$aStoreDomain[0]//$aStoreDomain[1]</strong>.</div>
+        <a href=\"#\" class=\"blog-slider__button \">Siguiente</a>
+      </div>
+    </div>
+      ";
+  } else {
+    return "
+      <div class=\"blog-slider__item swiper-slide\">
+      <div class=\"blog-slider__img\">
+        <img src=\"img/undraw_server_down_s4lk.png\" alt=\"\">
+      </div>
+      <div class=\"blog-slider__content\">
+        <div class=\"blog-slider__title\">Error en creación de campaña</div>
+        <div class=\"blog-slider__text\">No hemos podido crear una campaña. <br>Por favor, crea una contraseña y luego comunicate con nosotros al chat.</div>
+        <a href=\"   " . SITE_URL . "reset-password/" . $sEmail . "/" . $iLostPasswordCode . "        \" class=\"blog-custom__button \">Crear contraseña</a>
+      </div>
+    </div>
+    ";
+  }
+
+   // Paso 4 Insertamos el script de la campaña, en la tienda.
+
+  $Url = "https://api.tiendanube.com/v1/" . $iStoreID . "/scripts";
+  $pixel = SITE_URL . "pixel/" . $sCampaignPixelKey . "/";
+  //Seteamos el cuerpo del mensaje que vamos a enviar luego
+  $Body = array(
+    'src' => $pixel, // El pixel de la campaña
+    'event' => 'onload',
+    'where' => "store,checkout"
+  );
+  $Body = json_encode($Body, true);
+  // Avisamos que vamos a enviar contenido en jSon.
+  $Headers = array(
+    'Content-Type' => 'application/json',
+    'Authentication' => $sAccessToken,
+    'User-Agent' => 'Widgy (api@widgy.app)'
+  );
+  $Response = Requests::post($Url, $Headers, $Body);
+
+  if ($Response->status_code == 201) {
+    echo "
+     <div class=\"blog-slider__item swiper-slide\">
+     <div class=\"blog-slider__img\">
+       <img src=\"img/undraw_Developer_activity_re_39tg.png\" alt=\"\">
+     </div>
+     <div class=\"blog-slider__content\">
+       <div class=\"blog-slider__title\">Pixel</div>
+       <div class=\"blog-slider__text\">Para que Widgy pueda mostrar notificaciones en tu sitio, necesitas <strong>insertar un código Javascript en tu sitio</strong>.
+       <br><br>Afortunadamente <strong>¡Ya hicimos esto por ti!</strong> 😚.<br><br>Se ha insertado el código y no es necesario que lo hagas manualmente.</div>
+         <a href=\"   " . SITE_URL . "reset-password/" . $sEmail . "/" . $iLostPasswordCode . "        \" class=\"blog-custom__button \">Crear contraseña</a>
+     </div>
+   </div>
+   ";
+  } else {
+    echo "
+     <div class=\"blog-slider__item swiper-slide\">
+     <div class=\"blog-slider__img\">
+       <img src=\"img/undraw_Notify_re_65on.png\" alt=\"\">
+     </div>
+     <div class=\"blog-slider__content\">
+       <div class=\"blog-slider__title\">Error en Script</div>
+       <div class=\"blog-slider__text\">No pudimos insertar nuestro Javascript en tu tienda.. 
+       <br><br> Tendrás que hacerlo manualmente.<br><br>Por favor, escribenos al chat y te ayudaremos.</div>
+         <a href=\"   " . SITE_URL . "reset-password/" . $sEmail . "/" . $iLostPasswordCode . "        \" class=\"blog-custom__button \">Crear contraseña</a>
+     </div>
+   </div>
+   ";
+  }
+
 }
 #endregion
 
@@ -834,7 +950,8 @@ if (stristr($usResponse["url_with_protocol"], 'https') === FALSE) {
             case false:
               // • StoreID en 'TiendaNube' = SI 
               // • UserID en 'Users' = NO
-              printf(createLimitedAccount($sMerchantName, $sEmail, $iUserID));
+              printf(updateAccessToken($iStoreID, $sAccessToken));
+              printf(createLimitedAccount($iStoreID, $sAccessToken, $iUserID, $sEmail, $sMerchantName, $sStoreName, $sStoreDomain));
               break;
           }
 
@@ -861,7 +978,6 @@ if (stristr($usResponse["url_with_protocol"], 'https') === FALSE) {
             $iUserID = $_SESSION["user_id"];
             $bUserExistsOnDB = true;
           }
-
 
           switch ($bUserExistsOnDB) {
             case true:
