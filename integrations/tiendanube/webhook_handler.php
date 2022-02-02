@@ -6,8 +6,8 @@ header('Access-Control-Allow-Headers: token, Content-Type');
 header('Access-Control-Max-Age: 1728000');
 
 session_start();
-ini_set('display_errors', 0);
-ini_set('display_startup_errors', 0);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 ini_set("allow_url_fopen", true);
 ini_set("zlib.output_compression", 0);
@@ -130,9 +130,6 @@ if ($sEvent == 'product/created' || $sEvent == 'product/updated') { // ? Es un p
     $pos = strpos($ResponsePRODUCT["variants"][0]["updated_at"], "T");
     !empty($pos) ? $ResponsePRODUCT["variants"][0]["updated_at"] = date("d-m-Y", strtotime(mb_substr($ResponsePRODUCT["variants"][0]["updated_at"], 0, $pos))) : "";
     unset($pos);
-
-} else {
-    die("ERROR: Evento es $sEvent");
 }
 
 // Paso 4 - Enviamos los datos al endpoint.
@@ -173,7 +170,6 @@ if ($sEvent == 'product/created' || $sEvent ==  'product/updated') { // ? Es un 
 
     $sEvent == 'product/created' ? $aData += ['fecha' => $ResponsePRODUCT["variants"][0]["created_at"]] : "";
     $sEvent == 'product/updated' ? $aData += ['fecha' => $ResponsePRODUCT["variants"][0]["updated_at"]] : "";
-
 }
 
 
