@@ -306,7 +306,7 @@
             executive: "<?= isset($this->user->plan_settings->no_ads) ? $this->user->plan_settings->no_ads : "" ?>",
             created_at: "<?= isset($this->user->datetime) ? strtotime($this->user->datetime) : "" ?>",
             plan: "<?= isset($this->user->plan_id) ? $this->user->plan_id : "" ?>",
-            trial: "<?= isset($this->user->plan_trial_done) ? $this->user->plan_trial_done : "" ?>"",
+            trial: "<?= isset($this->user->plan_trial_done) ? $this->user->plan_trial_done : "" ?>",
             current_impressions: "<?= isset($this->user->current_month_notifications_impressions) ? $this->user->current_month_notifications_impressions : "" ?>",
             impressions_limit: "<?= isset($this->user->plan_settings->notifications_impressions_limit) ? $this->user->plan_settings->notifications_impressions_limit :"" ?>",
             Vencimiento: "<?= isset($this->user->plan_expiration_date) ? $this->user->plan_expiration_date : "" ?>"
