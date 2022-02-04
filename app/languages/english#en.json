@@ -1,6 +1,37 @@
 {
 	"direction": "ltr",
 
+	"custom_notification": {
+
+        "title_help"                    : "Help",
+   
+        "article_id_INFORMATIONAL" : 5921602,
+        "article_id_COUPON" : 5921733,
+        "article_id_LIVE_COUNTER" : 5921939,
+        "article_id_EMAIL_COLLECTOR" : 5921959,
+        "article_id_LATEST_CONVERSION" : 5935551,
+        "article_id_CONVERSIONS_COUNTER" : "",
+        "article_id_VIDEO" : "",
+        "article_id_SOCIAL_SHARE" : "",
+        "article_id_RANDOM_REVIEW" : "",
+        "article_id_EMOJI_FEEDBACK" : "",
+        "article_id_COOKIE_NOTIFICATION" : "",
+        "article_id_SCORE_FEEDBACK" : "",
+        "article_id_REQUEST_COLLECTOR" : "",
+        "article_id_COUNTDOWN_COLLECTOR" : "",
+        "article_id_INFORMATIONAL_BAR" : "",
+        "article_id_IMAGE" : "",
+        "article_id_COLLECTOR_BAR" : "",
+        "article_id_COUPON_BAR" : "",
+        "article_id_BUTTON_BAR" : "",
+        "article_id_COLLECTOR_MODAL" : "",
+        "article_id_COLLECTOR_TWO_MODAL" : "",
+        "article_id_BUTTON_MODAL" : "",
+        "article_id_TEXT_FEEDBACK" : "",
+        "article_id_ENGAGEMENT_LINKS" : ""
+
+    },
+
 	"custom": {
 
         "helpcenter"                    : "Help Center",
@@ -986,7 +1017,7 @@
 			"tab_triggers"					: "Triggers",
 			"tab_display"					: "Display",
 			"tab_customize"					: "Customize",
-			"tab_data"						: "Data",
+			"tab_data"						: "Webhook",
 
 			"name"							: "Notification name",
 			"title"							: "Title Message",
@@ -1159,7 +1190,7 @@
 
 			"data_trigger_webhook"			: "Webhook Trigger",
 			"data_trigger_webhook_help"		: "Call the endpoint to let us know about an event or conversion that happened on your website related to this notification, we'll do the rest. The call MUST be a POST request and can have any form data parameters.",
-			"data_trigger_type_webhook"		: "Webhook",
+			"data_trigger_type_webhook"		: "Endpoint",
 			"data_trigger_input_webhook"	: "Full Webhook Url",
 
 			"data_trigger_auto"				: "Auto Capture Data",

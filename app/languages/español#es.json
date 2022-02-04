@@ -1,6 +1,37 @@
 {
     "direction": "ltr",
 
+    "custom_notification": {
+
+        "title_help"                    : "Ayuda",
+   
+        "article_id_INFORMATIONAL" : 5921602,
+        "article_id_COUPON" : 5921733,
+        "article_id_LIVE_COUNTER" : 5921939,
+        "article_id_EMAIL_COLLECTOR" : 5921959,
+        "article_id_LATEST_CONVERSION" : 5935551,
+        "article_id_CONVERSIONS_COUNTER" : "",
+        "article_id_VIDEO" : "",
+        "article_id_SOCIAL_SHARE" : "",
+        "article_id_RANDOM_REVIEW" : "",
+        "article_id_EMOJI_FEEDBACK" : "",
+        "article_id_COOKIE_NOTIFICATION" : "",
+        "article_id_SCORE_FEEDBACK" : "",
+        "article_id_REQUEST_COLLECTOR" : "",
+        "article_id_COUNTDOWN_COLLECTOR" : "",
+        "article_id_INFORMATIONAL_BAR" : "",
+        "article_id_IMAGE" : "",
+        "article_id_COLLECTOR_BAR" : "",
+        "article_id_COUPON_BAR" : "",
+        "article_id_BUTTON_BAR" : "",
+        "article_id_COLLECTOR_MODAL" : "",
+        "article_id_COLLECTOR_TWO_MODAL" : "",
+        "article_id_BUTTON_MODAL" : "",
+        "article_id_TEXT_FEEDBACK" : "",
+        "article_id_ENGAGEMENT_LINKS" : ""
+
+    },
+
     "custom": {
 
         "helpcenter"                    : "Centro de Ayuda",
@@ -1610,7 +1641,7 @@
         "meta_description"              : "Crea notificaciones dinámicas e interactivas para los visitantes de tu sitio web.",
         "meta_keywords"                 : "prueba social, marketing, conversiones, vender más, como vender más, como publicitar en facebook, marketing digital, ",
         "header"                        : "Aumenta tus conversiones<br/>con <strong>Prueba Social</strong>",
-        "subheader"                     : "Widgy es una aplicación para que te permite <strong>aumentar hasta un 45%</strong> las conversiones de tu sitio web.<br/><br><strong>Aumenta tus ventas</strong> mostrando notificaciones dinámicas e interactivas directamente a los ojos de tus clientes.</br>",
+        "subheader"                     : "Widgy es una aplicación que te permite <strong>aumentar hasta un 300%</strong> las conversiones de tu sitio web.<br/><br><strong>Aumenta tus ventas</strong> mostrando notificaciones dinámicas e interactivas directamente a los ojos de tus clientes.</br>",
         "sign_up"                       : "Empezar ➡",
         "breadcrumb"                    : "Inicio",
  
