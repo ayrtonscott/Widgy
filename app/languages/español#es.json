@@ -1,6 +1,37 @@
 {
     "direction": "ltr",
 
+    "custom_notification": {
+
+        "title_help"                    : "Ayuda",
+   
+        "article_id_INFORMATIONAL" : 5921602,
+        "article_id_COUPON" : 5921733,
+        "article_id_LIVE_COUNTER" : 5921939,
+        "article_id_EMAIL_COLLECTOR" : 5921959,
+        "article_id_LATEST_CONVERSION" : 5935551,
+        "article_id_CONVERSIONS_COUNTER" : "",
+        "article_id_VIDEO" : "",
+        "article_id_SOCIAL_SHARE" : "",
+        "article_id_RANDOM_REVIEW" : "",
+        "article_id_EMOJI_FEEDBACK" : "",
+        "article_id_COOKIE_NOTIFICATION" : "",
+        "article_id_SCORE_FEEDBACK" : "",
+        "article_id_REQUEST_COLLECTOR" : "",
+        "article_id_COUNTDOWN_COLLECTOR" : "",
+        "article_id_INFORMATIONAL_BAR" : "",
+        "article_id_IMAGE" : "",
+        "article_id_COLLECTOR_BAR" : "",
+        "article_id_COUPON_BAR" : "",
+        "article_id_BUTTON_BAR" : "",
+        "article_id_COLLECTOR_MODAL" : "",
+        "article_id_COLLECTOR_TWO_MODAL" : "",
+        "article_id_BUTTON_MODAL" : "",
+        "article_id_TEXT_FEEDBACK" : "",
+        "article_id_ENGAGEMENT_LINKS" : ""
+
+    },
+
     "custom": {
 
         "helpcenter"                    : "Centro de Ayuda",
@@ -17,7 +48,7 @@
         "update"                        : "Actualizar",
         "enable"                        : "Habilitar",
         "hidden"                        : "Oculto",
-        "login"                         : "Ingresar",
+        "login"                         : "Mi cuenta",
         "language"                      : "Idioma",
         "choose_language"               : "Seleccionar idioma",
         "theme_style"                   : "Cambiar a modo %s",
@@ -1609,9 +1640,9 @@
         "title"                         : "Widgy - Herramienta N°1 en Prueba Social",
         "meta_description"              : "Crea notificaciones dinámicas e interactivas para los visitantes de tu sitio web.",
         "meta_keywords"                 : "prueba social, marketing, conversiones, vender más, como vender más, como publicitar en facebook, marketing digital, ",
-        "header"                        : "Aumenta tus conversiones<br/>con <strong>Prueba Social</strong>",
-        "subheader"                     : "Widgy es una aplicación para que te permite <strong>aumentar hasta un 45%</strong> las conversiones de tu sitio web.<br/><br><strong>Aumenta tus ventas</strong> mostrando notificaciones dinámicas e interactivas directamente a los ojos de tus clientes.</br>",
-        "sign_up"                       : "Empezar ➡",
+        "header"                        : "<strong>Haz crecer</strong> tu marca con <strong>prueba social</strong>",
+        "subheader"                     : "Esta es una aplicación para <strong>generar confianza</strong> en tu marca y <strong>aumentar hasta 300% tus conversiones</strong>.<br/><br>Con nuestras +24 notificaciones dinámicas <br>podrás <strong>darle vida y seguridad</strong> a tu tienda online.<br><br>¡Puedes probarla 30 días!<br><small><i class=\"fas fa-check-circle\">Empieza ahora, es gratis.  Sin tarjeta de crédito.</i></small>",
+        "sign_up"                       : "¡Probar por 30 días!",
         "breadcrumb"                    : "Inicio",
  
         "steps": {
@@ -1651,7 +1682,7 @@
         },
  
         "cta": {
-            "header"                    : "Regístrate ahora",
+            "header"                    : "¡Probar por 30 días!",
             "subheader"                 : "Aquí empieza el verdadero crecimiento.",
             "sign_up"                   : "Empezar"
         },
@@ -1663,6 +1694,8 @@
             "nav_item4"                  : "PRECIOS",
             "feature1_title"            : "¿Prueba social?",
             "feature1_desc"             : "La prueba social, conocida también como influencia social informativa, es un fenómeno psicológico donde <font color=\"orange\">las personas asumen que la acción de otras personas refleja un comportamiento correcto</font> en una situación especifica. <br><br>Preguntate, ¿Alguna vez te ha sucedido este fenómeno? Puede ser con un restaurante, una tienda online o simplemente el supermercado.<br><br> Saber que una persona compró y obtuvo buenos resultados o una calificación de 5 estrellas seguramente fueron <font color=\"orange\">factores decisivos a la hora de realizar una compra</font>.",
+            "feature2_title"            : "Tu sitio, tu estrategia",
+            "feature2_desc"             : "Instalando Widgy en tu sitio, podrás configurar las notificaciones para que tu puedas elegir <font color=\"orange\">dónde, cuándo, cómo y a quien</font> mostrarlas. <br><br>Contamos con especialistas en estrategias de marketing orientadas a prueba social, que te ayudarán en todo el proceso.<br><br>¿Qué esperas? Unete a las <font color=\"orange\">+9.000</font> marcas que utilizan Widgy para hacer crecer su negocio.",
             "register_link"             : "register"
         }
     

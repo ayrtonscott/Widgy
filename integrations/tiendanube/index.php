@@ -835,6 +835,13 @@ if (empty($sMerchantName)) {
   $sMerchantName = "Emprendedor/a";
 }
 
+// Cortamos el nombre si es que existe.
+$arr = explode(' ', trim($sMerchantName));
+$sMerchantName = $arr[0];
+// Aplicamos mayuscula en la primer letra
+$sMerchantName = strtolower($sMerchantName);
+$sMerchantName = ucwords($sMerchantName);
+
 // sec Chequeamos el certificado SSL
 if (stristr($usResponse["url_with_protocol"], 'https') === FALSE) {
   die("El sitio " . $sStoreDomain . " no posee un certificado seguro SSL (HTTPS). <p> Deberás comunicarte con el soporte de TiendaNube para solucionarlo.");

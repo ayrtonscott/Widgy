@@ -1,5 +1,9 @@
 <?php defined('ALTUMCODE') || die() ?>
-
+<?php // * Agregado 2/2 en 10.0.0 - (Agregamos Intercom) INICIO. 
+?>
+<?php isset($this->user->user_id) ? $hash = hash_hmac('sha256', $this->user->user_id, 'a5edqk3IEE_hhIILFborw4_7wRz1N9RroK9g-a0V') : "" ?>
+<?php // * Agregado 2/2 en 10.0.0 - (Agregamos Intercom) FIN. 
+?>
 <!DOCTYPE html>
 <html lang="<?= \Altum\Language::$language_code ?>" dir="<?= language()->direction ?>">
 
@@ -45,11 +49,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="themes/widgy/assets/font/iconsmind-s/css/iconsminds.css" />
   <link rel="stylesheet" href="themes/widgy/assets/font/simple-line-icons/css/simple-line-icons.css" />
-  <link rel="stylesheet" href="themes/widgy/assets/css/vendor/bootstrap-stars.css" />
   <link rel="stylesheet" href="themes/widgy/assets/css/vendor/bootstrap.min.css" />
   <link rel="stylesheet" href="themes/widgy/assets/css/vendor/owl.carousel.min.css" />
-  <link rel="stylesheet" href="themes/widgy/assets/css/vendor/bootstrap-stars.css" />
-  <link rel="stylesheet" href="themes/widgy/assets/css/vendor/video-js.css" />
   <link rel="stylesheet" href="themes/widgy/assets/css/dore.light.blueyale.min.css" />
   <link rel="stylesheet" href="themes/widgy/assets/css/main.css" />
   <link rel="stylesheet" href="themes/widgy/assets/css/custom.css" />
@@ -174,7 +175,7 @@
               </div>
               <div class="col-12 col-xl-7 offset-xl-1 col-lg-7 col-md-6  d-none d-md-block">
                 <a>
-                  <img alt="hero" src="themes/widgy/assets/img/landing-page/home-hero_<?= \Altum\Language::$language_code  ?>.png" />
+                  <img alt="hero" src="themes/widgy/assets/img/landing-page/home-hero_<?= \Altum\Language::$language_code ?>.png" />
                 </a>
               </div>
             </div>
@@ -249,17 +250,17 @@
         <div class="container">
 
           <div class="container" id="about">
-            <div class="row">
+            <div class="row mb-2">
               <div class="col-12 offset-0 col-lg-8 offset-lg-2 text-center">
                 <h1><?= language()->index->tools->header ?></h1>
                 <p>
                   <?= sprintf(language()->index->tools->subheader, nr($data->total_track_notifications)) ?>
                 </p>
+                <a class="btn btn-secondary btn-xl mr-2 mb-2" target="_blank" href="<?= language()->index->custom->register_link ?>"><?= language()->index->cta->header ?> <i class="simple-icon-arrow-right"></i></a>
               </div>
             </div>
 
-
-            <div class="row" id="socialproof">
+            <div class="row">
               <div class="col-12 col-md-6 col-lg-6 order-2 order-md-1">
                 <img alt="feature" class="feature-image-left feature-image-charts" src="themes/widgy/assets/img/landing-page/features/plesant-design.png" />
               </div>
@@ -271,7 +272,7 @@
                       <i class="fas fa-fw fa-ban"></i>
                     </div>
                   </div>
-                  <div class="feature-text-container">
+                  <div class="feature-text-container mt-4">
                     <h2><?= language()->index->custom->feature1_title ?></h2>
                     <p>
                       <?= language()->index->custom->feature1_desc ?>
@@ -280,6 +281,46 @@
                 </div>
               </div>
             </div>
+
+            <div class="row">
+              <div class="col-12 col-md-6 col-lg-5 d-flex align-items-center">
+                <div class="d-flex">
+                  <div class="feature-text-container">
+                    <h2><?= language()->index->custom->feature2_title ?></h2>
+                    <p>
+                      <?= language()->index->custom->feature2_desc ?>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 col-lg-6 offset-lg-1 offset-md-0 position-relative">
+                <div class="background-item-1"></div>
+                <img alt="feature" class="feature-image-right feature-image-charts position-relative" src="themes/widgy/assets/img/landing-page/features/settings-panel_<?= \Altum\Language::$language_code ?>.png" />
+              </div>
+            </div>
+
+            <!-- 
+            <div class="row feature-row" id="socialproof">
+              <div class="col-12 col-md-6 col-lg-6 order-2 order-md-1">
+                <img alt="feature" class="feature-image-left feature-image-charts" src="themes/widgy/assets/img/landing-page/features/plesant-design.png" />
+              </div>
+
+              <div class="col-12 col-md-6 offset-md-0 col-lg-5 offset-lg-1 d-flex align-items-center order-1 order-md-2">
+                <div class="d-flex">
+                  <div class="feature-icon-container">
+                    <div class="icon-background">
+                      <i class="fas fa-fw fa-ban"></i>
+                    </div>
+                  </div>
+                  <div class="feature-text-container mt-3">
+                    <h2><?= language()->index->custom->feature1_title ?></h2>
+                    <p>
+                      <?= language()->index->custom->feature1_desc ?>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div> -->
 
           </div>
 
@@ -341,7 +382,7 @@
           </div>
         </div>
 
-        <div class="section">
+        <div class="section mb-0">
           <div class="container" id="layouts">
             <div class="row">
               <div class="col-12 offset-0 col-lg-8 offset-lg-2 text-center" id="pricing">
@@ -385,7 +426,7 @@
                         <h5 class="mb-0 font-weight-semibold color-theme-1 mb-4"><?= $plan->name ?></h5>
                         <p class="text-large mb-2 text-default">
                           <?php if (\Altum\Language::$language_code == "tn") : ?>
-                            <?= $plan->monthly_price * 191?>
+                            <?= $plan->monthly_price * 191 ?>
                           <?php else : ?>
                             <?= $plan->monthly_price ?>
                           <?php endif ?>
@@ -429,14 +470,9 @@
                     </div>
                   </div>
                 </div>
-
-
                 <?php if ($plan->plan_id == 3) break; ?>
               <?php endforeach ?>
-
-
             </div>
-
           </div>
         </div>
 
@@ -495,7 +531,6 @@
   <script src="themes/widgy/assets/js/vendor/bootstrap.bundle.min.js"></script>
   <script src="themes/widgy/assets/js/vendor/owl.carousel.min.js"></script>
   <script src="themes/widgy/assets/js/vendor/jquery.barrating.min.js"></script>
-  <script src="themes/widgy/assets/js/vendor/jquery.barrating.min.js"></script>
   <script src="themes/widgy/assets/js/vendor/landing-page/headroom.min.js"></script>
   <script src="themes/widgy/assets/js/vendor/landing-page/jQuery.headroom.js"></script>
   <script src="themes/widgy/assets/js/vendor/landing-page/jquery.scrollTo.min.js"></script>
@@ -533,5 +568,52 @@
   /* Select a default option */
   $('input[name="type"]:first').attr('checked', true).trigger('change', true);
 </script>
+
+<?php // * Agregado 2/2/22 en 10.0.0 - (Agregamos Intercom) INICIO. 
+?>
+<script>
+  window.intercomSettings = {
+    app_id: "nds4bz0l"
+  };
+</script>
+
+<script>
+  // We pre-filled your app ID in the widget URL: 'https://widget.intercom.io/widget/nds4bz0l'
+  (function() {
+    var w = window;
+    var ic = w.Intercom;
+    if (typeof ic === "function") {
+      ic('reattach_activator');
+      ic('update', w.intercomSettings);
+    } else {
+      var d = document;
+      var i = function() {
+        i.c(arguments);
+      };
+      i.q = [];
+      i.c = function(args) {
+        i.q.push(args);
+      };
+      w.Intercom = i;
+      var l = function() {
+        var s = d.createElement('script');
+        s.type = 'text/javascript';
+        s.async = true;
+        s.src = 'https://widget.intercom.io/widget/nds4bz0l';
+        var x = d.getElementsByTagName('script')[0];
+        x.parentNode.insertBefore(s, x);
+      };
+      if (document.readyState === 'complete') {
+        l();
+      } else if (w.attachEvent) {
+        w.attachEvent('onload', l);
+      } else {
+        w.addEventListener('load', l, false);
+      }
+    }
+  })();
+</script>
+<?php // * Agregado 2/2/22 en 10.0.0 - (Agregamos Intercom) FIN. 
+?>
 
 <?php \Altum\Event::add_content(ob_get_clean(), 'javascript') ?>
