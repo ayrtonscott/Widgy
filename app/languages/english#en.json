@@ -1637,7 +1637,7 @@
 		"meta_description"				: "",
 		"meta_keywords"					: "",
 		"header"						: "<strong>Skyrocket</strong> Conversions<br /> & Increase <strong>Growth</strong>.",
-		"subheader"						: "Widgy is an application to <strong> generate trust </strong> in your brand and <strong> increase your sales </strong>. <br><br>We are a cloud-based solution that enables businesses to display notifications about a flash sale, discounts, live vistors' counter, and more..",
+		"subheader"						: "We are a cloud-based solution that enables businesses to display notifications about a flash sale, discounts, live vistors' counter, and more..<br><br>You can try it!<br><small><i class=\"fas fa-check-circle\">Start now, its free.  No credit card.</i></small>",
 		"sign_up"						: "Get started ➡",
 		"breadcrumb"					: "Home",
 
@@ -1678,7 +1678,7 @@
 		},
 
 		"cta": {
-			"header"					: "Sign up now",
+			"header"					: "Free 30-day trial",
 			"subheader"					: "Start upgrading your website with our widgets.",
 			"sign_up"					: "Get started"
 		},
@@ -1689,7 +1689,9 @@
             "nav_item3"                  : "WIDGETS",
             "nav_item4"                  : "PRICING",
             "feature1_title"             : "¿Social proof?",
-            "feature1_desc"              : "Social proof, also known as informational social influence, is a psychological phenomenon where <font color = \"orange\"> people assume that other people's actions reflect correct behavior </font> in a specific situation. <br> <br>",
+            "feature1_desc"              : "Social proof, also known as informational social influence, is a psychological phenomenon where <font color = \"orange\"> people assume that other people's actions reflect correct behavior </font> in a specific situation. <br><br>Has this phenomenon ever happened to you? It could be with a restaurant, an online store or just the supermarket.<br><br> Knowing that a person bought and got good results or a 5-star rating were surely <font color=\"orange\">decisive factors to when making a purchase</font>.",
+			"feature2_title"            : "Your site, your strategy",
+            "feature2_desc"             : "By installing Widgy on your site, you will be able to configure the notifications so that you can choose <font color=\"orange\">where, when, and how</font> to show them. <br><br>We have specialists in marketing strategies oriented to social proof, who will help you throughout the process..<br><br>What are you waiting for? Join the <font color=\"orange\">+9.000</font> brands that use Widgy to grow their business.",
 			"register_link"             : "register"       
 		 }
 	},
