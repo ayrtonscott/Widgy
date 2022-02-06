@@ -112,6 +112,18 @@
 <script>
         window.intercomSettings = {
             app_id: "nds4bz0l"
+            <?= isset($this->user->name) ? ", name: \"" . $this->user->name . "\"" : "" ?>
+            <?= isset($this->user->language) ? ", language: \"" . $this->user->language . "\"" : "" ?>
+            <?= isset($this->user->user_id) ? ", user_id: \"" . $this->user->user_id . "\"" : "" ?>
+            <?= isset($this->user->email) ? ", email: \"" . $this->user->email . "\"" : "" ?>
+            <?= isset($hash) ? ", user_hash: \"" . $hash . "\"" : "" ?>
+            <?= isset($this->user->plan_settings->no_ads) ? ", executive: \"" . $this->user->plan_settings->no_ads . "\"" : "" ?>
+            <?= isset($this->user->datetime) ? ", created_at: \"" . $this->user->datetime . "\"" : "" ?>
+            <?= isset($this->user->plan_id) ? ", plan: \"" . $this->user->plan_id . "\"" : "" ?>
+            <?= isset($this->user->plan_trial_done) ? ", trial: \"" . $this->user->plan_trial_done . "\"" : "" ?>
+            <?= isset($this->user->current_month_notifications_impressions) ? ", current_impressions: \"" . $this->user->current_month_notifications_impressions . "\"" : "" ?>
+            <?= isset($this->user->plan_settings->notifications_impressions_limit) ? ", impressions_limit: \"" . $this->user->plan_settings->notifications_impressions_limit . "\"" : "" ?>
+            <?= isset($this->user->plan_expiration_date) ? ", vencimiento: \"" . $this->user->plan_expiration_date . "\"" : "" ?>
         };
     </script>
 

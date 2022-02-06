@@ -297,19 +297,19 @@
     <?php // * Agregado 21/01 en 10.0.0 - (Agregamos Intercom) INICIO. ?>
     <script>
         window.intercomSettings = {
-            app_id: "nds4bz0l",
-            name: "<?= isset($this->user->name) ? $this->user->name : "" ?>",
-            language: "<?= isset($this->user->language) ? $this->user->language : "" ?>",
-            user_id: "<?= isset($this->user->user_id) ? $this->user->user_id : "" ?>",
-            email: "<?= isset($this->user->email) ? $this->user->email : "" ?>",
-            user_hash: "<?= isset($hash) ? $hash : "" ?>",
-            executive: "<?= isset($this->user->plan_settings->no_ads) ? $this->user->plan_settings->no_ads : "" ?>",
-            created_at: "<?= isset($this->user->datetime) ? strtotime($this->user->datetime) : "" ?>",
-            plan: "<?= isset($this->user->plan_id) ? $this->user->plan_id : "" ?>",
-            trial: "<?= isset($this->user->plan_trial_done) ? $this->user->plan_trial_done : "" ?>",
-            current_impressions: "<?= isset($this->user->current_month_notifications_impressions) ? $this->user->current_month_notifications_impressions : "" ?>",
-            impressions_limit: "<?= isset($this->user->plan_settings->notifications_impressions_limit) ? $this->user->plan_settings->notifications_impressions_limit :"" ?>",
-            Vencimiento: "<?= isset($this->user->plan_expiration_date) ? $this->user->plan_expiration_date : "" ?>"
+            app_id: "nds4bz0l"
+            <?= isset($this->user->name) ? ", name: \"" . $this->user->name . "\"" : "" ?>
+            <?= isset($this->user->language) ? ", language: \"" . $this->user->language . "\"" : "" ?>
+            <?= isset($this->user->user_id) ? ", user_id: \"" . $this->user->user_id . "\"" : "" ?>
+            <?= isset($this->user->email) ? ", email: \"" . $this->user->email . "\"" : "" ?>
+            <?= isset($hash) ? ", user_hash: \"" . $hash . "\"" : "" ?>
+            <?= isset($this->user->plan_settings->no_ads) ? ", executive: \"" . $this->user->plan_settings->no_ads . "\"" : "" ?>
+            <?= isset($this->user->datetime) ? ", created_at: \"" . $this->user->datetime . "\"" : "" ?>
+            <?= isset($this->user->plan_id) ? ", plan: \"" . $this->user->plan_id . "\"" : "" ?>
+            <?= isset($this->user->plan_trial_done) ? ", trial: \"" . $this->user->plan_trial_done . "\"" : "" ?>
+            <?= isset($this->user->current_month_notifications_impressions) ? ", current_impressions: \"" . $this->user->current_month_notifications_impressions . "\"" : "" ?>
+            <?= isset($this->user->plan_settings->notifications_impressions_limit) ? ", impressions_limit: \"" . $this->user->plan_settings->notifications_impressions_limit . "\"" : "" ?>
+            <?= isset($this->user->plan_expiration_date) ? ", vencimiento: \"" . $this->user->plan_expiration_date . "\"" : "" ?>
         };
     </script>
     <script>
