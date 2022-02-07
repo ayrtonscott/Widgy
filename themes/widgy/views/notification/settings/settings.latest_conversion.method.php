@@ -16,7 +16,7 @@ $javascript = '';
     </div>
 
     <?php // * INICIO - Agregado el 28/1 en 10.0.0 - Autorelleno para TiendaNube ?>
-     <?php if(\Altum\Language::$language_code == "tn") : ?>
+     <?php if(\Altum\Language::$language_code == "tiendanube") : ?>
     <div class="form-group mb-3">
     <label for="inputGroupSelect01">Auto-Rellenar:</label>
                                 <select class="custom-select" id="inputGroupSelect01" placeholder="sda" onchange="autofill()">

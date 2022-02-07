@@ -425,12 +425,12 @@
                         <i class="iconsminds-male large-icon"></i>
                         <h5 class="mb-0 font-weight-semibold color-theme-1 mb-4"><?= $plan->name ?></h5>
                         <p class="text-large mb-2 text-default">
-                          <?php if (\Altum\Language::$language_code == "tn") : ?>
+                          <?php if (\Altum\Language::$language_code == "tiendanube") : ?>
                             <?= $plan->monthly_price * 191 ?>
                           <?php else : ?>
                             <?= $plan->monthly_price ?>
                           <?php endif ?>
-                        <h6><?php if (\Altum\Language::$language_code == "tn") : ?>
+                        <h6><?php if (\Altum\Language::$language_code == "tiendanube") : ?>
                             ARS
                           <?php else : ?>
                             USD
@@ -442,7 +442,7 @@
                       <div class="pl-3 pr-3 pt-3 pb-0 d-flex price-feature-list flex-column flex-grow-1">
                         <?= include_view(THEME_PATH . 'views/partials/plans_plan_content.php', ['plan_settings' => $plan->settings]) ?>
                         <div class="text-center">
-                          <?php if (\Altum\Language::$language_code == "tn") : ?>
+                          <?php if (\Altum\Language::$language_code == "tiendanube") : ?>
                             <a href="<?= language()->index->custom->register_link ?>" class="btn btn-primary btn-lg">
                             <?php else : ?>
                               <a href="<?= url('register?redirect=pay/' . $plan->plan_id) ?>" class="btn btn-primary btn-lg">
