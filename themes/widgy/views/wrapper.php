@@ -209,7 +209,7 @@
                         </a>
                     </li>
                     <li class="">
-                        <a href="<?= HELPCENTER_URL ?><?= \Altum\Language::$language_code == "tn" ? "es" : \Altum\Language::$language_code // * Agregado 24/1 en 10.0.0 (Fix language code) INICIO. ?> ">
+                        <a href="<?= HELPCENTER_URL ?><?= \Altum\Language::$language_code == "tiendanube" ? "es" : \Altum\Language::$language_code // * Agregado 24/1 en 10.0.0 (Fix language code) INICIO. ?> ">
                             <i class="iconsminds-library"></i>
                             <span><?= language()->custom->helpcenter ?> </span>
                         </a>
