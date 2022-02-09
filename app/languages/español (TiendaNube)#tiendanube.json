@@ -84,11 +84,11 @@
         },
  
         "success_message": {
-            "create1"                   : "%s ha sido creado correctamente.",
+            "create1"                   : "%s se ha creado correctamente.",
             "create2"					: "Creado correctamente.",
-			"update1"					: "%s ha sido actualizado correctamente.",
+			"update1"					: "%s se ha actualizado correctamente.",
 			"update2"					: "Actualizado correctamente.",
-			"delete1"					: "%s ha sido eliminado correctamente.",
+			"delete1"					: "%s se ha eliminado correctamente.",
 			"delete2"					: "Eliminado correctamente."
         },
  
