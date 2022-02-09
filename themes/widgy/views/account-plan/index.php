@@ -18,9 +18,9 @@
         <?php if(settings()->payment->is_enabled): ?>
             <div class="col-auto p-0">
                 <?php if($this->user->plan_id == 'free'): ?>
-                    <a href="<?= url('plan/upgrade') ?>" class="btn btn-primary rounded-pill"><i class="fa fa-fw fa-arrow-up"></i> <?= language()->account->plan->upgrade_plan ?></a>
+                    <a href="<?= url('plan/upgrade') ?>" onclick="Intercom('trackEvent', 'button-plan-upgrade')" class="btn btn-primary rounded-pill"><i class="fa fa-fw fa-arrow-up"></i> <?= language()->account->plan->upgrade_plan ?></a><? // * Agregado el 6/2 en 10.0.0 - Intercom Track ?>
                 <?php else: ?>
-                    <a href="<?= url('plan/renew') ?>" class="btn btn-primary rounded-pill"><i class="fa fa-fw fa-sync-alt"></i> <?= language()->account->plan->renew_plan ?></a>
+                    <a href="<?= url('plan/renew') ?>" onclick="Intercom('trackEvent', 'button-plan-renew')" class="btn btn-primary rounded-pill"><i class="fa fa-fw fa-sync-alt"></i> <?= language()->account->plan->renew_plan ?></a><? // * Agregado el 6/2 en 10.0.0 - Intercom Track ?>
                 <?php endif ?>
             </div>
         <?php endif ?>

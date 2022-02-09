@@ -23,7 +23,7 @@
             </div>
         </div>
 
-        <button type="submit" name="submit" class="btn btn-block btn-outline-secondary"><?= language()->account_api->button ?></button>
+        <button type="submit" onclick="Intercom('trackEvent', 'button-api-key-generate')" name="submit" class="btn btn-block btn-outline-secondary"><?= language()->account_api->button ?></button><? // * Agregado el 6/2 en 10.0.0 - Intercom Track ?>
     </form>
 
 </section>

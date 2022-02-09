@@ -43,7 +43,7 @@
                     </div>
 
                     <div class="text-center mt-4">
-                        <button type="submit" name="submit" class="btn btn-block btn-primary"><?= language()->global->submit ?></button>
+                        <button type="submit" onclick="Intercom('trackEvent', 'button-campaign-edit')" name="submit" class="btn btn-block btn-primary"><?= language()->global->submit ?></button><? // * Agregado el 6/2 en 10.0.0 - Intercom Track ?>
                     </div>
                 </form>
             </div>

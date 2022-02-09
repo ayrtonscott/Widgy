@@ -21,7 +21,7 @@
             <input type="password" id="current_password" name="current_password" class="form-control" />
         </div>
 
-        <button type="submit" name="submit" class="btn btn-block btn-secondary"><?= language()->global->delete ?></button>
+        <button type="submit" onclick="Intercom('trackEvent', 'button-account-delete')" name="submit" class="btn btn-block btn-secondary"><?= language()->global->delete ?></button><? // * Agregado el 6/2 en 10.0.0 - Intercom Track ?>
     </form>
 
 </section>

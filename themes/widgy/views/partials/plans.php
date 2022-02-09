@@ -146,7 +146,7 @@ use Altum\Middlewares\Authentication;
 
                 <?= include_view(THEME_PATH . 'views/partials/plans_plan_content.php', ['plan_settings' => $plan->settings]) ?>
 
-                <a href="<?= url('register?redirect=pay/' . $plan->plan_id) ?>" class="pricing-action">
+                <a href="<?= url('register?redirect=pay/' . $plan->plan_id) ?>" class="pricing-action" onclick="Intercom('trackEvent', 'button-choose-plan', {plan_id: <?= $plan->plan_id ?>, plan_name: '<?= $plan->name ?>'})">
                     <?php if(\Altum\Middlewares\Authentication::check()): ?>
                         <?php if(!$this->user->plan_trial_done && $plan->trial_days): ?>
                             <?= sprintf(language()->plan->button->trial, $plan->trial_days) ?>

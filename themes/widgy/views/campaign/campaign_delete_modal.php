@@ -19,7 +19,7 @@
                     <p class="text-muted"><?= language()->campaign_delete_modal->subheader ?></p>
 
                     <div class="mt-4">
-                        <button type="submit" name="submit" class="btn btn-block btn-danger"><?= language()->global->delete ?></button>
+                        <button type="submit" onclick="Intercom('trackEvent', 'button-campaign-delete')" name="submit" class="btn btn-block btn-danger"><?= language()->global->delete ?></button><? // * Agregado el 6/2 en 10.0.0 - Intercom Track ?>
                     </div>
                 </form>
             </div>
