@@ -12,7 +12,7 @@
             <div class="altumcode-coupon-header">
                 <p class="altumcode-coupon-title" style="color: <?= $notification->settings->title_color ?>"><?= $notification->settings->title ?></p>
 
-                <button class="altumcode-close"></button>
+                <button class="altumcode-close">&#10006;</button>
             </div>
             <p class="altumcode-coupon-description" style="color: <?= $notification->settings->description_color ?>"><?= $notification->settings->description ?></p>
 

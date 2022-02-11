@@ -3,10 +3,10 @@
 <?php ob_start() ?>
 <div class="card mb-5">
     <div class="card-body">
-        <h2 class="h4"><i class="fa fa-fw fa-bell fa-xs text-muted"></i> <?= language()->admin_statistics->notifications->header ?></h2>
+        <h2 class="h4"><i class="fa fa-fw fa-bell fa-xs text-muted"></i> <?= l('admin_statistics.notifications.header') ?></h2>
         <div class="d-flex flex-column flex-xl-row">
             <div class="mb-2 mb-xl-0 mr-4">
-                <span class="font-weight-bold"><?= nr($data->total['notifications']) ?></span> <?= language()->admin_statistics->notifications->chart ?>
+                <span class="font-weight-bold"><?= nr($data->total['notifications']) ?></span> <?= l('admin_statistics.notifications.chart') ?>
             </div>
         </div>
 
@@ -37,7 +37,7 @@
             labels: <?= $data->notifications_chart['labels'] ?>,
             datasets: [
                 {
-                    label: <?= json_encode(language()->admin_statistics->notifications->chart) ?>,
+                    label: <?= json_encode(l('admin_statistics.notifications.chart')) ?>,
                     data: <?= $data->notifications_chart['notifications'] ?? '[]' ?>,
                     backgroundColor: color_gradient,
                     borderColor: color,

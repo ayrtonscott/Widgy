@@ -2,50 +2,50 @@
 
 <div>
     <div class="form-group">
-        <label for="type"><?= language()->admin_settings->captcha->type ?></label>
+        <label for="type"><?= l('admin_settings.captcha.type') ?></label>
         <select id="type" name="type" class="form-control form-control-lg">
-            <option value="basic" <?= settings()->captcha->type == 'basic' ? 'selected="selected"' : null ?>><?= language()->admin_settings->captcha->type_basic ?></option>
-            <option value="recaptcha" <?= settings()->captcha->type == 'recaptcha' ? 'selected="selected"' : null ?>><?= language()->admin_settings->captcha->type_recaptcha ?></option>
-            <option value="hcaptcha" <?= settings()->captcha->type == 'hcaptcha' ? 'selected="selected"' : null ?>><?= language()->admin_settings->captcha->type_hcaptcha ?></option>
+            <option value="basic" <?= settings()->captcha->type == 'basic' ? 'selected="selected"' : null ?>><?= l('admin_settings.captcha.type_basic') ?></option>
+            <option value="recaptcha" <?= settings()->captcha->type == 'recaptcha' ? 'selected="selected"' : null ?>><?= l('admin_settings.captcha.type_recaptcha') ?></option>
+            <option value="hcaptcha" <?= settings()->captcha->type == 'hcaptcha' ? 'selected="selected"' : null ?>><?= l('admin_settings.captcha.type_hcaptcha') ?></option>
         </select>
     </div>
 
     <div id="recaptcha">
         <div class="form-group">
-            <label for="recaptcha_public_key"><?= language()->admin_settings->captcha->recaptcha_public_key ?></label>
+            <label for="recaptcha_public_key"><?= l('admin_settings.captcha.recaptcha_public_key') ?></label>
             <input id="recaptcha_public_key" type="text" name="recaptcha_public_key" class="form-control form-control-lg" value="<?= settings()->captcha->recaptcha_public_key ?>" />
         </div>
 
         <div class="form-group">
-            <label for="recaptcha_private_key"><?= language()->admin_settings->captcha->recaptcha_private_key ?></label>
+            <label for="recaptcha_private_key"><?= l('admin_settings.captcha.recaptcha_private_key') ?></label>
             <input id="recaptcha_private_key" type="text" name="recaptcha_private_key" class="form-control form-control-lg" value="<?= settings()->captcha->recaptcha_private_key ?>" />
         </div>
     </div>
 
     <div id="hcaptcha">
         <div class="form-group">
-            <label for="hcaptcha_site_key"><?= language()->admin_settings->captcha->hcaptcha_site_key ?></label>
+            <label for="hcaptcha_site_key"><?= l('admin_settings.captcha.hcaptcha_site_key') ?></label>
             <input id="hcaptcha_site_key" type="text" name="hcaptcha_site_key" class="form-control form-control-lg" value="<?= settings()->captcha->hcaptcha_site_key ?>" />
         </div>
 
         <div class="form-group">
-            <label for="hcaptcha_secret_key"><?= language()->admin_settings->captcha->hcaptcha_secret_key ?></label>
+            <label for="hcaptcha_secret_key"><?= l('admin_settings.captcha.hcaptcha_secret_key') ?></label>
             <input id="hcaptcha_secret_key" type="text" name="hcaptcha_secret_key" class="form-control form-control-lg" value="<?= settings()->captcha->hcaptcha_secret_key ?>" />
         </div>
     </div>
 
-    <?php foreach(['login', 'register', 'lost_password', 'resend_activation'] as $key): ?>
+    <?php foreach(['login', 'register', 'lost_password', 'resend_activation', 'contact'] as $key): ?>
         <div class="form-group">
-            <label for="<?= $key ?>_is_enabled"><?= language()->admin_settings->captcha->{$key . '_is_enabled'} ?></label>
+            <label for="<?= $key ?>_is_enabled"><?= l('admin_settings.captcha.' . $key . '_is_enabled') ?></label>
             <select id="<?= $key ?>_is_enabled" name="<?= $key ?>_is_enabled" class="form-control form-control-lg">
-                <option value="1" <?= settings()->captcha->{$key . '_is_enabled'} ? 'selected="selected"' : null ?>><?= language()->global->yes ?></option>
-                <option value="0" <?= !settings()->captcha->{$key . '_is_enabled'} ? 'selected="selected"' : null ?>><?= language()->global->no ?></option>
+                <option value="1" <?= settings()->captcha->{$key . '_is_enabled'} ? 'selected="selected"' : null ?>><?= l('global.yes') ?></option>
+                <option value="0" <?= !settings()->captcha->{$key . '_is_enabled'} ? 'selected="selected"' : null ?>><?= l('global.no') ?></option>
             </select>
         </div>
     <?php endforeach ?>
 </div>
 
-<button type="submit" name="submit" class="btn btn-lg btn-block btn-primary mt-4"><?= language()->global->update ?></button>
+<button type="submit" name="submit" class="btn btn-lg btn-block btn-primary mt-4"><?= l('global.update') ?></button>
 
 <?php ob_start() ?>
 <script>

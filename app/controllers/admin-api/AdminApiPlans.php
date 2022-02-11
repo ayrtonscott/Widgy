@@ -100,7 +100,7 @@ class AdminApiPlans extends Controller {
         /* We haven't found the resource */
         if(!$plan) {
             Response::jsonapi_error([[
-                'title' => language()->api->error_message->not_found,
+                'title' => l('api.error_message.not_found'),
                 'status' => '404'
             ]], null, 404);
         }

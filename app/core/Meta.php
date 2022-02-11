@@ -39,8 +39,8 @@ class Meta {
         }
 
         /* Check if the default is viable and use it */
-        self::$description = language()->{$language_key}->meta_description ?? null;
-        self::$keywords = language()->{$language_key}->meta_keywords ?? null;
+        self::$description = l($language_key . '.meta_description', null, true);
+        self::$keywords = l($language_key . '.meta_keywords', null, true);
 
     }
 

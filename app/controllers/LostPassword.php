@@ -37,7 +37,7 @@ class LostPassword extends Controller {
 
             /* Check for any errors */
             if(settings()->captcha->lost_password_is_enabled && !$captcha->is_valid()) {
-                Alerts::add_field_error('captcha', language()->global->error_message->invalid_captcha);
+                Alerts::add_field_error('captcha', l('global.error_message.invalid_captcha'));
             }
 
             /* If there are no errors, resend the activation link */
@@ -52,20 +52,17 @@ class LostPassword extends Controller {
                     /* Update the current activation email */
                     db()->where('user_id', $this_account->user_id)->update('users', ['lost_password_code' => $lost_password_code]);
 
-                    /* Get the language for the user */
-                    $language = language($this_account->language);
-
                     /* Prepare the email */
                     $email_template = get_email_template(
                         [
                             '{{NAME}}' => $this_account->name,
                         ],
-                        $language->global->emails->user_lost_password->subject,
+                        l('global.emails.user_lost_password.subject', $this_account->language),
                         [
                             '{{LOST_PASSWORD_LINK}}' => url('reset-password/' . $_POST['email'] . '/' . $lost_password_code),
                             '{{NAME}}' => $this_account->name,
                         ],
-                        $language->global->emails->user_lost_password->body
+                        l('global.emails.user_lost_password.body', $this_account->language)
                     );
 
                     /* Send the email */
@@ -75,7 +72,7 @@ class LostPassword extends Controller {
                 }
 
                 /* Set a nice success message */
-                Alerts::add_success(language()->lost_password->success_message);
+                Alerts::add_success(l('lost_password.success_message'));
             }
         }
 

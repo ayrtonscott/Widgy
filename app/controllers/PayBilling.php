@@ -69,13 +69,13 @@ class PayBilling extends Controller {
             $required_fields = ['billing_name', 'billing_address', 'billing_city', 'billing_county', 'billing_zip'];
             foreach($required_fields as $field) {
                 if(!isset($_POST[$field]) || (isset($_POST[$field]) && empty($_POST[$field]) && $_POST[$field] != '0')) {
-                    Alerts::add_field_error($field, language()->global->error_message->empty_field);
+                    Alerts::add_field_error($field, l('global.error_message.empty_field'));
                 }
             }
 
             /* Check for any errors */
             if(!Csrf::check()) {
-                Alerts::add_error(language()->global->error_message->invalid_csrf_token);
+                Alerts::add_error(l('global.error_message.invalid_csrf_token'));
             }
 
             if(!Alerts::has_field_errors() && !Alerts::has_errors()) {
@@ -87,7 +87,7 @@ class PayBilling extends Controller {
                 \Altum\Cache::$adapter->deleteItemsByTag('user_id=' . $this->user->user_id);
 
                 /* Redirect to the checkout page */
-                redirect('pay/' . $plan_id);
+                redirect('pay/' . $plan_id . '?' . (isset($_GET['trial_skip']) ? '&trial_skip=true' : null) . (isset($_GET['code']) ? '&code=' . $_GET['code'] : null));
 
             }
         }

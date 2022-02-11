@@ -5,7 +5,7 @@
         <div class="modal-content">
 
             <div class="modal-header">
-                <h5 class="modal-title"><?= language()->campaign_pixel_key_modal->install->header ?></h5>
+                <h5 class="modal-title"><?= l('campaign_pixel_key_modal.install.header') ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -13,12 +13,12 @@
 
             <div class="modal-body">
                 <div class="tab-content">
-                    <p class="text-muted"><?= language()->campaign_pixel_key_modal->install->subheader ?></p>
+                    <p class="text-muted"><?= l('campaign_pixel_key_modal.install.subheader') ?></p>
 
                     <pre id="pixel_key_html" class="pre-custom rounded"></pre>
 
                     <div class="mt-4">
-                        <button type="button" class="btn btn-block btn-primary" data-clipboard-target="#pixel_key_html" data-copied="<?= language()->campaign_pixel_key_modal->install->copied ?>"><?= language()->campaign_pixel_key_modal->install->copy ?></button>
+                        <button type="button" class="btn btn-block btn-primary" data-clipboard-target="#pixel_key_html" data-copied="<?= l('campaign_pixel_key_modal.install.copied') ?>"><?= l('campaign_pixel_key_modal.install.copy') ?></button>
                     </div>
                 </div>
             </div>

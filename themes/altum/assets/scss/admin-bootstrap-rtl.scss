@@ -125,6 +125,9 @@ code {
     border-style: solid;
 }
 
+/* Tooltip fix */
+.tooltip { top: 0; }
+
 /* Extra variables */
 :root {
     --black: #{$black};

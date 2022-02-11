@@ -56,7 +56,7 @@ class AdminPages extends Controller {
         //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
         if(!Csrf::check('global_token')) {
-            Alerts::add_error(language()->global->error_message->invalid_csrf_token);
+            Alerts::add_error(l('global.error_message.invalid_csrf_token'));
         }
 
         if(!$page = db()->where('page_id', $page_id)->getOne('pages', ['page_id', 'title'])) {
@@ -72,7 +72,7 @@ class AdminPages extends Controller {
             \Altum\Cache::$adapter->deleteItems(['pages_top', 'pages_bottom', 'pages_hidden']);
 
             /* Set a nice success message */
-            Alerts::add_success(sprintf(language()->global->success_message->delete1, '<strong>' . $page->title . '</strong>'));
+            Alerts::add_success(sprintf(l('global.success_message.delete1'), '<strong>' . $page->title . '</strong>'));
 
         }
 

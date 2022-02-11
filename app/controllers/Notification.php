@@ -286,7 +286,7 @@ class Notification extends Controller {
         $this->add_view_content('content', $view->run($data));
 
         /* Set a custom title */
-        Title::set(sprintf(language()->notification->title, $this->notification->name));
+        Title::set(sprintf(l('notification.title'), $this->notification->name));
 
     }
 
@@ -791,7 +791,7 @@ class Notification extends Controller {
 
             /* Check for any errors */
             if(!Csrf::check()) {
-                Alerts::add_error(language()->global->error_message->invalid_csrf_token);
+                Alerts::add_error(l('global.error_message.invalid_csrf_token'));
             }
 
             if(!Alerts::has_field_errors() && !Alerts::has_errors()) {
@@ -1055,9 +1055,9 @@ class Notification extends Controller {
                                 'in_between_delay' => $_POST['in_between_delay'],
 
                                 /* Keep the following keys to default */
-                                'title' => language()->notification->random_review->title_default,
-                                'description' => language()->notification->random_review->description_default,
-                                'image' => language()->notification->random_review->image_default,
+                                'title' => l('notification.random_review.title_default'),
+                                'description' => l('notification.random_review.description_default'),
+                                'image' => l('notification.random_review.image_default'),
                                 'stars' => 5,
 
                                 'title_color' => $_POST['title_color'],
@@ -1414,7 +1414,7 @@ class Notification extends Controller {
                 ]);
 
                 /* Set a nice success message */
-                Alerts::add_success(sprintf(language()->global->success_message->update1, '<strong>' . htmlspecialchars($_POST['name']) . '</strong>'));
+                Alerts::add_success(sprintf(l('global.success_message.update1'), '<strong>' . filter_var($_POST['name'], FILTER_SANITIZE_STRING) . '</strong>'));
 
                 redirect('notification/' . $this->notification_id);
             }
@@ -1435,7 +1435,7 @@ class Notification extends Controller {
         //ALTUMCODE.DEMO: if(DEMO) if($this->user->user_id == 1) Alerts::add_error('Please create an account on the demo to test out this function.');
 
         if(!Csrf::check()) {
-            Alerts::add_error(language()->global->error_message->invalid_csrf_token);
+            Alerts::add_error(l('global.error_message.invalid_csrf_token'));
             redirect('dashboard');
         }
 
@@ -1448,7 +1448,7 @@ class Notification extends Controller {
 
             /* Determine the default settings */
             $notification_key = md5($this->user->user_id . $notification->notification_id . $notification->campaign_id . time());
-            $name = language()->notification_create->default_name;
+            $name = l('notification_create.default_name');
 
             /* Insert to database */
             $notification_id = db()->insert('notifications', [
@@ -1463,7 +1463,7 @@ class Notification extends Controller {
             ]);
 
             /* Set a nice success message */
-            Alerts::add_success(sprintf(language()->global->success_message->create1, '<strong>' . htmlspecialchars($name) . '</strong>'));
+            Alerts::add_success(sprintf(l('global.success_message.create1'), '<strong>' . filter_var($name, FILTER_SANITIZE_STRING) . '</strong>'));
 
             /* Redirect */
             redirect('notification/' . $notification_id);
@@ -1486,7 +1486,7 @@ class Notification extends Controller {
         //ALTUMCODE.DEMO: if(DEMO) if($this->user->user_id == 1) Alerts::add_error('Please create an account on the demo to test out this function.');
 
         if(!Csrf::check()) {
-            Alerts::add_error(language()->global->error_message->invalid_csrf_token);
+            Alerts::add_error(l('global.error_message.invalid_csrf_token'));
             redirect('dashboard');
         }
 
@@ -1501,7 +1501,7 @@ class Notification extends Controller {
             db()->where('notification_id', $notification->notification_id)->where('user_id', $this->user->user_id)->delete('notifications');
 
             /* Set a nice success message */
-            Alerts::add_success(sprintf(language()->global->success_message->delete1, '<strong>' . $notification->name . '</strong>'));
+            Alerts::add_success(sprintf(l('global.success_message.delete1'), '<strong>' . $notification->name . '</strong>'));
 
             redirect('campaign/' . $notification->campaign_id);
 

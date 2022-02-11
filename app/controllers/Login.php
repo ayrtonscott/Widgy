@@ -56,7 +56,7 @@ class Login extends Controller {
             }
 
             if($user->status != 1) {
-                Alerts::add_error(language()->login->error_message->user_not_active);
+                Alerts::add_error(l('login.error_message.user_not_active'));
                 redirect('login');
             }
 
@@ -69,7 +69,7 @@ class Login extends Controller {
             db()->where('user_id', $user->user_id)->update('users', ['one_time_login_code' => null]);
 
             /* Set a welcome message */
-            Alerts::add_info(sprintf(language()->login->info_message->logged_in, $user->name));
+            Alerts::add_info(sprintf(l('login.info_message.logged_in'), $user->name));
 
             redirect($redirect);
         }
@@ -135,7 +135,7 @@ class Login extends Controller {
 
                         /* Check if email is actually not null */
                         if(is_null($email)) {
-                            Alerts::add_error(language()->login->error_message->email_is_null);
+                            Alerts::add_error(l('login.error_message.email_is_null'));
                             redirect('login');
                         }
 
@@ -169,6 +169,11 @@ class Login extends Controller {
                 $email = $google_account_info->email;
                 $name = $google_account_info->name;
 
+                if(is_null($email)) {
+                    Alerts::add_error(l('login.error_message.email_is_null'));
+                    redirect('login');
+                }
+
                 $this->process_social_login($email, $name, $redirect, $method);
             }
         }
@@ -201,6 +206,11 @@ class Login extends Controller {
                     $email = $twitter_account_info->email;
                     $name = $twitter_account_info->name;
 
+                    if(is_null($email)) {
+                        Alerts::add_error(l('login.error_message.email_is_null'));
+                        redirect('login');
+                    }
+
                     $this->process_social_login($email, $name, $redirect, $method);
                 } catch (\Exception $exception) {
                     Alerts::add_error($exception->getMessage());
@@ -221,29 +231,29 @@ class Login extends Controller {
             $required_fields = ['email', 'password'];
             foreach($required_fields as $field) {
                 if(!isset($_POST[$field]) || (isset($_POST[$field]) && empty($_POST[$field]) && $_POST[$field] != '0')) {
-                    Alerts::add_field_error($field, language()->global->error_message->empty_field);
+                    Alerts::add_field_error($field, l('global.error_message.empty_field'));
                 }
             }
 
             if(settings()->captcha->login_is_enabled && !$captcha->is_valid()) {
-                Alerts::add_field_error('captcha', language()->global->error_message->invalid_captcha);
+                Alerts::add_field_error('captcha', l('global.error_message.invalid_captcha'));
             }
 
             /* Try to get the user from the database */
             $user = db()->where('email', $_POST['email'])->getOne('users', ['user_id', 'email', 'name', 'status', 'password', 'token_code', 'twofa_secret']);
 
             if(!$user) {
-                Alerts::add_error(language()->login->error_message->wrong_login_credentials);
+                Alerts::add_error(l('login.error_message.wrong_login_credentials'));
             } else {
 
                 if($user->status != 1) {
-                    Alerts::add_error(language()->login->error_message->user_not_active);
+                    Alerts::add_error(l('login.error_message.user_not_active'));
                 } else
 
                     if(!password_verify($_POST['password'], $user->password)) {
                         Logger::users($user->user_id, 'login.wrong_password');
 
-                        Alerts::add_error(language()->login->error_message->wrong_login_credentials);
+                        Alerts::add_error(l('login.error_message.wrong_login_credentials'));
                     }
 
             }
@@ -253,16 +263,16 @@ class Login extends Controller {
 
                 if($_POST['twofa_token']) {
 
-                    $twofa = new \RobThree\Auth\TwoFactorAuth(settings()->title, 6, 30);
+                    $twofa = new \RobThree\Auth\TwoFactorAuth(settings()->main->title, 6, 30);
                     $twofa_check = $twofa->verifyCode($user->twofa_secret, $_POST['twofa_token']);
 
                     if(!$twofa_check) {
-                        Alerts::add_field_error('twofa_token', language()->login->error_message->twofa_token);
+                        Alerts::add_field_error('twofa_token', l('login.error_message.twofa_token'));
                     }
 
                 } else {
 
-                    Alerts::add_info(language()->login->info_message->twofa_token);
+                    Alerts::add_info(l('login.info_message.twofa_token'));
 
                 }
 
@@ -290,7 +300,7 @@ class Login extends Controller {
 
                 (new User())->login_aftermath_update($user->user_id);
 
-                Alerts::add_info(sprintf(language()->login->info_message->logged_in, $user->name));
+                Alerts::add_info(sprintf(l('login.info_message.logged_in'), $user->name));
 
                 redirect($redirect);
             }
@@ -349,7 +359,7 @@ class Login extends Controller {
                     $plan_id,
                     $plan_settings,
                     $plan_expiration_date,
-                    settings()->default_timezone
+                    settings()->main->default_timezone
                 );
 
                 /* Log the action */
@@ -360,12 +370,12 @@ class Login extends Controller {
 
                     $email_template = get_email_template(
                         [],
-                        language()->global->emails->admin_new_user_notification->subject,
+                        l('global.emails.admin_new_user_notification.subject'),
                         [
                             '{{NAME}}' => $name,
                             '{{EMAIL}}' => $email,
                         ],
-                        language()->global->emails->admin_new_user_notification->body
+                        l('global.emails.admin_new_user_notification.body')
                     );
 
                     send_mail(explode(',', settings()->email_notifications->emails), $email_template->subject, $email_template->body);

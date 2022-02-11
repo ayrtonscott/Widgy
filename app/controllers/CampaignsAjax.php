@@ -73,7 +73,7 @@ class CampaignsAjax extends Controller {
 
         /* Check for possible errors */
         if(!isset($_POST['name'], $_POST['url'])) {
-            Response::json(language()->global->error_message->empty_fields, 'error');
+            Response::json(l('global.error_message.empty_fields'), 'error');
         }
 
         $campaign_branding = json_encode([
@@ -89,7 +89,7 @@ class CampaignsAjax extends Controller {
         /* Clear the cache */
         \Altum\Cache::$adapter->deleteItemsByTag('campaign_id=' . $_POST['campaign_id']);
 
-        Response::json(language()->global->success_message->update2, 'success');
+        Response::json(l('global.success_message.update2'), 'success');
     }
 
     private function create() {
@@ -106,13 +106,13 @@ class CampaignsAjax extends Controller {
 
         /* Check for possible errors */
         if(empty($_POST['name']) || empty($_POST['domain'])) {
-            Response::json(language()->global->error_message->empty_fields, 'error');
+            Response::json(l('global.error_message.empty_fields'), 'error');
         }
 
         /* Make sure that the user didn't exceed the limit */
         $account_total_campaigns = database()->query("SELECT COUNT(*) AS `total` FROM `campaigns` WHERE `user_id` = {$this->user->user_id}")->fetch_object()->total;
         if($this->user->plan_settings->campaigns_limit != -1 && $account_total_campaigns >= $this->user->plan_settings->campaigns_limit) {
-            Response::json(language()->create_campaign_modal->error_message->campaigns_limit, 'error');
+            Response::json(l('create_campaign_modal.error_message.campaigns_limit'), 'error');
         }
 
         /* Generate an unique pixel key for the website */
@@ -136,7 +136,7 @@ class CampaignsAjax extends Controller {
         \Altum\Cache::$adapter->deleteItemsByTag('campaign_id=' . $campaign_id);
 
         /* Set a nice success message */
-        Response::json(sprintf(language()->global->success_message->create1, '<strong>' . htmlspecialchars($_POST['name']) . '</strong>'), 'success', ['campaign_id' => $campaign_id]);
+        Response::json(sprintf(l('global.success_message.create1'), '<strong>' . filter_var($_POST['name']) . '</strong>'), 'success', ['campaign_id' => $campaign_id]);
 
     }
 
@@ -154,7 +154,7 @@ class CampaignsAjax extends Controller {
 
         /* Check for possible errors */
         if(empty($_POST['name']) || empty($_POST['domain'])) {
-            Response::json(language()->global->error_message->empty_fields, 'error');
+            Response::json(l('global.error_message.empty_fields'), 'error');
         }
 
         /* Insert to database */
@@ -169,7 +169,7 @@ class CampaignsAjax extends Controller {
         \Altum\Cache::$adapter->deleteItemsByTag('campaign_id=' . $_POST['campaign_id']);
 
         /* Set a nice success message */
-        Response::json(sprintf(language()->global->success_message->update1, '<strong>' . htmlspecialchars($_POST['name']) . '</strong>'), 'success', ['campaign_id' => $campaign_id]);
+        Response::json(sprintf(l('global.success_message.update1'), '<strong>' . filter_var($_POST['name']) . '</strong>'), 'success', ['campaign_id' => $campaign_id]);
     }
 
 }

@@ -26,11 +26,11 @@ class AccountDelete extends Controller {
 
             /* Check for any errors */
             if(!Csrf::check()) {
-                Alerts::add_error(language()->global->error_message->invalid_csrf_token);
+                Alerts::add_error(l('global.error_message.invalid_csrf_token'));
             }
 
             if(!password_verify($_POST['current_password'], $this->user->password)) {
-                Alerts::add_field_error('current_password', language()->account->error_message->invalid_current_password);
+                Alerts::add_field_error('current_password', l('account.error_message.invalid_current_password'));
             }
 
             if(!Alerts::has_field_errors() && !Alerts::has_errors()) {
@@ -45,7 +45,7 @@ class AccountDelete extends Controller {
                 session_start();
 
                 /* Set a nice success message */
-                Alerts::add_success(language()->account_delete->success_message);
+                Alerts::add_success(l('account_delete.success_message'));
 
                 redirect();
 

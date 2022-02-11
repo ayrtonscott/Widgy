@@ -10,26 +10,26 @@
 
     <?= \Altum\Alerts::output_alerts() ?>
 
-    <div class="d-flex justify-content-between">
-        <div>
-            <h2 class="h4"><?= language()->account_logs->header ?></h2>
-            <p class="text-muted"><?= language()->account_logs->subheader ?></p>
+    <div class="row mb-3">
+        <div class="col-12 col-lg mb-3 mb-lg-0">
+            <h2 class="h4"><?= l('account_logs.header') ?></h2>
+            <p class="text-muted m-0"><?= l('account_logs.subheader') ?></p>
         </div>
 
         <?php if(count($data->logs) || count($data->filters->get)): ?>
-            <div class="col-auto p-0 d-flex">
-                <div class="ml-3">
+            <div class="col-12 col-lg-auto d-flex">
+                <div>
                     <div class="dropdown">
-                        <button type="button" class="btn rounded-pill btn-outline-secondary dropdown-toggle-simple" data-toggle="dropdown" data-boundary="viewport" title="<?= language()->global->export ?>">
+                        <button type="button" class="btn btn-outline-secondary dropdown-toggle-simple" data-toggle="dropdown" data-boundary="viewport" title="<?= l('global.export') ?>">
                             <i class="fa fa-fw fa-sm fa-download"></i>
                         </button>
 
-                        <div class="dropdown-menu  dropdown-menu-right">
+                        <div class="dropdown-menu dropdown-menu-right d-print-none">
                             <a href="<?= url('account-logs?' . $data->filters->get_get() . '&export=csv') ?>" target="_blank" class="dropdown-item">
-                                <i class="fa fa-fw fa-sm fa-file-csv mr-1"></i> <?= language()->global->export_csv ?>
+                                <i class="fa fa-fw fa-sm fa-file-csv mr-1"></i> <?= l('global.export_csv') ?>
                             </a>
                             <a href="<?= url('account-logs?' . $data->filters->get_get() . '&export=json') ?>" target="_blank" class="dropdown-item">
-                                <i class="fa fa-fw fa-sm fa-file-code mr-1"></i> <?= language()->global->export_json ?>
+                                <i class="fa fa-fw fa-sm fa-file-code mr-1"></i> <?= l('global.export_json') ?>
                             </a>
                         </div>
                     </div>
@@ -37,14 +37,14 @@
 
                 <div class="ml-3">
                     <div class="dropdown">
-                        <button type="button" class="btn rounded-pill <?= count($data->filters->get) ? 'btn-outline-primary' : 'btn-outline-secondary' ?> filters-button dropdown-toggle-simple" data-toggle="dropdown" data-boundary="viewport"><i class="fa fa-fw fa-sm fa-filter"></i></button>
+                        <button type="button" class="btn <?= count($data->filters->get) ? 'btn-outline-primary' : 'btn-outline-secondary' ?> filters-button dropdown-toggle-simple" data-toggle="dropdown" data-boundary="viewport"><i class="fa fa-fw fa-sm fa-filter"></i></button>
 
                         <div class="dropdown-menu dropdown-menu-right filters-dropdown">
                             <div class="dropdown-header d-flex justify-content-between">
-                                <span class="h6 m-0"><?= language()->global->filters->header ?></span>
+                                <span class="h6 m-0"><?= l('global.filters.header') ?></span>
 
                                 <?php if(count($data->filters->get)): ?>
-                                    <a href="<?= url('account-logs') ?>" class="text-muted"><?= language()->global->filters->reset ?></a>
+                                    <a href="<?= url('account-logs') ?>" class="text-muted"><?= l('global.filters.reset') ?></a>
                                 <?php endif ?>
                             </div>
 
@@ -52,35 +52,35 @@
 
                             <form action="" method="get" role="form">
                                 <div class="form-group px-4">
-                                    <label for="filters_search" class="small"><?= language()->global->filters->search ?></label>
+                                    <label for="filters_search" class="small"><?= l('global.filters.search') ?></label>
                                     <input type="search" name="search" id="filters_search" class="form-control form-control-sm" value="<?= $data->filters->search ?>" />
                                 </div>
 
                                 <div class="form-group px-4">
-                                    <label for="filters_search_by" class="small"><?= language()->global->filters->search_by ?></label>
+                                    <label for="filters_search_by" class="small"><?= l('global.filters.search_by') ?></label>
                                     <select name="search_by" id="filters_search_by" class="form-control form-control-sm">
-                                        <option value="type" <?= $data->filters->search_by == 'type' ? 'selected="selected"' : null ?>><?= language()->account_logs->filters->search_by_type ?></option>
-                                        <option value="ip" <?= $data->filters->search_by == 'ip' ? 'selected="selected"' : null ?>><?= language()->account_logs->filters->search_by_ip ?></option>
+                                        <option value="type" <?= $data->filters->search_by == 'type' ? 'selected="selected"' : null ?>><?= l('account_logs.logs.type') ?></option>
+                                        <option value="ip" <?= $data->filters->search_by == 'ip' ? 'selected="selected"' : null ?>><?= l('account_logs.logs.ip') ?></option>
                                     </select>
                                 </div>
 
                                 <div class="form-group px-4">
-                                    <label for="filters_order_by" class="small"><?= language()->global->filters->order_by ?></label>
+                                    <label for="filters_order_by" class="small"><?= l('global.filters.order_by') ?></label>
                                     <select name="order_by" id="filters_order_by" class="form-control form-control-sm">
-                                        <option value="datetime" <?= $data->filters->order_by == 'datetime' ? 'selected="selected"' : null ?>><?= language()->global->filters->order_by_datetime ?></option>
+                                        <option value="datetime" <?= $data->filters->order_by == 'datetime' ? 'selected="selected"' : null ?>><?= l('global.filters.order_by_datetime') ?></option>
                                     </select>
                                 </div>
 
                                 <div class="form-group px-4">
-                                    <label for="filters_order_type" class="small"><?= language()->global->filters->order_type ?></label>
+                                    <label for="filters_order_type" class="small"><?= l('global.filters.order_type') ?></label>
                                     <select name="order_type" id="filters_order_type" class="form-control form-control-sm">
-                                        <option value="ASC" <?= $data->filters->order_type == 'ASC' ? 'selected="selected"' : null ?>><?= language()->global->filters->order_type_asc ?></option>
-                                        <option value="DESC" <?= $data->filters->order_type == 'DESC' ? 'selected="selected"' : null ?>><?= language()->global->filters->order_type_desc ?></option>
+                                        <option value="ASC" <?= $data->filters->order_type == 'ASC' ? 'selected="selected"' : null ?>><?= l('global.filters.order_type_asc') ?></option>
+                                        <option value="DESC" <?= $data->filters->order_type == 'DESC' ? 'selected="selected"' : null ?>><?= l('global.filters.order_type_desc') ?></option>
                                     </select>
                                 </div>
 
                                 <div class="form-group px-4">
-                                    <label for="filters_results_per_page" class="small"><?= language()->global->filters->results_per_page ?></label>
+                                    <label for="filters_results_per_page" class="small"><?= l('global.filters.results_per_page') ?></label>
                                     <select name="results_per_page" id="filters_results_per_page" class="form-control form-control-sm">
                                         <?php foreach($data->filters->allowed_results_per_page as $key): ?>
                                             <option value="<?= $key ?>" <?= $data->filters->results_per_page == $key ? 'selected="selected"' : null ?>><?= $key ?></option>
@@ -89,7 +89,7 @@
                                 </div>
 
                                 <div class="form-group px-4 mt-4">
-                                    <button type="submit" name="submit" class="btn btn-sm btn-primary btn-block"><?= language()->global->submit ?></button>
+                                    <button type="submit" name="submit" class="btn btn-sm btn-primary btn-block"><?= l('global.submit') ?></button>
                                 </div>
                             </form>
 
@@ -105,27 +105,27 @@
             <table class="table table-custom">
                 <thead>
                 <tr>
-                    <th><?= language()->account_logs->logs->type ?></th>
-                    <th><?= language()->account_logs->logs->ip ?></th>
-                    <th><?= language()->account_logs->logs->details ?></th>
-                    <th><?= language()->account_logs->logs->datetime ?></th>
+                    <th><?= l('account_logs.logs.type') ?></th>
+                    <th><?= l('account_logs.logs.ip') ?></th>
+                    <th><?= l('account_logs.logs.details') ?></th>
+                    <th><?= l('account_logs.logs.datetime') ?></th>
                 </tr>
                 </thead>
                 <tbody>
                 <?php foreach($data->logs as $row): ?>
                     <tr>
-                        <td><?= $row->type ?></td>
-                        <td><?= $row->ip ?></td>
-                        <td>
+                        <td class="text-nowrap"><?= $row->type ?></td>
+                        <td class="text-nowrap"><?= $row->ip ?></td>
+                        <td class="text-nowrap">
                             <?php if($row->device_type): ?>
                                 <span class="mr-2" data-toggle="tooltip" title="<?= $row->device_type ?>">
-                                    <i class="fa fa-fw fa-<?= $row->device_type ?> text-muted"></i>
+                                    <i class="fa fa-fw fa-sm fa-<?= $row->device_type ?> text-muted"></i>
                                 </span>
                             <?php endif ?>
 
                             <?php if($row->os_name): ?>
                                 <span class="mr-2" data-toggle="tooltip" title="<?= $row->os_name ?>">
-                                    <i class="fa fa-fw fa-server text-muted"></i>
+                                    <i class="fa fa-fw fa-sm fa-server text-muted"></i>
                                 </span>
                             <?php endif ?>
 
@@ -133,7 +133,7 @@
                                 <img src="<?= ASSETS_FULL_URL . 'images/countries/' . mb_strtolower($row->country_code) . '.svg' ?>" class="img-fluid icon-favicon mr-2" data-toggle="tooltip" title="<?= get_country_from_country_code($row->country_code) ?>" />
                             <?php endif ?>
                         </td>
-                        <td><span class="text-muted" data-toggle="tooltip" title="<?= \Altum\Date::get($row->datetime, 1) ?>"><?= \Altum\Date::get_timeago($row->datetime) ?></span></td>
+                        <td class="text-nowrap"><span class="text-muted" data-toggle="tooltip" title="<?= \Altum\Date::get($row->datetime, 1) ?>"><?= \Altum\Date::get_timeago($row->datetime) ?></span></td>
                     </tr>
                 <?php endforeach ?>
                 </tbody>
@@ -143,9 +143,9 @@
         <div class="mt-3"><?= $data->pagination ?></div>
     <?php else: ?>
         <div class="d-flex flex-column align-items-center justify-content-center">
-            <img src="<?= ASSETS_FULL_URL . 'images/no_rows.svg' ?>" class="col-10 col-md-7 col-lg-5 mb-3" alt="<?= language()->account_logs->logs->no_data ?>" />
-            <h2 class="h4 text-muted mt-3"><?= language()->account_logs->logs->no_data ?></h2>
-            <p class="text-muted"><?= language()->account_logs->logs->no_data_help ?></p>
+            <img src="<?= ASSETS_FULL_URL . 'images/no_rows.svg' ?>" class="col-10 col-md-7 col-lg-5 mb-3" alt="<?= l('account_logs.logs.no_data') ?>" />
+            <h2 class="h4 text-muted mt-3"><?= l('account_logs.logs.no_data') ?></h2>
+            <p class="text-muted"><?= l('account_logs.logs.no_data_help') ?></p>
         </div>
     <?php endif ?>
 

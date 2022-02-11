@@ -88,7 +88,7 @@ function nr($number, $decimals = 0, $extra = false) {
         if(!$touched && (!is_array($extra) || (is_array($extra) && in_array('B', $extra)))) {
 
             if($number > 999999999) {
-                $formatted_number = number_format($number / 1000000000, $decimals, language()->global->number->decimal_point, language()->global->number->thousands_separator) . 'B';
+                $formatted_number = number_format($number / 1000000000, $decimals, l('global.number.decimal_point'), l('global.number.thousands_separator')) . 'B';
 
                 $touched = true;
             }
@@ -98,7 +98,7 @@ function nr($number, $decimals = 0, $extra = false) {
         if(!$touched && (!is_array($extra) || (is_array($extra) && in_array('M', $extra)))) {
 
             if($number > 999999) {
-                $formatted_number = number_format($number / 1000000, $decimals, language()->global->number->decimal_point, language()->global->number->thousands_separator) . 'M';
+                $formatted_number = number_format($number / 1000000, $decimals, l('global.number.decimal_point'), l('global.number.thousands_separator')) . 'M';
 
                 $touched = true;
             }
@@ -108,7 +108,7 @@ function nr($number, $decimals = 0, $extra = false) {
         if(!$touched && (!is_array($extra) || (is_array($extra) && in_array('K', $extra)))) {
 
             if($number > 999) {
-                $formatted_number = number_format($number / 1000, $decimals, language()->global->number->decimal_point, language()->global->number->thousands_separator) . 'K';
+                $formatted_number = number_format($number / 1000, $decimals, l('global.number.decimal_point'), l('global.number.thousands_separator')) . 'K';
 
                 $touched = true;
             }
@@ -127,7 +127,7 @@ function nr($number, $decimals = 0, $extra = false) {
         return 0;
     }
 
-    return number_format($number, $decimals, language()->global->number->decimal_point, language()->global->number->thousands_separator);
+    return number_format($number, $decimals, l('global.number.decimal_point'), l('global.number.thousands_separator'));
 }
 
 function get_ip() {

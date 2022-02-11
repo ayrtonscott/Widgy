@@ -39,23 +39,23 @@ $result = database()->query("
 
 ?>
 
-<h2 class="h3 mt-5"><?= language()->notification->statistics->header_feedback ?></h2>
+<h2 class="h3 mt-5"><?= l('notification.statistics.header_feedback') ?></h2>
 
 <div class="table-responsive table-custom-container">
     <table class="table table-custom">
         <thead>
         <tr>
-            <th><?= language()->notification->statistics->feedback ?></th>
-            <th><?= language()->notification->statistics->feedback_total ?></th>
+            <th><?= l('notification.statistics.feedback') ?></th>
+            <th><?= l('notification.statistics.feedback_total') ?></th>
         </tr>
         </thead>
         <tbody>
         <?php while($row = $result->fetch_object()): ?>
             <tr>
-                <td>
-                    <i class="<?= language()->notification->score_feedback->icon ?>"></i> <?= language()->notification->score_feedback->{$row->type} ?>
+                <td class="text-nowrap">
+                    <i class="<?= l('notification.score_feedback.icon') ?>"></i> <?= l('notification.score_feedback.' . $row->type) ?>
                 </td>
-                <td><?= nr($row->total) ?></td>
+                <td class="text-nowrap"><?= nr($row->total) ?></td>
             </tr>
         <?php endwhile ?>
         </tbody>
@@ -75,31 +75,31 @@ $result = database()->query("
             labels: <?= $data->logs_chart['labels'] ?>,
             datasets: [
                 {
-                    label: <?= json_encode(language()->notification->score_feedback->feedback_score_1) ?>,
+                    label: <?= json_encode(l('notification.score_feedback.feedback_score_1')) ?>,
                     data: <?= $data->logs_chart['feedback_score_1'] ?? '[]' ?>,
                     borderColor: '#ED4956',
                     fill: false
                 },
                 {
-                    label: <?= json_encode(language()->notification->score_feedback->feedback_score_2) ?>,
+                    label: <?= json_encode(l('notification.score_feedback.feedback_score_2')) ?>,
                     data: <?= $data->logs_chart['feedback_score_2'] ?? '[]' ?>,
                     borderColor: '#ed804c',
                     fill: false
                 },
                 {
-                    label: <?= json_encode(language()->notification->score_feedback->feedback_score_3) ?>,
+                    label: <?= json_encode(l('notification.score_feedback.feedback_score_3')) ?>,
                     data: <?= $data->logs_chart['feedback_score_3'] ?? '[]' ?>,
                     borderColor: '#8f8f8f',
                     fill: false
                 },
                 {
-                    label: <?= json_encode(language()->notification->score_feedback->feedback_score_4) ?>,
+                    label: <?= json_encode(l('notification.score_feedback.feedback_score_4')) ?>,
                     data: <?= $data->logs_chart['feedback_score_4'] ?? '[]' ?>,
                     borderColor: '#6c94ed',
                     fill: false
                 },
                 {
-                    label: <?= json_encode(language()->notification->score_feedback->feedback_score_5) ?>,
+                    label: <?= json_encode(l('notification.score_feedback.feedback_score_5')) ?>,
                     data: <?= $data->logs_chart['feedback_score_5'] ?? '[]' ?>,
                     borderColor: '#4aed92',
                     fill: false
@@ -120,7 +120,7 @@ $result = database()->query("
             },
             title: {
                 display: true,
-                text: <?= json_encode(language()->notification->statistics->feedback_chart) ?>
+                text: <?= json_encode(l('notification.statistics.feedback_chart')) ?>
             },
             legend: {
                 display: true

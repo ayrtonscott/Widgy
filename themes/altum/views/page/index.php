@@ -1,16 +1,14 @@
 <?php defined('ALTUMCODE') || die() ?>
 
-<?php require THEME_PATH . 'views/partials/ads_header.php' ?>
-
 <div class="container">
     <nav aria-label="breadcrumb">
         <ol class="custom-breadcrumbs small">
-            <li><a href="<?= url() ?>"><?= language()->index->breadcrumb ?></a> <i class="fa fa-fw fa-angle-right"></i></li>
-            <li><a href="<?= SITE_URL . 'pages' ?>"><?= language()->pages->index->breadcrumb ?></a> <i class="fa fa-fw fa-angle-right"></i></li>
+            <li><a href="<?= url() ?>"><?= l('index.breadcrumb') ?></a> <i class="fa fa-fw fa-angle-right"></i></li>
+            <li><a href="<?= SITE_URL . 'pages' ?>"><?= l('pages.index.breadcrumb') ?></a> <i class="fa fa-fw fa-angle-right"></i></li>
             <?php if($data->page->pages_category_url): ?>
                 <li><a href="<?= SITE_URL . 'pages/' . $data->page->pages_category_url ?>"><?= $data->page->pages_category_title ?></a> <i class="fa fa-fw fa-angle-right"></i></li>
             <?php endif ?>
-            <li class="active" aria-current="page"><?= language()->page->breadcrumb ?></li>
+            <li class="active" aria-current="page"><?= l('page.breadcrumb') ?></li>
         </ol>
     </nav>
 
@@ -18,7 +16,7 @@
         <h1><?= $data->page->title ?></h1>
 
         <div class="d-print-none col-auto p-0 d-flex align-items-center">
-            <button type="button" class="btn btn-sm btn-outline-secondary mr-3" onclick="window.print()"><i class="fa fa-fw fa-sm fa-print"></i> <?= language()->page->print ?></button>
+            <button type="button" class="btn btn-sm btn-outline-secondary mr-3" onclick="window.print()"><i class="fa fa-fw fa-sm fa-print"></i> <?= l('page.print') ?></button>
         </div>
     </div>
     <p class="text-muted mb-4">
@@ -30,8 +28,8 @@
         <?php if($estimated_reading_time->minutes > 0 || $estimated_reading_time->seconds > 0): ?>
             <small>
                 <i class="fa fa-fw fa-sm fa-hourglass-start"></i>
-                <?= $estimated_reading_time->minutes ? sprintf(language()->page->estimated_reading_time, $estimated_reading_time->minutes . ' ' . language()->global->date->minutes) : null ?>
-                <?= $estimated_reading_time->minutes == 0 && $estimated_reading_time->seconds ? sprintf(language()->page->estimated_reading_time, $estimated_reading_time->seconds . ' ' . language()->global->date->seconds) : null ?>
+                <?= $estimated_reading_time->minutes ? sprintf(l('page.estimated_reading_time'), $estimated_reading_time->minutes . ' ' . l('global.date.minutes')) : null ?>
+                <?= $estimated_reading_time->minutes == 0 && $estimated_reading_time->seconds ? sprintf(l('page.estimated_reading_time'), $estimated_reading_time->seconds . ' ' . l('global.date.seconds')) : null ?>
             </small>
         <?php endif ?>
     </p>
@@ -39,6 +37,6 @@
     <?= $data->page->content ?>
 
     <div class="mt-4">
-        <small class="text-muted"><i class="fa fa-fw fa-sm fa-calendar"></i> <?= sprintf(language()->page->last_datetime, \Altum\Date::get($data->page->last_datetime, 2)) ?></small>
+        <small class="text-muted"><i class="fa fa-fw fa-sm fa-calendar"></i> <?= sprintf(l('page.last_datetime'), \Altum\Date::get($data->page->last_datetime, 2)) ?></small>
     </div>
 </div>

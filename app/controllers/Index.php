@@ -17,9 +17,8 @@ class Index extends Controller {
     public function index() {
 
         /* Custom index redirect if set */
-        if(!empty(settings()->index_url)) {
-            header('Location: ' . settings()->index_url);
-            die();
+        if(!empty(settings()->main->index_url)) {
+            header('Location: ' . settings()->main->index_url); die();
         }
 
         $total_track_notifications = database()->query("SELECT MAX(`id`) AS `total` FROM `track_notifications`")->fetch_object()->total ?? 0;
@@ -35,7 +34,7 @@ class Index extends Controller {
         /* Opengraph image */
         if(settings()->opengraph) {
             Meta::set_social_url(SITE_URL);
-            Meta::set_social_description(language()->index->meta_description);
+            Meta::set_social_description(l('index.meta_description'));
             Meta::set_social_image(UPLOADS_FULL_URL . 'opengraph/' .settings()->opengraph);
         }
 

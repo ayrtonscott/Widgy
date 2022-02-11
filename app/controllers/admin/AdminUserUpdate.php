@@ -90,29 +90,29 @@ class AdminUserUpdate extends Controller {
             $required_fields = ['name', 'email'];
             foreach($required_fields as $field) {
                 if(!isset($_POST[$field]) || (isset($_POST[$field]) && empty($_POST[$field]) && $_POST[$field] != '0')) {
-                    Alerts::add_field_error($field, language()->global->error_message->empty_field);
+                    Alerts::add_field_error($field, l('global.error_message.empty_field'));
                 }
             }
 
             if(!Csrf::check()) {
-                Alerts::add_error(language()->global->error_message->invalid_csrf_token);
+                Alerts::add_error(l('global.error_message.invalid_csrf_token'));
             }
             if(mb_strlen($_POST['name']) < 3 || mb_strlen($_POST['name']) > 64) {
-                Alerts::add_field_error('name', language()->admin_users->error_message->name_length);
+                Alerts::add_field_error('name', l('admin_users.error_message.name_length'));
             }
             if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) == false) {
-                Alerts::add_field_error('email', language()->admin_users->error_message->invalid_email);
+                Alerts::add_field_error('email', l('admin_users.error_message.invalid_email'));
             }
             if(db()->where('email', $_POST['email'])->has('users') && $_POST['email'] !== $user->email) {
-                Alerts::add_field_error('email', language()->admin_users->error_message->email_exists);
+                Alerts::add_field_error('email', l('admin_users.error_message.email_exists'));
             }
 
             if(!empty($_POST['new_password']) && !empty($_POST['repeat_password'])) {
-                if(mb_strlen(trim($_POST['new_password'])) < 6) {
-                    Alerts::add_field_error('new_password', language()->admin_users->error_message->short_password);
+                if(mb_strlen($_POST['new_password']) < 6 || mb_strlen($_POST['new_password']) > 64) {
+                    Alerts::add_field_error('new_password', l('global.error_message.password_length'));
                 }
                 if($_POST['new_password'] !== $_POST['repeat_password']) {
-                    Alerts::add_field_error('repeat_password', language()->admin_users->error_message->passwords_not_matching);
+                    Alerts::add_field_error('repeat_password', l('global.error_message.passwords_not_matching'));
                 }
             }
 
@@ -141,7 +141,7 @@ class AdminUserUpdate extends Controller {
                 }
 
                 /* Set a nice success message */
-                Alerts::add_success(sprintf(language()->global->success_message->update1, '<strong>' . htmlspecialchars($_POST['name']) . '</strong>'));
+                Alerts::add_success(sprintf(l('global.success_message.update1'), '<strong>' . filter_var($_POST['name'], FILTER_SANITIZE_STRING) . '</strong>'));
 
                 /* Clear the cache */
                 \Altum\Cache::$adapter->deleteItemsByTag('user_id=' . $user->user_id);

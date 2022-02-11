@@ -44,7 +44,8 @@ class Refer extends Controller {
         setcookie('referred_by', $user->referral_key, time()+60*60*24*90, COOKIE_PATH);
 
         /* Redirect to the landing page */
-        redirect();
+        $redirect = isset($_GET['redirect']) ? Database::clean_string($_GET['redirect']) : 'dashboard';
+        redirect($redirect);
 
     }
 

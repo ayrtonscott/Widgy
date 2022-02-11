@@ -22,7 +22,7 @@ class Account extends Controller {
         Authentication::guard();
 
         /* Prepare the TwoFA codes just in case we need them */
-        $twofa = new \RobThree\Auth\TwoFactorAuth(settings()->title, 6, 30);
+        $twofa = new \RobThree\Auth\TwoFactorAuth(settings()->main->title, 6, 30);
         $twofa_secret = $twofa->createSecret();
         $twofa_image = $twofa->getQRCodeImageAsDataUri($this->user->name, $twofa_secret);
 
@@ -31,7 +31,7 @@ class Account extends Controller {
             /* Clean some posted variables */
             $_POST['email']		= mb_substr(filter_var($_POST['email'], FILTER_SANITIZE_EMAIL), 0, 320);
             $_POST['name']		= mb_substr(filter_var($_POST['name'], FILTER_SANITIZE_STRING), 0, 64);
-            $_POST['timezone']  = in_array($_POST['timezone'], \DateTimeZone::listIdentifiers()) ? Database::clean_string($_POST['timezone']) : settings()->default_timezone;
+            $_POST['timezone']  = in_array($_POST['timezone'], \DateTimeZone::listIdentifiers()) ? Database::clean_string($_POST['timezone']) : settings()->main->default_timezone;
             $_POST['twofa_is_enabled']  = (bool) $_POST['twofa_is_enabled'];
             $_POST['twofa_token']       = trim(filter_var($_POST['twofa_token'], FILTER_SANITIZE_STRING));
             $twofa_secret               = $_POST['twofa_is_enabled'] ? $this->user->twofa_secret : null;
@@ -64,28 +64,28 @@ class Account extends Controller {
 
             /* Check for any errors */
             if(!Csrf::check()) {
-                Alerts::add_error(language()->global->error_message->invalid_csrf_token);
+                Alerts::add_error(l('global.error_message.invalid_csrf_token'));
             }
             if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) == false) {
-                Alerts::add_field_error('email', language()->register->error_message->invalid_email);
+                Alerts::add_field_error('email', l('register.error_message.invalid_email'));
             }
             if(db()->where('email', $_POST['email'])->has('users') && $_POST['email'] !== $this->user->email) {
-                Alerts::add_field_error('email', language()->register->error_message->email_exists);
+                Alerts::add_field_error('email', l('register.error_message.email_exists'));
             }
 
             if(mb_strlen($_POST['name']) < 3 || mb_strlen($_POST['name']) > 64) {
-                Alerts::add_field_error('name', language()->register->error_message->name_length);
+                Alerts::add_field_error('name', l('register.error_message.name_length'));
             }
 
             if(!empty($_POST['old_password']) && !empty($_POST['new_password'])) {
                 if(!password_verify($_POST['old_password'], $this->user->password)) {
-                    Alerts::add_field_error('old_password', language()->account->error_message->invalid_current_password);
+                    Alerts::add_field_error('old_password', l('account.error_message.invalid_current_password'));
                 }
-                if(mb_strlen(trim($_POST['new_password'])) < 6) {
-                    Alerts::add_field_error('new_password', language()->account->error_message->short_password);
+                if(mb_strlen($_POST['new_password']) < 6 || mb_strlen($_POST['new_password']) > 64) {
+                    Alerts::add_field_error('new_password', l('global.error_message.password_length'));
                 }
                 if($_POST['new_password'] !== $_POST['repeat_password']) {
-                    Alerts::add_field_error('repeat_password', language()->account->error_message->passwords_not_matching);
+                    Alerts::add_field_error('repeat_password', l('global.error_message.passwords_not_matching'));
                 }
             }
 
@@ -93,7 +93,7 @@ class Account extends Controller {
                 $twofa_check = $twofa->verifyCode($_SESSION['twofa_potential_secret'], $_POST['twofa_token']);
 
                 if(!$twofa_check) {
-                    Alerts::add_field_error('twofa_token', language()->account->error_message->twofa_check);
+                    Alerts::add_field_error('twofa_token', l('account.error_message.twofa_check'));
 
                     /* Regenerate */
                     $twofa_secret = $twofa->createSecret();
@@ -121,25 +121,25 @@ class Account extends Controller {
                 ]);
 
                 /* Set a nice success message */
-                Alerts::add_success(language()->account->success_message->account_updated);
+                Alerts::add_success(l('account.success_message.account_updated'));
 
                 /* Check for an email address change */
                 if($_POST['email'] != $this->user->email) {
 
-                    if(settings()->email_confirmation) {
+                    if(settings()->users->email_confirmation) {
                         $email_activation_code = md5($_POST['email'] . microtime());
 
                         /* Prepare the email */
                         $email_template = get_email_template(
                             [],
-                            language()->global->emails->user_pending_email->subject,
+                            l('global.emails.user_pending_email.subject'),
                             [
                                 '{{ACTIVATION_LINK}}' => url('activate-user?email=' . md5($_POST['email']) . '&email_activation_code=' . $email_activation_code . '&type=user_pending_email'),
                                 '{{NAME}}' => $this->user->name,
                                 '{{CURRENT_EMAIL}}' => $this->user->email,
                                 '{{NEW_EMAIL}}' => $_POST['email']
                             ],
-                            language()->global->emails->user_pending_email->body
+                            l('global.emails.user_pending_email.body')
                         );
 
                         send_mail($_POST['email'], $email_template->subject, $email_template->body);
@@ -150,7 +150,7 @@ class Account extends Controller {
                             'email_activation_code' => $email_activation_code,
                         ]);
 
-                        Alerts::add_info(language()->account->info_message->user_pending_email);
+                        Alerts::add_info(l('account.info_message.user_pending_email'));
 
                     } else {
 
@@ -173,7 +173,7 @@ class Account extends Controller {
                     session_start();
 
                     /* Set a nice success message */
-                    Alerts::add_success(language()->account->success_message->password_updated);
+                    Alerts::add_success(l('account.success_message.password_updated'));
 
                     redirect('login');
                 }

@@ -1,36 +1,41 @@
 <?php defined('ALTUMCODE') || die() ?>
 
-<div class="d-flex justify-content-between mb-4">
-    <h1 class="h3"><i class="fa fa-fw fa-xs fa-bell text-primary-900 mr-2"></i> <?= language()->admin_notifications->header ?></h1>
+<div class="d-flex flex-column flex-md-row justify-content-between mb-4">
+    <h1 class="h3"><i class="fa fa-fw fa-xs fa-bell text-primary-900 mr-2"></i> <?= l('admin_notifications.header') ?></h1>
 
-    <div class="col-auto d-flex">
+    <div class="d-flex position-relative">
         <div class="ml-3">
             <div class="dropdown">
-                <button type="button" class="btn btn-outline-secondary dropdown-toggle-simple" data-toggle="dropdown" data-boundary="viewport" title="<?= language()->global->export ?>">
+                <button type="button" class="btn btn-outline-secondary dropdown-toggle-simple" data-toggle="dropdown" data-boundary="viewport" title="<?= l('global.export') ?>">
                     <i class="fa fa-fw fa-sm fa-download"></i>
                 </button>
 
-                <div class="dropdown-menu  dropdown-menu-right">
+                <div class="dropdown-menu dropdown-menu-right d-print-none">
                     <a href="<?= url('admin/notifications?' . $data->filters->get_get() . '&export=csv') ?>" target="_blank" class="dropdown-item">
-                        <i class="fa fa-fw fa-sm fa-file-csv mr-1"></i> <?= language()->global->export_csv ?>
+                        <i class="fa fa-fw fa-sm fa-file-csv mr-1"></i> <?= l('global.export_csv') ?>
                     </a>
                     <a href="<?= url('admin/notifications?' . $data->filters->get_get() . '&export=json') ?>" target="_blank" class="dropdown-item">
-                        <i class="fa fa-fw fa-sm fa-file-code mr-1"></i> <?= language()->global->export_json ?>
+                        <i class="fa fa-fw fa-sm fa-file-code mr-1"></i> <?= l('global.export_json') ?>
                     </a>
+                    <button type="button" onclick="window.print();" class="dropdown-item">
+                        <i class="fa fa-fw fa-sm fa-file-pdf mr-1"></i> <?= l('global.export_pdf') ?>
+                    </button>
                 </div>
             </div>
         </div>
 
         <div class="ml-3">
             <div class="dropdown">
-                <button type="button" class="btn <?= count($data->filters->get) ? 'btn-outline-primary' : 'btn-outline-secondary' ?> filters-button dropdown-toggle-simple" data-toggle="dropdown" data-boundary="viewport"><i class="fa fa-fw fa-sm fa-filter"></i></button>
+                <button type="button" class="btn <?= count($data->filters->get) ? 'btn-outline-primary' : 'btn-outline-secondary' ?> filters-button dropdown-toggle-simple" data-toggle="dropdown" data-boundary="viewport" title="<?= l('global.filters.header') ?>">
+                    <i class="fa fa-fw fa-sm fa-filter"></i>
+                </button>
 
                 <div class="dropdown-menu dropdown-menu-right filters-dropdown">
                     <div class="dropdown-header d-flex justify-content-between">
-                        <span class="h6 m-0"><?= language()->global->filters->header ?></span>
+                        <span class="h6 m-0"><?= l('global.filters.header') ?></span>
 
                         <?php if(count($data->filters->get)): ?>
-                            <a href="<?= url('admin/notifications') ?>" class="text-muted"><?= language()->global->filters->reset ?></a>
+                            <a href="<?= url('admin/notifications') ?>" class="text-muted"><?= l('global.filters.reset') ?></a>
                         <?php endif ?>
                     </div>
 
@@ -38,56 +43,56 @@
 
                     <form action="" method="get" role="form">
                         <div class="form-group px-4">
-                            <label for="filters_search" class="small"><?= language()->global->filters->search ?></label>
+                            <label for="filters_search" class="small"><?= l('global.filters.search') ?></label>
                             <input type="search" name="search" id="filters_search" class="form-control form-control-sm" value="<?= $data->filters->search ?>" />
                         </div>
 
                         <div class="form-group px-4">
-                            <label for="filters_search_by" class="small"><?= language()->global->filters->search_by ?></label>
+                            <label for="filters_search_by" class="small"><?= l('global.filters.search_by') ?></label>
                             <select name="search_by" id="filters_search_by" class="form-control form-control-sm">
-                                <option value="name" <?= $data->filters->search_by == 'name' ? 'selected="selected"' : null ?>><?= language()->admin_notifications->filters->search_by_name ?></option>
+                                <option value="name" <?= $data->filters->search_by == 'name' ? 'selected="selected"' : null ?>><?= l('admin_notifications.filters.search_by_name') ?></option>
                             </select>
                         </div>
 
                         <div class="form-group px-4">
-                            <label for="filters_is_enabled" class="small"><?= language()->global->filters->status ?></label>
+                            <label for="filters_is_enabled" class="small"><?= l('global.filters.status') ?></label>
                             <select name="is_enabled" id="filters_is_enabled" class="form-control form-control-sm">
-                                <option value=""><?= language()->global->filters->all ?></option>
-                                <option value="1" <?= isset($data->filters->filters['is_enabled']) && $data->filters->filters['is_enabled'] == '1' ? 'selected="selected"' : null ?>><?= language()->global->active ?></option>
-                                <option value="0" <?= isset($data->filters->filters['is_enabled']) && $data->filters->filters['is_enabled'] == '0' ? 'selected="selected"' : null ?>><?= language()->global->disabled ?></option>
+                                <option value=""><?= l('global.filters.all') ?></option>
+                                <option value="1" <?= isset($data->filters->filters['is_enabled']) && $data->filters->filters['is_enabled'] == '1' ? 'selected="selected"' : null ?>><?= l('global.active') ?></option>
+                                <option value="0" <?= isset($data->filters->filters['is_enabled']) && $data->filters->filters['is_enabled'] == '0' ? 'selected="selected"' : null ?>><?= l('global.disabled') ?></option>
                             </select>
                         </div>
 
                         <div class="form-group px-4">
-                            <label for="filters_type" class="small"><?= language()->admin_notifications->filters->type ?></label>
+                            <label for="filters_type" class="small"><?= l('admin_notifications.filters.type') ?></label>
                             <select name="type" id="filters_type" class="form-control form-control-sm">
-                                <option value=""><?= language()->global->filters->all ?></option>
+                                <option value=""><?= l('global.filters.all') ?></option>
                                 <?php foreach(\Altum\Notification::get_config() as $notification_type => $notification): ?>
                                     <option value="<?= $notification_type ?>" <?= isset($data->filters->filters['type']) && $data->filters->filters['type'] == $notification_type ? 'selected="selected"' : null ?>>
-                                        <?= language()->notification->{mb_strtolower($notification_type)}->name ?>
+                                        <?= l('notification.' . mb_strtolower($notification_type) . '.name') ?>
                                     </option>
                                 <?php endforeach ?>
                             </select>
                         </div>
 
                         <div class="form-group px-4">
-                            <label for="filters_order_by" class="small"><?= language()->global->filters->order_by ?></label>
+                            <label for="filters_order_by" class="small"><?= l('global.filters.order_by') ?></label>
                             <select name="order_by" id="filters_order_by" class="form-control form-control-sm">
-                                <option value="datetime" <?= $data->filters->order_by == 'datetime' ? 'selected="selected"' : null ?>><?= language()->global->filters->order_by_datetime ?></option>
-                                <option value="name" <?= $data->filters->order_by == 'name' ? 'selected="selected"' : null ?>><?= language()->admin_notifications->filters->order_by_name ?></option>
+                                <option value="datetime" <?= $data->filters->order_by == 'datetime' ? 'selected="selected"' : null ?>><?= l('global.filters.order_by_datetime') ?></option>
+                                <option value="name" <?= $data->filters->order_by == 'name' ? 'selected="selected"' : null ?>><?= l('admin_notifications.filters.order_by_name') ?></option>
                             </select>
                         </div>
 
                         <div class="form-group px-4">
-                            <label for="filters_order_type" class="small"><?= language()->global->filters->order_type ?></label>
+                            <label for="filters_order_type" class="small"><?= l('global.filters.order_type') ?></label>
                             <select name="order_type" id="filters_order_type" class="form-control form-control-sm">
-                                <option value="ASC" <?= $data->filters->order_type == 'ASC' ? 'selected="selected"' : null ?>><?= language()->global->filters->order_type_asc ?></option>
-                                <option value="DESC" <?= $data->filters->order_type == 'DESC' ? 'selected="selected"' : null ?>><?= language()->global->filters->order_type_desc ?></option>
+                                <option value="ASC" <?= $data->filters->order_type == 'ASC' ? 'selected="selected"' : null ?>><?= l('global.filters.order_type_asc') ?></option>
+                                <option value="DESC" <?= $data->filters->order_type == 'DESC' ? 'selected="selected"' : null ?>><?= l('global.filters.order_type_desc') ?></option>
                             </select>
                         </div>
 
                         <div class="form-group px-4">
-                            <label for="filters_results_per_page" class="small"><?= language()->global->filters->results_per_page ?></label>
+                            <label for="filters_results_per_page" class="small"><?= l('global.filters.results_per_page') ?></label>
                             <select name="results_per_page" id="filters_results_per_page" class="form-control form-control-sm">
                                 <?php foreach($data->filters->allowed_results_per_page as $key): ?>
                                     <option value="<?= $key ?>" <?= $data->filters->results_per_page == $key ? 'selected="selected"' : null ?>><?= $key ?></option>
@@ -96,7 +101,7 @@
                         </div>
 
                         <div class="form-group px-4 mt-4">
-                            <button type="submit" name="submit" class="btn btn-sm btn-primary btn-block"><?= language()->global->submit ?></button>
+                            <button type="submit" name="submit" class="btn btn-sm btn-primary btn-block"><?= l('global.submit') ?></button>
                         </div>
                     </form>
 
@@ -105,19 +110,19 @@
         </div>
 
         <div class="ml-3">
-            <button id="bulk_enable" type="button" class="btn btn-outline-secondary" data-toggle="tooltip" title="<?= language()->global->bulk_actions ?>"><i class="fa fa-fw fa-sm fa-list"></i></button>
+            <button id="bulk_enable" type="button" class="btn btn-outline-secondary" data-toggle="tooltip" title="<?= l('global.bulk_actions') ?>"><i class="fa fa-fw fa-sm fa-list"></i></button>
 
             <div id="bulk_group" class="btn-group d-none" role="group">
                 <div class="btn-group" role="group">
                     <button id="bulk_actions" type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown" data-boundary="viewport" aria-haspopup="true" aria-expanded="false">
-                        <?= language()->global->bulk_actions ?> <span id="bulk_counter" class="d-none"></span>
+                        <?= l('global.bulk_actions') ?> <span id="bulk_counter" class="d-none"></span>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="bulk_actions">
-                        <a href="#" class="dropdown-item" data-toggle="modal" data-target="#bulk_delete_modal"><?= language()->global->delete ?></a>
+                        <a href="#" class="dropdown-item" data-toggle="modal" data-target="#bulk_delete_modal"><?= l('global.delete') ?></a>
                     </div>
                 </div>
 
-                <button id="bulk_disable" type="button" class="btn btn-outline-secondary" data-toggle="tooltip" title="<?= language()->global->close ?>"><i class="fa fa-fw fa-times"></i></button>
+                <button id="bulk_disable" type="button" class="btn btn-outline-secondary" data-toggle="tooltip" title="<?= l('global.close') ?>"><i class="fa fa-fw fa-times"></i></button>
             </div>
         </div>
 
@@ -140,10 +145,10 @@
                     <label class="custom-control-label" for="bulk_select_all"></label>
                 </div>
             </th>
-            <th><?= language()->admin_notifications->table->user ?></th>
-            <th><?= language()->admin_notifications->table->notification ?></th>
-            <th><?= language()->admin_notifications->table->status ?></th>
-            <th><?= language()->admin_notifications->table->datetime ?></th>
+            <th><?= l('admin_notifications.table.user') ?></th>
+            <th><?= l('admin_notifications.table.notification') ?></th>
+            <th><?= l('admin_notifications.table.status') ?></th>
+            <th><?= l('admin_notifications.table.datetime') ?></th>
             <th></th>
         </tr>
         </thead>
@@ -157,7 +162,7 @@
                         <label class="custom-control-label" for="selected_notification_id_<?= $row->notification_id ?>"></label>
                     </div>
                 </td>
-                <td>
+                <td class="text-nowrap">
                     <div class="d-flex flex-column">
                         <div>
                             <a href="<?= url('admin/user-view/' . $row->user_id) ?>"><?= $row->user_name ?></a>
@@ -166,30 +171,32 @@
                         <span class="text-muted"><?= $row->user_email ?></span>
                     </div>
                 </td>
-                <td>
+                <td class="text-nowrap">
                     <div class="d-flex flex-column">
                         <span>
                             <?= $row->name ?>
                         </span>
                         <div class="text-muted">
-                            <?= language()->notification->{mb_strtolower($row->type)}->name ?>
+                            <?= l('notification.' . mb_strtolower($row->type) . '.name') ?>
                         </div>
                     </div>
                 </td>
-                <td>
+                <td class="text-nowrap">
                     <?php if($row->is_enabled == 0): ?>
-                    <span class="badge badge-pill badge-warning"><i class="fa fa-fw fa-eye-slash"></i> <?= language()->global->disabled ?>
+                    <span class="badge badge-pill badge-warning"><i class="fa fa-fw fa-eye-slash"></i> <?= l('global.disabled') ?>
                     <?php elseif($row->is_enabled == 1): ?>
-                    <span class="badge badge-pill badge-success"><i class="fa fa-fw fa-check"></i> <?= language()->global->active ?>
+                    <span class="badge badge-pill badge-success"><i class="fa fa-fw fa-check"></i> <?= l('global.active') ?>
                     <?php endif ?>
                 </td>
-                <td>
+                <td class="text-nowrap">
                     <span class="text-muted" data-toggle="tooltip" title="<?= \Altum\Date::get($row->datetime) ?>">
                         <?= \Altum\Date::get($row->datetime, 2) ?>
                     </span>
                 </td>
                 <td>
-                    <?= include_view(THEME_PATH . 'views/admin/notifications/admin_notification_dropdown_button.php', ['id' => $row->notification_id]) ?>
+                    <div class="d-flex justify-content-end">
+                        <?= include_view(THEME_PATH . 'views/admin/notifications/admin_notification_dropdown_button.php', ['id' => $row->notification_id]) ?>
+                    </div>
                 </td>
             </tr>
         <?php endforeach ?>

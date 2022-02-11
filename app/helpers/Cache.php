@@ -16,7 +16,7 @@ class Cache {
 
     public static function initialize($force_enable = false) {
 
-        $driver = $force_enable ? 'Files' : (DEBUG ? 'Devnull' : 'Files');
+        $driver = $force_enable ? 'Files' : (CACHE ? 'Files' : 'Devnull');
 
         /* Cache adapter for phpFastCache */
         if($driver == 'Files') {

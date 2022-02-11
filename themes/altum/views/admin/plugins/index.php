@@ -3,7 +3,7 @@
 <?php if(count(\Altum\Plugin::$plugins)): ?>
 
     <div class="d-flex flex-column flex-md-row justify-content-between mb-4">
-        <h1 class="h3"><i class="fa fa-fw fa-xs fa-puzzle-piece text-primary-900 mr-2"></i> <?= language()->admin_plugins->header ?></h1>
+        <h1 class="h3"><i class="fa fa-fw fa-xs fa-puzzle-piece text-primary-900 mr-2"></i> <?= l('admin_plugins.header') ?></h1>
     </div>
 
     <?= \Altum\Alerts::output_alerts() ?>
@@ -12,10 +12,10 @@
         <table class="table table-custom">
             <thead>
             <tr>
-                <th style="width: 50%"><?= language()->admin_plugins->table->plugin ?></th>
-                <th style="width: 20%"><?= language()->admin_plugins->table->author ?></th>
-                <th style="width: 20%"><?= language()->admin_plugins->table->status ?></th>
-                <th style="width: 10%"></th>
+                <th><?= l('admin_plugins.table.plugin') ?></th>
+                <th><?= l('admin_plugins.table.author') ?></th>
+                <th><?= l('admin_plugins.table.status') ?></th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -44,21 +44,23 @@
                     </td>
 
                     <td>
-                        <?php if($plugin->status === -2): ?>
-                            <a href="<?= $plugin->url ?>" target="_blank" rel="nofollow noreferrer" class="btn btn-sm btn-success"><?= language()->admin_plugins->status_inexistent ?></a>
-                        <?php elseif($plugin->status === -1): ?>
-                            <span class="badge badge-light"><?= language()->admin_plugins->status_uninstalled ?></span>
-                        <?php elseif($plugin->status === 0): ?>
-                            <span class="badge badge-secondary"><?= language()->admin_plugins->status_disabled ?></span>
-                        <?php elseif($plugin->status === 1): ?>
-                            <span class="badge badge-success"><?= language()->admin_plugins->status_active ?></span>
+                        <?php if($plugin->status === -2 || $plugin->status == 'inexistent'): ?>
+                            <a href="<?= $plugin->url ?>" target="_blank" rel="nofollow noreferrer" class="btn btn-sm btn-success"><?= l('admin_plugins.status_inexistent') ?></a>
+                        <?php elseif($plugin->status === -1 || $plugin->status == 'uninstalled'): ?>
+                            <span class="badge badge-light"><?= l('admin_plugins.status_uninstalled') ?></span>
+                        <?php elseif($plugin->status === 0 || $plugin->status == 'installed'): ?>
+                            <span class="badge badge-secondary"><?= l('admin_plugins.status_disabled') ?></span>
+                        <?php elseif($plugin->status === 1 || $plugin->status == 'active'): ?>
+                            <span class="badge badge-success"><?= l('admin_plugins.status_active') ?></span>
                         <?php endif ?>
                     </td>
 
                     <td>
-                        <?php if($plugin->actions && $plugin->status !== -2): ?>
-                            <?= include_view(THEME_PATH . 'views/admin/plugins/admin_plugin_dropdown_button.php', ['id' => $plugin->plugin_id, 'status' => $plugin->status]) ?>
-                        <?php endif ?>
+                        <div class="d-flex justify-content-end">
+                            <?php if($plugin->actions && ($plugin->status !== -2 && $plugin->status != 'inexistent')): ?>
+                                <?= include_view(THEME_PATH . 'views/admin/plugins/admin_plugin_dropdown_button.php', ['id' => $plugin->plugin_id, 'status' => $plugin->status]) ?>
+                            <?php endif ?>
+                        </div>
                     </td>
                 </tr>
 
@@ -75,8 +77,8 @@
         </div>
 
         <div class="d-flex flex-column">
-            <h1 class="h3"><?= language()->admin_plugins->header_no_data ?></h1>
-            <p class="text-muted"><?= language()->admin_plugins->subheader_no_data ?></p>
+            <h1 class="h3"><?= l('admin_plugins.header_no_data') ?></h1>
+            <p class="text-muted"><?= l('admin_plugins.subheader_no_data') ?></p>
 
         </div>
     </div>

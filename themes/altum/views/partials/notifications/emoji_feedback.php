@@ -7,7 +7,7 @@
         <div class="altumcode-emoji-feedback-header">
             <p class="altumcode-emoji-feedback-title" style="color: <?= $notification->settings->title_color ?>"><?= $notification->settings->title ?></p>
 
-            <button class="altumcode-close"></button>
+            <button class="altumcode-close">&#10006;</button>
         </div>
 
         <div class="altumcode-emoji-feedback-emojis">

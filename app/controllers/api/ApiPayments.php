@@ -40,7 +40,8 @@ class ApiPayments extends Controller {
 
         /* Prepare the filtering system */
         $filters = (new \Altum\Filters([], [], []));
-        $filters->set_default_order_by('id', 'DESC');
+        $filters->set_default_order_by('id', settings()->main->default_order_type);
+        $filters->set_default_results_per_page(settings()->main->default_results_per_page);
 
         /* Prepare the paginator */
         $total_rows = database()->query("SELECT COUNT(*) AS `total` FROM `payments` WHERE `user_id` = {$this->api_user->user_id}")->fetch_object()->total ?? 0;
@@ -110,7 +111,7 @@ class ApiPayments extends Controller {
         /* We haven't found the resource */
         if(!$payment) {
             Response::jsonapi_error([[
-                'title' => language()->api->error_message->not_found,
+                'title' => l('api.error_message.not_found'),
                 'status' => '404'
             ]], null, 404);
         }

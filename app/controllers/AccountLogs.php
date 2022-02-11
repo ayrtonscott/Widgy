@@ -20,7 +20,8 @@ class AccountLogs extends Controller {
 
         /* Prepare the filtering system */
         $filters = (new \Altum\Filters(['user_id'], ['type', 'ip', 'country_code', 'device_type'], ['datetime']));
-        $filters->set_default_order_by('id', 'DESC');
+        $filters->set_default_order_by('id', settings()->main->default_order_type);
+        $filters->set_default_results_per_page(settings()->main->default_results_per_page);
 
         /* Prepare the paginator */
         $total_rows = database()->query("SELECT COUNT(*) AS `total` FROM `users_logs` WHERE `user_id` = {$this->user->user_id} {$filters->get_sql_where()}")->fetch_object()->total ?? 0;

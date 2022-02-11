@@ -28,7 +28,7 @@ class AccountApi extends Controller {
 
             /* Check for any errors */
             if(!Csrf::check()) {
-                Alerts::add_error(language()->global->error_message->invalid_csrf_token);
+                Alerts::add_error(l('global.error_message.invalid_csrf_token'));
             }
 
             if(!Alerts::has_field_errors() && !Alerts::has_errors()) {
@@ -37,7 +37,7 @@ class AccountApi extends Controller {
                 db()->where('user_id', $this->user->user_id)->update('users', ['api_key' => $api_key]);
 
                 /* Set a nice success message */
-                Alerts::add_success(language()->account_api->success_message);
+                Alerts::add_success(l('account_api.success_message'));
 
                 /* Clear the cache */
                 \Altum\Cache::$adapter->deleteItemsByTag('user_id=' . $this->user->user_id);

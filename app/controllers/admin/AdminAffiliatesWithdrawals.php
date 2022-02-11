@@ -18,7 +18,8 @@ class AdminAffiliatesWithdrawals extends Controller {
 
         /* Prepare the filtering system */
         $filters = (new \Altum\Filters(['is_paid', 'user_id'], [], ['amount', 'datetime']));
-        $filters->set_default_order_by('affiliate_withdrawal_id', 'DESC');
+        $filters->set_default_order_by('affiliate_withdrawal_id', settings()->main->default_order_type);
+        $filters->set_default_results_per_page(settings()->main->default_results_per_page);
 
         /* Prepare the paginator */
         $total_rows = database()->query("SELECT COUNT(*) AS `total` FROM `affiliates_withdrawals` WHERE 1 = 1 {$filters->get_sql_where()}")->fetch_object()->total ?? 0;
@@ -72,7 +73,7 @@ class AdminAffiliatesWithdrawals extends Controller {
         //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
         if(!Csrf::check('global_token')) {
-            Alerts::add_error(language()->global->error_message->invalid_csrf_token);
+            Alerts::add_error(l('global.error_message.invalid_csrf_token'));
         }
 
         if(!Alerts::has_field_errors() && !Alerts::has_errors()) {
@@ -81,7 +82,7 @@ class AdminAffiliatesWithdrawals extends Controller {
             db()->where('affiliate_withdrawal_id', $affiliate_withdrawal_id)->delete('affiliates_withdrawals');
 
             /* Set a nice success message */
-            Alerts::add_success(language()->global->success_message->delete2);
+            Alerts::add_success(l('global.success_message.delete2'));
 
         }
 
@@ -95,7 +96,7 @@ class AdminAffiliatesWithdrawals extends Controller {
         //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
         if(!Csrf::check('global_token')) {
-            Alerts::add_error(language()->global->error_message->invalid_csrf_token);
+            Alerts::add_error(l('global.error_message.invalid_csrf_token'));
             redirect('admin/affiliates-withdrawals');
         }
 
@@ -114,26 +115,23 @@ class AdminAffiliatesWithdrawals extends Controller {
             /* Update the affiliate withdrawal */
             db()->where('affiliate_withdrawal_id', $affiliate_withdrawal_id)->update('affiliates_withdrawals', ['is_paid' => 1]);
 
-            /* Get the language for the user */
-            $language = language($user->language);
-
             /* Prepare the email */
             $email_template = get_email_template(
                 [],
-                $language->global->emails->user_affiliate_withdrawal_approved->subject,
+                l('global.emails.user_affiliate_withdrawal_approved.subject', $user->language),
                 [
                     '{{NAME}}' => $user->name,
                     '{{AMOUNT}}' => nr($affiliate_withdrawal->amount, 2),
                     '{{CURRENCY}}' => settings()->payment->currency,
                 ],
-                $language->global->emails->user_affiliate_withdrawal_approved->body
+                l('global.emails.user_affiliate_withdrawal_approved.body', $user->language)
             );
 
             /* Send email notification */
             send_mail($user->email, $email_template->subject, $email_template->body);
 
             /* Set a nice success message */
-            Alerts::add_success(language()->admin_affiliate_withdrawal_approve_modal->success_message);
+            Alerts::add_success(l('admin_affiliate_withdrawal_approve_modal.success_message'));
 
         }
 

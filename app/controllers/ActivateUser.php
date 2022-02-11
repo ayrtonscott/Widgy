@@ -67,7 +67,7 @@ class ActivateUser extends Controller {
                 $_SESSION['user_id'] = $user->user_id;
 
                 /* Set a nice success message */
-                Alerts::add_success(language()->activate_user->user_activation);
+                Alerts::add_success(l('activate_user.user_activation'));
 
                 Logger::users($user->user_id, 'login.success');
 
@@ -98,7 +98,7 @@ class ActivateUser extends Controller {
                 Logger::users($user->user_id, 'email_change.success');
 
                 /* Set a nice success message */
-                Alerts::add_success(language()->activate_user->user_pending_email);
+                Alerts::add_success(l('activate_user.user_pending_email'));
 
                 /* Clear the cache */
                 \Altum\Cache::$adapter->deleteItemsByTag('user_id=' . $user->user_id);

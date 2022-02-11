@@ -3,24 +3,24 @@
 <div class="container">
     <nav aria-label="breadcrumb">
         <ol class="custom-breadcrumbs small">
-            <li><a href="<?= url() ?>"><?= language()->index->breadcrumb ?></a> <i class="fa fa-fw fa-angle-right"></i></li>
-            <li class="active" aria-current="page"><?= language()->api_documentation->breadcrumb ?></li>
+            <li><a href="<?= url() ?>"><?= l('index.breadcrumb') ?></a> <i class="fa fa-fw fa-angle-right"></i></li>
+            <li class="active" aria-current="page"><?= l('api_documentation.breadcrumb') ?></li>
         </ol>
     </nav>
 
     <div class="row mb-5">
         <div class="col-12 col-lg-7 mb-4 mb-lg-0">
-            <h1 class="h4"><?= language()->api_documentation->header ?></h1>
-            <p class="text-muted"><?= language()->api_documentation->subheader ?></p>
+            <h1 class="h4"><?= l('api_documentation.header') ?></h1>
+            <p class="text-muted"><?= l('api_documentation.subheader') ?></p>
         </div>
 
         <div class="col-12 col-lg-4 offset-lg-1">
             <div class="mb-3">
-                <a href="<?= url('account-api') ?>" target="_blank" class="btn btn-block btn-outline-primary"><?= language()->api_documentation->api_key ?></a>
+                <a href="<?= url('account-api') ?>" target="_blank" class="btn btn-block btn-outline-primary"><?= l('api_documentation.api_key') ?></a>
             </div>
 
             <div class="form-group">
-                <label for="base_url"><?= language()->api_documentation->base_url ?></label>
+                <label for="base_url"><?= l('api_documentation.base_url') ?></label>
                 <input type="text" id="base_url" value="<?= SITE_URL . 'api' ?>" class="form-control" readonly="readonly" />
             </div>
         </div>
@@ -28,12 +28,12 @@
 
     <div class="mb-5">
         <div class="mb-4">
-            <h2 class="h5"><?= language()->api_documentation->authentication->header ?></h2>
-            <p class="text-muted"><?= language()->api_documentation->authentication->subheader ?></p>
+            <h2 class="h5"><?= l('api_documentation.authentication.header') ?></h2>
+            <p class="text-muted"><?= l('api_documentation.authentication.subheader') ?></p>
         </div>
 
         <div class="form-group">
-            <label><?= language()->api_documentation->example ?></label>
+            <label><?= l('api_documentation.example') ?></label>
             <div class="card bg-gray-50 border-0">
                 <div class="card-body">
                     curl --request GET \<br />
@@ -54,7 +54,7 @@
                 </div>
 
                 <div class="card-body">
-                    <?= language()->api_documentation->user->header ?>
+                    <?= l('api_documentation.user.header') ?>
                 </div>
             </div>
         </div>
@@ -68,7 +68,7 @@
                 </div>
 
                 <div class="card-body">
-                    <?= language()->api_documentation->campaigns->header ?>
+                    <?= l('api_documentation.campaigns.header') ?>
                 </div>
             </div>
         </div>
@@ -82,7 +82,7 @@
                 </div>
 
                 <div class="card-body">
-                    <?= language()->api_documentation->notifications->header ?>
+                    <?= l('api_documentation.notifications.header') ?>
                 </div>
             </div>
         </div>
@@ -96,7 +96,7 @@
                 </div>
 
                 <div class="card-body">
-                    <?= language()->api_documentation->payments->header ?>
+                    <?= l('api_documentation.payments.header') ?>
                 </div>
             </div>
         </div>
@@ -110,7 +110,7 @@
                 </div>
 
                 <div class="card-body">
-                    <?= language()->api_documentation->users_logs->header ?>
+                    <?= l('api_documentation.users_logs.header') ?>
                 </div>
             </div>
         </div>

@@ -29,10 +29,26 @@ class Alerts {
             $has_errors = false;
 
             foreach($key as $field_name) {
-                if(isset($_SESSION['field_errors'][$field_name]) && !empty($_SESSION['field_errors'][$field_name])) {
-                    $has_errors = true;
-                    break;
+                /* Regex check if needed */
+                if(strpos($field_name, '*') !== false) {
+
+                    foreach(($_SESSION['field_errors'] ?? []) as $session_field_error_key => $session_field_error_value) {
+                        if(mb_ereg($field_name, $session_field_error_key) && !empty($session_field_error_value)) {
+                            $has_errors = true;
+                            break;
+                        }
+                    }
+
                 }
+
+                /* Exact checks */
+                else {
+                    if(isset($_SESSION['field_errors'][$field_name]) && !empty($_SESSION['field_errors'][$field_name])) {
+                        $has_errors = true;
+                        break;
+                    }
+                }
+
             }
 
             return $has_errors;
@@ -56,6 +72,14 @@ class Alerts {
         }
 
         return $output;
+    }
+
+    public static function clear_field_errors($key = null) {
+        if($key) {
+            unset($_SESSION['field_errors'][$key]);
+        } else {
+            unset($_SESSION['field_errors']);
+        }
     }
 
     /* Session alerts */
@@ -125,5 +149,9 @@ class Alerts {
 
     public static function has_successes($key = null) {
         return self::has('success', $key);
+    }
+
+    public static function clear() {
+
     }
 }

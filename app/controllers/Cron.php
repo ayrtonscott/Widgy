@@ -66,13 +66,13 @@ class Cron extends Controller {
     }
 
     private function users_deletion_reminder() {
-        if(!settings()->main->auto_delete_inactive_users) {
+        if(!settings()->users->auto_delete_inactive_users) {
             return;
         }
 
         /* Determine when to send the email reminder */
-        $days_until_deletion = settings()->main->user_deletion_reminder;
-        $days = settings()->main->auto_delete_inactive_users - $days_until_deletion;
+        $days_until_deletion = settings()->users->user_deletion_reminder;
+        $days = settings()->users->auto_delete_inactive_users - $days_until_deletion;
         $past_date = (new \DateTime())->modify('-' . $days . ' days')->format('Y-m-d H:i:s');
 
         /* Get the users that need to be reminded */
@@ -83,24 +83,21 @@ class Cron extends Controller {
         /* Go through each result */
         while($user = $result->fetch_object()) {
 
-            /* Get the language for the user */
-            $language = language($user->language);
-
             /* Prepare the email */
             $email_template = get_email_template(
                 [
                     '{{DAYS_UNTIL_DELETION}}' => $days_until_deletion,
                 ],
-                $language->global->emails->user_deletion_reminder->subject,
+                l('global.emails.user_deletion_reminder.subject', $user->language),
                 [
                     '{{DAYS_UNTIL_DELETION}}' => $days_until_deletion,
                     '{{LOGIN_LINK}}' => url('login'),
                     '{{NAME}}' => $user->name,
                 ],
-                $language->global->emails->user_deletion_reminder->body
+                l('global.emails.user_deletion_reminder.body', $user->language)
             );
 
-            if(settings()->main->user_deletion_reminder) {
+            if(settings()->users->user_deletion_reminder) {
                 send_mail($user->email, $email_template->subject, $email_template->body);
             }
 
@@ -108,19 +105,19 @@ class Cron extends Controller {
             db()->where('user_id', $user->user_id)->update('users', ['user_deletion_reminder' => 1]);
 
             if(DEBUG) {
-                if(settings()->main->user_deletion_reminder) echo sprintf('User deletion reminder email sent for user_id %s', $user->user_id);
+                if(settings()->users->user_deletion_reminder) echo sprintf('User deletion reminder email sent for user_id %s', $user->user_id);
             }
         }
 
     }
 
     private function auto_delete_inactive_users() {
-        if(!settings()->main->auto_delete_inactive_users) {
+        if(!settings()->users->auto_delete_inactive_users) {
             return;
         }
 
         /* Determine what users to delete */
-        $days = settings()->main->auto_delete_inactive_users;
+        $days = settings()->users->auto_delete_inactive_users;
         $past_date = (new \DateTime())->modify('-' . $days . ' days')->format('Y-m-d H:i:s');
 
         /* Get the users that need to be reminded */
@@ -131,19 +128,16 @@ class Cron extends Controller {
         /* Go through each result */
         while($user = $result->fetch_object()) {
 
-            /* Get the language for the user */
-            $language = language($user->language);
-
             /* Prepare the email */
             $email_template = get_email_template(
                 [],
-                $language->global->emails->auto_delete_inactive_users->subject,
+                l('global.emails.auto_delete_inactive_users.subject', $user->language),
                 [
-                    '{{INACTIVITY_DAYS}}' => settings()->main->auto_delete_inactive_users,
+                    '{{INACTIVITY_DAYS}}' => settings()->users->auto_delete_inactive_users,
                     '{{REGISTER_LINK}}' => url('register'),
                     '{{NAME}}' => $user->name,
                 ],
-                $language->global->emails->auto_delete_inactive_users->body
+                l('global.emails.auto_delete_inactive_users.body', $user->language)
             );
 
             send_mail($user->email, $email_template->subject, $email_template->body);
@@ -214,7 +208,7 @@ class Cron extends Controller {
                 `status` = 1
                 AND `plan_id` <> 'free'
                 AND `plan_expiry_reminder` = '0'
-                AND (`payment_subscription_id` IS NOT NULL OR `payment_subscription_id` <> '')
+                AND (`payment_subscription_id` IS NULL OR `payment_subscription_id` = '')
 				AND '{$future_date}' > `plan_expiration_date`
             LIMIT 25
         ");
@@ -225,22 +219,19 @@ class Cron extends Controller {
             /* Determine the exact days until expiration */
             $days_until_expiration = (new \DateTime($user->plan_expiration_date))->diff((new \DateTime()))->days;
 
-            /* Get the language for the user */
-            $language = language($user->language);
-
             /* Prepare the email */
             $email_template = get_email_template(
                 [
                     '{{DAYS_UNTIL_EXPIRATION}}' => $days_until_expiration,
                 ],
-                $language->global->emails->user_plan_expiry_reminder->subject,
+                l('global.emails.user_plan_expiry_reminder.subject', $user->language),
                 [
                     '{{DAYS_UNTIL_EXPIRATION}}' => $days_until_expiration,
                     '{{USER_PLAN_RENEW_LINK}}' => url('pay/' . $user->plan_id),
                     '{{NAME}}' => $user->name,
                     '{{PLAN_NAME}}' => (new \Altum\Models\Plan())->get_plan_by_id($user->plan_id)->name,
                 ],
-                $language->global->emails->user_plan_expiry_reminder->body
+                l('global.emails.user_plan_expiry_reminder.body', $user->language)
             );
 
             send_mail($user->email, $email_template->subject, $email_template->body);

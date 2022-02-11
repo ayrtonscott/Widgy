@@ -1,17 +1,16 @@
 <?php defined('ALTUMCODE') || die() ?>
 <!DOCTYPE html>
-<html lang="<?= \Altum\Language::$language_code ?>" dir="<?= language()->direction ?>" class="w-100 h-100">
+<html lang="<?= \Altum\Language::$language_code ?>" dir="<?= l('direction') ?>" class="w-100 h-100">
 <head>
     <title><?= \Altum\Title::get() ?></title>
     <base href="<?= SITE_URL; ?>">
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta http-equiv="content-language" content="<?= \Altum\Language::$language_code  ?>" />
 
     <link rel="alternate" href="<?= SITE_URL . \Altum\Routing\Router::$original_request ?>" hreflang="x-default" />
     <?php if(count(\Altum\Language::$languages) > 1): ?>
         <?php foreach(\Altum\Language::$languages as $language_code => $language_name): ?>
-            <?php if(settings()->default_language != $language_name): ?>
+            <?php if(settings()->main->default_language != $language_name): ?>
                 <link rel="alternate" href="<?= SITE_URL . $language_code . '/' . \Altum\Routing\Router::$original_request ?>" hreflang="<?= $language_code ?>" />
             <?php endif ?>
         <?php endforeach ?>
@@ -21,14 +20,15 @@
         <link href="<?= UPLOADS_FULL_URL . 'favicon/' . settings()->favicon ?>" rel="shortcut icon" />
     <?php endif ?>
 
-    <?php foreach(['admin-' . \Altum\ThemeStyle::get_file(), 'admin-custom.css'] as $file): ?>
-        <link href="<?= ASSETS_FULL_URL ?>css/<?= $file ?>?v=<?= PRODUCT_CODE ?>" rel="stylesheet" media="screen">
+    <link href="<?= ASSETS_FULL_URL . 'css/admin-' . \Altum\ThemeStyle::get_file() . '?v=' . PRODUCT_CODE ?>" id="css_theme_style" rel="stylesheet" media="screen,print">
+    <?php foreach(['admin-custom.css'] as $file): ?>
+        <link href="<?= ASSETS_FULL_URL ?>css/<?= $file ?>?v=<?= PRODUCT_CODE ?>" rel="stylesheet" media="screen,print">
     <?php endforeach ?>
 
     <?= \Altum\Event::get_content('head') ?>
 </head>
 
-<body class="<?= language()->direction == 'rtl' ? 'rtl' : null ?>" data-theme-style="<?= \Altum\ThemeStyle::get() ?>">
+<body class="<?= l('direction') == 'rtl' ? 'rtl' : null ?>" data-theme-style="<?= \Altum\ThemeStyle::get() ?>">
 <div id="admin_overlay" class="admin-overlay" style="display: none"></div>
 
 <div class="admin-container">
@@ -37,7 +37,7 @@
     <section class="admin-content altum-animate altum-animate-fill-none altum-animate-fade-in">
         <?= $this->views['admin_menu'] ?>
 
-        <div class="p-3 p-lg-5">
+        <div class="p-3 p-lg-5 position-relative">
             <?= $this->views['content'] ?>
 
             <?= $this->views['footer'] ?>

@@ -6,8 +6,8 @@
 
             <div class="modal-body">
                 <div class="d-flex justify-content-between mb-3">
-                    <h5 class="modal-title"><?= language()->campaign_delete_modal->header ?></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="<?= language()->global->close ?>">
+                    <h5 class="modal-title"><?= l('campaign_delete_modal.header') ?></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="<?= l('global.close') ?>">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -16,10 +16,10 @@
                     <input type="hidden" name="token" value="<?= \Altum\Middlewares\Csrf::get() ?>" required="required" />
                     <input type="hidden" name="campaign_id" value="" />
 
-                    <p class="text-muted"><?= language()->campaign_delete_modal->subheader ?></p>
+                    <p class="text-muted"><?= l('campaign_delete_modal.subheader') ?></p>
 
                     <div class="mt-4">
-                        <button type="submit" name="submit" class="btn btn-block btn-danger"><?= language()->global->delete ?></button>
+                        <button type="submit" name="submit" class="btn btn-block btn-danger"><?= l('global.delete') ?></button>
                     </div>
                 </form>
             </div>

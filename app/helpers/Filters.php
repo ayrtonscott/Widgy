@@ -34,7 +34,7 @@ class Filters {
         $this->allowed_filters = $allowed_filters;
         $this->allowed_order_by = $allowed_order_by;
         $this->allowed_search_by = $allowed_search_by;
-        $this->allowed_results_per_page = empty($allowed_results_per_page) ? [10, 25, 50, 100, 250] : $allowed_results_per_page;
+        $this->allowed_results_per_page = empty($allowed_results_per_page) ? [10, 25, 50, 100, 250, 500] : $allowed_results_per_page;
 
     }
 
@@ -134,7 +134,21 @@ class Filters {
     }
 
     public function set_default_order_by($order_by, $order_type) {
+
+        if(!in_array($order_type, ['ASC', 'DESC'])) {
+            $order_type = 'DESC';
+        }
+
         $this->order_by = $order_by;
         $this->order_type = $order_type;
+    }
+
+    public function set_default_results_per_page($results_per_page) {
+
+        if(!$results_per_page) {
+            $results_per_page = 25;
+        }
+
+        $this->results_per_page = $results_per_page;
     }
 }

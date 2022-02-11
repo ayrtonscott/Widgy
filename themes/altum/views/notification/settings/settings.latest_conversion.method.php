@@ -11,41 +11,41 @@ $javascript = '';
 <?php /* Basic Tab */ ?>
 <?php ob_start() ?>
     <div class="form-group">
-        <label for="settings_name"><?= language()->notification->settings->name ?></label>
+        <label for="settings_name"><?= l('notification.settings.name') ?></label>
         <input type="text" id="settings_name" name="name" class="form-control" value="<?= $data->notification->name ?>" maxlength="256" required="required" />
     </div>
 
     <div class="form-group">
-        <label for="settings_title"><?= language()->notification->settings->conversion_title ?></label>
+        <label for="settings_title"><?= l('notification.settings.conversion_title') ?></label>
         <input type="text" id="settings_title" name="title" class="form-control" value="<?= $data->notification->settings->title ?>" maxlength="256" />
-        <small class="form-text text-muted"><?= language()->notification->settings->conversion_title_help ?></small>
+        <small class="form-text text-muted"><?= l('notification.settings.conversion_title_help') ?></small>
     </div>
 
     <div class="form-group">
-        <label for="settings_description"><?= language()->notification->settings->conversion_description ?></label>
+        <label for="settings_description"><?= l('notification.settings.conversion_description') ?></label>
         <input type="text" id="settings_description" name="description" class="form-control" value="<?= $data->notification->settings->description ?>" maxlength="512" />
-        <small class="form-text text-muted"><?= language()->notification->settings->conversion_active_help ?></small>
+        <small class="form-text text-muted"><?= l('notification.settings.conversion_active_help') ?></small>
     </div>
 
     <div class="form-group">
-        <label for="settings_image"><?= language()->notification->settings->image ?></label>
+        <label for="settings_image"><?= l('notification.settings.image') ?></label>
         <input type="text" id="settings_image" name="image" class="form-control" value="<?= $data->notification->settings->image ?>" />
-        <small class="form-text text-muted"><?= language()->notification->settings->image_help ?></small>
-        <small class="form-text text-muted"><?= language()->notification->settings->conversion_active_help ?></small>
+        <small class="form-text text-muted"><?= l('notification.settings.image_help') ?></small>
+        <small class="form-text text-muted"><?= l('notification.settings.conversion_active_help') ?></small>
     </div>
 
     <div class="form-group">
-        <label for="settings_image_alt"><?= language()->notification->settings->image_alt ?></label>
+        <label for="settings_image_alt"><?= l('notification.settings.image_alt') ?></label>
         <input type="text" id="settings_image_alt" name="image_alt" class="form-control" value="<?= $data->notification->settings->image_alt ?>" maxlength="100" />
-        <small class="form-text text-muted"><?= language()->notification->settings->image_alt_help ?></small>
-        <small class="form-text text-muted"><?= language()->notification->settings->conversion_active_help ?></small>
+        <small class="form-text text-muted"><?= l('notification.settings.image_alt_help') ?></small>
+        <small class="form-text text-muted"><?= l('notification.settings.conversion_active_help') ?></small>
     </div>
 
     <div class="form-group">
-        <label for="settings_url"><?= language()->notification->settings->url ?></label>
-        <input type="url" id="settings_url" name="url" class="form-control" value="<?= $data->notification->settings->url ?>" maxlength="2048" />
-        <small class="form-text text-muted"><?= language()->notification->settings->url_help ?></small>
-        <small class="form-text text-muted"><?= language()->notification->settings->conversion_active_help ?></small>
+        <label for="settings_url"><?= l('notification.settings.url') ?></label>
+        <input type="text" id="settings_url" name="url" class="form-control" value="<?= $data->notification->settings->url ?>" maxlength="2048" />
+        <small class="form-text text-muted"><?= l('notification.settings.url_help') ?></small>
+        <small class="form-text text-muted"><?= l('notification.settings.conversion_active_help') ?></small>
     </div>
 
     <div class="custom-control custom-switch mr-3 mb-3">
@@ -57,23 +57,23 @@ $javascript = '';
                 <?= $data->notification->settings->url_new_tab ? 'checked="checked"' : null ?>
         >
 
-        <label class="custom-control-label clickable" for="settings_url_new_tab"><?= language()->notification->settings->url_new_tab ?></label>
+        <label class="custom-control-label clickable" for="settings_url_new_tab"><?= l('notification.settings.url_new_tab') ?></label>
 
         <div>
-            <small class="form-text text-muted"><?= language()->notification->settings->url_new_tab_help ?></small>
+            <small class="form-text text-muted"><?= l('notification.settings.url_new_tab_help') ?></small>
         </div>
     </div>
 
     <div class="form-group">
-        <label for="settings_conversions_count"><?= language()->notification->settings->conversions_count ?></label>
+        <label for="settings_conversions_count"><?= l('notification.settings.conversions_count') ?></label>
         <input type="text" id="settings_conversions_count" name="conversions_count" class="form-control" value="<?= $data->notification->settings->conversions_count ?>" />
-        <small class="form-text text-muted"><?= language()->notification->settings->conversions_count_help ?></small>
+        <small class="form-text text-muted"><?= l('notification.settings.conversions_count_help') ?></small>
     </div>
 
     <div class="form-group">
-        <label for="settings_in_between_delay"><?= language()->notification->settings->in_between_delay ?></label>
+        <label for="settings_in_between_delay"><?= l('notification.settings.in_between_delay') ?></label>
         <input type="text" id="settings_in_between_delay" name="in_between_delay" class="form-control" value="<?= $data->notification->settings->in_between_delay ?>" />
-        <small class="form-text text-muted"><?= language()->notification->settings->in_between_delay_help ?></small>
+        <small class="form-text text-muted"><?= l('notification.settings.in_between_delay_help') ?></small>
     </div>
 <?php $html['basic'] = ob_get_clean() ?>
 
@@ -81,7 +81,7 @@ $javascript = '';
 <?php /* Customize Tab */ ?>
 <?php ob_start() ?>
     <div class="form-group">
-        <label for="settings_title_color"><?= language()->notification->settings->title_color ?></label>
+        <label for="settings_title_color"><?= l('notification.settings.title_color') ?></label>
         <div class="input-group">
             <div class="input-group-prepend">
                 <div id="settings_title_color_pickr"></div>
@@ -91,7 +91,7 @@ $javascript = '';
     </div>
 
     <div class="form-group">
-        <label for="settings_description_color"><?= language()->notification->settings->description_color ?></label>
+        <label for="settings_description_color"><?= l('notification.settings.description_color') ?></label>
         <div class="input-group">
             <div class="input-group-prepend">
                 <div id="settings_description_color_pickr"></div>
@@ -101,7 +101,7 @@ $javascript = '';
     </div>
 
     <div class="form-group">
-        <label for="settings_background_color"><?= language()->notification->settings->background_color ?></label>
+        <label for="settings_background_color"><?= l('notification.settings.background_color') ?></label>
         <div class="input-group">
             <div class="input-group-prepend">
                 <div id="settings_background_color_pickr"></div>
@@ -111,14 +111,14 @@ $javascript = '';
     </div>
 
     <div class="form-group">
-        <label for="settings_background_pattern"><?= language()->notification->settings->background_pattern ?></label>
+        <label for="settings_background_pattern"><?= l('notification.settings.background_pattern') ?></label>
         <select class="form-control" id="settings_background_pattern" name="background_pattern">
-            <option value="" <?= $data->notification->settings->background_pattern == '' ? 'selected="selected"' : null ?>><?= language()->notification->settings->background_pattern_none ?></option>
+            <option value="" <?= $data->notification->settings->background_pattern == '' ? 'selected="selected"' : null ?>><?= l('notification.settings.background_pattern_none') ?></option>
 
             <?php $background_patterns = (require_once APP_PATH . 'includes/notifications_background_patterns.php')(); ?>
 
             <?php foreach($background_patterns as $key => $value): ?>
-                <option value="<?= $key ?>" <?= $data->notification->settings->background_pattern == $key ? 'selected="selected"' : null ?> data-value="<?= $value ?>"><?= language()->notification->settings->{'background_pattern_' . $key} ?></option>
+                <option value="<?= $key ?>" <?= $data->notification->settings->background_pattern == $key ? 'selected="selected"' : null ?> data-value="<?= $value ?>"><?= l('notification.settings.background_pattern_' . $key) ?></option>
             <?php endforeach ?>
         </select>
     </div>
@@ -126,27 +126,27 @@ $javascript = '';
     <div class="row">
         <div class="col-12 col-md-4">
             <div class="form-group">
-                <label for="settings_border_radius"><?= language()->notification->settings->border_radius ?></label>
+                <label for="settings_border_radius"><?= l('notification.settings.border_radius') ?></label>
                 <select class="form-control" name="border_radius">
-                    <option value="straight" <?= $data->notification->settings->border_radius == 'straight' ? 'selected="selected"' : null ?>><?= language()->notification->settings->border_radius_straight ?></option>
-                    <option value="rounded" <?= $data->notification->settings->border_radius == 'rounded' ? 'selected="selected"' : null ?>><?= language()->notification->settings->border_radius_rounded ?></option>
-                    <option value="round" <?= $data->notification->settings->border_radius == 'round' ? 'selected="selected"' : null ?>><?= language()->notification->settings->border_radius_round ?></option>
+                    <option value="straight" <?= $data->notification->settings->border_radius == 'straight' ? 'selected="selected"' : null ?>><?= l('notification.settings.border_radius_straight') ?></option>
+                    <option value="rounded" <?= $data->notification->settings->border_radius == 'rounded' ? 'selected="selected"' : null ?>><?= l('notification.settings.border_radius_rounded') ?></option>
+                    <option value="round" <?= $data->notification->settings->border_radius == 'round' ? 'selected="selected"' : null ?>><?= l('notification.settings.border_radius_round') ?></option>
                 </select>
-                <small class="form-text text-muted"><?= language()->notification->settings->border_radius_help ?></small>
+                <small class="form-text text-muted"><?= l('notification.settings.border_radius_help') ?></small>
             </div>
         </div>
 
         <div class="col-12 col-md-4">
             <div class="form-group">
-                <label for="settings_border_width"><?= language()->notification->settings->border_width ?></label>
+                <label for="settings_border_width"><?= l('notification.settings.border_width') ?></label>
                 <input type="number" min="0" max="5" id="settings_border_width" name="border_width" class="form-control" value="<?= $data->notification->settings->border_width ?>" />
-                <small class="form-text text-muted"><?= language()->notification->settings->border_width_help ?></small>
+                <small class="form-text text-muted"><?= l('notification.settings.border_width_help') ?></small>
             </div>
         </div>
 
         <div class="col-12 col-md-4">
             <div class="form-group">
-                <label for="settings_border_color"><?= language()->notification->settings->border_color ?></label>
+                <label for="settings_border_color"><?= l('notification.settings.border_color') ?></label>
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <div id="settings_border_color_pickr"></div>
@@ -166,10 +166,10 @@ $javascript = '';
                 <?= $data->notification->settings->shadow ? 'checked="checked"' : null ?>
         >
 
-        <label class="custom-control-label clickable" for="settings_shadow"><?= language()->notification->settings->shadow ?></label>
+        <label class="custom-control-label clickable" for="settings_shadow"><?= l('notification.settings.shadow') ?></label>
 
         <div>
-            <small class="form-text text-muted"><?= language()->notification->settings->shadow_help ?></small>
+            <small class="form-text text-muted"><?= l('notification.settings.shadow_help') ?></small>
         </div>
     </div>
 <?php $html['customize'] = ob_get_clean() ?>
@@ -178,16 +178,16 @@ $javascript = '';
 <?php /* Data Tab */ ?>
 <?php ob_start() ?>
 <div class="form-group">
-    <label for="settings_data_trigger_input_webhook"><?= language()->notification->settings->data_trigger_webhook ?></label>
+    <label for="settings_data_trigger_input_webhook"><?= l('notification.settings.data_trigger_webhook') ?></label>
     <div class="input-group">
         <div class="input-group-prepend">
-            <span class="input-group-text"><?= language()->notification->settings->data_trigger_type_webhook ?></span>
+            <span class="input-group-text"><?= l('notification.settings.data_trigger_type_webhook') ?></span>
         </div>
 
-        <input type="text" id="settings_data_trigger_input_webhook" name="data_trigger_input_webhook" class="form-control" value="<?= url('pixel-webhook/' . $data->notification->notification_key) ?>" placeholder="<?= language()->notification->settings->data_trigger_input_webhook ?>" aria-label="<?= language()->notification->settings->data_trigger_input_webhook ?>" readonly="readonly">
+        <input type="text" id="settings_data_trigger_input_webhook" name="data_trigger_input_webhook" class="form-control" value="<?= url('pixel-webhook/' . $data->notification->notification_key) ?>" placeholder="<?= l('notification.settings.data_trigger_input_webhook') ?>" aria-label="<?= l('notification.settings.data_trigger_input_webhook') ?>" readonly="readonly">
     </div>
 
-    <small class="form-text text-muted"><?= language()->notification->settings->data_trigger_webhook_help ?></small>
+    <small class="form-text text-muted"><?= l('notification.settings.data_trigger_webhook_help') ?></small>
 </div>
 
 <div class="form-group">
@@ -199,9 +199,9 @@ $javascript = '';
                 name="data_trigger_auto"
             <?= $data->notification->settings->data_trigger_auto ? 'checked="checked"' : null ?>
         >
-        <label class="custom-control-label clickable" for="data_trigger_auto"><?= language()->notification->settings->data_trigger_auto ?></label>
+        <label class="custom-control-label clickable" for="data_trigger_auto"><?= l('notification.settings.data_trigger_auto') ?></label>
 
-        <div><small class="form-text text-muted"><?= language()->notification->settings->data_trigger_auto_help ?></small></div>
+        <div><small class="form-text text-muted"><?= l('notification.settings.data_trigger_auto_help') ?></small></div>
     </div>
 </div>
 
@@ -210,23 +210,23 @@ $javascript = '';
         <?php foreach($data->notification->settings->data_triggers_auto as $trigger): ?>
             <div class="input-group mb-3">
                 <select class="form-control trigger-type-select" name="data_trigger_auto_type[]">
-                    <option value="exact" <?= $trigger->type == 'exact' ? 'selected="selected"' : null ?>><?= language()->notification->settings->trigger_type_exact ?></option>
-                    <option value="contains" <?= $trigger->type == 'contains' ? 'selected="selected"' : null ?>><?= language()->notification->settings->trigger_type_contains ?></option>
-                    <option value="starts_with" <?= $trigger->type == 'starts_with' ? 'selected="selected"' : null ?>><?= language()->notification->settings->trigger_type_starts_with ?></option>
-                    <option value="ends_with" <?= $trigger->type == 'ends_with' ? 'selected="selected"' : null ?>><?= language()->notification->settings->trigger_type_ends_with ?></option>
-                    <option value="page_contains" <?= $trigger->type == 'page_contains' ? 'selected="selected"' : null ?>><?= language()->notification->settings->trigger_type_page_contains ?></option>
+                    <option value="exact" <?= $trigger->type == 'exact' ? 'selected="selected"' : null ?>><?= l('notification.settings.trigger_type_exact') ?></option>
+                    <option value="contains" <?= $trigger->type == 'contains' ? 'selected="selected"' : null ?>><?= l('notification.settings.trigger_type_contains') ?></option>
+                    <option value="starts_with" <?= $trigger->type == 'starts_with' ? 'selected="selected"' : null ?>><?= l('notification.settings.trigger_type_starts_with') ?></option>
+                    <option value="ends_with" <?= $trigger->type == 'ends_with' ? 'selected="selected"' : null ?>><?= l('notification.settings.trigger_type_ends_with') ?></option>
+                    <option value="page_contains" <?= $trigger->type == 'page_contains' ? 'selected="selected"' : null ?>><?= l('notification.settings.trigger_type_page_contains') ?></option>
                 </select>
 
-                <input type="text" name="data_trigger_auto_value[]" class="form-control" value="<?= $trigger->value ?>" placeholder="<?= language()->notification->settings->trigger_type_exact_placeholder ?>" aria-label="<?= language()->notification->settings->trigger_type_exact_placeholder ?>">
+                <input type="text" name="data_trigger_auto_value[]" class="form-control" value="<?= $trigger->value ?>" placeholder="<?= l('notification.settings.trigger_type_exact_placeholder') ?>" aria-label="<?= l('notification.settings.trigger_type_exact_placeholder') ?>">
 
-                <button type="button" class="data-trigger-auto-delete ml-3 btn btn-outline-danger btn-sm" aria-label="<?= language()->global->delete ?>"><i class="fa fa-fw fa-times"></i></button>
+                <button type="button" class="data-trigger-auto-delete ml-3 btn btn-outline-danger btn-sm" aria-label="<?= l('global.delete') ?>"><i class="fa fa-fw fa-times"></i></button>
             </div>
         <?php endforeach ?>
     <?php endif ?>
 </div>
 
 <div>
-    <button type="button" id="data_trigger_auto_add" class="btn btn-outline-success btn-sm"><i class="fa fa-fw fa-plus-circle"></i> <?= language()->notification->settings->data_trigger_auto_add ?></button>
+    <button type="button" id="data_trigger_auto_add" class="btn btn-outline-success btn-sm"><i class="fa fa-fw fa-plus-circle"></i> <?= l('notification.settings.data_trigger_auto_add') ?></button>
 </div>
 <?php $html['data'] = ob_get_clean() ?>
 

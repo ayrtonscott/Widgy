@@ -38,7 +38,7 @@ class AdminSettings extends Controller {
 
     private function update_settings($key, $value) {
         if(!Csrf::check()) {
-            Alerts::add_error(language()->global->error_message->invalid_csrf_token);
+            Alerts::add_error(l('global.error_message.invalid_csrf_token'));
         }
 
         if(!Alerts::has_field_errors() && !Alerts::has_errors()) {
@@ -58,7 +58,7 @@ class AdminSettings extends Controller {
         \Altum\Cache::$adapter->deleteItem('settings');
 
         /* Set a nice success message */
-        Alerts::add_success(language()->global->success_message->update2);
+        Alerts::add_success(l('global.success_message.update2'));
 
         /* Refresh the page */
         redirect('admin/settings/' . $key);
@@ -71,25 +71,22 @@ class AdminSettings extends Controller {
         if(!empty($_POST)) {
             //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
-            /* :):) */
-            $_POST['se_indexing'] = (bool) $_POST['se_indexing'];
-
+            /* :) */
             $value = json_encode([
-                'se_indexing' => $_POST['se_indexing'],
-                'auto_delete_inactive_users' => (int) $_POST['auto_delete_inactive_users'],
-                'user_deletion_reminder' => (int) $_POST['user_deletion_reminder'],
+                'title' => $_POST['title'],
+                'default_language' => $_POST['default_language'],
+                'default_theme_style' => $_POST['default_theme_style'],
+                'default_timezone' => $_POST['default_timezone'],
+                'index_url' => $_POST['index_url'],
+                'terms_and_conditions_url' => $_POST['terms_and_conditions_url'],
+                'privacy_policy_url' => $_POST['privacy_policy_url'],
+                'not_found_url' => $_POST['not_found_url'],
+                'se_indexing' => (bool) $_POST['se_indexing'],
+                'default_results_per_page' => (int) $_POST['default_results_per_page'],
+                'default_order_type' => $_POST['default_order_type'],
             ]);
 
             db()->where('`key`', 'main')->update('settings', ['value' => $value]);
-
-            /* :) */
-            $_POST['title'] = filter_var($_POST['title'], FILTER_SANITIZE_STRING);
-            $_POST['default_timezone'] = filter_var($_POST['default_timezone'], FILTER_SANITIZE_STRING);
-            $_POST['default_theme_style'] = filter_var($_POST['default_theme_style'], FILTER_SANITIZE_STRING);
-            $_POST['email_confirmation'] = (bool) $_POST['email_confirmation'];
-            $_POST['register_is_enabled'] = (bool) $_POST['register_is_enabled'];
-            $_POST['terms_and_conditions_url'] = filter_var($_POST['terms_and_conditions_url'], FILTER_SANITIZE_STRING);
-            $_POST['privacy_policy_url'] = filter_var($_POST['privacy_policy_url'], FILTER_SANITIZE_STRING);
 
             /* Check for errors & process  potential uploads */
             $image = [
@@ -105,13 +102,21 @@ class AdminSettings extends Controller {
                     $file_extension = mb_strtolower(end($file_extension));
                     $file_temp = $_FILES[$image_key]['tmp_name'];
 
+                    if($_FILES[$image_key]['error'] == UPLOAD_ERR_INI_SIZE) {
+                        Alerts::add_error(sprintf(l('global.error_message.file_size_limit'), get_max_upload()));
+                    }
+
+                    if($_FILES[$image_key]['error'] && $_FILES[$image_key]['error'] != UPLOAD_ERR_INI_SIZE) {
+                        Alerts::add_error(l('global.error_message.file_upload'));
+                    }
+
                     if(!in_array($file_extension, Uploads::get_whitelisted_file_extensions($image_key))) {
-                        Alerts::add_error(language()->global->error_message->invalid_file_type);
+                        Alerts::add_error(l('global.error_message.invalid_file_type'));
                     }
 
                     if(!\Altum\Plugin::is_active('offload') || (\Altum\Plugin::is_active('offload') && !settings()->offload->uploads_url)) {
                         if(!is_writable(UPLOADS_PATH . $image_key . '/')) {
-                            Alerts::add_error(sprintf(language()->global->error_message->directory_not_writable, UPLOADS_PATH . $image_key . '/'));
+                            Alerts::add_error(sprintf(l('global.error_message.directory_not_writable'), UPLOADS_PATH . $image_key . '/'));
                         }
                     }
 
@@ -163,7 +168,6 @@ class AdminSettings extends Controller {
 
                 /* Check for the removal of the already uploaded file */
                 if(isset($_POST[$image_key . '_remove'])) {
-
                     /* Offload deleting */
                     if(\Altum\Plugin::is_active('offload') && settings()->offload->uploads_url) {
                         $s3 = new \Aws\S3\S3Client(get_aws_s3_config());
@@ -187,34 +191,37 @@ class AdminSettings extends Controller {
             }
 
             if(!Csrf::check()) {
-                Alerts::add_error(language()->global->error_message->invalid_csrf_token);
+                Alerts::add_error(l('global.error_message.invalid_csrf_token'));
             }
 
             if(!Alerts::has_field_errors() && !Alerts::has_errors()) {
-
-                $keys = [
-                    'title',
-                    'default_language',
-                    'default_theme_style',
-                    'default_timezone',
-                    'email_confirmation',
-                    'register_is_enabled',
-                    'index_url',
-                    'terms_and_conditions_url',
-                    'privacy_policy_url',
-                ];
-
-                /* Update the database */
-                foreach($keys as $key) {
-                    if(settings()->{$key} != $_POST[$key]) {
-                        db()->where('`key`', $key)->update('settings', ['value' => $_POST[$key]]);
-                    }
-                }
-
                 $this->after_update_settings('main');
             }
 
             redirect('admin/settings/main');
+        }
+    }
+
+    public function users() {
+        $this->process();
+
+        if(!empty($_POST)) {
+            //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
+
+            /* :) */
+            $_POST['blacklisted_domains'] = implode(',', array_map('trim', explode(',', $_POST['blacklisted_domains'])));
+            $_POST['blacklisted_countries'] = $_POST['blacklisted_countries'] ?? [];
+
+            $value = json_encode([
+                'email_confirmation' => (bool) $_POST['email_confirmation'],
+                'register_is_enabled' => (bool) $_POST['register_is_enabled'],
+                'auto_delete_inactive_users' => (int) $_POST['auto_delete_inactive_users'],
+                'user_deletion_reminder' => (int) $_POST['user_deletion_reminder'],
+                'blacklisted_domains' => $_POST['blacklisted_domains'],
+                'blacklisted_countries' => $_POST['blacklisted_countries'],
+            ]);
+
+            $this->update_settings('users', $value);
         }
     }
 
@@ -421,6 +428,26 @@ class AdminSettings extends Controller {
         }
     }
 
+    public function crypto_com() {
+        $this->process();
+
+        if(!empty($_POST)) {
+            //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
+
+            /* :) */
+            $_POST['is_enabled'] = (bool) $_POST['is_enabled'];
+
+            $value = json_encode([
+                'is_enabled' => $_POST['is_enabled'],
+                'publishable_key' => $_POST['publishable_key'],
+                'secret_key' => $_POST['secret_key'],
+                'webhook_secret' => $_POST['webhook_secret'],
+            ]);
+
+            $this->update_settings('crypto_com', $value);
+        }
+    }
+
     public function affiliate() {
         $this->process();
 
@@ -504,6 +531,7 @@ class AdminSettings extends Controller {
                 'register_is_enabled' => $_POST['register_is_enabled'],
                 'lost_password_is_enabled' => $_POST['lost_password_is_enabled'],
                 'resend_activation_is_enabled' => $_POST['resend_activation_is_enabled'],
+                'contact_is_enabled' => $_POST['contact_is_enabled'],
             ]);
 
             $this->update_settings('captcha', $value);
@@ -682,12 +710,14 @@ class AdminSettings extends Controller {
             $_POST['new_user'] = (bool) isset($_POST['new_user']);
             $_POST['new_payment'] = (bool) isset($_POST['new_payment']);
             $_POST['new_affiliate_withdrawal'] = (bool) isset($_POST['new_affiliate_withdrawal']);
+            $_POST['contact'] = (bool) isset($_POST['contact']);
 
             $value = json_encode([
                 'emails' => $_POST['emails'],
                 'new_user' => $_POST['new_user'],
                 'new_payment' => $_POST['new_payment'],
                 'new_affiliate_withdrawal' => $_POST['new_affiliate_withdrawal'],
+                'contact' => $_POST['contact'],
             ]);
 
             $this->update_settings('email_notifications', $value);
@@ -746,6 +776,22 @@ class AdminSettings extends Controller {
         settings()->cron = json_decode(db()->where('`key`', 'cron')->getValue('settings', '`value`'));
 
         $this->process();
+    }
+
+    public function cache() {
+        $this->process();
+
+        if(!empty($_POST)) {
+            //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
+
+            \Altum\Cache::$adapter->clear();
+
+            /* Set a nice success message */
+            Alerts::add_success(l('global.success_message.update2'));
+
+            /* Refresh the page */
+            redirect('admin/settings/cache');
+        }
     }
 
     public function license() {
@@ -823,23 +869,23 @@ class AdminSettings extends Controller {
         $required_fields = ['email'];
         foreach($required_fields as $field) {
             if(!isset($_POST[$field]) || (isset($_POST[$field]) && empty($_POST[$field]) && $_POST[$field] != '0')) {
-                Alerts::add_field_error($field, language()->global->error_message->empty_field);
+                Alerts::add_field_error($field, l('global.error_message.empty_field'));
             }
         }
 
         if(!Csrf::check()) {
-            Alerts::add_error(language()->global->error_message->invalid_csrf_token);
+            Alerts::add_error(l('global.error_message.invalid_csrf_token'));
         }
 
         /* If there are no errors, continue */
         if(!Alerts::has_field_errors() && !Alerts::has_errors()) {
 
-            $result = send_mail($_POST['email'], settings()->title . ' - Test Email', 'This is just a test email to confirm that the smtp email settings are properly working!', true);
+            $result = send_mail($_POST['email'], settings()->main->title . ' - Test Email', 'This is just a test email to confirm that the smtp email settings are properly working!', true);
 
             if($result->ErrorInfo == '') {
-                Alerts::add_success(language()->admin_settings_send_test_email_modal->success_message);
+                Alerts::add_success(l('admin_settings_send_test_email_modal.success_message'));
             } else {
-                Alerts::add_error(sprintf(language()->admin_settings_send_test_email_modal->error_message, $result->ErrorInfo));
+                Alerts::add_error(sprintf(l('admin_settings_send_test_email_modal.error_message'), $result->ErrorInfo));
                 Alerts::add_info(implode('<br />', $result->errors));
             }
 

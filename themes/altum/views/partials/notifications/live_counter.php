@@ -10,12 +10,12 @@
                 <div class="altumcode-toast-pulse" style="background: <?= $notification->settings->pulse_background_color ?>;"></div>
 
                 <div class="altumcode-live-counter-number" style="background: <?= $notification->settings->number_background_color ?>; color: <?= $notification->settings->number_color ?>">
-                    <?= isset($notification->counter) && $notification->counter >= $notification->settings->display_minimum_activity ? $notification->counter : language()->notification->live_counter->number_default ?>
+                    <?= isset($notification->counter) && $notification->counter >= $notification->settings->display_minimum_activity ? $notification->counter : l('notification.live_counter.number_default') ?>
                 </div>
             </div>
 
             <div class="altumcode-live-counter-close">
-                <button class="altumcode-close"></button>
+                <button class="altumcode-close">&#10006;</button>
             </div>
         </div>
 

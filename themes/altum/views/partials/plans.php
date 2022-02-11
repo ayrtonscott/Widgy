@@ -32,19 +32,19 @@ use Altum\Middlewares\Authentication;
 
                 <?php if(isset($available_payment_frequencies['monthly'])): ?>
                     <label class="btn btn-outline-secondary active" data-payment-frequency="monthly">
-                        <input type="radio" name="payment_frequency" checked="checked"> <?= language()->plan->custom_plan->monthly ?>
+                        <input type="radio" name="payment_frequency" checked="checked"> <?= l('plan.custom_plan.monthly') ?>
                     </label>
                 <?php endif ?>
 
                 <?php if(isset($available_payment_frequencies['annual'])): ?>
                     <label class="btn btn-outline-secondary <?= !isset($available_payment_frequencies['monthly']) ? 'active' : null ?>" data-payment-frequency="annual">
-                        <input type="radio" name="payment_frequency" <?= !isset($available_payment_frequencies['monthly']) ? 'checked="checked"' : null ?>> <?= language()->plan->custom_plan->annual ?>
+                        <input type="radio" name="payment_frequency" <?= !isset($available_payment_frequencies['monthly']) ? 'checked="checked"' : null ?>> <?= l('plan.custom_plan.annual') ?>
                     </label>
                 <?php endif ?>
 
                 <?php if(isset($available_payment_frequencies['lifetime'])): ?>
                     <label class="btn btn-outline-secondary <?= !isset($available_payment_frequencies['monthly']) && !isset($available_payment_frequencies['annual']) ? 'active' : null ?>" data-payment-frequency="lifetime">
-                        <input type="radio" name="payment_frequency" <?= !isset($available_payment_frequencies['monthly']) && !isset($available_payment_frequencies['annual']) ? 'checked="checked"' : null ?>> <?= language()->plan->custom_plan->lifetime ?>
+                        <input type="radio" name="payment_frequency" <?= !isset($available_payment_frequencies['monthly']) && !isset($available_payment_frequencies['annual']) ? 'checked="checked"' : null ?>> <?= l('plan.custom_plan.lifetime') ?>
                     </label>
                 <?php endif ?>
 
@@ -78,7 +78,7 @@ use Altum\Middlewares\Authentication;
 
             <?= include_view(THEME_PATH . 'views/partials/plans_plan_content.php', ['plan_settings' => settings()->plan_free->settings]) ?>
 
-            <a href="<?= url('register?redirect=pay/free') ?>" class="pricing-action <?= \Altum\Middlewares\Authentication::check() && $this->user->plan_id != 'free' ? 'disabled' : null ?>"><?= language()->plan->button->choose ?></a>
+            <a href="<?= url('register?redirect=pay/free') ?>" class="pricing-action <?= \Altum\Middlewares\Authentication::check() && $this->user->plan_id != 'free' ? 'disabled' : null ?>"><?= l('plan.button.choose') ?></a>
         </div>
 
     <?php endif ?>
@@ -122,17 +122,17 @@ use Altum\Middlewares\Authentication;
                 <a href="<?= url('register?redirect=pay/' . $plan->plan_id) ?>" class="pricing-action">
                     <?php if(\Altum\Middlewares\Authentication::check()): ?>
                         <?php if(!$this->user->plan_trial_done && $plan->trial_days): ?>
-                            <?= sprintf(language()->plan->button->trial, $plan->trial_days) ?>
+                            <?= sprintf(l('plan.button.trial'), $plan->trial_days) ?>
                         <?php elseif($this->user->plan_id == $plan->plan_id): ?>
-                            <?= language()->plan->button->renew ?>
+                            <?= l('plan.button.renew') ?>
                         <?php else: ?>
-                            <?= language()->plan->button->choose ?>
+                            <?= l('plan.button.choose') ?>
                         <?php endif ?>
                     <?php else: ?>
                         <?php if($plan->trial_days): ?>
-                            <?= sprintf(language()->plan->button->trial, $plan->trial_days) ?>
+                            <?= sprintf(l('plan.button.trial'), $plan->trial_days) ?>
                         <?php else: ?>
-                            <?= language()->plan->button->choose ?>
+                            <?= l('plan.button.choose') ?>
                         <?php endif ?>
                     <?php endif ?>
                 </a>
@@ -209,7 +209,7 @@ use Altum\Middlewares\Authentication;
 
             <?= include_view(THEME_PATH . 'views/partials/plans_plan_content.php', ['plan_settings' => settings()->plan_custom->settings]) ?>
 
-            <a href="<?= settings()->plan_custom->custom_button_url ?>" class="pricing-action"><?= language()->plan->button->contact ?></a>
+            <a href="<?= settings()->plan_custom->custom_button_url ?>" class="pricing-action"><?= l('plan.button.contact') ?></a>
         </div>
 
     <?php endif ?>

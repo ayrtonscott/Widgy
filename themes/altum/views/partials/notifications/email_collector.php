@@ -6,7 +6,7 @@
         <div class="altumcode-email-collector-header">
             <p class="altumcode-email-collector-title" style="color: <?= $notification->settings->title_color ?>"><?= $notification->settings->title ?></p>
 
-            <button class="altumcode-close"></button>
+            <button class="altumcode-close">&#10006;</button>
         </div>
         <p class="altumcode-email-collector-description" style="color: <?= $notification->settings->description_color ?>"><?= $notification->settings->description ?></p>
 
@@ -22,7 +22,7 @@
                 <div class="altumcode-agreement-checkbox">
                     <input type="checkbox" id="agreement" class="altumcode-agreement-checkbox-input" name="agreement" required="required" />
                     <label for="agreement" class="altumcode-agreement-checkbox-text" style="color: <?= $notification->settings->description_color ?>">
-                        <a href="<?= $notification->settings->agreement_url ?>">
+                        <a href="<?= $notification->settings->agreement_url ?>" target="_blank">
                             <?= $notification->settings->agreement_text ?>
                         </a>
                     </label>

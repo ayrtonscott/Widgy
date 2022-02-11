@@ -3,10 +3,10 @@
 <?php ob_start() ?>
 <div class="card mb-5">
     <div class="card-body">
-        <h2 class="h4"><i class="fa fa-fw fa-users fa-xs text-muted"></i> <?= language()->admin_statistics->growth->users->header ?></h2>
+        <h2 class="h4"><i class="fa fa-fw fa-users fa-xs text-muted"></i> <?= l('admin_statistics.growth.users.header') ?></h2>
         <div class="d-flex flex-column flex-xl-row">
             <div class="mb-2 mb-xl-0 mr-4">
-                <span class="font-weight-bold"><?= nr($data->total['users']) ?></span> <?= language()->admin_statistics->growth->users->chart ?>
+                <span class="font-weight-bold"><?= nr($data->total['users']) ?></span> <?= l('admin_statistics.growth.users.chart') ?>
             </div>
         </div>
 
@@ -18,10 +18,10 @@
 
 <div class="card mb-5">
     <div class="card-body">
-        <h2 class="h4"><i class="fa fa-fw fa-user-friends fa-xs text-muted"></i> <?= language()->admin_statistics->growth->users_logs->header ?></h2>
+        <h2 class="h4"><i class="fa fa-fw fa-user-friends fa-xs text-muted"></i> <?= l('admin_statistics.growth.users_logs.header') ?></h2>
         <div class="d-flex flex-column flex-xl-row">
             <div class="mb-2 mb-xl-0 mr-4">
-                <span class="font-weight-bold"><?= nr($data->total['users_logs']) ?></span> <?= language()->admin_statistics->growth->users_logs->chart ?>
+                <span class="font-weight-bold"><?= nr($data->total['users_logs']) ?></span> <?= l('admin_statistics.growth.users_logs.chart') ?>
             </div>
         </div>
 
@@ -34,10 +34,10 @@
 <?php if(in_array(settings()->license->type, ['Extended License', 'extended'])): ?>
     <div class="card mb-5">
         <div class="card-body">
-            <h2 class="h4"><i class="fa fa-fw fa-tags fa-xs text-muted"></i> <?= language()->admin_statistics->growth->redeemed_codes->header ?></h2>
+            <h2 class="h4"><i class="fa fa-fw fa-tags fa-xs text-muted"></i> <?= l('admin_statistics.growth.redeemed_codes.header') ?></h2>
             <div class="d-flex flex-column flex-xl-row">
                 <div class="mb-2 mb-xl-0 mr-4">
-                    <span class="font-weight-bold"><?= nr($data->total['redeemed_codes']) ?></span> <?= language()->admin_statistics->growth->redeemed_codes->chart ?>
+                    <span class="font-weight-bold"><?= nr($data->total['redeemed_codes']) ?></span> <?= l('admin_statistics.growth.redeemed_codes.chart') ?>
                 </div>
             </div>
 
@@ -69,7 +69,7 @@
             labels: <?= $data->users_chart['labels'] ?>,
             datasets: [
                 {
-                    label: <?= json_encode(language()->admin_statistics->growth->users->chart) ?>,
+                    label: <?= json_encode(l('admin_statistics.growth.users.chart')) ?>,
                     data: <?= $data->users_chart['users'] ?? '[]' ?>,
                     backgroundColor: color_gradient,
                     borderColor: color,
@@ -92,7 +92,7 @@
             labels: <?= $data->users_logs_chart['labels'] ?>,
             datasets: [
                 {
-                    label: <?= json_encode(language()->admin_statistics->growth->users_logs->chart) ?>,
+                    label: <?= json_encode(l('admin_statistics.growth.users_logs.chart')) ?>,
                     data: <?= $data->users_logs_chart['users_logs'] ?? '[]' ?>,
                     backgroundColor: color_gradient,
                     borderColor: color,
@@ -116,7 +116,7 @@
             labels: <?= $data->redeemed_codes_chart['labels'] ?>,
             datasets: [
                 {
-                    label: <?= json_encode(language()->admin_statistics->growth->redeemed_codes->chart) ?>,
+                    label: <?= json_encode(l('admin_statistics.growth.redeemed_codes.chart')) ?>,
                     data: <?= $data->redeemed_codes_chart['redeemed_codes'] ?? '[]' ?>,
                     backgroundColor: color_gradient,
                     borderColor: color,

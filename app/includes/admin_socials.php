@@ -53,7 +53,7 @@ return [
     'linkedin' => [
         'name' => 'LinkedIn',
         'icon' => 'fab fa-linkedin',
-        'format' => 'https://linkedin.com/@%s',
+        'format' => 'https://linkedin.com/%s',
         'input_display_format' => true,
         'placeholder' => '',
     ],

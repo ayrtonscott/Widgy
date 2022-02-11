@@ -11,20 +11,20 @@ $javascript = '';
 <?php /* Basic Tab */ ?>
 <?php ob_start() ?>
     <div class="form-group">
-        <label for="settings_name"><?= language()->notification->settings->name ?></label>
+        <label for="settings_name"><?= l('notification.settings.name') ?></label>
         <input type="text" id="settings_name" name="name" class="form-control" value="<?= $data->notification->name ?>" maxlength="256" required="required" />
     </div>
 
     <div class="form-group">
-        <label for="settings_title"><?= language()->notification->settings->title ?></label>
-        <input type="text" id="settings_title" name="title" class="form-control" value="<?= $data->notification->settings->title ?>" maxlength="256" />
+        <label for="settings_title"><?= l('notification.settings.title') ?></label>
+        <input type="text" id="settings_title" name="title" class="form-control" value="<?= $data->notification->settings->title ?>" maxlength="256" required="required" />
     </div>
 
     <div class="d-flex justify-content-between">
-        <h3 class="h5"><?= language()->notification->settings->engagement_links_categories ?></h3>
+        <h3 class="h5"><?= l('notification.settings.engagement_links_categories') ?></h3>
 
         <div>
-            <button type="button" id="category_create" class="btn btn-success btn-sm rounded-pill"><i class="fa fa-plus-circle"></i> <?= language()->global->create ?></button>
+            <button type="button" id="category_create" class="btn btn-success btn-sm"><i class="fa fa-fw fa-sm fa-plus"></i> <?= l('global.create') ?></button>
         </div>
     </div>
     <div id="categories"></div>
@@ -32,26 +32,26 @@ $javascript = '';
     <template id="template_category">
         <div class="category">
             <div class="form-group">
-                <label><?= language()->notification->settings->title ?></label>
+                <label><?= l('notification.settings.title') ?></label>
                 <input type="text" name="categories[category_index][title]" class="form-control" value="" maxlength="256" required="required" />
             </div>
 
             <div class="form-group">
-                <label><?= language()->notification->settings->description ?></label>
+                <label><?= l('notification.settings.description') ?></label>
                 <input type="text" name="categories[category_index][description]" class="form-control" value="" maxlength="512" />
             </div>
 
             <div class="d-flex justify-content-between">
-                <h3 class="h5"><?= language()->notification->settings->engagement_links_categories_links ?></h3>
+                <h3 class="h5"><?= l('notification.settings.engagement_links_categories_links') ?></h3>
 
                 <div>
-                    <button type="button" id="category_link_create_category_index" class="btn btn-outline-success btn-sm rounded-pill"><i class="fa fa-plus-circle"></i> <?= language()->global->create ?></button>
+                    <button type="button" id="category_link_create_category_index" class="btn btn-outline-success btn-sm"><i class="fa fa-fw fa-sm fa-plus"></i> <?= l('global.create') ?></button>
                 </div>
             </div>
 
             <div class="category_links bg-gray-200 p-5 my-3"></div>
 
-            <button type="button" class="category_delete btn btn-outline-danger btn-sm" aria-label="<?= language()->global->delete ?>"><i class="fa fa-fw fa-times"></i> <?= language()->global->delete ?></button>
+            <button type="button" class="category_delete btn btn-outline-danger btn-sm" aria-label="<?= l('global.delete') ?>"><i class="fa fa-fw fa-times"></i> <?= l('global.delete') ?></button>
 
             <hr class="my-4" />
         </div>
@@ -62,34 +62,34 @@ $javascript = '';
             <div class="row">
                 <div class="col-12 col-md-6">
                     <div class="form-group">
-                        <label><?= language()->notification->settings->title ?></label>
+                        <label><?= l('notification.settings.title') ?></label>
                         <input type="text" name="categories[category_index][links][category_link_index][title]" class="form-control" value="" maxlength="256" required="required" />
                     </div>
                 </div>
 
                 <div class="col-12 col-md-6">
                     <div class="form-group">
-                        <label><?= language()->notification->settings->description ?></label>
+                        <label><?= l('notification.settings.description') ?></label>
                         <input type="text" name="categories[category_index][links][category_link_index][description]" class="form-control" value="" maxlength="512" />
                     </div>
                 </div>
 
                 <div class="col-12 col-md-6">
                     <div class="form-group">
-                        <label><?= language()->notification->settings->image ?></label>
+                        <label><?= l('notification.settings.image') ?></label>
                         <input type="text" name="categories[category_index][links][category_link_index][image]" class="form-control" value="" maxlength="2048" />
                     </div>
                 </div>
 
                 <div class="col-12 col-md-6">
                     <div class="form-group">
-                        <label><?= language()->notification->settings->url ?></label>
+                        <label><?= l('notification.settings.url') ?></label>
                         <input type="text" name="categories[category_index][links][category_link_index][url]" class="form-control" value="" maxlength="2048" required="required" />
                     </div>
                 </div>
             </div>
 
-            <button type="button" class="category_link_delete btn btn-outline-danger btn-sm" aria-label="<?= language()->global->delete ?>"><i class="fa fa-fw fa-times"></i> <?= language()->global->delete ?></button>
+            <button type="button" class="category_link_delete btn btn-outline-danger btn-sm" aria-label="<?= l('global.delete') ?>"><i class="fa fa-fw fa-times"></i> <?= l('global.delete') ?></button>
 
             <hr class="my-4" />
         </div>
@@ -100,7 +100,7 @@ $javascript = '';
 <?php /* Customize Tab */ ?>
 <?php ob_start() ?>
     <div class="form-group">
-        <label for="settings_title_color"><?= language()->notification->settings->title_color ?></label>
+        <label for="settings_title_color"><?= l('notification.settings.title_color') ?></label>
         <div class="input-group">
             <div class="input-group-prepend">
                 <div id="settings_title_color_pickr"></div>
@@ -109,12 +109,12 @@ $javascript = '';
         </div>
     </div>
 
-    <h3 class="h5"><?= language()->notification->settings->engagement_links_categories ?></h3>
+    <h3 class="h5"><?= l('notification.settings.engagement_links_categories') ?></h3>
 
     <div class="row">
         <div class="col-12 col-md-6">
             <div class="form-group">
-                <label for="settings_categories_title_color"><?= language()->notification->settings->title_color ?></label>
+                <label for="settings_categories_title_color"><?= l('notification.settings.title_color') ?></label>
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <div id="settings_categories_title_color_pickr"></div>
@@ -126,7 +126,7 @@ $javascript = '';
 
         <div class="col-12 col-md-6">
             <div class="form-group">
-                <label for="settings_categories_description_color"><?= language()->notification->settings->description_color ?></label>
+                <label for="settings_categories_description_color"><?= l('notification.settings.description_color') ?></label>
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <div id="settings_categories_description_color_pickr"></div>
@@ -137,12 +137,12 @@ $javascript = '';
         </div>
     </div>
 
-    <h3 class="h5"><?= language()->notification->settings->engagement_links_categories_links ?></h3>
+    <h3 class="h5"><?= l('notification.settings.engagement_links_categories_links') ?></h3>
 
     <div class="row">
         <div class="col-12 col-md-6">
             <div class="form-group">
-                <label for="settings_categories_links_title_color"><?= language()->notification->settings->title_color ?></label>
+                <label for="settings_categories_links_title_color"><?= l('notification.settings.title_color') ?></label>
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <div id="settings_categories_links_title_color_pickr"></div>
@@ -154,7 +154,7 @@ $javascript = '';
 
         <div class="col-12 col-md-6">
             <div class="form-group">
-                <label for="settings_categories_links_description_color"><?= language()->notification->settings->description_color ?></label>
+                <label for="settings_categories_links_description_color"><?= l('notification.settings.description_color') ?></label>
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <div id="settings_categories_links_description_color_pickr"></div>
@@ -168,7 +168,7 @@ $javascript = '';
     <div class="row">
         <div class="col-12 col-md-6">
             <div class="form-group">
-                <label for="settings_categories_links_background_color"><?= language()->notification->settings->background_color ?></label>
+                <label for="settings_categories_links_background_color"><?= l('notification.settings.background_color') ?></label>
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <div id="settings_categories_links_background_color_pickr"></div>
@@ -180,7 +180,7 @@ $javascript = '';
 
         <div class="col-12 col-md-6">
             <div class="form-group">
-                <label for="settings_categories_links_border_color"><?= language()->notification->settings->border_color ?></label>
+                <label for="settings_categories_links_border_color"><?= l('notification.settings.border_color') ?></label>
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <div id="settings_categories_links_border_color_pickr"></div>
@@ -194,7 +194,7 @@ $javascript = '';
     <hr class="my-3">
 
     <div class="form-group">
-        <label for="settings_background_color"><?= language()->notification->settings->background_color ?></label>
+        <label for="settings_background_color"><?= l('notification.settings.background_color') ?></label>
         <div class="input-group">
             <div class="input-group-prepend">
                 <div id="settings_background_color_pickr"></div>
@@ -204,14 +204,14 @@ $javascript = '';
     </div>
 
     <div class="form-group">
-        <label for="settings_background_pattern"><?= language()->notification->settings->background_pattern ?></label>
+        <label for="settings_background_pattern"><?= l('notification.settings.background_pattern') ?></label>
         <select class="form-control" id="settings_background_pattern" name="background_pattern">
-            <option value="" <?= $data->notification->settings->background_pattern == '' ? 'selected="selected"' : null ?>><?= language()->notification->settings->background_pattern_none ?></option>
+            <option value="" <?= $data->notification->settings->background_pattern == '' ? 'selected="selected"' : null ?>><?= l('notification.settings.background_pattern_none') ?></option>
 
             <?php $background_patterns = (require_once APP_PATH . 'includes/notifications_background_patterns.php')(); ?>
 
             <?php foreach($background_patterns as $key => $value): ?>
-                <option value="<?= $key ?>" <?= $data->notification->settings->background_pattern == $key ? 'selected="selected"' : null ?> data-value="<?= $value ?>"><?= language()->notification->settings->{'background_pattern_' . $key} ?></option>
+                <option value="<?= $key ?>" <?= $data->notification->settings->background_pattern == $key ? 'selected="selected"' : null ?> data-value="<?= $value ?>"><?= l('notification.settings.background_pattern_' . $key) ?></option>
             <?php endforeach ?>
         </select>
     </div>
@@ -219,26 +219,26 @@ $javascript = '';
     <div class="row">
         <div class="col-12 col-md-4">
             <div class="form-group">
-                <label for="settings_border_radius"><?= language()->notification->settings->border_radius ?></label>
+                <label for="settings_border_radius"><?= l('notification.settings.border_radius') ?></label>
                 <select class="form-control" name="border_radius">
-                    <option value="straight" <?= $data->notification->settings->border_radius == 'straight' ? 'selected="selected"' : null ?>><?= language()->notification->settings->border_radius_straight ?></option>
-                    <option value="rounded" <?= $data->notification->settings->border_radius == 'rounded' ? 'selected="selected"' : null ?>><?= language()->notification->settings->border_radius_rounded ?></option>
+                    <option value="straight" <?= $data->notification->settings->border_radius == 'straight' ? 'selected="selected"' : null ?>><?= l('notification.settings.border_radius_straight') ?></option>
+                    <option value="rounded" <?= $data->notification->settings->border_radius == 'rounded' ? 'selected="selected"' : null ?>><?= l('notification.settings.border_radius_rounded') ?></option>
                 </select>
-                <small class="form-text text-muted"><?= language()->notification->settings->border_radius_help ?></small>
+                <small class="form-text text-muted"><?= l('notification.settings.border_radius_help') ?></small>
             </div>
         </div>
 
         <div class="col-12 col-md-4">
             <div class="form-group">
-                <label for="settings_border_width"><?= language()->notification->settings->border_width ?></label>
+                <label for="settings_border_width"><?= l('notification.settings.border_width') ?></label>
                 <input type="number" min="0" max="5" id="settings_border_width" name="border_width" class="form-control" value="<?= $data->notification->settings->border_width ?>" />
-                <small class="form-text text-muted"><?= language()->notification->settings->border_width_help ?></small>
+                <small class="form-text text-muted"><?= l('notification.settings.border_width_help') ?></small>
             </div>
         </div>
 
         <div class="col-12 col-md-4">
             <div class="form-group">
-                <label for="settings_border_color"><?= language()->notification->settings->border_color ?></label>
+                <label for="settings_border_color"><?= l('notification.settings.border_color') ?></label>
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <div id="settings_border_color_pickr"></div>
@@ -258,10 +258,10 @@ $javascript = '';
                 <?= $data->notification->settings->shadow ? 'checked="checked"' : null ?>
         >
 
-        <label class="custom-control-label clickable" for="settings_shadow"><?= language()->notification->settings->shadow ?></label>
+        <label class="custom-control-label clickable" for="settings_shadow"><?= l('notification.settings.shadow') ?></label>
 
         <div>
-            <small class="form-text text-muted"><?= language()->notification->settings->shadow_help ?></small>
+            <small class="form-text text-muted"><?= l('notification.settings.shadow_help') ?></small>
         </div>
     </div>
 <?php $html['customize'] = ob_get_clean() ?>

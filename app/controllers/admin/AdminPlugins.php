@@ -32,15 +32,19 @@ class AdminPlugins extends Controller {
         //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
         if(!Csrf::check('global_token')) {
-            Alerts::add_error(language()->global->error_message->invalid_csrf_token);
+            Alerts::add_error(l('global.error_message.invalid_csrf_token'));
         }
 
         if(!\Altum\Plugin::is_uninstalled($plugin_id)) {
             redirect('admin/plugins');
         }
 
-        if(!is_writable(\Altum\Plugin::get($plugin_id)->path . 'config.json')) {
-            Alerts::add_error(sprintf(language()->global->error_message->file_not_writable, \Altum\Plugin::get($plugin_id)->path . 'config.json'));
+        if(!is_writable(\Altum\Plugin::get($plugin_id)->path)) {
+            Alerts::add_error(sprintf(l('global.error_message.directory_not_writable'), \Altum\Plugin::get($plugin_id)->path));
+        }
+
+        if(file_exists(\Altum\Plugin::get($plugin_id)->path . 'settings.json') && !is_writable(\Altum\Plugin::get($plugin_id)->path . 'settings.json')) {
+            Alerts::add_error(sprintf(l('global.error_message.file_not_writable'), \Altum\Plugin::get($plugin_id)->path . 'settings.json'));
         }
 
         if(!Alerts::has_field_errors() && !Alerts::has_errors()) {
@@ -53,7 +57,7 @@ class AdminPlugins extends Controller {
             $class::install();
 
             /* Set a nice success message */
-            Alerts::add_success(sprintf(language()->admin_plugins->install_message, '<strong>' . \Altum\Plugin::get($plugin_id)->name . '</strong>'));
+            Alerts::add_success(sprintf(l('admin_plugins.install_message'), '<strong>' . \Altum\Plugin::get($plugin_id)->name . '</strong>'));
 
         }
 
@@ -67,15 +71,15 @@ class AdminPlugins extends Controller {
         //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
         if(!Csrf::check('global_token')) {
-            Alerts::add_error(language()->global->error_message->invalid_csrf_token);
+            Alerts::add_error(l('global.error_message.invalid_csrf_token'));
         }
 
-        if(!\Altum\Plugin::is_installed($plugin_id)) {
-            redirect('admin/plugins');
+        if(!is_writable(\Altum\Plugin::get($plugin_id)->path)) {
+            Alerts::add_error(sprintf(l('global.error_message.directory_not_writable'), \Altum\Plugin::get($plugin_id)->path));
         }
 
-        if(!is_writable(\Altum\Plugin::get($plugin_id)->path . 'config.json')) {
-            Alerts::add_error(sprintf(language()->global->error_message->file_not_writable, \Altum\Plugin::get($plugin_id)->path . 'config.json'));
+        if(file_exists(\Altum\Plugin::get($plugin_id)->path . 'settings.json') && !is_writable(\Altum\Plugin::get($plugin_id)->path . 'settings.json')) {
+            Alerts::add_error(sprintf(l('global.error_message.file_not_writable'), \Altum\Plugin::get($plugin_id)->path . 'settings.json'));
         }
 
         if(!Alerts::has_field_errors() && !Alerts::has_errors()) {
@@ -88,7 +92,7 @@ class AdminPlugins extends Controller {
             $class::uninstall();
 
             /* Set a nice success message */
-            Alerts::add_success(sprintf(language()->admin_plugins->uninstall_message, '<strong>' . \Altum\Plugin::get($plugin_id)->name . '</strong>'));
+            Alerts::add_success(sprintf(l('admin_plugins.uninstall_message'), '<strong>' . \Altum\Plugin::get($plugin_id)->name . '</strong>'));
 
         }
 
@@ -102,15 +106,19 @@ class AdminPlugins extends Controller {
         //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
         if(!Csrf::check('global_token')) {
-            Alerts::add_error(language()->global->error_message->invalid_csrf_token);
+            Alerts::add_error(l('global.error_message.invalid_csrf_token'));
         }
 
         if(!\Altum\Plugin::is_installed($plugin_id)) {
             redirect('admin/plugins');
         }
 
-        if(!is_writable(\Altum\Plugin::get($plugin_id)->path . 'config.json')) {
-            Alerts::add_error(sprintf(language()->global->error_message->file_not_writable, \Altum\Plugin::get($plugin_id)->path . 'config.json'));
+        if(!is_writable(\Altum\Plugin::get($plugin_id)->path)) {
+            Alerts::add_error(sprintf(l('global.error_message.directory_not_writable'), \Altum\Plugin::get($plugin_id)->path));
+        }
+
+        if(file_exists(\Altum\Plugin::get($plugin_id)->path . 'settings.json') && !is_writable(\Altum\Plugin::get($plugin_id)->path . 'settings.json')) {
+            Alerts::add_error(sprintf(l('global.error_message.file_not_writable'), \Altum\Plugin::get($plugin_id)->path . 'settings.json'));
         }
 
         if(!Alerts::has_field_errors() && !Alerts::has_errors()) {
@@ -123,7 +131,7 @@ class AdminPlugins extends Controller {
             $class::activate();
 
             /* Set a nice success message */
-            Alerts::add_success(sprintf(language()->admin_plugins->activate_message, '<strong>' . \Altum\Plugin::get($plugin_id)->name . '</strong>'));
+            Alerts::add_success(sprintf(l('admin_plugins.activate_message'), '<strong>' . \Altum\Plugin::get($plugin_id)->name . '</strong>'));
 
         }
 
@@ -137,15 +145,19 @@ class AdminPlugins extends Controller {
         //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
         if(!Csrf::check('global_token')) {
-            Alerts::add_error(language()->global->error_message->invalid_csrf_token);
+            Alerts::add_error(l('global.error_message.invalid_csrf_token'));
         }
 
         if(!\Altum\Plugin::is_active($plugin_id)) {
             redirect('admin/plugins');
         }
 
-        if(!is_writable(\Altum\Plugin::get($plugin_id)->path . 'config.json')) {
-            Alerts::add_error(sprintf(language()->global->error_message->file_not_writable, \Altum\Plugin::get($plugin_id)->path . 'config.json'));
+        if(!is_writable(\Altum\Plugin::get($plugin_id)->path)) {
+            Alerts::add_error(sprintf(l('global.error_message.directory_not_writable'), \Altum\Plugin::get($plugin_id)->path));
+        }
+
+        if(file_exists(\Altum\Plugin::get($plugin_id)->path . 'settings.json') && !is_writable(\Altum\Plugin::get($plugin_id)->path . 'settings.json')) {
+            Alerts::add_error(sprintf(l('global.error_message.file_not_writable'), \Altum\Plugin::get($plugin_id)->path . 'settings.json'));
         }
 
         if(!Alerts::has_field_errors() && !Alerts::has_errors()) {
@@ -158,7 +170,7 @@ class AdminPlugins extends Controller {
             $class::disable();
 
             /* Set a nice success message */
-            Alerts::add_success(sprintf(language()->admin_plugins->disable_message, '<strong>' . \Altum\Plugin::get($plugin_id)->name . '</strong>'));
+            Alerts::add_success(sprintf(l('admin_plugins.disable_message'), '<strong>' . \Altum\Plugin::get($plugin_id)->name . '</strong>'));
 
         }
 

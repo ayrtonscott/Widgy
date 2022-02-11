@@ -19,8 +19,9 @@ class AdminPayments extends Controller {
     public function index() {
 
         /* Prepare the filtering system */
-        $filters = (new \Altum\Filters(['status', 'plan_id', 'user_id', 'type', 'processor', 'frequency'], ['id'], ['total_amount', 'email', 'datetime', 'name']));
-        $filters->set_default_order_by('id', 'DESC');
+        $filters = (new \Altum\Filters(['status', 'plan_id', 'user_id', 'type', 'processor', 'frequency'], ['payment_id'], ['total_amount', 'email', 'datetime', 'name']));
+        $filters->set_default_order_by('id', settings()->main->default_order_type);
+        $filters->set_default_results_per_page(settings()->main->default_results_per_page);
 
         /* Prepare the paginator */
         $total_rows = database()->query("SELECT COUNT(*) AS `total` FROM `payments` WHERE 1 = 1 {$filters->get_sql_where()}")->fetch_object()->total ?? 0;
@@ -82,7 +83,7 @@ class AdminPayments extends Controller {
         //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
         if(!Csrf::check('global_token')) {
-            Alerts::add_error(language()->global->error_message->invalid_csrf_token);
+            Alerts::add_error(l('global.error_message.invalid_csrf_token'));
             redirect('admin/users');
         }
 
@@ -114,7 +115,7 @@ class AdminPayments extends Controller {
             db()->where('id', $payment_id)->delete('payments');
 
             /* Set a nice success message */
-            Alerts::add_success(language()->global->success_message->delete2);
+            Alerts::add_success(l('global.success_message.delete2'));
 
         }
 
@@ -128,7 +129,7 @@ class AdminPayments extends Controller {
         //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
         if(!Csrf::check('global_token')) {
-            Alerts::add_error(language()->global->error_message->invalid_csrf_token);
+            Alerts::add_error(l('global.error_message.invalid_csrf_token'));
             redirect('admin/users');
         }
 
@@ -195,14 +196,14 @@ class AdminPayments extends Controller {
             /* Send notification to the user */
             $email_template = get_email_template(
                 [],
-                language()->global->emails->user_payment->subject,
+                l('global.emails.user_payment.subject'),
                 [
                     '{{NAME}}' => $user->name,
                     '{{PLAN_EXPIRATION_DATE}}' => Date::get($plan_expiration_date, 2),
                     '{{USER_PLAN_LINK}}' => url('account-plan'),
                     '{{USER_PAYMENTS_LINK}}' => url('account-payments'),
                 ],
-                language()->global->emails->user_payment->body
+                l('global.emails.user_payment.body')
             );
 
             send_mail($user->email, $email_template->subject, $email_template->body);
@@ -214,7 +215,7 @@ class AdminPayments extends Controller {
             (new Payments())->affiliate_payment_check($payment_id, $payment->total_amount, $user);
 
             /* Set a nice success message */
-            Alerts::add_success(language()->admin_payment_approve_modal->success_message);
+            Alerts::add_success(l('admin_payment_approve_modal.success_message'));
 
         }
 

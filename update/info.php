@@ -1,7 +1,7 @@
 <?php
 
-define('NEW_PRODUCT_VERSION', '10.0.0');
-define('NEW_PRODUCT_CODE', '1000');
+define('NEW_PRODUCT_VERSION', '13.0.0');
+define('NEW_PRODUCT_CODE', '1300');
 
 $updates = [
     '500',
@@ -15,4 +15,7 @@ $updates = [
     '900',
     '901',
     '1000',
+    '1100',
+    '1200',
+    '1300',
 ];

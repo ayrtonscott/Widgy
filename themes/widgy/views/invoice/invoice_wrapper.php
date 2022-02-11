@@ -1,12 +1,11 @@
 <?php defined('ALTUMCODE') || die() ?>
 <!DOCTYPE html>
-<html lang="<?= \Altum\Language::$language_code ?>" dir="<?= language()->direction ?>">
+<html lang="<?= \Altum\Language::$language_code ?>" dir="<?= l('direction') ?>">
     <head>
         <title><?= \Altum\Title::get() ?></title>
         <base href="<?= SITE_URL; ?>">
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta http-equiv="content-language" content="<?= \Altum\Language::$language_code  ?>" />
 
         <?php if(!settings()->main->se_indexing): ?>
             <meta name="robots" content="noindex">
@@ -15,7 +14,7 @@
         <link rel="alternate" href="<?= SITE_URL . \Altum\Routing\Router::$original_request ?>" hreflang="x-default" />
         <?php if(count(\Altum\Language::$languages) > 1): ?>
             <?php foreach(\Altum\Language::$languages as $language_code => $language_name): ?>
-                <?php if(settings()->default_language != $language_name): ?>
+                <?php if(settings()->main->default_language != $language_name): ?>
                     <link rel="alternate" href="<?= SITE_URL . $language_code . '/' . \Altum\Routing\Router::$original_request ?>" hreflang="<?= $language_code ?>" />
                 <?php endif ?>
             <?php endforeach ?>
@@ -42,7 +41,7 @@
         <?php endif ?>
     </head>
 
-    <body class="<?= language()->direction == 'rtl' ? 'rtl' : null ?> <?= \Altum\Routing\Router::$controller_settings['body_white'] ? 'bg-white' : null ?>">
+    <body class="<?= l('direction') == 'rtl' ? 'rtl' : null ?> <?= \Altum\Routing\Router::$controller_settings['body_white'] ? 'bg-white' : null ?>">
 
         <main class="">
             <?= $this->views['content'] ?>

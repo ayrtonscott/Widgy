@@ -7,15 +7,15 @@
         <div class="altumcode-score-feedback-header">
             <p class="altumcode-score-feedback-title" style="color: <?= $notification->settings->title_color ?>"><?= $notification->settings->title ?></p>
 
-            <button class="altumcode-close"></button>
+            <button class="altumcode-close">&#10006;</button>
         </div>
 
         <div class="altumcode-score-feedback-scores">
-            <button type="button" class="altumcode-score-feedback-button" data-score="1" style="background: <?= $notification->settings->button_background_color ?>;color: <?= $notification->settings->button_color ?>"><?= language()->notification->score_feedback->feedback_score_1 ?></button>
-            <button type="button" class="altumcode-score-feedback-button" data-score="2" style="background: <?= $notification->settings->button_background_color ?>;color: <?= $notification->settings->button_color ?>"><?= language()->notification->score_feedback->feedback_score_2 ?></button>
-            <button type="button" class="altumcode-score-feedback-button" data-score="3" style="background: <?= $notification->settings->button_background_color ?>;color: <?= $notification->settings->button_color ?>"><?= language()->notification->score_feedback->feedback_score_3 ?></button>
-            <button type="button" class="altumcode-score-feedback-button" data-score="4" style="background: <?= $notification->settings->button_background_color ?>;color: <?= $notification->settings->button_color ?>"><?= language()->notification->score_feedback->feedback_score_4 ?></button>
-            <button type="button" class="altumcode-score-feedback-button" data-score="5" style="background: <?= $notification->settings->button_background_color ?>;color: <?= $notification->settings->button_color ?>"><?= language()->notification->score_feedback->feedback_score_5 ?></button>
+            <button type="button" class="altumcode-score-feedback-button" data-score="1" style="background: <?= $notification->settings->button_background_color ?>;color: <?= $notification->settings->button_color ?>"><?= l('notification.score_feedback.feedback_score_1') ?></button>
+            <button type="button" class="altumcode-score-feedback-button" data-score="2" style="background: <?= $notification->settings->button_background_color ?>;color: <?= $notification->settings->button_color ?>"><?= l('notification.score_feedback.feedback_score_2') ?></button>
+            <button type="button" class="altumcode-score-feedback-button" data-score="3" style="background: <?= $notification->settings->button_background_color ?>;color: <?= $notification->settings->button_color ?>"><?= l('notification.score_feedback.feedback_score_3') ?></button>
+            <button type="button" class="altumcode-score-feedback-button" data-score="4" style="background: <?= $notification->settings->button_background_color ?>;color: <?= $notification->settings->button_color ?>"><?= l('notification.score_feedback.feedback_score_4') ?></button>
+            <button type="button" class="altumcode-score-feedback-button" data-score="5" style="background: <?= $notification->settings->button_background_color ?>;color: <?= $notification->settings->button_color ?>"><?= l('notification.score_feedback.feedback_score_5') ?></button>
         </div>
 
         <p class="altumcode-score-feedback-description" style="color: <?= $notification->settings->description_color ?>"><?= $notification->settings->description ?></p>

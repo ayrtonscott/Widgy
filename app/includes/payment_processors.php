@@ -44,4 +44,8 @@ return [
         'payment_type' => ['one_time'],
         'icon' => 'fa fa-ruble-sign',
     ],
+    'crypto_com' => [
+        'payment_type' => ['one_time'],
+        'icon' => 'fa fa-coins',
+    ],
 ];

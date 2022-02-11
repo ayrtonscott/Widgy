@@ -39,7 +39,7 @@ trait Apiable {
 
         if(!$api_key) {
             Response::jsonapi_error([[
-                'title' => language()->api->error_message->no_bearer,
+                'title' => l('api.error_message.no_bearer'),
                 'status' => '401'
             ]], null, 401);
         }
@@ -48,17 +48,17 @@ trait Apiable {
         $this->api_user = db()->where('api_key', $api_key)->where('status', 1)->getOne('users');
 
         if(!$this->api_user) {
-            $this->response_error(language()->api->error_message->no_access, 401);
+            $this->response_error(l('api.error_message.no_access'), 401);
         }
 
         if($require_to_be_admin && $this->api_user->type != 1) {
-            $this->response_error(language()->api->error_message->no_access, 401);
+            $this->response_error(l('api.error_message.no_access'), 401);
         }
 
         $this->api_user->plan_settings = json_decode($this->api_user->plan_settings);
 
 //        if(!$require_to_be_admin && !$this->api_user->plan_settings->api_is_enabled) {
-//            $this->response_error(language()->api->error_message->no_access, 401);
+//            $this->response_error(l('api.error_message.no_access'), 401);
 //        }
 
         /* Rate limiting */
@@ -97,13 +97,13 @@ trait Apiable {
 
         if($rate_limit_remaining < 0) {
             header('X-RateLimit-Reset: ' . $rate_limit_reset);
-            $this->response_error(language()->api->error_message->rate_limit, 429);
+            $this->response_error(l('api.error_message.rate_limit'), 429);
         }
 
     }
 
     private function return_404() {
-        $this->response_error(language()->api->error_message->not_found, 404);
+        $this->response_error(l('api.error_message.not_found'), 404);
     }
 
     private function response_error($title = '', $response_code = 400) {

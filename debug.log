@@ -62,3 +62,75 @@
 [26-Jan-2022 15:18:35 UTC] PHP Warning:  Undefined property: stdClass::$thank_you_url in C:\xampp\htdocs\themes\widgy\views\partials\notifications\emoji_feedback.php on line 101
 [26-Jan-2022 15:18:35 UTC] PHP Warning:  Undefined property: stdClass::$thank_you_url in C:\xampp\htdocs\themes\widgy\views\partials\notifications\score_feedback.php on line 86
 [26-Jan-2022 15:18:35 UTC] PHP Warning:  Undefined property: stdClass::$thank_you_url in C:\xampp\htdocs\plugins\pro-notifications\views\partials\notifications\text_feedback.php on line 88
+[11-Feb-2022 01:24:49 UTC] PHP Warning:  Undefined property: stdClass::$thank_you_url in C:\xampp\htdocs\themes\widgy\views\partials\notifications\emoji_feedback.php on line 101
+[11-Feb-2022 01:24:49 UTC] PHP Warning:  Undefined property: stdClass::$thank_you_url in C:\xampp\htdocs\themes\widgy\views\partials\notifications\score_feedback.php on line 86
+[11-Feb-2022 01:24:49 UTC] PHP Warning:  Undefined property: stdClass::$thank_you_url in C:\xampp\htdocs\plugins\pro-notifications\views\partials\notifications\text_feedback.php on line 88
+[11-Feb-2022 01:29:25 UTC] PHP Warning:  Undefined property: stdClass::$thank_you_url in C:\xampp\htdocs\themes\widgy\views\partials\notifications\emoji_feedback.php on line 101
+[11-Feb-2022 01:29:25 UTC] PHP Warning:  Undefined property: stdClass::$thank_you_url in C:\xampp\htdocs\themes\widgy\views\partials\notifications\score_feedback.php on line 86
+[11-Feb-2022 01:29:25 UTC] PHP Warning:  Undefined property: stdClass::$thank_you_url in C:\xampp\htdocs\plugins\pro-notifications\views\partials\notifications\text_feedback.php on line 88
+[11-Feb-2022 01:29:27 UTC] PHP Warning:  Undefined property: stdClass::$thank_you_url in C:\xampp\htdocs\themes\widgy\views\partials\notifications\emoji_feedback.php on line 101
+[11-Feb-2022 01:29:27 UTC] PHP Warning:  Undefined property: stdClass::$thank_you_url in C:\xampp\htdocs\themes\widgy\views\partials\notifications\score_feedback.php on line 86
+[11-Feb-2022 01:29:27 UTC] PHP Warning:  Undefined property: stdClass::$thank_you_url in C:\xampp\htdocs\plugins\pro-notifications\views\partials\notifications\text_feedback.php on line 88
+[11-Feb-2022 01:32:12 UTC] PHP Warning:  Undefined property: stdClass::$thank_you_url in C:\xampp\htdocs\themes\widgy\views\partials\notifications\emoji_feedback.php on line 101
+[11-Feb-2022 01:32:12 UTC] PHP Warning:  Undefined property: stdClass::$thank_you_url in C:\xampp\htdocs\themes\widgy\views\partials\notifications\score_feedback.php on line 86
+[11-Feb-2022 01:32:12 UTC] PHP Warning:  Undefined property: stdClass::$thank_you_url in C:\xampp\htdocs\plugins\pro-notifications\views\partials\notifications\text_feedback.php on line 88
+[11-Feb-2022 01:38:18 UTC] PHP Warning:  Undefined property: stdClass::$thank_you_url in C:\xampp\htdocs\themes\widgy\views\partials\notifications\emoji_feedback.php on line 101
+[11-Feb-2022 01:38:18 UTC] PHP Warning:  Undefined property: stdClass::$thank_you_url in C:\xampp\htdocs\themes\widgy\views\partials\notifications\score_feedback.php on line 86
+[11-Feb-2022 01:38:18 UTC] PHP Warning:  Undefined property: stdClass::$thank_you_url in C:\xampp\htdocs\plugins\pro-notifications\views\partials\notifications\text_feedback.php on line 88
+[11-Feb-2022 01:45:59 UTC] PHP Warning:  Undefined property: stdClass::$thank_you_url in C:\xampp\htdocs\themes\widgy\views\partials\notifications\emoji_feedback.php on line 101
+[11-Feb-2022 01:45:59 UTC] PHP Warning:  Undefined property: stdClass::$thank_you_url in C:\xampp\htdocs\themes\widgy\views\partials\notifications\score_feedback.php on line 86
+[11-Feb-2022 01:45:59 UTC] PHP Warning:  Undefined property: stdClass::$thank_you_url in C:\xampp\htdocs\plugins\pro-notifications\views\partials\notifications\text_feedback.php on line 88
+[11-Feb-2022 02:56:39 Europe/Berlin] PHP Fatal error:  Uncaught Error: Undefined constant "Altum\CACHE" in C:\xampp\htdocs\app\helpers\Cache.php:19
+Stack trace:
+#0 C:\xampp\htdocs\app\core\App.php(63): Altum\Cache::initialize()
+#1 C:\xampp\htdocs\index.php(14): Altum\App->__construct()
+#2 {main}
+  thrown in C:\xampp\htdocs\app\helpers\Cache.php on line 19
+[11-Feb-2022 03:03:35 Europe/Berlin] PHP Fatal error:  Uncaught Error: Undefined constant "Altum\CACHE" in C:\xampp\htdocs\app\helpers\Cache.php:19
+Stack trace:
+#0 C:\xampp\htdocs\app\core\App.php(63): Altum\Cache::initialize()
+#1 C:\xampp\htdocs\index.php(14): Altum\App->__construct()
+#2 {main}
+  thrown in C:\xampp\htdocs\app\helpers\Cache.php on line 19
+[11-Feb-2022 03:03:49 Europe/Berlin] PHP Fatal error:  Uncaught Error: Undefined constant "Altum\CACHE" in C:\xampp\htdocs\app\helpers\Cache.php:19
+Stack trace:
+#0 C:\xampp\htdocs\app\core\App.php(63): Altum\Cache::initialize()
+#1 C:\xampp\htdocs\index.php(14): Altum\App->__construct()
+#2 {main}
+  thrown in C:\xampp\htdocs\app\helpers\Cache.php on line 19
+[11-Feb-2022 03:08:02 Europe/Berlin] PHP Fatal error:  Uncaught Error: Undefined constant "Altum\CACHE" in C:\xampp\htdocs\app\helpers\Cache.php:19
+Stack trace:
+#0 C:\xampp\htdocs\app\core\App.php(63): Altum\Cache::initialize()
+#1 C:\xampp\htdocs\index.php(14): Altum\App->__construct()
+#2 {main}
+  thrown in C:\xampp\htdocs\app\helpers\Cache.php on line 19
+[11-Feb-2022 03:10:11 Europe/Berlin] PHP Fatal error:  Uncaught Error: Undefined constant "Altum\CACHE" in C:\xampp\htdocs\app\helpers\Cache.php:19
+Stack trace:
+#0 C:\xampp\htdocs\app\core\App.php(63): Altum\Cache::initialize()
+#1 C:\xampp\htdocs\index.php(14): Altum\App->__construct()
+#2 {main}
+  thrown in C:\xampp\htdocs\app\helpers\Cache.php on line 19
+[11-Feb-2022 03:10:16 Europe/Berlin] PHP Fatal error:  Uncaught Error: Undefined constant "Altum\CACHE" in C:\xampp\htdocs\app\helpers\Cache.php:19
+Stack trace:
+#0 C:\xampp\htdocs\app\core\App.php(63): Altum\Cache::initialize()
+#1 C:\xampp\htdocs\index.php(14): Altum\App->__construct()
+#2 {main}
+  thrown in C:\xampp\htdocs\app\helpers\Cache.php on line 19
+[11-Feb-2022 03:10:29 Europe/Berlin] PHP Fatal error:  Uncaught Error: Undefined constant "Altum\CACHE" in C:\xampp\htdocs\app\helpers\Cache.php:19
+Stack trace:
+#0 C:\xampp\htdocs\app\core\App.php(63): Altum\Cache::initialize()
+#1 C:\xampp\htdocs\index.php(14): Altum\App->__construct()
+#2 {main}
+  thrown in C:\xampp\htdocs\app\helpers\Cache.php on line 19
+[11-Feb-2022 03:21:53 Europe/Berlin] PHP Fatal error:  Uncaught Error: Undefined constant "Altum\CACHE" in C:\xampp\htdocs\app\helpers\Cache.php:19
+Stack trace:
+#0 C:\xampp\htdocs\app\core\App.php(63): Altum\Cache::initialize()
+#1 C:\xampp\htdocs\index.php(14): Altum\App->__construct()
+#2 {main}
+  thrown in C:\xampp\htdocs\app\helpers\Cache.php on line 19
+[11-Feb-2022 03:26:30 Europe/Berlin] PHP Fatal error:  Uncaught Error: Undefined constant "Altum\CACHE" in C:\xampp\htdocs\app\helpers\Cache.php:19
+Stack trace:
+#0 C:\xampp\htdocs\app\core\App.php(63): Altum\Cache::initialize()
+#1 C:\xampp\htdocs\index.php(14): Altum\App->__construct()
+#2 {main}
+  thrown in C:\xampp\htdocs\app\helpers\Cache.php on line 19

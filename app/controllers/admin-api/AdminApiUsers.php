@@ -64,7 +64,8 @@ class AdminApiUsers extends Controller {
 
         /* Prepare the filtering system */
         $filters = (new \Altum\Filters([], ['name', 'email'], ['email', 'datetime', 'last_activity', 'name', 'total_logins']));
-        $filters->set_default_order_by('user_id', 'DESC');
+        $filters->set_default_order_by('user_id', settings()->main->default_order_type);
+        $filters->set_default_results_per_page(settings()->main->default_results_per_page);
 
         /* Prepare the paginator */
         $total_rows = database()->query("SELECT COUNT(*) AS `total` FROM `users` WHERE 1 = 1 {$filters->get_sql_where()}")->fetch_object()->total ?? 0;
@@ -141,7 +142,7 @@ class AdminApiUsers extends Controller {
         /* We haven't found the resource */
         if(!$user) {
             Response::jsonapi_error([[
-                'title' => language()->api->error_message->not_found,
+                'title' => l('api.error_message.not_found'),
                 'status' => '404'
             ]], null, 404);
         }
@@ -179,22 +180,22 @@ class AdminApiUsers extends Controller {
         /* Check for any errors */
         foreach($required_fields as $field) {
             if(!isset($_POST[$field]) || (isset($_POST[$field]) && empty($_POST[$field]) && $_POST[$field] != '0')) {
-                $this->response_error(language()->global->error_message->empty_fields, 401);
+                $this->response_error(l('global.error_message.empty_fields'), 401);
                 break 1;
             }
         }
 
         if(mb_strlen($_POST['name']) < 3 || mb_strlen($_POST['name']) > 64) {
-            $this->response_error(language()->admin_user_create->error_message->name_length, 401);
+            $this->response_error(l('admin_user_create.error_message.name_length'), 401);
         }
         if(db()->where('email', $_POST['email'])->has('users')) {
-            $this->response_error(language()->admin_user_create->error_message->email_exists, 401);
+            $this->response_error(l('admin_user_create.error_message.email_exists'), 401);
         }
         if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-            $this->response_error(language()->admin_user_create->error_message->invalid_email, 401);
+            $this->response_error(l('admin_user_create.error_message.invalid_email'), 401);
         }
-        if(mb_strlen(trim($_POST['password'])) < 6) {
-            $this->response_error(language()->admin_user_create->error_message->short_password, 401);
+        if(mb_strlen($_POST['password']) < 6 || mb_strlen($_POST['password']) > 64) {
+            $this->response_error(l('global.error_message.password_length'), 401);
         }
 
         /* Define some needed variables */
@@ -211,7 +212,7 @@ class AdminApiUsers extends Controller {
             'free',
             json_encode(settings()->plan_free->settings),
             null,
-            settings()->default_timezone,
+            settings()->main->default_timezone,
             true
         );
 
@@ -233,20 +234,20 @@ class AdminApiUsers extends Controller {
 
         /* We haven't found the resource */
         if(!$user) {
-            $this->response_error(language()->api->error_message->not_found, 404);
+            $this->response_error(l('api.error_message.not_found'), 404);
         }
 
         if(isset($_POST['name']) && (mb_strlen($_POST['name']) < 3 || mb_strlen($_POST['name']) > 64)) {
-            $this->response_error(language()->admin_user_create->error_message->name_length, 401);
+            $this->response_error(l('admin_user_create.error_message.name_length'), 401);
         }
         if(isset($_POST['email']) && $user->email != $_POST['email'] && db()->where('email', $_POST['email'])->has('users')) {
-            $this->response_error(language()->admin_user_create->error_message->email_exists, 401);
+            $this->response_error(l('admin_user_create.error_message.email_exists'), 401);
         }
         if(isset($_POST['email']) && !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-            $this->response_error(language()->admin_user_create->error_message->invalid_email, 401);
+            $this->response_error(l('admin_user_create.error_message.invalid_email'), 401);
         }
-        if(isset($_POST['password']) && mb_strlen(trim($_POST['password'])) < 6) {
-            $this->response_error(language()->admin_user_create->error_message->short_password, 401);
+        if(isset($_POST['password']) && (mb_strlen($_POST['password']) < 6 || mb_strlen($_POST['password']) > 64)) {
+            $this->response_error(l('global.error_message.password_length'), 401);
         }
 
         /* Define some needed variables */
@@ -321,7 +322,7 @@ class AdminApiUsers extends Controller {
 
         /* We haven't found the resource */
         if(!$user) {
-            $this->response_error(language()->api->error_message->not_found, 404);
+            $this->response_error(l('api.error_message.not_found'), 404);
         }
 
         /* Define some needed variables */
@@ -353,11 +354,11 @@ class AdminApiUsers extends Controller {
 
         /* We haven't found the resource */
         if(!$user) {
-            $this->response_error(language()->api->error_message->not_found, 404);
+            $this->response_error(l('api.error_message.not_found'), 404);
         }
 
         if($user->user_id == $this->api_user->user_id) {
-            $this->response_error(language()->admin_users->error_message->self_delete, 401);
+            $this->response_error(l('admin_users.error_message.self_delete'), 401);
         }
 
         /* Delete the user */

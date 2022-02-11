@@ -18,7 +18,8 @@ class AdminUsersLogs extends Controller {
 
         /* Prepare the filtering system */
         $filters = (new \Altum\Filters(['user_id'], ['type', 'ip', 'country_code', 'device_type'], ['datetime']));
-        $filters->set_default_order_by('id', 'DESC');
+        $filters->set_default_order_by('id', settings()->main->default_order_type);
+        $filters->set_default_results_per_page(settings()->main->default_results_per_page);
 
         /* Prepare the paginator */
         $total_rows = database()->query("SELECT COUNT(*) AS `total` FROM `users_logs` WHERE 1 = 1 {$filters->get_sql_where()}")->fetch_object()->total ?? 0;
@@ -83,7 +84,7 @@ class AdminUsersLogs extends Controller {
         //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
         if(!Csrf::check()) {
-            Alerts::add_error(language()->global->error_message->invalid_csrf_token);
+            Alerts::add_error(l('global.error_message.invalid_csrf_token'));
         }
 
         if(!Alerts::has_field_errors() && !Alerts::has_errors()) {
@@ -98,7 +99,7 @@ class AdminUsersLogs extends Controller {
             }
 
             /* Set a nice success message */
-            Alerts::add_success(language()->admin_bulk_delete_modal->success_message);
+            Alerts::add_success(l('admin_bulk_delete_modal.success_message'));
 
         }
 
@@ -112,7 +113,7 @@ class AdminUsersLogs extends Controller {
         //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
         if(!Csrf::check('global_token')) {
-            Alerts::add_error(language()->global->error_message->invalid_csrf_token);
+            Alerts::add_error(l('global.error_message.invalid_csrf_token'));
         }
 
         if(!$user_log = db()->where('id', $id)->getOne('users_logs')) {
@@ -125,7 +126,7 @@ class AdminUsersLogs extends Controller {
             db()->where('id', $id)->delete('users_logs');
 
             /* Set a nice success message */
-            Alerts::add_success(language()->global->success_message->delete2);
+            Alerts::add_success(l('global.success_message.delete2'));
 
         }
 

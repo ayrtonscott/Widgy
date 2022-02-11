@@ -28,7 +28,7 @@ $javascript = '';
         data: {
             labels: <?= $data->logs_chart['labels'] ?>,
             datasets: [{
-                label: <?= json_encode(language()->notification->statistics->clicks_chart) ?>,
+                label: <?= json_encode(l('notification.statistics.clicks_chart')) ?>,
                 data: <?= $data->logs_chart['click'] ?? '[]' ?>,
                 backgroundColor: gradient,
                 borderColor: '#60BBE2',

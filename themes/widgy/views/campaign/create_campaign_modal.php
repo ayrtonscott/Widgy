@@ -5,7 +5,7 @@
         <div class="modal-content">
 
             <div class="modal-header">
-                <h5 class="modal-title"><?= language()->create_campaign_modal->header ?></h5>
+                <h5 class="modal-title"><?= l('create_campaign_modal.header') ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -17,15 +17,15 @@
                     <input type="hidden" name="request_type" value="create" />
 
                     <div class="form-group">
-                        <label><i class="fa fa-fw fa-sm fa-signature text-muted mr-1"></i> <?= language()->create_campaign_modal->input->name ?></label>
+                        <label><i class="fa fa-fw fa-sm fa-signature text-muted mr-1"></i> <?= l('create_campaign_modal.input.name') ?></label>
                         <input type="text" class="form-control" name="name" required="required" />
                     </div>
 
                     <div class="form-group">
-                        <label><i class="fa fa-fw fa-sm fa-network-wired text-muted mr-1"></i> <?= language()->create_campaign_modal->input->domain ?></label>
-                        <input type="text" class="form-control" name="domain" placeholder="<?= language()->create_campaign_modal->input->domain_placeholder ?>" required="required" />
-                        <small class="form-text text-muted"><?= language()->create_campaign_modal->input->domain_help ?></small>
-                        <small class="form-text text-muted"><?= language()->create_campaign_modal->input->domain_help2 ?></small>
+                        <label><i class="fa fa-fw fa-sm fa-network-wired text-muted mr-1"></i> <?= l('create_campaign_modal.input.domain') ?></label>
+                        <input type="text" class="form-control" name="domain" placeholder="<?= l('create_campaign_modal.input.domain_placeholder') ?>" required="required" />
+                        <small class="form-text text-muted"><?= l('create_campaign_modal.input.domain_help') ?></small>
+                        <small class="form-text text-muted"><?= l('create_campaign_modal.input.domain_help2') ?></small>
                     </div>
 
                     <div class="custom-control custom-switch">
@@ -35,12 +35,12 @@
                                 name="include_subdomains"
                                 id="include_subdomains"
                         >
-                        <label class="custom-control-label clickable" for="include_subdomains"><?= language()->create_campaign_modal->input->include_subdomains ?></label>
-                        <small class="form-text text-muted"><?= language()->create_campaign_modal->input->include_subdomains_help ?></small>
+                        <label class="custom-control-label clickable" for="include_subdomains"><?= l('create_campaign_modal.input.include_subdomains') ?></label>
+                        <small class="form-text text-muted"><?= l('create_campaign_modal.input.include_subdomains_help') ?></small>
                     </div>
 
                     <div class="text-center mt-4">
-                        <button type="submit" name="submit" class="btn btn-block btn-primary"><?= language()->global->create ?></button>
+                        <button type="submit" name="submit" class="btn btn-block btn-primary"><?= l('global.create') ?></button>
                     </div>
                 </form>
             </div>

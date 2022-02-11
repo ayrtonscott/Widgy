@@ -51,9 +51,9 @@ class Pay extends Controller {
                 $this->plan = settings()->plan_free;
 
                 if($this->user->plan_id == 'free') {
-                    Alerts::add_info(language()->pay->free->free_already);
+                    Alerts::add_info(l('pay.free.free_already'));
                 } else {
-                    Alerts::add_info(language()->pay->free->other_plan_not_expired);
+                    Alerts::add_info(l('pay.free.other_plan_not_expired'));
                 }
 
                 redirect('plan');
@@ -65,7 +65,11 @@ class Pay extends Controller {
                 $this->plan_id = (int) $this->plan_id;
 
                 /* Check if plan exists */
-                $this->plan = (new \Altum\Models\Plan())->get_plan_by_id($this->plan_id);
+                $this->plan = db()->where('plan_id', $this->plan_id)->getOne('plans');
+                if(!$this->plan) {
+                    redirect('plan');
+                }
+                $this->plan->settings = json_decode($this->plan->settings);
 
                 /* Check for potential taxes */
                 $this->plan_taxes = (new \Altum\Models\Plan())->get_plan_taxes_by_taxes_ids($this->plan->taxes_ids);
@@ -106,10 +110,10 @@ class Pay extends Controller {
 
         if(
             settings()->payment->taxes_and_billing_is_enabled
-            && ($this->user->plan_trial_done || !$this->plan->trial_days)
+            && ($this->user->plan_trial_done || !$this->plan->trial_days || isset($_GET['trial_skip']))
             && (empty($this->user->billing->name) || empty($this->user->billing->address) || empty($this->user->billing->city) || empty($this->user->billing->county) || empty($this->user->billing->zip))
         ) {
-            redirect('pay-billing/' . $this->plan_id);
+            redirect('pay-billing/' . $this->plan_id . '?' . (isset($_GET['trial_skip']) ? '&trial_skip=true' : null) . (isset($_GET['code']) ? '&code=' . $_GET['code'] : null));
         }
 
         /* Form submission processing */
@@ -117,25 +121,31 @@ class Pay extends Controller {
         if(!empty($_POST) && !$this->return_type) {
 
             //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
-            //ALTUMCODE:DEMO if(DEMO) redirect('pay/' . $this->plan_id);
+            //ALTUMCODE:DEMO if(DEMO) redirect('pay/' . $this->plan_id . (isset($_GET['trial_skip']) ? '?trial_skip=true' : null));
 
             /* Check for code usage */
             if(settings()->payment->codes_is_enabled && isset($_POST['code'])) {
                 $_POST['code'] = Database::clean_string($_POST['code']);
                 $this->code = database()->query("SELECT * FROM `codes` WHERE `code` = '{$_POST['code']}' AND `redeemed` < `quantity`")->fetch_object();
 
-                if($this->code && db()->where('user_id', $this->user->user_id)->where('code_id', $this->code->code_id)->has('redeemed_codes')) {
-                    redirect('pay/' . $this->plan_id);
+                if($this->code) {
+                    if(db()->where('user_id', $this->user->user_id)->where('code_id', $this->code->code_id)->has('redeemed_codes')) {
+                        $this->code = null;
+                    }
+
+                    if(!in_array($this->code->code_id, $this->plan->codes_ids)) {
+                        $this->code = null;
+                    }
                 }
             }
 
             /* Check for any errors */
             if(!Csrf::check()) {
-                Alerts::add_error(language()->global->error_message->invalid_csrf_token);
+                Alerts::add_error(l('global.error_message.invalid_csrf_token'));
             }
 
             /* Process further */
-            if($this->plan->trial_days && !$this->user->plan_trial_done) {
+            if($this->plan->trial_days && !$this->user->plan_trial_done && !isset($_GET['trial_skip'])) {
                 /* :) */
             } else if($this->code && $this->code->type == 'redeemable' && in_array($this->code->code_id, $this->plan->codes_ids)) {
 
@@ -145,7 +155,7 @@ class Pay extends Controller {
                         (new User())->cancel_subscription($this->user->user_id);
                     } catch (\Exception $exception) {
                         Alerts::add_error($exception->getCode() . ':' . $exception->getMessage());
-                        redirect('pay/' . $this->plan_id);
+                        redirect('pay/' . $this->plan_id . '?' . (isset($_GET['trial_skip']) ? '&trial_skip=true' : null) . (isset($_GET['code']) ? '&code=' . $_GET['code'] : null));
                     }
                 }
 
@@ -156,22 +166,22 @@ class Pay extends Controller {
 
                 /* Make sure the chosen option comply */
                 if(!in_array($_POST['payment_frequency'], ['monthly', 'annual', 'lifetime'])) {
-                    redirect('pay/' . $this->plan_id);
+                    redirect('pay/' . $this->plan_id . '?' . (isset($_GET['trial_skip']) ? '&trial_skip=true' : null) . (isset($_GET['code']) ? '&code=' . $_GET['code'] : null));
                 }
 
                 if(!array_key_exists($_POST['payment_processor'], $payment_processors)) {
-                    redirect('pay/' . $this->plan_id);
+                    redirect('pay/' . $this->plan_id . '?' . (isset($_GET['trial_skip']) ? '&trial_skip=true' : null) . (isset($_GET['code']) ? '&code=' . $_GET['code'] : null));
                 } else {
 
                     /* Make sure the payment processor is active */
                     if(!settings()->{$_POST['payment_processor']}->is_enabled) {
-                        redirect('pay/' . $this->plan_id);
+                        redirect('pay/' . $this->plan_id . '?' . (isset($_GET['trial_skip']) ? '&trial_skip=true' : null) . (isset($_GET['code']) ? '&code=' . $_GET['code'] : null));
                     }
 
                 }
 
                 if(!in_array($_POST['payment_type'], ['one_time', 'recurring'])) {
-                    redirect('pay/' . $this->plan_id);
+                    redirect('pay/' . $this->plan_id . '?' . (isset($_GET['trial_skip']) ? '&trial_skip=true' : null) . (isset($_GET['code']) ? '&code=' . $_GET['code'] : null));
                 }
 
                 /* Lifetime */
@@ -187,7 +197,7 @@ class Pay extends Controller {
 
             if(!Alerts::has_field_errors() && !Alerts::has_errors()) {
                 /* Check if we should start the trial or not */
-                if($this->plan->trial_days && !$this->user->plan_trial_done) {
+                if($this->plan->trial_days && !$this->user->plan_trial_done && !isset($_GET['trial_skip'])) {
 
                     /* Determine the expiration date of the plan */
                     $plan_expiration_date = (new \DateTime())->modify('+' . $this->plan->trial_days . ' days')->format('Y-m-d H:i:s');
@@ -280,7 +290,7 @@ class Pay extends Controller {
             $headers = \Altum\PaymentGateways\Paypal::get_headers();
         } catch (\Exception $exception) {
             Alerts::add_error($exception->getMessage());
-            redirect('pay/' . $this->plan_id);
+            redirect('pay/' . $this->plan_id . '?' . (isset($_GET['trial_skip']) ? '&trial_skip=true' : null) . (isset($_GET['code']) ? '&code=' . $_GET['code'] : null));
         }
 
         $custom_id = $this->user->user_id . '&' . $this->plan_id . '&' . $_POST['payment_frequency'] . '&' . $base_amount . '&' . $code . '&' . $discount_amount . '&' . json_encode($this->applied_taxes_ids);
@@ -329,9 +339,9 @@ class Pay extends Controller {
                     if(DEBUG) {
                         Alerts::add_error($response->body->name . ':' . $response->body->message);
                     } else {
-                        Alerts::add_error(language()->pay->error_message->failed_payment);
+                        Alerts::add_error(l('pay.error_message.failed_payment'));
                     }
-                    redirect('pay/' . $this->plan_id);
+                    redirect('pay/' . $this->plan_id . '?' . (isset($_GET['trial_skip']) ? '&trial_skip=true' : null) . (isset($_GET['code']) ? '&code=' . $_GET['code'] : null));
                 }
 
                 $paypal_payment_url = $response->body->links[1]->href;
@@ -362,9 +372,9 @@ class Pay extends Controller {
                         if(DEBUG) {
                             Alerts::add_error($response->body->name . ':' . $response->body->message);
                         } else {
-                            Alerts::add_error(language()->pay->error_message->failed_payment);
+                            Alerts::add_error(l('pay.error_message.failed_payment'));
                         }
-                        redirect('pay/' . $this->plan_id);
+                        redirect('pay/' . $this->plan_id . '?' . (isset($_GET['trial_skip']) ? '&trial_skip=true' : null) . (isset($_GET['code']) ? '&code=' . $_GET['code'] : null));
                     }
                 }
 
@@ -405,9 +415,9 @@ class Pay extends Controller {
                     if(DEBUG) {
                         Alerts::add_error($response->body->name . ':' . $response->body->message);
                     } else {
-                        Alerts::add_error(language()->pay->error_message->failed_payment);
+                        Alerts::add_error(l('pay.error_message.failed_payment'));
                     }
-                    redirect('pay/' . $this->plan_id);
+                    redirect('pay/' . $this->plan_id . '?' . (isset($_GET['trial_skip']) ? '&trial_skip=true' : null) . (isset($_GET['code']) ? '&code=' . $_GET['code'] : null));
                 }
 
                 /* Create a new subscription */
@@ -435,9 +445,9 @@ class Pay extends Controller {
                     if(DEBUG) {
                         Alerts::add_error($response->body->name . ':' . $response->body->message);
                     } else {
-                        Alerts::add_error(language()->pay->error_message->failed_payment);
+                        Alerts::add_error(l('pay.error_message.failed_payment'));
                     }
-                    redirect('pay/' . $this->plan_id);
+                    redirect('pay/' . $this->plan_id . '?' . (isset($_GET['trial_skip']) ? '&trial_skip=true' : null) . (isset($_GET['code']) ? '&code=' . $_GET['code'] : null));
                 }
 
                 $paypal_payment_url = $response->body->links[0]->href;
@@ -531,7 +541,7 @@ class Pay extends Controller {
                         ]);
                     } catch (\Exception $exception) {
                         Alerts::add_error($exception->getMessage());
-                        redirect('pay/' . $this->plan_id);
+                        redirect('pay/' . $this->plan_id . '?' . (isset($_GET['trial_skip']) ? '&trial_skip=true' : null) . (isset($_GET['code']) ? '&code=' . $_GET['code'] : null));
                     }
                 }
 
@@ -611,9 +621,9 @@ class Pay extends Controller {
             if(DEBUG) {
                 Alerts::add_error($response->body->error->type . ':' . $response->body->error->message);
             } else {
-                Alerts::add_error(language()->pay->error_message->failed_payment);
+                Alerts::add_error(l('pay.error_message.failed_payment'));
             }
-            redirect('pay/' . $this->plan_id);
+            redirect('pay/' . $this->plan_id . '?' . (isset($_GET['trial_skip']) ? '&trial_skip=true' : null) . (isset($_GET['code']) ? '&code=' . $_GET['code'] : null));
         }
 
         header('Location: ' . $response->body->data->hosted_url); die();
@@ -639,8 +649,8 @@ class Pay extends Controller {
 
         /* Error checks */
         if(!$offline_payment_proof) {
-            Alerts::add_error(language()->pay->error_message->offline_payment_proof_missing);
-            redirect('pay/' . $this->plan_id);
+            Alerts::add_error(l('pay.error_message.offline_payment_proof_missing'));
+            redirect('pay/' . $this->plan_id . '?' . (isset($_GET['trial_skip']) ? '&trial_skip=true' : null) . (isset($_GET['code']) ? '&code=' . $_GET['code'] : null));
         }
 
         $offline_payment_proof_file_name = $_FILES['offline_payment_proof']['name'];
@@ -648,15 +658,23 @@ class Pay extends Controller {
         $offline_payment_proof_file_extension = mb_strtolower(end($offline_payment_proof_file_extension));
         $offline_payment_proof_file_temp = $_FILES['offline_payment_proof']['tmp_name'];
 
+        if($_FILES['offline_payment_proof']['error'] == UPLOAD_ERR_INI_SIZE) {
+            Alerts::add_error(sprintf(l('global.error_message.file_size_limit'), get_max_upload()));
+        }
+
+        if($_FILES['offline_payment_proof']['error'] && $_FILES['offline_payment_proof']['error'] != UPLOAD_ERR_INI_SIZE) {
+            Alerts::add_error(l('global.error_message.file_upload'));
+        }
+
         if(!in_array($offline_payment_proof_file_extension, Uploads::get_whitelisted_file_extensions('offline_payment_proofs'))) {
-            Alerts::add_error(language()->global->error_message->invalid_file_type);
-            redirect('pay/' . $this->plan_id);
+            Alerts::add_error(l('global.error_message.invalid_file_type'));
+            redirect('pay/' . $this->plan_id . '?' . (isset($_GET['trial_skip']) ? '&trial_skip=true' : null) . (isset($_GET['code']) ? '&code=' . $_GET['code'] : null));
         }
 
         if(!\Altum\Plugin::is_active('offload') || (\Altum\Plugin::is_active('offload') && !settings()->offload->uploads_url)) {
             if(!is_writable(UPLOADS_PATH . 'offline_payment_proofs/')) {
-                Alerts::add_error(sprintf(language()->global->error_message->directory_not_writable, UPLOADS_PATH . 'offline_payment_proofs/'));
-                redirect('pay/' . $this->plan_id);
+                Alerts::add_error(sprintf(l('global.error_message.directory_not_writable'), UPLOADS_PATH . 'offline_payment_proofs/'));
+                redirect('pay/' . $this->plan_id . '?' . (isset($_GET['trial_skip']) ? '&trial_skip=true' : null) . (isset($_GET['code']) ? '&code=' . $_GET['code'] : null));
             }
         }
 
@@ -720,7 +738,7 @@ class Pay extends Controller {
                     '{{TOTAL_AMOUNT}}' => $price,
                     '{{CURRENCY}}' => settings()->payment->currency,
                 ],
-                language()->global->emails->admin_new_payment_notification->subject,
+                l('global.emails.admin_new_payment_notification.subject'),
                 [
                     '{{PROCESSOR}}' => 'offline_payment',
                     '{{TOTAL_AMOUNT}}' => $price,
@@ -728,7 +746,7 @@ class Pay extends Controller {
                     '{{NAME}}' => $this->user->name,
                     '{{EMAIL}}' => $this->user->email,
                 ],
-                language()->global->emails->admin_new_payment_notification->body
+                l('global.emails.admin_new_payment_notification.body')
             );
 
             send_mail(explode(',', settings()->email_notifications->emails), $email_template->subject, $email_template->body);
@@ -791,9 +809,9 @@ class Pay extends Controller {
                 if(DEBUG) {
                     Alerts::add_error($status_description);
                 } else {
-                    Alerts::add_error(language()->pay->error_message->failed_payment);
+                    Alerts::add_error(l('pay.error_message.failed_payment'));
                 }
-                redirect('pay/' . $this->plan_id);
+                redirect('pay/' . $this->plan_id . '?' . (isset($_GET['trial_skip']) ? '&trial_skip=true' : null) . (isset($_GET['code']) ? '&code=' . $_GET['code'] : null));
             }
 
             /* Add a log into the database */
@@ -825,9 +843,9 @@ class Pay extends Controller {
             if(DEBUG) {
                 Alerts::add_error($exception->getMessage());
             } else {
-                Alerts::add_error(language()->pay->error_message->failed_payment);
+                Alerts::add_error(l('pay.error_message.failed_payment'));
             }
-            redirect('pay/' . $this->plan_id);
+            redirect('pay/' . $this->plan_id . '?' . (isset($_GET['trial_skip']) ? '&trial_skip=true' : null) . (isset($_GET['code']) ? '&code=' . $_GET['code'] : null));
         }
 
         $response = \Unirest\Request::post(
@@ -860,9 +878,9 @@ class Pay extends Controller {
             if(DEBUG) {
                 Alerts::add_error($response->body->error->type . ':' . $response->body->error->message);
             } else {
-                Alerts::add_error(language()->pay->error_message->failed_payment);
+                Alerts::add_error(l('pay.error_message.failed_payment'));
             }
-            redirect('pay/' . $this->plan_id);
+            redirect('pay/' . $this->plan_id . '?' . (isset($_GET['trial_skip']) ? '&trial_skip=true' : null) . (isset($_GET['code']) ? '&code=' . $_GET['code'] : null));
         }
 
         header('Location: ' . $response->body->data->hosted_url); die();
@@ -905,9 +923,9 @@ class Pay extends Controller {
                     if(DEBUG) {
                         Alerts::add_error($response->body->message);
                     } else {
-                        Alerts::add_error(language()->pay->error_message->failed_payment);
+                        Alerts::add_error(l('pay.error_message.failed_payment'));
                     }
-                    redirect('pay/' . $this->plan_id);
+                    redirect('pay/' . $this->plan_id . '?' . (isset($_GET['trial_skip']) ? '&trial_skip=true' : null) . (isset($_GET['code']) ? '&code=' . $_GET['code'] : null));
                 }
 
                 /* Redirect to payment */
@@ -928,9 +946,9 @@ class Pay extends Controller {
                     if(DEBUG) {
                         Alerts::add_error($response->body->message);
                     } else {
-                        Alerts::add_error(language()->pay->error_message->failed_payment);
+                        Alerts::add_error(l('pay.error_message.failed_payment'));
                     }
-                    redirect('pay/' . $this->plan_id);
+                    redirect('pay/' . $this->plan_id . '?' . (isset($_GET['trial_skip']) ? '&trial_skip=true' : null) . (isset($_GET['code']) ? '&code=' . $_GET['code'] : null));
                 }
 
                 $paystack_plan_code = $response->body->data->plan_code;
@@ -959,9 +977,9 @@ class Pay extends Controller {
                     if(DEBUG) {
                         Alerts::add_error($response->body->message);
                     } else {
-                        Alerts::add_error(language()->pay->error_message->failed_payment);
+                        Alerts::add_error(l('pay.error_message.failed_payment'));
                     }
-                    redirect('pay/' . $this->plan_id);
+                    redirect('pay/' . $this->plan_id . '?' . (isset($_GET['trial_skip']) ? '&trial_skip=true' : null) . (isset($_GET['code']) ? '&code=' . $_GET['code'] : null));
                 }
 
                 /* Redirect to payment */
@@ -1019,9 +1037,9 @@ class Pay extends Controller {
                     if(DEBUG) {
                         Alerts::add_error($exception->getMessage());
                     } else {
-                        Alerts::add_error(language()->pay->error_message->failed_payment);
+                        Alerts::add_error(l('pay.error_message.failed_payment'));
                     }
-                    redirect('pay/' . $this->plan_id);
+                    redirect('pay/' . $this->plan_id . '?' . (isset($_GET['trial_skip']) ? '&trial_skip=true' : null) . (isset($_GET['code']) ? '&code=' . $_GET['code'] : null));
                 }
 
                 /* Redirect to payment */
@@ -1046,9 +1064,9 @@ class Pay extends Controller {
                     if(DEBUG) {
                         Alerts::add_error($exception->getMessage());
                     } else {
-                        Alerts::add_error(language()->pay->error_message->failed_payment);
+                        Alerts::add_error(l('pay.error_message.failed_payment'));
                     }
-                    redirect('pay/' . $this->plan_id);
+                    redirect('pay/' . $this->plan_id . '?' . (isset($_GET['trial_skip']) ? '&trial_skip=true' : null) . (isset($_GET['code']) ? '&code=' . $_GET['code'] : null));
                 }
 
                 /* Generate the payment link */
@@ -1071,9 +1089,9 @@ class Pay extends Controller {
                     if(DEBUG) {
                         Alerts::add_error($exception->getMessage());
                     } else {
-                        Alerts::add_error(language()->pay->error_message->failed_payment);
+                        Alerts::add_error(l('pay.error_message.failed_payment'));
                     }
-                    redirect('pay/' . $this->plan_id);
+                    redirect('pay/' . $this->plan_id . '?' . (isset($_GET['trial_skip']) ? '&trial_skip=true' : null) . (isset($_GET['code']) ? '&code=' . $_GET['code'] : null));
                 }
 
                 /* Redirect to payment */
@@ -1125,9 +1143,9 @@ class Pay extends Controller {
                     if(DEBUG) {
                         Alerts::add_error($exception->getMessage());
                     } else {
-                        Alerts::add_error(language()->pay->error_message->failed_payment);
+                        Alerts::add_error(l('pay.error_message.failed_payment'));
                     }
-                    redirect('pay/' . $this->plan_id);
+                    redirect('pay/' . $this->plan_id . '?' . (isset($_GET['trial_skip']) ? '&trial_skip=true' : null) . (isset($_GET['code']) ? '&code=' . $_GET['code'] : null));
                 }
 
                 /* Redirect to payment */
@@ -1147,7 +1165,168 @@ class Pay extends Controller {
                     if(DEBUG) {
                         Alerts::add_error($exception->getMessage());
                     } else {
-                        Alerts::add_error(language()->pay->error_message->failed_payment);
+                        Alerts::add_error(l('pay.error_message.failed_payment'));
+                    }
+                    redirect('pay/' . $this->plan_id . '?' . (isset($_GET['trial_skip']) ? '&trial_skip=true' : null) . (isset($_GET['code']) ? '&code=' . $_GET['code'] : null));
+                }
+
+                /* Generate the payment link */
+                try {
+                    $payment = $customer->createPayment([
+                        'sequenceType' => 'first',
+                        'amount' => [
+                            'currency' => settings()->payment->currency,
+                            'value' => $price,
+                        ],
+                        'description' => $_POST['payment_frequency'],
+                        'metadata' => [
+                            'user_id' => $this->user->user_id,
+                            'plan_id' => $this->plan_id,
+                            'payment_frequency' => $_POST['payment_frequency'],
+                            'base_amount' => $base_amount,
+                            'code' => $code,
+                            'discount_amount' => $discount_amount,
+                            'taxes_ids' => json_encode($this->applied_taxes_ids)
+                        ],
+                        'redirectUrl' => url('pay/' . $this->plan_id . $this->return_url_parameters('success', $base_amount, $price, $code, $discount_amount)),
+                        'webhookUrl'  => SITE_URL . 'webhook-mollie',
+                    ]);
+                } catch (\Exception $exception) {
+                    if(DEBUG) {
+                        Alerts::add_error($exception->getMessage());
+                    } else {
+                        Alerts::add_error(l('pay.error_message.failed_payment'));
+                    }
+                    redirect('pay/' . $this->plan_id . '?' . (isset($_GET['trial_skip']) ? '&trial_skip=true' : null) . (isset($_GET['code']) ? '&code=' . $_GET['code'] : null));
+                }
+
+                /* Redirect to payment */
+                header('Location: ' . $payment->getCheckoutUrl()); die();
+
+                break;
+        }
+
+        die();
+    }
+
+    private function crypto_com() {
+
+        extract($this->get_price_details());
+
+        /* Taxes */
+        $price = $this->calculate_price_with_taxes($price);
+
+        /* Final price */
+        $price = number_format($price, 2, '.', '') * 100;
+
+        switch($_POST['payment_type']) {
+            case 'one_time':
+
+                \Unirest\Request::auth(settings()->crypto_com->secret_key, '');
+
+                $response = \Unirest\Request::post(
+                    'https://pay.crypto.com/api/payments',
+                    [],
+                    \Unirest\Request\Body::Form([
+                        'description' => settings()->business->brand_name . ' - ' . $this->plan->name,
+                        'amount' => $price,
+                        'currency' => settings()->payment->currency,
+                        'metadata' => [
+                            'user_id' => $this->user->user_id,
+                            'plan_id' => $this->plan_id,
+                            'payment_frequency' => $_POST['payment_frequency'],
+                            'base_amount' => $base_amount,
+                            'code' => $code,
+                            'discount_amount' => $discount_amount,
+                            'taxes_ids' => json_encode($this->applied_taxes_ids)
+                        ],
+                        'return_url' => url('pay/' . $this->plan_id . $this->return_url_parameters('success', $base_amount, $price, $code, $discount_amount)),
+                        'cancel_url' => url('pay/' . $this->plan_id . $this->return_url_parameters('cancel', $base_amount, $price, $code, $discount_amount)),
+                    ])
+                );
+
+                /* Check against errors */
+                if($response->code >= 400) {
+                    if(DEBUG) {
+                        Alerts::add_error($response->body->error->type . ':' . $response->body->error->error_message);
+                    } else {
+                        Alerts::add_error(l('pay.error_message.failed_payment'));
+                    }
+                    redirect('pay/' . $this->plan_id . '?' . (isset($_GET['trial_skip']) ? '&trial_skip=true' : null) . (isset($_GET['code']) ? '&code=' . $_GET['code'] : null));
+                }
+
+                header('Location: ' . $response->body->payment_url); die();
+
+                break;
+        }
+    }
+
+    private function yookassa() {
+
+        $yookassa = new \YooKassa\Client();
+        $yookassa->setAuth(settings()->yookassa->shop_id, settings()->yookassa->secret_key);
+
+        extract($this->get_price_details());
+
+        /* Taxes */
+        $price = $this->calculate_price_with_taxes($price);
+
+        $price = number_format($price, 2, '.', '');
+
+        switch($_POST['payment_type']) {
+            case 'one_time':
+
+                /* Generate the payment link */
+                try {
+                    $payment = $yookassa->createPayment([
+                        'amount' => [
+                            'currency' => settings()->payment->currency,
+                            'value' => $price,
+                        ],
+                        'description' => $_POST['payment_frequency'],
+                        'metadata' => [
+                            'user_id' => $this->user->user_id,
+                            'plan_id' => $this->plan_id,
+                            'payment_frequency' => $_POST['payment_frequency'],
+                            'base_amount' => $base_amount,
+                            'code' => $code,
+                            'discount_amount' => $discount_amount,
+                            'taxes_ids' => json_encode($this->applied_taxes_ids)
+                        ],
+                        'confirmation' => [
+                            'type' => 'redirect',
+                            'return_url' => url('pay/' . $this->plan_id . $this->return_url_parameters('success', $base_amount, $price, $code, $discount_amount)),
+                        ],
+                        'capture' => true,
+                    ], uniqid('', true));
+
+                } catch (\Exception $exception) {
+                    if(DEBUG) {
+                        Alerts::add_error($exception->getMessage());
+                    } else {
+                        Alerts::add_error(l('pay.error_message.failed_payment'));
+                    }
+                    redirect('pay/' . $this->plan_id);
+                }
+
+                /* Redirect to payment */
+                header('Location: ' . $payment->getConfirmation()->getConfirmationUrl()); die();
+
+                break;
+
+            case 'recurring':
+
+                /* Generate the customer */
+                try {
+                    $customer = $mollie->customers->create([
+                        'name' => $this->user->name,
+                        'email' => $this->user->email,
+                    ]);
+                } catch (\Exception $exception) {
+                    if(DEBUG) {
+                        Alerts::add_error($exception->getMessage());
+                    } else {
+                        Alerts::add_error(l('pay.error_message.failed_payment'));
                     }
                     redirect('pay/' . $this->plan_id);
                 }
@@ -1177,7 +1356,7 @@ class Pay extends Controller {
                     if(DEBUG) {
                         Alerts::add_error($exception->getMessage());
                     } else {
-                        Alerts::add_error(language()->pay->error_message->failed_payment);
+                        Alerts::add_error(l('pay.error_message.failed_payment'));
                     }
                     redirect('pay/' . $this->plan_id);
                 }
@@ -1202,8 +1381,8 @@ class Pay extends Controller {
 
         /* Return confirmation processing if failed */
         if($this->return_type && $this->payment_processor && $this->return_type == 'cancel') {
-            Alerts::add_error(language()->pay->error_message->canceled_payment);
-            redirect('pay/' . $this->plan_id);
+            Alerts::add_error(l('pay.error_message.canceled_payment'));
+            redirect('pay/' . $this->plan_id . '?' . (isset($_GET['trial_skip']) ? '&trial_skip=true' : null) . (isset($_GET['code']) ? '&code=' . $_GET['code'] : null));
         }
 
     }
@@ -1230,7 +1409,7 @@ class Pay extends Controller {
         $_POST['code'] = trim(Database::clean_string($_POST['code']));
 
         if(!$plan = db()->where('plan_id', $_POST['plan_id'])->getOne('plans')) {
-            Response::json(language()->pay->error_message->code_invalid, 'error');
+            Response::json(l('pay.error_message.code_invalid'), 'error');
         }
         $plan->codes_ids = json_decode($plan->codes_ids);
 
@@ -1238,23 +1417,23 @@ class Pay extends Controller {
         $code = database()->query("SELECT * FROM `codes` WHERE `code` = '{$_POST['code']}' AND `redeemed` < `quantity`")->fetch_object();
 
         if(!$code) {
-            Response::json(language()->pay->error_message->code_invalid, 'error');
+            Response::json(l('pay.error_message.code_invalid'), 'error');
         }
 
         if(!in_array($code->code_id, $plan->codes_ids)) {
-            Response::json(language()->pay->error_message->code_invalid, 'error');
+            Response::json(l('pay.error_message.code_invalid'), 'error');
         }
 
         if(db()->where('user_id', $this->user->user_id)->where('code_id', $code->code_id)->has('redeemed_codes')) {
-            Response::json(language()->pay->error_message->code_used, 'error');
+            Response::json(l('pay.error_message.code_used'), 'error');
         }
 
         Response::json(
-            sprintf(language()->pay->success_message->code, '<strong>' . $code->discount . '%</strong>'),
+            sprintf(l('pay.success_message.code'), '<strong>' . $code->discount . '%</strong>'),
             'success',
             [
                 'code' => $code,
-                'submit_text' => $code->type == 'redeemable' ? sprintf(language()->pay->custom_plan->code_redeemable, $code->days) : language()->pay->custom_plan->pay
+                'submit_text' => $code->type == 'redeemable' ? sprintf(l('pay.custom_plan.code_redeemable'), $code->days) : l('pay.custom_plan.pay')
             ]
         );
     }
@@ -1282,7 +1461,7 @@ class Pay extends Controller {
         $thank_you_url_parameters .= '&user_id=' . $this->user->user_id;
 
         /* Trial */
-        if($this->plan->trial_days && !$this->user->plan_trial_done) {
+        if($this->plan->trial_days && !$this->user->plan_trial_done && !isset($_GET['trial_skip'])) {
             $thank_you_url_parameters .= '&trial_days=' . $this->plan->trial_days;
         }
 

@@ -92,6 +92,7 @@ class Payments extends Model {
             'plan_settings' => $plan->settings,
             'plan_expiration_date' => $plan_expiration_date,
             'plan_expiry_reminder' => 0,
+            'plan_trial_done' => 1,
             'payment_subscription_id' => $payment_subscription_id,
             'payment_processor' => $payment_processor,
             'payment_total_amount' => $payment_total,
@@ -104,14 +105,14 @@ class Payments extends Model {
         /* Send notification to the user */
         $email_template = get_email_template(
             [],
-            language()->global->emails->user_payment->subject,
+            l('global.emails.user_payment.subject'),
             [
                 '{{NAME}}' => $user->name,
                 '{{PLAN_EXPIRATION_DATE}}' => \Altum\Date::get($plan_expiration_date, 2),
                 '{{USER_PLAN_LINK}}' => url('account-plan'),
                 '{{USER_PAYMENTS_LINK}}' => url('account-payments'),
             ],
-            language()->global->emails->user_payment->body
+            l('global.emails.user_payment.body')
         );
 
         send_mail($user->email, $email_template->subject, $email_template->body);
@@ -125,7 +126,7 @@ class Payments extends Model {
                     '{{TOTAL_AMOUNT}}' => $payment_total,
                     '{{CURRENCY}}' => $payment_currency,
                 ],
-                language()->global->emails->admin_new_payment_notification->subject,
+                l('global.emails.admin_new_payment_notification.subject'),
                 [
                     '{{PROCESSOR}}' => $payment_processor,
                     '{{TOTAL_AMOUNT}}' => $payment_total,
@@ -133,7 +134,7 @@ class Payments extends Model {
                     '{{NAME}}' => $user->email,
                     '{{EMAIL}}' => $user->email,
                 ],
-                language()->global->emails->admin_new_payment_notification->body
+                l('global.emails.admin_new_payment_notification.body')
             );
 
             send_mail(explode(',', settings()->email_notifications->emails), $email_template->subject, $email_template->body);

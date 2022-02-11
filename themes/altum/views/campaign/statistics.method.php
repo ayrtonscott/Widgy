@@ -2,14 +2,14 @@
 
 <?php if(!settings()->socialproofo->analytics_is_enabled): ?>
     <div class="alert alert-warning" role="alert">
-        <?= language()->campaign->statistics->disabled ?>
+        <?= l('campaign.statistics.disabled') ?>
     </div>
 <?php endif ?>
 
 <div class="mt-5 mb-3">
-    <div class="d-flex flex-column flex-md-row justify-content-between">
+    <div class="d-flex flex-column flex-lg-row justify-content-between">
         <div>
-            <h2 class="h3"><?= language()->campaign->statistics->header ?></h2>
+            <h2 class="h3"><?= l('campaign.statistics.header') ?></h2>
         </div>
 
         <div>
@@ -37,9 +37,9 @@
 <?php if(!count($data->logs)): ?>
 
     <div class="d-flex flex-column align-items-center justify-content-center">
-        <img src="<?= ASSETS_FULL_URL . 'images/no_rows.svg' ?>" class="col-10 col-md-6 col-lg-4 mb-3" alt="<?= language()->global->no_data ?>" />
-        <h2 class="h4 text-muted"><?= language()->global->no_data ?></h2>
-        <p><?= language()->campaign->statistics->no_data ?></a></p>
+        <img src="<?= ASSETS_FULL_URL . 'images/no_rows.svg' ?>" class="col-10 col-md-6 col-lg-4 mb-3" alt="<?= l('global.no_data') ?>" />
+        <h2 class="h4 text-muted"><?= l('global.no_data') ?></h2>
+        <p><?= l('campaign.statistics.no_data') ?></a></p>
     </div>
 
 <?php else: ?>
@@ -59,7 +59,7 @@
 
                     <div>
                         <div class="card-title h4 m-0"><?= nr($data->logs_total['impression']) ?></div>
-                        <small class="form-text text-muted"><?= language()->campaign->statistics->impressions_chart ?></small>
+                        <small class="form-text text-muted"><?= l('campaign.statistics.impressions_chart') ?></small>
                     </div>
                 </div>
             </div>
@@ -79,7 +79,7 @@
 
                     <div>
                         <div class="card-title h4 m-0"><?= nr($data->logs_total['hover']) ?></div>
-                        <small class="form-text text-muted"><?= language()->campaign->statistics->hovers_chart ?></small>
+                        <small class="form-text text-muted"><?= l('campaign.statistics.hovers_chart') ?></small>
                     </div>
                 </div>
             </div>
@@ -99,7 +99,7 @@
 
                     <div>
                         <div class="card-title h4 m-0"><?= nr($data->logs_total['click']) ?></div>
-                        <small class="form-text text-muted"><?= language()->campaign->statistics->clicks_chart ?></small>
+                        <small class="form-text text-muted"><?= l('campaign.statistics.clicks_chart') ?></small>
                     </div>
                 </div>
             </div>
@@ -119,7 +119,7 @@
 
                     <div>
                         <div class="card-title h4 m-0"><?= nr($data->logs_total['form_submission']) ?></div>
-                        <small class="form-text text-muted"><?= language()->campaign->statistics->form_submissions_chart ?></small>
+                        <small class="form-text text-muted"><?= l('campaign.statistics.form_submissions_chart') ?></small>
                     </div>
                 </div>
             </div>
@@ -166,13 +166,13 @@
         minDate: $('#daterangepicker').data('min-date'),
         maxDate: $('#daterangepicker').data('max-date'),
         ranges: {
-            <?= json_encode(language()->global->date->today) ?>: [moment(), moment()],
-            <?= json_encode(language()->global->date->yesterday) ?>: [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-            <?= json_encode(language()->global->date->last_7_days) ?>: [moment().subtract(6, 'days'), moment()],
-            <?= json_encode(language()->global->date->last_30_days) ?>: [moment().subtract(29, 'days'), moment()],
-            <?= json_encode(language()->global->date->this_month) ?>: [moment().startOf('month'), moment().endOf('month')],
-            <?= json_encode(language()->global->date->last_month) ?>: [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
-            <?= json_encode(language()->global->date->all_time) ?>: [moment($('#daterangepicker').data('min-date')), moment()]
+            <?= json_encode(l('global.date.today')) ?>: [moment(), moment()],
+            <?= json_encode(l('global.date.yesterday')) ?>: [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+            <?= json_encode(l('global.date.last_7_days')) ?>: [moment().subtract(6, 'days'), moment()],
+            <?= json_encode(l('global.date.last_30_days')) ?>: [moment().subtract(29, 'days'), moment()],
+            <?= json_encode(l('global.date.this_month')) ?>: [moment().startOf('month'), moment().endOf('month')],
+            <?= json_encode(l('global.date.last_month')) ?>: [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+            <?= json_encode(l('global.date.all_time')) ?>: [moment($('#daterangepicker').data('min-date')), moment()]
         },
         alwaysShowCalendars: true,
         linkedCalendars: false,
@@ -197,7 +197,7 @@
         data: {
             labels: <?= $data->logs_chart['labels'] ?>,
             datasets: [{
-                label: <?= json_encode(language()->campaign->statistics->impressions_chart) ?>,
+                label: <?= json_encode(l('campaign.statistics.impressions_chart')) ?>,
                 data: <?= $data->logs_chart['impression'] ?? '[]' ?>,
                 backgroundColor: gradient,
                 borderColor: '#607ae2',
@@ -218,7 +218,7 @@
         data: {
             labels: <?= $data->logs_chart['labels'] ?>,
             datasets: [{
-                label: <?= json_encode(language()->campaign->statistics->hovers_chart) ?>,
+                label: <?= json_encode(l('campaign.statistics.hovers_chart')) ?>,
                 data: <?= $data->logs_chart['hover'] ?? '[]' ?>,
                 backgroundColor: gradient,
                 borderColor: '#d560e2',
@@ -239,7 +239,7 @@
         data: {
             labels: <?= $data->logs_chart['labels'] ?>,
             datasets: [{
-                label: <?= json_encode(language()->campaign->statistics->clicks_chart) ?>,
+                label: <?= json_encode(l('campaign.statistics.clicks_chart')) ?>,
                 data: <?= $data->logs_chart['click'] ?? '[]' ?>,
                 backgroundColor: gradient,
                 borderColor: '#60BBE2',
@@ -260,7 +260,7 @@
         data: {
             labels: <?= $data->logs_chart['labels'] ?>,
             datasets: [{
-                label: <?= json_encode(language()->campaign->statistics->form_submissions_chart) ?>,
+                label: <?= json_encode(l('campaign.statistics.form_submissions_chart')) ?>,
                 data: <?= $data->logs_chart['form_submission'] ?? '[]' ?>,
                 backgroundColor: gradient,
                 borderColor: '#E260AE',

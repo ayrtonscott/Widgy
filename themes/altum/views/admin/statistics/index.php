@@ -3,9 +3,9 @@
 <div class="d-flex flex-column flex-lg-row justify-content-between mb-4">
     <div>
         <div class="d-flex justify-content-between">
-            <h1 class="h3"><i class="fa fa-fw fa-xs fa-chart-line text-primary-900 mr-2"></i> <?= sprintf(language()->admin_statistics->header) ?></h1>
+            <h1 class="h3"><i class="fa fa-fw fa-xs fa-chart-line text-primary-900 mr-2"></i> <?= sprintf(l('admin_statistics.header')) ?></h1>
         </div>
-        <p class="text-muted"><?= language()->admin_statistics->subheader ?></p>
+        <p class="text-muted"><?= l('admin_statistics.subheader') ?></p>
     </div>
 
     <div class="col-auto p-0">
@@ -33,18 +33,18 @@
 <div class="row">
     <div class="mb-5 mb-xl-0 col-12 col-xl-3">
         <div class="nav flex-column nav-pills">
-            <a class="nav-link <?= $data->type == 'growth' ? 'active' : null ?>" href="<?= url('admin/statistics/growth?start_date=' . $data->datetime['start_date'] . '&end_date=' . $data->datetime['end_date']) ?>"><i class="fa fa-fw fa-sm fa-seedling mr-1"></i> <?= language()->admin_statistics->growth->menu ?></a>
+            <a class="nav-link <?= $data->type == 'growth' ? 'active' : null ?>" href="<?= url('admin/statistics/growth?start_date=' . $data->datetime['start_date'] . '&end_date=' . $data->datetime['end_date']) ?>"><i class="fa fa-fw fa-sm fa-seedling mr-1"></i> <?= l('admin_statistics.growth.menu') ?></a>
             <?php if(in_array(settings()->license->type, ['Extended License', 'extended'])): ?>
-                <a class="nav-link <?= $data->type == 'payments' ? 'active' : null ?>" href="<?= url('admin/statistics/payments?start_date=' . $data->datetime['start_date'] . '&end_date=' . $data->datetime['end_date']) ?>"><i class="fa fa-fw fa-sm fa-dollar-sign mr-1"></i> <?= language()->admin_statistics->payments->menu ?></a>
+                <a class="nav-link <?= $data->type == 'payments' ? 'active' : null ?>" href="<?= url('admin/statistics/payments?start_date=' . $data->datetime['start_date'] . '&end_date=' . $data->datetime['end_date']) ?>"><i class="fa fa-fw fa-sm fa-dollar-sign mr-1"></i> <?= l('admin_statistics.payments.menu') ?></a>
                 <?php if(\Altum\Plugin::is_active('affiliate') && settings()->affiliate->is_enabled): ?>
-                    <a class="nav-link <?= $data->type == 'affiliates_commissions' ? 'active' : null ?>" href="<?= url('admin/statistics/affiliates_commissions?start_date=' . $data->datetime['start_date'] . '&end_date=' . $data->datetime['end_date']) ?>"><i class="fa fa-fw fa-sm fa-wallet mr-1"></i> <?= language()->admin_statistics->affiliates_commissions->menu ?></a>
-                    <a class="nav-link <?= $data->type == 'affiliates_withdrawals' ? 'active' : null ?>" href="<?= url('admin/statistics/affiliates_withdrawals?start_date=' . $data->datetime['start_date'] . '&end_date=' . $data->datetime['end_date']) ?>"><i class="fa fa-fw fa-sm fa-wallet mr-1"></i> <?= language()->admin_statistics->affiliates_withdrawals->menu ?></a>
+                    <a class="nav-link <?= $data->type == 'affiliates_commissions' ? 'active' : null ?>" href="<?= url('admin/statistics/affiliates_commissions?start_date=' . $data->datetime['start_date'] . '&end_date=' . $data->datetime['end_date']) ?>"><i class="fa fa-fw fa-sm fa-wallet mr-1"></i> <?= l('admin_statistics.affiliates_commissions.menu') ?></a>
+                    <a class="nav-link <?= $data->type == 'affiliates_withdrawals' ? 'active' : null ?>" href="<?= url('admin/statistics/affiliates_withdrawals?start_date=' . $data->datetime['start_date'] . '&end_date=' . $data->datetime['end_date']) ?>"><i class="fa fa-fw fa-sm fa-wallet mr-1"></i> <?= l('admin_statistics.affiliates_withdrawals.menu') ?></a>
                 <?php endif ?>
             <?php endif ?>
-            <a class="nav-link <?= $data->type == 'campaigns' ? 'active' : null ?>" href="<?= url('admin/statistics/campaigns?start_date=' . $data->datetime['start_date'] . '&end_date=' . $data->datetime['end_date']) ?>"><i class="fa fa-fw fa-sm fa-server mr-1"></i> <?= language()->admin_statistics->campaigns->menu ?></a>
-            <a class="nav-link <?= $data->type == 'notifications' ? 'active' : null ?>" href="<?= url('admin/statistics/notifications?start_date=' . $data->datetime['start_date'] . '&end_date=' . $data->datetime['end_date']) ?>"><i class="fa fa-fw fa-sm fa-bell mr-1"></i> <?= language()->admin_statistics->notifications->menu ?></a>
-            <a class="nav-link <?= $data->type == 'track_notifications' ? 'active' : null ?>" href="<?= url('admin/statistics/track_notifications?start_date=' . $data->datetime['start_date'] . '&end_date=' . $data->datetime['end_date']) ?>"><i class="fa fa-fw fa-sm fa-chart-bar mr-1"></i> <?= language()->admin_statistics->track_notifications->menu ?></a>
-            <a class="nav-link <?= $data->type == 'track_conversions' ? 'active' : null ?>" href="<?= url('admin/statistics/track_conversions?start_date=' . $data->datetime['start_date'] . '&end_date=' . $data->datetime['end_date']) ?>"><i class="fa fa-fw fa-sm fa-database mr-1"></i> <?= language()->admin_statistics->track_conversions->menu ?></a>
+            <a class="nav-link <?= $data->type == 'campaigns' ? 'active' : null ?>" href="<?= url('admin/statistics/campaigns?start_date=' . $data->datetime['start_date'] . '&end_date=' . $data->datetime['end_date']) ?>"><i class="fa fa-fw fa-sm fa-server mr-1"></i> <?= l('admin_statistics.campaigns.menu') ?></a>
+            <a class="nav-link <?= $data->type == 'notifications' ? 'active' : null ?>" href="<?= url('admin/statistics/notifications?start_date=' . $data->datetime['start_date'] . '&end_date=' . $data->datetime['end_date']) ?>"><i class="fa fa-fw fa-sm fa-bell mr-1"></i> <?= l('admin_statistics.notifications.menu') ?></a>
+            <a class="nav-link <?= $data->type == 'track_notifications' ? 'active' : null ?>" href="<?= url('admin/statistics/track_notifications?start_date=' . $data->datetime['start_date'] . '&end_date=' . $data->datetime['end_date']) ?>"><i class="fa fa-fw fa-sm fa-chart-bar mr-1"></i> <?= l('admin_statistics.track_notifications.menu') ?></a>
+            <a class="nav-link <?= $data->type == 'track_conversions' ? 'active' : null ?>" href="<?= url('admin/statistics/track_conversions?start_date=' . $data->datetime['start_date'] . '&end_date=' . $data->datetime['end_date']) ?>"><i class="fa fa-fw fa-sm fa-database mr-1"></i> <?= l('admin_statistics.track_conversions.menu') ?></a>
         </div>
     </div>
 
@@ -85,13 +85,13 @@
         minDate: $('#daterangepicker').data('min-date'),
         maxDate: $('#daterangepicker').data('max-date'),
         ranges: {
-            <?= json_encode(language()->global->date->today) ?>: [moment(), moment()],
-            <?= json_encode(language()->global->date->yesterday) ?>: [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-            <?= json_encode(language()->global->date->last_7_days) ?>: [moment().subtract(6, 'days'), moment()],
-            <?= json_encode(language()->global->date->last_30_days) ?>: [moment().subtract(29, 'days'), moment()],
-            <?= json_encode(language()->global->date->this_month) ?>: [moment().startOf('month'), moment().endOf('month')],
-            <?= json_encode(language()->global->date->last_month) ?>: [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
-            <?= json_encode(language()->global->date->all_time) ?>: [moment('2015-01-01'), moment()]
+            <?= json_encode(l('global.date.today')) ?>: [moment(), moment()],
+            <?= json_encode(l('global.date.yesterday')) ?>: [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+            <?= json_encode(l('global.date.last_7_days')) ?>: [moment().subtract(6, 'days'), moment()],
+            <?= json_encode(l('global.date.last_30_days')) ?>: [moment().subtract(29, 'days'), moment()],
+            <?= json_encode(l('global.date.this_month')) ?>: [moment().startOf('month'), moment().endOf('month')],
+            <?= json_encode(l('global.date.last_month')) ?>: [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+            <?= json_encode(l('global.date.all_time')) ?>: [moment('2015-01-01'), moment()]
         },
         alwaysShowCalendars: true,
         linkedCalendars: false,

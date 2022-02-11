@@ -24,7 +24,7 @@ class ApiDocumentation extends Controller {
 
     public function user() {
 
-        Title::set(language()->api_documentation->user->title);
+        Title::set(l('api_documentation.user.title'));
 
         /* Prepare the View */
         $view = new \Altum\Views\View('api-documentation/user', (array) $this);
@@ -35,7 +35,7 @@ class ApiDocumentation extends Controller {
 
     public function campaigns() {
 
-        Title::set(language()->api_documentation->campaigns->title);
+        Title::set(l('api_documentation.campaigns.title'));
 
         /* Prepare the View */
         $view = new \Altum\Views\View('api-documentation/campaigns', (array) $this);
@@ -46,7 +46,7 @@ class ApiDocumentation extends Controller {
 
     public function notifications() {
 
-        Title::set(language()->api_documentation->notifications->title);
+        Title::set(l('api_documentation.notifications.title'));
 
         /* Prepare the View */
         $view = new \Altum\Views\View('api-documentation/notifications', (array) $this);
@@ -57,7 +57,7 @@ class ApiDocumentation extends Controller {
 
     public function payments() {
 
-        Title::set(language()->api_documentation->payments->title);
+        Title::set(l('api_documentation.payments.title'));
 
         /* Prepare the View */
         $view = new \Altum\Views\View('api-documentation/payments', (array) $this);
@@ -68,7 +68,7 @@ class ApiDocumentation extends Controller {
 
     public function users_logs() {
 
-        Title::set(language()->api_documentation->users_logs->title);
+        Title::set(l('api_documentation.users_logs.title'));
 
         /* Prepare the View */
         $view = new \Altum\Views\View('api-documentation/users_logs', (array) $this);

@@ -23,7 +23,8 @@ class AccountPayments extends Controller {
 
         /* Prepare the filtering system */
         $filters = (new \Altum\Filters(['processor', 'type', 'frequency'], [], ['total_amount', 'datetime']));
-        $filters->set_default_order_by('id', 'DESC');
+        $filters->set_default_order_by('id', settings()->main->default_order_type);
+        $filters->set_default_results_per_page(settings()->main->default_results_per_page);
 
         /* Prepare the paginator */
         $total_rows = database()->query("SELECT COUNT(*) AS `total` FROM `payments` WHERE `user_id` = {$this->user->user_id} {$filters->get_sql_where()}")->fetch_object()->total ?? 0;

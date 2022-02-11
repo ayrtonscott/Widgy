@@ -50,7 +50,7 @@ class Date {
             case $format_type === 1:
 
                 return sprintf(
-                    language()->global->date->datetime_ymd_his_format,
+                    l('global.date.datetime_ymd_his_format'),
                     $datetime->format('Y'),
                     $datetime->format('m'),
                     $datetime->format('d'),
@@ -64,9 +64,9 @@ class Date {
             case $format_type === 2:
 
                 return sprintf(
-                    language()->global->date->datetime_readable_format,
+                    l('global.date.datetime_readable_format'),
                     $datetime->format('j'),
-                    language()->global->date->long_months->{$datetime->format('n')},
+                    l('global.date.long_months.' . $datetime->format('n')),
                     $datetime->format('Y')
                 );
 
@@ -75,7 +75,7 @@ class Date {
             case $format_type === 3:
 
                 return sprintf(
-                    language()->global->date->datetime_his_format,
+                    l('global.date.datetime_his_format'),
                     $datetime->format('H'),
                     $datetime->format('i'),
                     $datetime->format('s')
@@ -85,7 +85,7 @@ class Date {
 
             case $format_type === 4:
                 return sprintf(
-                    language()->global->date->datetime_ymd_format,
+                    l('global.date.datetime_ymd_format'),
                     $datetime->format('Y'),
                     $datetime->format('m'),
                     $datetime->format('d')
@@ -96,9 +96,9 @@ class Date {
             case $format_type === 5:
 
                 return sprintf(
-                    language()->global->date->datetime_small_readable_format,
+                    l('global.date.datetime_small_readable_format'),
                     $datetime->format('j'),
-                    language()->global->date->short_months->{$datetime->format('n')}
+                    l('global.date.short_months.' . $datetime->format('n'))
                 );
 
                 break;
@@ -219,7 +219,7 @@ class Date {
         $seconds = $seconds % 60;
 
         return sprintf(
-            language()->global->date->datetime_his_format,
+            l('global.date.datetime_his_format'),
             $hours,
             $minutes,
             $seconds
@@ -233,7 +233,7 @@ class Date {
         $estimate_time = $end_date - (new \DateTime($date))->getTimestamp();
 
         if($estimate_time < 1) {
-            return language()->global->date->now;
+            return l('global.date.now');
         }
 
         $condition = [
@@ -257,7 +257,7 @@ class Date {
                 $r = floor($d);
 
                 /* Determine the language string needed */
-                $language_string_time = $r > 1 ? language()->global->date->{$string . 's'} : language()->global->date->{$string};
+                $language_string_time = $r > 1 ? l('global.date.' . $string . 's') : l('global.date.' . $string);
 
                 /* Append it to the result */
                 $result .= ' ' . $r . ' ' . $language_string_time;
@@ -277,7 +277,7 @@ class Date {
         $estimate_time = time() - (new \DateTime($date))->getTimestamp();
 
         if($estimate_time < 1) {
-            return language()->global->date->now;
+            return l('global.date.now');
         }
 
         $condition = [
@@ -296,10 +296,10 @@ class Date {
                 $r = round($d);
 
                 /* Determine the language string needed */
-                $language_string_time = $r > 1 ? language()->global->date->{$str . 's'} : language()->global->date->{$str};
+                $language_string_time = $r > 1 ? l('global.date.' . $str . 's') : l('global.date.' . $str);
 
                 return sprintf(
-                    language()->global->date->time_ago,
+                    l('global.date.time_ago'),
                     $r,
                     $language_string_time
                 );
@@ -313,7 +313,7 @@ class Date {
         $estimate_time = (new \DateTime($date))->getTimestamp() - time();
 
         if($estimate_time < 1) {
-            return language()->global->date->now;
+            return l('global.date.now');
         }
 
         $condition = [
@@ -332,10 +332,10 @@ class Date {
                 $r = round($d);
 
                 /* Determine the language string needed */
-                $language_string_time = $r > 1 ? language()->global->date->{$str . 's'} : language()->global->date->{$str};
+                $language_string_time = $r > 1 ? l('global.date.' . $str . 's') : l('global.date.' . $str);
 
                 return sprintf(
-                    language()->global->date->time_until,
+                    l('global.date.time_until'),
                     $r,
                     $language_string_time
                 );

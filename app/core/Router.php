@@ -30,8 +30,8 @@ class Router {
         /* Should we see a view for the controller? */
         'has_view' => true,
 
-        /* If set on yes, ads wont show on these pages at all */
-        'no_ads' => false,
+        /* If set on yes, ads won't show on these pages at all */
+        'ads' => false,
 
         /* Authentication guard check (potential values: null, 'guest', 'user', 'admin') */
         'authentication' => null
@@ -41,87 +41,12 @@ class Router {
 
     public static $routes = [
         '' => [
-            'index' => [
-                'controller' => 'Index',
-                'settings' => [
-                    'menu_no_margin' => true
-                ]
-            ],
-
-            'login' => [
-                'controller' => 'Login',
-                'settings' => [
-                    'wrapper' => 'basic_wrapper',
-                    'no_ads' => true
-                ]
-            ],
-
-            'register' => [
-                'controller' => 'Register',
-                'settings' => [
-                    'wrapper' => 'basic_wrapper',
-                    'no_ads' => true
-                ]
-            ],
-
-            'affiliate' => [
-                'controller' => 'Affiliate'
-            ],
-
-            'pages' => [
-                'controller' => 'Pages'
-            ],
-
-            'page' => [
-                'controller' => 'Page'
-            ],
-
-            'api-documentation' => [
-                'controller' => 'ApiDocumentation',
-            ],
-
-            'activate-user' => [
-                'controller' => 'ActivateUser'
-            ],
-
-            'lost-password' => [
-                'controller' => 'LostPassword',
-                'settings' => [
-                    'wrapper' => 'basic_wrapper',
-                    'no_ads' => true
-                ]
-            ],
-
-            'reset-password' => [
-                'controller' => 'ResetPassword',
-                'settings' => [
-                    'wrapper' => 'basic_wrapper',
-                    'no_ads' => true
-                ]
-            ],
-
-            'resend-activation' => [
-                'controller' => 'ResendActivation',
-                'settings' => [
-                    'wrapper' => 'basic_wrapper',
-                    'no_ads' => true
-                ]
-            ],
-
-            'logout' => [
-                'controller' => 'Logout'
-            ],
-
-            'notfound' => [
-                'controller' => 'NotFound'
-            ],
-
-            /* Logged in */
             'dashboard' => [
                 'controller' => 'Dashboard',
                 'settings' => [
                     'menu_no_margin' => true,
-                    'body_white' => false
+                    'body_white' => false,
+                    'ads' => true,
                 ]
             ],
 
@@ -129,7 +54,8 @@ class Router {
                 'controller' => 'Campaign',
                 'settings' => [
                     'menu_no_margin' => true,
-                    'body_white' => false
+                    'body_white' => false,
+                    'ads' => true,
                 ]
             ],
 
@@ -137,7 +63,8 @@ class Router {
                 'controller' => 'NotificationCreate',
                 'settings' => [
                     'menu_no_margin' => true,
-                    'body_white' => false
+                    'body_white' => false,
+                    'ads' => true,
                 ]
             ],
 
@@ -145,114 +72,8 @@ class Router {
                 'controller' => 'Notification',
                 'settings' => [
                     'menu_no_margin' => true,
-                    'body_white' => false
-                ]
-            ],
-
-            'account' => [
-                'controller' => 'Account',
-                'settings' => [
-                    'menu_no_margin' => true,
                     'body_white' => false,
-                    'no_ads'    => true
-                ]
-            ],
-
-            'account-plan' => [
-                'controller' => 'AccountPlan',
-                'settings' => [
-                    'menu_no_margin' => true,
-                    'body_white' => false,
-                    'no_ads'    => true
-                ]
-            ],
-
-            'account-payments' => [
-                'controller' => 'AccountPayments',
-                'settings' => [
-                    'menu_no_margin' => true,
-                    'body_white' => false,
-                    'no_ads'    => true
-                ]
-            ],
-
-            'account-logs' => [
-                'controller' => 'AccountLogs',
-                'settings' => [
-                    'menu_no_margin' => true,
-                    'body_white' => false,
-                    'no_ads'    => true
-                ]
-            ],
-
-            'account-api' => [
-                'controller' => 'AccountApi',
-                'settings' => [
-                    'menu_no_margin' => true,
-                    'body_white' => false,
-                    'no_ads'    => true
-                ]
-            ],
-
-            'account-delete' => [
-                'controller' => 'AccountDelete',
-                'settings' => [
-                    'menu_no_margin' => true,
-                    'body_white' => false,
-                    'no_ads'    => true
-                ]
-            ],
-
-            'referrals' => [
-                'controller' => 'Referrals',
-                'settings' => [
-                    'menu_no_margin' => true,
-                    'body_white' => false,
-                    'no_ads'    => true
-                ]
-            ],
-
-            'refer' => [
-                'controller' => 'Refer',
-                'settings' => [
-                    'has_view' => false
-                ]
-            ],
-
-            'invoice' => [
-                'controller' => 'Invoice',
-                'settings' => [
-                    'wrapper' => 'invoice/invoice_wrapper',
-                    'body_white' => false,
-                    'no_ads' => true
-                ]
-            ],
-
-            'plan' => [
-                'controller' => 'Plan',
-                'settings' => [
-                    'no_ads' => true
-                ]
-            ],
-
-            'pay' => [
-                'controller' => 'Pay',
-                'settings' => [
-                    'no_ads' => true
-                ]
-            ],
-
-            'pay-billing' => [
-                'controller' => 'PayBilling',
-                'settings' => [
-                    'no_ads' => true
-                ]
-            ],
-
-            'pay-thank-you' => [
-                'controller' => 'PayThankYou',
-                'settings' => [
-                    'no_ads' => true
+                    'ads' => true,
                 ]
             ],
 
@@ -281,6 +102,182 @@ class Router {
                     'has_view' => false,
                     'no_browser_language_detection' => true,
                 ]
+            ],
+
+            'campaigns-ajax' => [
+                'controller' => 'CampaignsAjax'
+            ],
+
+            'notification-data-ajax' => [
+                'controller' => 'NotificationDataAjax'
+            ],
+
+            'notifications-ajax' => [
+                'controller' => 'NotificationsAjax'
+            ],
+
+            /* Common routes */
+            'index' => [
+                'controller' => 'Index',
+                'settings' => [
+                    'menu_no_margin' => true
+                ]
+            ],
+
+            'login' => [
+                'controller' => 'Login',
+                'settings' => [
+                    'wrapper' => 'basic_wrapper',
+                    'no_browser_language_detection' => true,
+                ]
+            ],
+
+            'register' => [
+                'controller' => 'Register',
+                'settings' => [
+                    'wrapper' => 'basic_wrapper',
+                    'no_browser_language_detection' => true,
+                ]
+            ],
+
+            'affiliate' => [
+                'controller' => 'Affiliate'
+            ],
+
+            'pages' => [
+                'controller' => 'Pages'
+            ],
+
+            'page' => [
+                'controller' => 'Page'
+            ],
+
+            'api-documentation' => [
+                'controller' => 'ApiDocumentation',
+            ],
+
+            'contact' => [
+                'controller' => 'Contact',
+            ],
+
+            'activate-user' => [
+                'controller' => 'ActivateUser'
+            ],
+
+            'lost-password' => [
+                'controller' => 'LostPassword',
+                'settings' => [
+                    'wrapper' => 'basic_wrapper',
+                ]
+            ],
+
+            'reset-password' => [
+                'controller' => 'ResetPassword',
+                'settings' => [
+                    'wrapper' => 'basic_wrapper',
+                ]
+            ],
+
+            'resend-activation' => [
+                'controller' => 'ResendActivation',
+                'settings' => [
+                    'wrapper' => 'basic_wrapper',
+                ]
+            ],
+
+            'logout' => [
+                'controller' => 'Logout'
+            ],
+
+            'notfound' => [
+                'controller' => 'NotFound'
+            ],
+
+            'account' => [
+                'controller' => 'Account',
+                'settings' => [
+                    'menu_no_margin' => true,
+                    'body_white' => false,
+                ]
+            ],
+
+            'account-plan' => [
+                'controller' => 'AccountPlan',
+                'settings' => [
+                    'menu_no_margin' => true,
+                    'body_white' => false,
+                ]
+            ],
+
+            'account-payments' => [
+                'controller' => 'AccountPayments',
+                'settings' => [
+                    'menu_no_margin' => true,
+                    'body_white' => false,
+                ]
+            ],
+
+            'account-logs' => [
+                'controller' => 'AccountLogs',
+                'settings' => [
+                    'menu_no_margin' => true,
+                    'body_white' => false,
+                ]
+            ],
+
+            'account-api' => [
+                'controller' => 'AccountApi',
+                'settings' => [
+                    'menu_no_margin' => true,
+                    'body_white' => false,
+                ]
+            ],
+
+            'account-delete' => [
+                'controller' => 'AccountDelete',
+                'settings' => [
+                    'menu_no_margin' => true,
+                    'body_white' => false,
+                ]
+            ],
+
+            'referrals' => [
+                'controller' => 'Referrals',
+                'settings' => [
+                    'menu_no_margin' => true,
+                    'body_white' => false,
+                ]
+            ],
+
+            'refer' => [
+                'controller' => 'Refer',
+                'settings' => [
+                    'has_view' => false
+                ]
+            ],
+
+            'invoice' => [
+                'controller' => 'Invoice',
+                'settings' => [
+                    'wrapper' => 'invoice/invoice_wrapper',
+                    'body_white' => false,
+                ]
+            ],
+
+            'plan' => [
+                'controller' => 'Plan',
+            ],
+
+            'pay' => [
+                'controller' => 'Pay',
+            ],
+
+            'pay-billing' => [
+                'controller' => 'PayBilling',
+            ],
+
+            'pay-thank-you' => [
+                'controller' => 'PayThankYou',
             ],
 
             /* Webhooks */
@@ -356,17 +353,13 @@ class Router {
                 ]
             ],
 
-            /* Ajax */
-            'campaigns-ajax' => [
-                'controller' => 'CampaignsAjax'
-            ],
-
-            'notification-data-ajax' => [
-                'controller' => 'NotificationDataAjax'
-            ],
-
-            'notifications-ajax' => [
-                'controller' => 'NotificationsAjax'
+            'webhook-crypto-com' => [
+                'controller' => 'WebhookCryptoCom',
+                'settings' => [
+                    'no_authentication_check' => true,
+                    'has_view' => false,
+                    'no_browser_language_detection' => true,
+                ]
             ],
 
             /* Others */
@@ -403,6 +396,8 @@ class Router {
                     'has_view' => false,
                 ]
             ],
+
+            /* Common routes */
             'user' => [
                 'controller' => 'ApiUser',
                 'settings' => [
@@ -428,16 +423,17 @@ class Router {
 
         /* Admin Panel */
         'admin' => [
-            'index' => [
-                'controller' => 'AdminIndex'
-            ],
-
             'campaigns' => [
                 'controller' => 'AdminCampaigns'
             ],
 
             'notifications' => [
                 'controller' => 'AdminNotifications'
+            ],
+
+            /* Common routes */
+            'index' => [
+                'controller' => 'AdminIndex'
             ],
 
             'users' => [
@@ -488,7 +484,6 @@ class Router {
                 'controller' => 'AdminPageUpdate'
             ],
 
-
             'plans' => [
                 'controller' => 'AdminPlans'
             ],
@@ -501,7 +496,6 @@ class Router {
                 'controller' => 'AdminPlanUpdate'
             ],
 
-
             'codes' => [
                 'controller' => 'AdminCodes'
             ],
@@ -513,7 +507,6 @@ class Router {
             'code-update' => [
                 'controller' => 'AdminCodeUpdate'
             ],
-
 
             'taxes' => [
                 'controller' => 'AdminTaxes'
@@ -541,6 +534,18 @@ class Router {
 
             'plugins' => [
                 'controller' => 'AdminPlugins',
+            ],
+
+            'languages' => [
+                'controller' => 'AdminLanguages'
+            ],
+
+            'language-create' => [
+                'controller' => 'AdminLanguageCreate'
+            ],
+
+            'language-update' => [
+                'controller' => 'AdminLanguageUpdate'
             ],
 
             'settings' => [

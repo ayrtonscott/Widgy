@@ -1,12 +1,11 @@
 <?php defined('ALTUMCODE') || die() ?>
 <!DOCTYPE html>
-<html lang="<?= \Altum\Language::$language_code ?>" dir="<?= language()->direction ?>">
+<html lang="<?= \Altum\Language::$language_code ?>" dir="<?= l('direction') ?>">
     <head>
         <title><?= \Altum\Title::get() ?></title>
         <base href="<?= SITE_URL; ?>">
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta http-equiv="content-language" content="<?= \Altum\Language::$language_code  ?>" />
 
         <?php if(\Altum\Meta::$description): ?>
             <meta name="description" content="<?= \Altum\Meta::$description ?>" />
@@ -32,7 +31,7 @@
         <link rel="alternate" href="<?= SITE_URL . \Altum\Routing\Router::$original_request ?>" hreflang="x-default" />
         <?php if(count(\Altum\Language::$languages) > 1): ?>
             <?php foreach(\Altum\Language::$languages as $language_code => $language_name): ?>
-                <?php if(settings()->default_language != $language_name): ?>
+                <?php if(settings()->main->default_language != $language_name): ?>
                     <link rel="alternate" href="<?= SITE_URL . $language_code . '/' . \Altum\Routing\Router::$original_request ?>" hreflang="<?= $language_code ?>" />
                 <?php endif ?>
             <?php endforeach ?>
@@ -60,24 +59,25 @@
         <?php endif ?>
     </head>
 
-    <body class="<?= language()->direction == 'rtl' ? 'rtl' : null ?> <?= \Altum\Routing\Router::$controller_settings['body_white'] ? 'bg-white' : null ?>" data-theme-style="<?= \Altum\ThemeStyle::get() ?>">
+    <body class="<?= l('direction') == 'rtl' ? 'rtl' : null ?> <?= \Altum\Routing\Router::$controller_settings['body_white'] ? 'bg-white' : null ?>" data-theme-style="<?= \Altum\ThemeStyle::get() ?>">
         <?php //ALTUMCODE:DEMO if(DEMO) echo include_view(THEME_PATH . 'views/partials/ac_banner.php', ['demo_url' => 'https://socialproofo.com/demo/', 'title_text' => 'SocialProofo by AltumCode', 'product_url' => 'https://altumco.de/socialproofo-buy', 'buy_text' => 'Buy SocialProofo']) ?>
 
+        <?php require THEME_PATH . 'views/partials/admin_impersonate_user.php' ?>
         <?php require THEME_PATH . 'views/partials/announcements.php' ?>
 
         <?= $this->views['menu'] ?>
 
-        <main class="">
+        <?php require THEME_PATH . 'views/partials/ads_header.php' ?>
 
+        <main>
             <?= $this->views['content'] ?>
-
         </main>
 
-        <?php if(\Altum\Routing\Router::$controller_key != 'index'): ?>
-            <?php require THEME_PATH . 'views/partials/ads_footer.php' ?>
-        <?php endif ?>
+        <?php require THEME_PATH . 'views/partials/ads_footer.php' ?>
 
-        <?= $this->views['footer'] ?>
+        <footer class="footer <?= \Altum\Routing\Router::$controller_key == 'index' ? 'm-0' : null ?>">
+            <?= $this->views['footer'] ?>
+        </footer>
 
         <?= \Altum\Event::get_content('modals') ?>
 

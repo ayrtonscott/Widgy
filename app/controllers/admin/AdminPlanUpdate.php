@@ -63,7 +63,7 @@ class AdminPlanUpdate extends Controller {
             //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
             if (!Csrf::check()) {
-                Alerts::add_error(language()->global->error_message->invalid_csrf_token);
+                Alerts::add_error(l('global.error_message.invalid_csrf_token'));
             }
 
             /* Determine the enabled notifications */
@@ -102,7 +102,7 @@ class AdminPlanUpdate extends Controller {
                     $required_fields = ['name', 'price'];
                     foreach($required_fields as $field) {
                         if(!isset($_POST[$field]) || (isset($_POST[$field]) && empty($_POST[$field]) && $_POST[$field] != '0')) {
-                            Alerts::add_field_error($field, language()->global->error_message->empty_field);
+                            Alerts::add_field_error($field, l('global.error_message.empty_field'));
                         }
                     }
 
@@ -112,7 +112,7 @@ class AdminPlanUpdate extends Controller {
                         $enabled_plans = (int) settings()->payment->is_enabled ? database()->query("SELECT COUNT(*) AS `total` FROM `plans` WHERE `status` <> 0")->fetch_object()->total ?? 0 : 0;
 
                         if(!$enabled_plans) {
-                            Alerts::add_error(language()->admin_plan_update->error_message->disabled_plans);
+                            Alerts::add_error(l('admin_plan_update.error_message.disabled_plans'));
                         }
                     }
 
@@ -141,7 +141,7 @@ class AdminPlanUpdate extends Controller {
                     $required_fields = ['name', 'price', 'custom_button_url'];
                     foreach($required_fields as $field) {
                         if(!isset($_POST[$field]) || (isset($_POST[$field]) && empty($_POST[$field]) && $_POST[$field] != '0')) {
-                            Alerts::add_field_error($field, language()->global->error_message->empty_field);
+                            Alerts::add_field_error($field, l('global.error_message.empty_field'));
                         }
                     }
 
@@ -176,7 +176,7 @@ class AdminPlanUpdate extends Controller {
                     $required_fields = ['name'];
                     foreach($required_fields as $field) {
                         if(!isset($_POST[$field]) || (isset($_POST[$field]) && empty($_POST[$field]) && $_POST[$field] != '0')) {
-                            Alerts::add_field_error($field, language()->global->error_message->empty_field);
+                            Alerts::add_field_error($field, l('global.error_message.empty_field'));
                         }
                     }
 
@@ -191,7 +191,7 @@ class AdminPlanUpdate extends Controller {
                                 ($enabled_plans == 1 && $plan->status))
                             && !settings()->plan_free->status
                         ) {
-                            Alerts::add_error(language()->admin_plan_update->error_message->disabled_plans);
+                            Alerts::add_error(l('admin_plan_update.error_message.disabled_plans'));
                         }
                     }
 
@@ -250,7 +250,7 @@ class AdminPlanUpdate extends Controller {
                 }
 
                 /* Set a nice success message */
-                Alerts::add_success(sprintf(language()->global->success_message->update1, '<strong>' . $plan->name . '</strong>'));
+                Alerts::add_success(sprintf(l('global.success_message.update1'), '<strong>' . $plan->name . '</strong>'));
 
                 /* Refresh the page */
                 redirect('admin/plan-update/' . $plan_id);

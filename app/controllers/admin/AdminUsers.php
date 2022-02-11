@@ -21,8 +21,9 @@ class AdminUsers extends Controller {
     public function index() {
 
         /* Prepare the filtering system */
-        $filters = (new \Altum\Filters(['status', 'plan_id', 'country', 'type'], ['name', 'email'], ['email', 'datetime', 'last_activity', 'name', 'total_logins']));
-        $filters->set_default_order_by('user_id', 'DESC');
+        $filters = (new \Altum\Filters(['status', 'plan_id', 'country', 'type', 'referred_by'], ['name', 'email'], ['email', 'datetime', 'last_activity', 'name', 'total_logins']));
+        $filters->set_default_order_by('user_id', settings()->main->default_order_type);
+        $filters->set_default_results_per_page(settings()->main->default_results_per_page);
 
         /* Prepare the paginator */
         $total_rows = database()->query("SELECT COUNT(*) AS `total` FROM `users` WHERE 1 = 1 {$filters->get_sql_where()}")->fetch_object()->total ?? 0;
@@ -84,7 +85,7 @@ class AdminUsers extends Controller {
         //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
         if(!Csrf::check('global_token')) {
-            Alerts::add_error(language()->global->error_message->invalid_csrf_token);
+            Alerts::add_error(l('global.error_message.invalid_csrf_token'));
             redirect('admin/users');
         }
 
@@ -106,8 +107,11 @@ class AdminUsers extends Controller {
             session_start();
             $_SESSION['user_id'] = $user->user_id;
 
+            /* Tell the script that we're actually logged in as an admin in the background */
+            $_SESSION['admin_user_id'] = $this->user->user_id;
+
             /* Set a nice success message */
-            Alerts::add_success(sprintf(language()->admin_user_login_modal->success_message, $user->name));
+            Alerts::add_success(sprintf(l('admin_user_login_modal.success_message'), $user->name));
 
             redirect('dashboard');
 
@@ -134,7 +138,7 @@ class AdminUsers extends Controller {
         //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
         if(!Csrf::check()) {
-            Alerts::add_error(language()->global->error_message->invalid_csrf_token);
+            Alerts::add_error(l('global.error_message.invalid_csrf_token'));
         }
 
         if(!Alerts::has_field_errors() && !Alerts::has_errors()) {
@@ -149,7 +153,7 @@ class AdminUsers extends Controller {
             }
 
             /* Set a nice success message */
-            Alerts::add_success(language()->admin_bulk_delete_modal->success_message);
+            Alerts::add_success(l('admin_bulk_delete_modal.success_message'));
 
         }
 
@@ -163,11 +167,11 @@ class AdminUsers extends Controller {
         //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
         if(!Csrf::check('global_token')) {
-            Alerts::add_error(language()->global->error_message->invalid_csrf_token);
+            Alerts::add_error(l('global.error_message.invalid_csrf_token'));
         }
 
         if($user_id == $this->user->user_id) {
-            Alerts::add_error(language()->admin_users->error_message->self_delete);
+            Alerts::add_error(l('admin_users.error_message.self_delete'));
         }
 
         if(!$user = db()->where('user_id', $user_id)->getOne('users')) {
@@ -180,7 +184,7 @@ class AdminUsers extends Controller {
             (new User())->delete($user_id);
 
             /* Set a nice success message */
-            Alerts::add_success(sprintf(language()->global->success_message->delete1, '<strong>' . $user->name . '</strong>'));
+            Alerts::add_success(sprintf(l('global.success_message.delete1'), '<strong>' . $user->name . '</strong>'));
 
         }
 

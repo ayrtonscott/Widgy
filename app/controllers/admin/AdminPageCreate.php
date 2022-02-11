@@ -22,6 +22,7 @@ class AdminPageCreate extends Controller {
             $_POST['title'] = Database::clean_string($_POST['title']);
             $_POST['description'] = Database::clean_string($_POST['description']);
             $_POST['type'] = in_array($_POST['type'], ['internal', 'external']) ? Database::clean_string($_POST['type']) : 'internal';
+            $_POST['editor'] = in_array($_POST['editor'], ['wysiwyg', 'raw']) ? Database::clean_string($_POST['editor']) : 'raw';
             $_POST['position'] = in_array($_POST['position'], ['hidden', 'top', 'bottom']) ? $_POST['position'] : 'top';
             $_POST['pages_category_id'] = empty($_POST['pages_category_id']) ? null : (int) $_POST['pages_category_id'];
             $_POST['order'] = (int) $_POST['order'];
@@ -43,16 +44,16 @@ class AdminPageCreate extends Controller {
             $required_fields = ['title', 'url'];
             foreach($required_fields as $field) {
                 if(!isset($_POST[$field]) || (isset($_POST[$field]) && empty($_POST[$field]) && $_POST[$field] != '0')) {
-                    Alerts::add_field_error($field, language()->global->error_message->empty_field);
+                    Alerts::add_field_error($field, l('global.error_message.empty_field'));
                 }
             }
 
             if(!Csrf::check()) {
-                Alerts::add_error(language()->global->error_message->invalid_csrf_token);
+                Alerts::add_error(l('global.error_message.invalid_csrf_token'));
             }
 
-            if(db()->where('url', $_POST['url'])->getValue('pages', 'page_id')) {
-                Alerts::add_field_error('url', language()->admin_pages->error_message->url_exists);
+            if($_POST['type'] == 'internal' && db()->where('url', $_POST['url'])->getValue('pages', 'page_id')) {
+                Alerts::add_field_error('url', l('admin_pages.error_message.url_exists'));
             }
 
             /* If there are no errors, continue */
@@ -64,6 +65,7 @@ class AdminPageCreate extends Controller {
                     'url' => $_POST['url'],
                     'title' => $_POST['title'],
                     'description' => $_POST['description'],
+                    'editor' => $_POST['editor'],
                     'content' => $_POST['content'],
                     'type' => $_POST['type'],
                     'position' => $_POST['position'],
@@ -76,7 +78,7 @@ class AdminPageCreate extends Controller {
                 \Altum\Cache::$adapter->deleteItem('pages_' . $_POST['position']);
 
                 /* Set a nice success message */
-                Alerts::add_success(sprintf(language()->global->success_message->create1, '<strong>' . htmlspecialchars($_POST['title']) . '</strong>'));
+                Alerts::add_success(sprintf(l('global.success_message.create1'), '<strong>' . filter_var($_POST['title'], FILTER_SANITIZE_STRING) . '</strong>'));
 
                 redirect('admin/pages');
             }

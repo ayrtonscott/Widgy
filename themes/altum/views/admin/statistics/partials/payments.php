@@ -3,13 +3,13 @@
 <?php ob_start() ?>
 <div class="card">
     <div class="card-body">
-        <h2 class="h4"><i class="fa fa-fw fa-dollar-sign fa-xs text-muted"></i> <?= language()->admin_statistics->payments->header ?></h2>
+        <h2 class="h4"><i class="fa fa-fw fa-dollar-sign fa-xs text-muted"></i> <?= l('admin_statistics.payments.header') ?></h2>
         <div class="d-flex flex-column flex-xl-row">
             <div class="mb-2 mb-xl-0 mr-4">
-                <span class="font-weight-bold"><?= nr($data->total['total_payments']) ?></span> <?= language()->admin_statistics->payments->chart_total_payments ?>
+                <span class="font-weight-bold"><?= nr($data->total['total_payments']) ?></span> <?= l('admin_statistics.payments.chart_total_payments') ?>
             </div>
             <div class="mb-2 mb-xl-0 mr-4">
-                <span class="font-weight-bold"><?= nr($data->total['total_amount'], 2) . ' ' . settings()->payment->currency ?></span> <?= language()->admin_statistics->payments->chart_total_amount ?>
+                <span class="font-weight-bold"><?= nr($data->total['total_amount'], 2) . ' ' . settings()->payment->currency ?></span> <?= l('admin_statistics.payments.chart_total_amount') ?>
             </div>
         </div>
 
@@ -44,14 +44,14 @@
             labels: <?= $data->payments_chart['labels'] ?>,
             datasets: [
                 {
-                    label: <?= json_encode(language()->admin_statistics->payments->chart_total_payments) ?>,
+                    label: <?= json_encode(l('admin_statistics.payments.chart_total_payments')) ?>,
                     data: <?= $data->payments_chart['total_payments'] ?? '[]' ?>,
                     backgroundColor: total_payments_color_gradient,
                     borderColor: total_payments_color,
                     fill: true
                 },
                 {
-                    label: <?= json_encode(language()->admin_statistics->payments->chart_total_amount) ?>,
+                    label: <?= json_encode(l('admin_statistics.payments.chart_total_amount')) ?>,
                     data: <?= $data->payments_chart['total_amount'] ?? '[]' ?>,
                     backgroundColor: total_amount_color_gradient,
                     borderColor: total_amount_color,

@@ -113,14 +113,14 @@ class WebhookPayu extends Controller {
                     /* Send notification to the user */
                     $email_template = get_email_template(
                         [],
-                        language()->global->emails->user_payment->subject,
+                        l('global.emails.user_payment.subject'),
                         [
                             '{{NAME}}' => $user->name,
                             '{{PLAN_EXPIRATION_DATE}}' => Date::get($plan_expiration_date, 2),
                             '{{USER_PLAN_LINK}}' => url('account-plan'),
                             '{{USER_PAYMENTS_LINK}}' => url('account-payments'),
                         ],
-                        language()->global->emails->user_payment->body
+                        l('global.emails.user_payment.body')
                     );
 
                     send_mail($user->email, $email_template->subject, $email_template->body);

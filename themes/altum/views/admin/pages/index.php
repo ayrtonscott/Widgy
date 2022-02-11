@@ -4,10 +4,10 @@
 
 <?php if($data->pages_categories_result->num_rows): ?>
     <div class="d-flex flex-column flex-md-row justify-content-between mb-4">
-        <h1 class="h3"><i class="fa fa-fw fa-xs fa-book text-primary-900 mr-2"></i> <?= language()->admin_pages_categories->header ?></h1>
+        <h1 class="h3"><i class="fa fa-fw fa-xs fa-book text-primary-900 mr-2"></i> <?= l('admin_pages_categories.header') ?></h1>
 
         <div class="col-auto p-0">
-            <a href="<?= url('admin/pages-category-create') ?>" class="btn btn-outline-primary"><i class="fa fa-fw fa-plus-circle"></i> <?= language()->admin_pages_categories->create ?></a>
+            <a href="<?= url('admin/pages-category-create') ?>" class="btn btn-outline-primary"><i class="fa fa-fw fa-plus-circle"></i> <?= l('admin_pages_categories.create') ?></a>
         </div>
     </div>
 
@@ -15,7 +15,7 @@
         <table class="table table-custom">
             <thead>
             <tr>
-                <th><?= language()->admin_pages_categories->pages_categories->pages_category ?></th>
+                <th><?= l('admin_pages_categories.pages_categories.pages_category') ?></th>
                 <th></th>
                 <th></th>
             </tr>
@@ -24,7 +24,7 @@
             <?php while($row = $data->pages_categories_result->fetch_object()): ?>
 
                 <tr>
-                    <td>
+                    <td class="text-nowrap">
                         <div class="d-flex align-items-center">
                             <?php if(!empty($row->icon)): ?>
                                 <span class="round-circle-md bg-primary-100 text-primary p-3 mr-3"><i class="<?= $row->icon ?>"></i></span>
@@ -39,10 +39,14 @@
                             </div>
                         </div>
                     </td>
-                    <td class="text-muted">
-                        <i class="fa fa-fw fa-sm fa-file-alt"></i> <?= sprintf(language()->admin_pages_categories->pages_categories->total_pages, $row->total_pages) ?>
+                    <td class="text-nowrap text-muted">
+                        <i class="fa fa-fw fa-sm fa-file-alt"></i> <?= sprintf(l('admin_pages_categories.pages_categories.total_pages'), $row->total_pages) ?>
                     </td>
-                    <td><?= include_view(THEME_PATH . 'views/admin/pages/admin_pages_category_dropdown_button.php', ['id' => $row->pages_category_id]) ?></td>
+                    <td>
+                        <div class="d-flex justify-content-end">
+                            <?= include_view(THEME_PATH . 'views/admin/pages/admin_pages_category_dropdown_button.php', ['id' => $row->pages_category_id]) ?>
+                        </div>
+                    </td>
                 </tr>
 
             <?php endwhile ?>
@@ -58,11 +62,11 @@
         </div>
 
         <div class="d-flex flex-column">
-            <h1 class="h3"><?= language()->admin_pages_categories->header_no_data ?></h1>
-            <p class="text-muted"><?= language()->admin_pages_categories->subheader_no_data ?></p>
+            <h1 class="h3"><?= l('admin_pages_categories.header_no_data') ?></h1>
+            <p class="text-muted"><?= l('admin_pages_categories.subheader_no_data') ?></p>
 
             <div>
-                <a href="<?= url('admin/pages-category-create') ?>" class="btn btn-primary"><i class="fa fa-fw fa-sm fa-plus-circle"></i> <?= language()->admin_pages_categories->create ?></a>
+                <a href="<?= url('admin/pages-category-create') ?>" class="btn btn-primary"><i class="fa fa-fw fa-sm fa-plus-circle"></i> <?= l('admin_pages_categories.create') ?></a>
             </div>
         </div>
     </div>
@@ -76,10 +80,10 @@
 <?php if($data->pages_result->num_rows): ?>
 
     <div class="d-flex flex-column flex-md-row justify-content-between mb-4">
-        <h1 class="h3"><i class="fa fa-fw fa-xs fa-file-alt text-primary-900 mr-2"></i> <?= language()->admin_pages->header ?></h1>
+        <h1 class="h3"><i class="fa fa-fw fa-xs fa-file-alt text-primary-900 mr-2"></i> <?= l('admin_pages.header') ?></h1>
 
         <div class="col-auto p-0">
-            <a href="<?= url('admin/page-create') ?>" class="btn btn-outline-primary"><i class="fa fa-fw fa-plus-circle"></i> <?= language()->admin_pages->create ?></a>
+            <a href="<?= url('admin/page-create') ?>" class="btn btn-outline-primary"><i class="fa fa-fw fa-plus-circle"></i> <?= l('admin_pages.create') ?></a>
         </div>
     </div>
 
@@ -87,8 +91,8 @@
         <table class="table table-custom">
             <thead>
             <tr>
-                <th><?= language()->admin_pages->pages->page ?></th>
-                <th><?= language()->admin_pages->pages->position ?></th>
+                <th><?= l('admin_pages.pages.page') ?></th>
+                <th><?= l('admin_pages.pages.position') ?></th>
                 <th></th>
                 <th></th>
             </tr>
@@ -97,7 +101,7 @@
             <?php while($row = $data->pages_result->fetch_object()): ?>
 
                 <tr>
-                    <td>
+                    <td class="text-nowrap">
                         <div class="d-flex align-items-center">
                             <?php if(!empty($row->pages_category_icon)): ?>
                                 <span class="round-circle-md bg-primary-100 text-primary p-3 mr-3" data-toggle="tooltip" title="<?= $row->pages_category_title ?>"><i class="<?= $row->pages_category_icon ?>"></i></span>
@@ -112,14 +116,18 @@
                             </div>
                         </div>
                     </td>
-                    <td>
+                    <td class="text-nowrap">
                         <div class="d-flex flex-column">
-                            <?= language()->admin_pages->pages->{'position_' . $row->position} ?>
-                            <small class="text-muted"><?= language()->admin_pages->input->{'type_' . mb_strtolower($row->type)} ?></small>
+                            <?= l('admin_pages.pages.position_' . $row->position) ?>
+                            <small class="text-muted"><?= l('admin_pages.input.type_' . mb_strtolower($row->type)) ?></small>
                         </div>
                     </td>
-                    <td class="text-muted"><?= sprintf(language()->admin_pages->pages->total_views, nr($row->total_views)) ?></td>
-                    <td><?= include_view(THEME_PATH . 'views/admin/pages/admin_page_dropdown_button.php', ['id' => $row->page_id]) ?></td>
+                    <td class="text-nowrap text-muted"><?= sprintf(l('admin_pages.pages.total_views'), nr($row->total_views)) ?></td>
+                    <td>
+                        <div class="d-flex justify-content-end">
+                            <?= include_view(THEME_PATH . 'views/admin/pages/admin_page_dropdown_button.php', ['id' => $row->page_id]) ?>
+                        </div>
+                    </td>
                 </tr>
 
             <?php endwhile ?>
@@ -135,11 +143,11 @@
         </div>
 
         <div class="d-flex flex-column">
-            <h1 class="h3"><?= language()->admin_pages->header_no_data ?></h1>
-            <p class="text-muted"><?= language()->admin_pages->subheader_no_data ?></p>
+            <h1 class="h3"><?= l('admin_pages.header_no_data') ?></h1>
+            <p class="text-muted"><?= l('admin_pages.subheader_no_data') ?></p>
 
             <div>
-                <a href="<?= url('admin/page-create') ?>" class="btn btn-primary"><i class="fa fa-fw fa-sm fa-plus-circle"></i> <?= language()->admin_pages->create ?></a>
+                <a href="<?= url('admin/page-create') ?>" class="btn btn-primary"><i class="fa fa-fw fa-sm fa-plus-circle"></i> <?= l('admin_pages.create') ?></a>
             </div>
         </div>
     </div>

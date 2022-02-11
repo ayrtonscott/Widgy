@@ -82,11 +82,11 @@
         <div class="row  mt-8">
             <div class="col">
                 <div class="text-left">
-                    <h1 class="index-header mb-4" data-aos="fade-down"><?= language()->index->header ?></h1>
-                    <p class="index-subheader text-muted mb-5" data-aos="fade-down" data-aos-delay="200"><?= sprintf(language()->index->subheader, $data->total_notifications) ?></p>
+                    <h1 class="index-header mb-4" data-aos="fade-down"><?= l('index.header') ?></h1>
+                    <p class="index-subheader text-muted mb-5" data-aos="fade-down" data-aos-delay="200"><?= sprintf(l('index.subheader'), $data->total_notifications) ?></p>
 
                     <div data-aos="fade-down" data-aos-delay="300">
-                        <a href="<?= url('register') ?>" class="btn btn-primary index-button" ><?= language()->index->sign_up ?></a>
+                        <a href="<?= url('register') ?>" class="btn btn-primary index-button"><?= l('index.sign_up') ?></a>
                     </div>
                 </div>
             </div>
@@ -98,7 +98,7 @@
 
 <div class="container mt-10">
     <div class="text-center" data-aos="fade">
-        <h2 class="text-gray-700"><?= language()->index->steps->header ?></h2>
+        <h2 class="text-gray-700"><?= l('index.steps.header') ?></h2>
     </div>
 
     <div class="row mt-8">
@@ -109,9 +109,9 @@
                     <i class="fa fa-fw fa-plug"></i>
                 </div>
 
-                <h3 class="h4 mb-3 text-center"><?= language()->index->steps->one ?></h3>
+                <h3 class="h4 mb-3 text-center"><?= l('index.steps.one') ?></h3>
 
-                <p class="text-muted text-center"><?= language()->index->steps->one_text ?></p>
+                <p class="text-muted text-center"><?= l('index.steps.one_text') ?></p>
             </div>
         </div>
 
@@ -121,9 +121,9 @@
                     <i class="fa fa-fw fa-plus"></i>
                 </div>
 
-                <h3 class="h4 mb-3 text-center"><?= language()->index->steps->two ?></h3>
+                <h3 class="h4 mb-3 text-center"><?= l('index.steps.two') ?></h3>
 
-                <p class="text-muted text-center"><?= language()->index->steps->two_text ?></p>
+                <p class="text-muted text-center"><?= l('index.steps.two_text') ?></p>
             </div>
         </div>
 
@@ -133,9 +133,9 @@
                     <i class="fa fa-fw fa-money-bill-wave"></i>
                 </div>
 
-                <h3 class="h4 mb-3 text-center"><?= language()->index->steps->three ?></h3>
+                <h3 class="h4 mb-3 text-center"><?= l('index.steps.three') ?></h3>
 
-                <p class="text-muted text-center"><?= language()->index->steps->three_text ?></p>
+                <p class="text-muted text-center"><?= l('index.steps.three_text') ?></p>
             </div>
         </div>
     </div>
@@ -144,22 +144,22 @@
 
 <div class="container mt-10">
     <div class="text-center">
-        <h2 class="text-gray-700"><?= language()->index->setup->header ?></h2>
-        <p class="text-muted mt-3"><?= language()->index->setup->description ?></p>
+        <h2 class="text-gray-700"><?= l('index.setup.header') ?></h2>
+        <p class="text-muted mt-3"><?= l('index.setup.description') ?></p>
     </div>
 
     <div class="row mt-5 d-flex align-items-center">
         <div class="col-md-3 col-sm-6 col-12 mb-5 mb-md-0 text-center">
-            <img src="<?= ASSETS_FULL_URL . 'images/shopify_logo.svg' ?>" class="zoomer" alt="<?= language()->index->setup->shopify ?>">
+            <img src="<?= ASSETS_FULL_URL . 'images/shopify_logo.svg' ?>" class="zoomer" alt="<?= l('index.setup.shopify') ?>">
         </div>
         <div class="col-md-3 col-sm-6 col-12 mb-5 mb-md-0 text-center">
-            <img src="<?= ASSETS_FULL_URL . 'images/worpress_logo.svg' ?>" class="zoomer" alt="<?= language()->index->setup->wordpress ?>">
+            <img src="<?= ASSETS_FULL_URL . 'images/worpress_logo.svg' ?>" class="zoomer" alt="<?= l('index.setup.wordpress') ?>">
         </div>
         <div class="col-md-3 col-sm-6 col-12 mb-5 mb-md-0 text-center">
-            <img src="<?= ASSETS_FULL_URL . 'images/zapier_logo.svg' ?>" class="zoomer" alt="<?= language()->index->setup->zapier ?>">
+            <img src="<?= ASSETS_FULL_URL . 'images/zapier_logo.svg' ?>" class="zoomer" alt="<?= l('index.setup.zapier') ?>">
         </div>
         <div class="col-md-3 col-sm-6 col-12 mb-5 mb-md-0 text-center">
-            <img src="<?= ASSETS_FULL_URL . 'images/squarespace_logo.svg' ?>" class="zoomer" alt="<?= language()->index->setup->squarespace ?>">
+            <img src="<?= ASSETS_FULL_URL . 'images/squarespace_logo.svg' ?>" class="zoomer" alt="<?= l('index.setup.squarespace') ?>">
         </div>
     </div>
 
@@ -168,9 +168,9 @@
 <div class="py-5 bg-gray-100 mt-10">
     <div class="container">
         <div class="text-center">
-            <h2><?= sprintf(language()->index->tools->header, nr($data->total_track_notifications)) ?></h2>
+            <h2><?= sprintf(l('index.tools.header'), nr($data->total_track_notifications)) ?></h2>
 
-            <p class="text-muted mt-5"><?= language()->index->tools->subheader ?></p>
+            <p class="text-muted mt-5"><?= l('index.tools.subheader') ?></p>
         </div>
     </div>
 </div>
@@ -179,8 +179,8 @@
 
     <div class="mb-3 d-flex justify-content-between align-items-center flex-column flex-md-row">
         <div>
-            <h3><span class="underline"><?= language()->index->tools->preview ?></span></h3>
-            <p class="text-muted"><?= language()->index->tools->preview_description ?></p>
+            <h3><span class="underline"><?= l('index.tools.preview') ?></span></h3>
+            <p class="text-muted"><?= l('index.tools.preview_description') ?></p>
         </div>
 
         <div id="notification_preview" class="container-disabled-simple"></div>
@@ -200,12 +200,12 @@
                     <div class="card-body">
 
                         <div class="mb-3 text-center">
-                            <span class="custom-radio-box-main-icon"><i class="<?= language()->notification->{mb_strtolower($notification_type)}->icon ?>"></i></span>
+                            <span class="custom-radio-box-main-icon"><i class="<?= l('notification.' . mb_strtolower($notification_type) . '.icon') ?>"></i></span>
                         </div>
 
-                        <div class="card-title font-weight-bold text-center"><?= language()->notification->{mb_strtolower($notification_type)}->name ?></div>
+                        <div class="card-title font-weight-bold text-center"><?= l('notification.' . mb_strtolower($notification_type) . '.name') ?></div>
 
-                        <p class="text-muted text-center"><?= language()->notification->{mb_strtolower($notification_type)}->description ?></p>
+                        <p class="text-muted text-center"><?= l('notification.' . mb_strtolower($notification_type) . '.description') ?></p>
 
                     </div>
                 </div>
@@ -231,25 +231,25 @@
 
 <div class="container mt-10">
     <div class="text-center mb-8">
-        <h2><?= language()->index->pricing->header ?></h2>
+        <h2><?= l('index.pricing.header') ?></h2>
 
-        <p class="text-muted mt-5"><?= language()->index->pricing->subheader ?></p>
+        <p class="text-muted mt-5"><?= l('index.pricing.subheader') ?></p>
     </div>
 
     <?= $this->views['plans'] ?>
 </div>
 
-<?php if(settings()->register_is_enabled): ?>
+<?php if(settings()->users->register_is_enabled): ?>
 <div class="index-register-container mt-9">
     <div class="container">
         <div class="d-flex flex-row justify-content-around">
             <div>
-                <h2><?= language()->index->cta->header ?></h2>
-                <p><?= language()->index->cta->subheader ?></p>
+                <h2><?= l('index.cta.header') ?></h2>
+                <p><?= l('index.cta.subheader') ?></p>
             </div>
 
             <div>
-                <a href="<?= url('register') ?>" class="btn btn-outline-light index-button"><?= language()->index->cta->sign_up ?></a>
+                <a href="<?= url('register') ?>" class="btn btn-outline-light index-button"><?= l('index.cta.sign_up') ?></a>
             </div>
         </div>
     </div>

@@ -87,6 +87,9 @@
     background: none !important;
     opacity: .4 !important;
     transition: .15s all !important;
+    min-width: unset !important;
+    color: unset !important;
+    padding: 2px !important;
 }
 
 .altumcode-close:hover {

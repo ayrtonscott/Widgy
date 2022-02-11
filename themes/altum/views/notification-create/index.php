@@ -5,16 +5,16 @@
         <nav aria-label="breadcrumb">
             <ol class="custom-breadcrumbs small">
                 <li>
-                    <a href="<?= url('dashboard') ?>"><?= language()->dashboard->breadcrumb ?></a><i class="fa fa-fw fa-angle-right"></i>
+                    <a href="<?= url('dashboard') ?>"><?= l('dashboard.breadcrumb') ?></a><i class="fa fa-fw fa-angle-right"></i>
                 </li>
                 <li>
-                    <a href="<?= url('campaign/' . $data->campaign->campaign_id) ?>"><?= language()->campaign->breadcrumb ?></a><i class="fa fa-fw fa-angle-right"></i>
+                    <a href="<?= url('campaign/' . $data->campaign->campaign_id) ?>"><?= l('campaign.breadcrumb') ?></a><i class="fa fa-fw fa-angle-right"></i>
                 </li>
-                <li class="active" aria-current="page"><?= language()->notification_create->breadcrumb ?></li>
+                <li class="active" aria-current="page"><?= l('notification_create.breadcrumb') ?></li>
             </ol>
         </nav>
 
-        <h1 class="h2 mr-3"><?= language()->notification_create->header ?></h1>
+        <h1 class="h2 mr-3"><?= l('notification_create.header') ?></h1>
 
         <div class="d-flex align-items-center text-muted mr-3">
             <img src="https://external-content.duckduckgo.com/ip3/<?= $data->campaign->domain ?>.ico" class="img-fluid icon-favicon mr-1" />
@@ -22,8 +22,6 @@
         </div>
     </div>
 </header>
-
-<?php require THEME_PATH . 'views/partials/ads_header.php' ?>
 
 <section class="container">
 
@@ -59,12 +57,12 @@
                         <div class="card-body">
 
                             <div class="mb-3 text-center">
-                                <span class="custom-radio-box-main-icon"><i class="<?= language()->notification->{mb_strtolower($notification_type)}->icon ?>"></i></span>
+                                <span class="custom-radio-box-main-icon"><i class="<?= l('notification.' . mb_strtolower($notification_type) . '.icon') ?>"></i></span>
                             </div>
 
-                            <div class="card-title font-weight-bold text-center"><?= language()->notification->{mb_strtolower($notification_type)}->name ?></div>
+                            <div class="card-title font-weight-bold text-center"><?= l('notification.' . mb_strtolower($notification_type) . '.name') ?></div>
 
-                            <p class="text-muted text-center"><?= language()->notification->{mb_strtolower($notification_type)}->description ?></p>
+                            <p class="text-muted text-center"><?= l('notification.' . mb_strtolower($notification_type) . '.description') ?></p>
 
                         </div>
                     </div>
@@ -87,7 +85,7 @@
         </div>
 
         <div class="mt-4">
-            <button type="submit" name="submit" class="btn btn-block btn-lg btn-primary"><?= language()->global->create ?></button>
+            <button type="submit" name="submit" class="btn btn-block btn-lg btn-primary"><?= l('global.create') ?></button>
         </div>
     </form>
 </section>

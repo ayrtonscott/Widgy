@@ -8,18 +8,18 @@
                 <div class="d-flex justify-content-between mb-3">
                     <h5 class="modal-title">
                         <i class="fa fa-fw fa-sm fa-trash-alt text-primary-900 mr-2"></i>
-                        <?= language()->admin_bulk_delete_modal->header ?>
+                        <?= l('admin_bulk_delete_modal.header') ?>
                     </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="<?= language()->global->close ?>">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="<?= l('global.close') ?>">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
 
-                <p class="text-muted"><?= language()->admin_bulk_delete_modal->subheader ?></p>
+                <p class="text-muted"><?= l('admin_bulk_delete_modal.subheader') ?></p>
 
                 <div class="mt-4">
                     <button type="submit" form="table" class="btn btn-lg btn-block btn-danger" onclick="document.querySelector('#table input[data-bulk-type]').value = 'delete'">
-                        <?= language()->global->delete ?>
+                        <?= l('global.delete') ?>
                     </button>
                 </div>
             </div>

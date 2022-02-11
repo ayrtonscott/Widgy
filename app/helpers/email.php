@@ -52,7 +52,7 @@ function send_mail($to, $title, $content, $test = false) {
 
     /* Templating for the title */
     $replacers = [
-        '{{WEBSITE_TITLE}}' => settings()->title
+        '{{WEBSITE_TITLE}}' => settings()->main->title
     ];
 
     $title = str_replace(
@@ -67,9 +67,9 @@ function send_mail($to, $title, $content, $test = false) {
     $replacers = [
         '{{CONTENT}}'   => $content,
         '{{URL}}'       => url(),
-        '{{WEBSITE_TITLE}}' => settings()->title,
-        '{{HEADER}}'    => '<a href="' . url() . '">' . (!empty(settings()->logo) ? '<img src="' . UPLOADS_FULL_URL . 'logo/' . settings()->logo . '" class="logo" alt="' . settings()->title . '" />' : '<h2>' . settings()->title .  '</h2>') . '</a>',
-        '{{FOOTER}}'    => 'Copyright © <a href="' . url() . '">' . settings()->title . '</a>'
+        '{{WEBSITE_TITLE}}' => settings()->main->title,
+        '{{HEADER}}'    => '<a href="' . url() . '">' . (!empty(settings()->logo) ? '<img src="' . UPLOADS_FULL_URL . 'logo/' . settings()->logo . '" class="logo" alt="' . settings()->main->title . '" />' : '<h2>' . settings()->main->title .  '</h2>') . '</a>',
+        '{{FOOTER}}'    => 'Copyright © <a href="' . url() . '">' . settings()->main->title . '</a>'
     ];
 
     $email_template = str_replace(

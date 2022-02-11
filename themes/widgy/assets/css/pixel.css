@@ -82,6 +82,9 @@
     background: none !important;
     opacity: .4 !important;
     transition: .15s all !important;
+    min-width: unset !important;
+    color: unset !important;
+    padding: 2px !important;
 }
 
 .altumcode-close:hover {
@@ -826,13 +829,11 @@
 }
 
 .altumcode-conversions-counter-number {
-    /* 21/12 10.0.0 */
-    padding: 12px 18px!important;
-    border-radius: 12px!important;
+    padding: 3px 18px!important;
+    border-radius: 4px!important;
     font-weight: bolder!important;
     font-size: 21px!important;
-    margin-right: 7px!important
-    /* 21/12 10.0.0 */
+    margin-right: 5px!important
 }
 
 .altumcode-conversions-counter-title {
@@ -879,7 +880,7 @@
 }
 
 .altumcode-cookie-notification-close {
-    align-self: end!important
+    align-self: start !important
 }
 
 .altumcode-cookie-notification-url {
@@ -945,9 +946,7 @@
 .altumcode-countdown-collector-timer {
     display: flex!important;
     flex-direction: row!important;
-    /* 21/12 10.0.0 */
-    width: 70%!important;
-    /* 21/12 10.0.0 */
+    width: 100%!important;
     justify-content: space-between!important;
     margin-bottom: 12.5px!important
 }
@@ -1492,6 +1491,7 @@
 
 .altumcode-informational-bar-header {
     display: flex!important;
+    align-items: center !important;
     width: 100%!important;
     margin-bottom: 5px!important
 }
@@ -1543,10 +1543,8 @@
 }
 
 .altumcode-latest-conversion-image {
-    /* 21/12 10.0.0 */
-    width: 55px!important;
-    height: 55px!important;
-    /* 21/12 10.0.0 */
+    width: 35px!important;
+    height: 35px!important;
     margin-right: 16px!important
 }
 
@@ -1648,12 +1646,9 @@
 }
 
 .altumcode-random-review-image {
-    /* 21/12 10.0.0 */
-    min-width: 70px!important;
-    height: 70px!important;
-    margin-right: 15px!important;
-    border-radius: 40px;
-    /* 21/12 10.0.0 */
+    min-width: 65px!important;
+    height: 65px!important;
+    margin-right: 8px!important
 }
 
 @media (min-width:576px) {

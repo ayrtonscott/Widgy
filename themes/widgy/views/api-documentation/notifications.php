@@ -3,20 +3,20 @@
 <div class="container">
     <nav aria-label="breadcrumb">
         <ol class="custom-breadcrumbs small">
-            <li><a href="<?= url() ?>"><?= language()->index->breadcrumb ?></a> <i class="fa fa-fw fa-angle-right"></i></li>
-            <li><a href="<?= url('api-documentation') ?>"><?= language()->api_documentation->breadcrumb ?></a> <i class="fa fa-fw fa-angle-right"></i></li>
-            <li class="active" aria-current="page"><?= language()->api_documentation->notifications->breadcrumb ?></li>
+            <li><a href="<?= url() ?>"><?= l('index.breadcrumb') ?></a> <i class="fa fa-fw fa-angle-right"></i></li>
+            <li><a href="<?= url('api-documentation') ?>"><?= l('api_documentation.breadcrumb') ?></a> <i class="fa fa-fw fa-angle-right"></i></li>
+            <li class="active" aria-current="page"><?= l('api_documentation.notifications.breadcrumb') ?></li>
         </ol>
     </nav>
 
-    <h1 class="h4"><?= language()->api_documentation->notifications->header ?></h1>
+    <h1 class="h4"><?= l('api_documentation.notifications.header') ?></h1>
 
     <div class="accordion">
         <div class="card">
             <div class="card-header bg-gray-50 p-3 position-relative">
                 <h3 class="h6 m-0">
                     <a href="#" class="stretched-link" data-toggle="collapse" data-target="#notifications_read_all" aria-expanded="true" aria-controls="notifications_read_all">
-                        <?= language()->api_documentation->notifications->read_all_header ?>
+                        <?= l('api_documentation.notifications.read_all_header') ?>
                     </a>
                 </h3>
             </div>
@@ -25,7 +25,7 @@
                 <div class="card-body">
 
                     <div class="form-group mb-4">
-                        <label><?= language()->api_documentation->endpoint ?></label>
+                        <label><?= l('api_documentation.endpoint') ?></label>
                         <div class="card bg-gray-100 border-0">
                             <div class="card-body">
                                 <span class="badge badge-success mr-3">GET</span> <span class="text-muted"><?= SITE_URL ?>api/notifications/</span>
@@ -34,7 +34,7 @@
                     </div>
 
                     <div class="form-group mb-4">
-                        <label><?= language()->api_documentation->example ?></label>
+                        <label><?= l('api_documentation.example') ?></label>
                         <div class="card bg-gray-100 border-0">
                             <div class="card-body">
                                 curl --request GET \<br />
@@ -48,34 +48,34 @@
                         <table class="table table-custom">
                             <thead>
                             <tr>
-                                <th><?= language()->api_documentation->parameters ?></th>
-                                <th><?= language()->api_documentation->details ?></th>
-                                <th><?= language()->api_documentation->description ?></th>
+                                <th><?= l('api_documentation.parameters') ?></th>
+                                <th><?= l('api_documentation.details') ?></th>
+                                <th><?= l('api_documentation.description') ?></th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr>
                                 <td>page</td>
                                 <td>
-                                    <span class="badge badge-info"><?= language()->api_documentation->optional ?></span>
-                                    <span class="badge badge-secondary"><?= language()->api_documentation->int ?></span>
+                                    <span class="badge badge-info"><?= l('api_documentation.optional') ?></span>
+                                    <span class="badge badge-secondary"><?= l('api_documentation.int') ?></span>
                                 </td>
-                                <td><?= language()->api_documentation->filters->page ?></td>
+                                <td><?= l('api_documentation.filters.page') ?></td>
                             </tr>
                             <tr>
                                 <td>results_per_page</td>
                                 <td>
-                                    <span class="badge badge-info"><?= language()->api_documentation->optional ?></span>
-                                    <span class="badge badge-secondary"><?= language()->api_documentation->int ?></span>
+                                    <span class="badge badge-info"><?= l('api_documentation.optional') ?></span>
+                                    <span class="badge badge-secondary"><?= l('api_documentation.int') ?></span>
                                 </td>
-                                <td><?= sprintf(language()->api_documentation->filters->results_per_page, '<code>' . implode('</code> , <code>', [10, 25, 50, 100, 250]) . '</code>', 25) ?></td>
+                                <td><?= sprintf(l('api_documentation.filters.results_per_page'), '<code>' . implode('</code> , <code>', [10, 25, 50, 100, 250, 500]) . '</code>', 25) ?></td>
                             </tr>
                             </tbody>
                         </table>
                     </div>
 
                     <div class="form-group">
-                        <label><?= language()->api_documentation->response ?></label>
+                        <label><?= l('api_documentation.response') ?></label>
                         <div class="card bg-gray-100 border-0">
                                         <pre class="card-body">
 {
@@ -118,7 +118,7 @@
             <div class="card-header bg-gray-50 p-3 position-relative">
                 <h3 class="h6 m-0">
                     <a href="#" class="stretched-link" data-toggle="collapse" data-target="#notifications_read" aria-expanded="true" aria-controls="notifications_read">
-                        <?= language()->api_documentation->notifications->read_header ?>
+                        <?= l('api_documentation.notifications.read_header') ?>
                     </a>
                 </h3>
             </div>
@@ -127,7 +127,7 @@
                 <div class="card-body">
 
                     <div class="form-group mb-4">
-                        <label><?= language()->api_documentation->endpoint ?></label>
+                        <label><?= l('api_documentation.endpoint') ?></label>
                         <div class="card bg-gray-100 border-0">
                             <div class="card-body">
                                 <span class="badge badge-success mr-3">GET</span> <span class="text-muted"><?= SITE_URL ?>api/notifications/</span><span class="text-primary">{notification_id}</span>
@@ -136,7 +136,7 @@
                     </div>
 
                     <div class="form-group mb-4">
-                        <label><?= language()->api_documentation->example ?></label>
+                        <label><?= l('api_documentation.example') ?></label>
                         <div class="card bg-gray-100 border-0">
                             <div class="card-body">
                                 curl --request GET \<br />
@@ -147,7 +147,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label><?= language()->api_documentation->response ?></label>
+                        <label><?= l('api_documentation.response') ?></label>
                         <div class="card bg-gray-100 border-0">
                                         <pre class="card-body">
 {

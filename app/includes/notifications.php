@@ -14,9 +14,9 @@ return array_merge(
     [
         'INFORMATIONAL' => [
             'type' => 'default',
-            'title' => language()->notification->informational->title_default,
-            'description' => language()->notification->informational->description_default,
-            'image' => language()->notification->informational->image_default,
+            'title' => l('notification.informational.title_default'),
+            'description' => l('notification.informational.description_default'),
+            'image' => l('notification.informational.image_default'),
             'image_alt' => '',
             'url'   => '',
             'url_new_tab' => true,
@@ -51,14 +51,14 @@ return array_merge(
 
         'COUPON' => [
             'type' => 'default',
-            'title' => language()->notification->coupon->title_default,
-            'description' => language()->notification->coupon->description_default,
-            'image' => language()->notification->coupon->image_default,
+            'title' => l('notification.coupon.title_default'),
+            'description' => l('notification.coupon.description_default'),
+            'image' => l('notification.coupon.image_default'),
             'image_alt' => '',
-            'coupon_code' => language()->notification->coupon->coupon_code_default,
+            'coupon_code' => l('notification.coupon.coupon_code_default'),
             'button_url'   => '',
-            'button_text'  => language()->notification->coupon->button_text_default,
-            'footer_text'  => language()->notification->coupon->footer_text_default,
+            'button_text'  => l('notification.coupon.button_text_default'),
+            'footer_text'  => l('notification.coupon.footer_text_default'),
 
             'trigger_all_pages' => true,
             'triggers' => [],
@@ -91,7 +91,7 @@ return array_merge(
 
         'LIVE_COUNTER' => [
             'type' => 'default',
-            'description' => language()->notification->live_counter->description_default,
+            'description' => l('notification.live_counter.description_default'),
             'last_activity' => 15,
             'url'   => '',
             'url_new_tab' => true,
@@ -127,12 +127,12 @@ return array_merge(
 
         'EMAIL_COLLECTOR' => [
             'type' => 'default',
-            'title' => language()->notification->email_collector->title_default,
-            'description' => language()->notification->email_collector->description_default,
-            'email_placeholder' => language()->notification->email_collector->email_placeholder_default,
-            'button_text' => language()->notification->email_collector->button_text_default,
+            'title' => l('notification.email_collector.title_default'),
+            'description' => l('notification.email_collector.description_default'),
+            'email_placeholder' => l('notification.email_collector.email_placeholder_default'),
+            'button_text' => l('notification.email_collector.button_text_default'),
             'show_agreement' => false,
-            'agreement_text' => language()->notification->email_collector->agreement_text_default,
+            'agreement_text' => l('notification.email_collector.agreement_text_default'),
             'agreement_url' => '',
             'thank_you_url' => '',
 
@@ -171,9 +171,9 @@ return array_merge(
 
         'LATEST_CONVERSION' => [
             'type' => 'default',
-            'title' => language()->notification->latest_conversion->title_default,
-            'description' => language()->notification->latest_conversion->description_default,
-            'image' => language()->notification->latest_conversion->image_default,
+            'title' => l('notification.latest_conversion.title_default'),
+            'description' => l('notification.latest_conversion.description_default'),
+            'image' => l('notification.latest_conversion.image_default'),
             'image_alt' => '',
             'url'   => '',
             'url_new_tab' => true,
@@ -212,7 +212,7 @@ return array_merge(
 
         'CONVERSIONS_COUNTER' => [
             'type' => 'default',
-            'title' => language()->notification->conversions_counter->title_default,
+            'title' => l('notification.conversions_counter.title_default'),
             'last_activity' => 2,
             'url' => '',
             'url_new_tab' => true,
@@ -250,10 +250,10 @@ return array_merge(
 
         'VIDEO' => [
             'type' => 'default',
-            'title' => language()->notification->video->title_default,
+            'title' => l('notification.video.title_default'),
             'video' => '',
             'button_url'   => '',
-            'button_text'  => language()->notification->video->button_text_default,
+            'button_text'  => l('notification.video.button_text_default'),
 
             'trigger_all_pages' => true,
             'triggers' => [],
@@ -285,8 +285,8 @@ return array_merge(
 
         'SOCIAL_SHARE' => [
             'type' => 'default',
-            'title' => language()->notification->social_share->title_default,
-            'description' => language()->notification->social_share->description_default,
+            'title' => l('notification.social_share.title_default'),
+            'description' => l('notification.social_share.description_default'),
             'share_url'   => '',
             'share_facebook' => true,
             'share_twitter' => true,
@@ -324,9 +324,9 @@ return array_merge(
             'url'   => '',
             'url_new_tab' => true,
             'reviews_count' => 1,
-            'title' => language()->notification->random_review->title_default,
-            'description' => language()->notification->random_review->description_default,
-            'image' => language()->notification->random_review->image_default,
+            'title' => l('notification.random_review.title_default'),
+            'description' => l('notification.random_review.description_default'),
+            'image' => l('notification.random_review.image_default'),
             'image_alt' => '',
             'stars' => 5,
 
@@ -359,7 +359,7 @@ return array_merge(
 
         'EMOJI_FEEDBACK' => [
             'type' => 'default',
-            'title' => language()->notification->emoji_feedback->title_default,
+            'title' => l('notification.emoji_feedback.title_default'),
             'show_angry' => true,
             'show_sad' => true,
             'show_neutral' => true,
@@ -394,13 +394,13 @@ return array_merge(
 
         'COOKIE_NOTIFICATION' => [
             'type' => 'default',
-            'description' => language()->notification->cookie_notification->description_default,
-            'image' => language()->notification->cookie_notification->image_default,
+            'description' => l('notification.cookie_notification.description_default'),
+            'image' => l('notification.cookie_notification.image_default'),
             'image_alt' => '',
-            'url_text' => language()->notification->cookie_notification->url_text_default,
+            'url_text' => l('notification.cookie_notification.url_text_default'),
             'url' => '',
             'url_new_tab' => true,
-            'button_text'  => language()->notification->cookie_notification->button_text_default,
+            'button_text'  => l('notification.cookie_notification.button_text_default'),
 
             'trigger_all_pages' => true,
             'triggers' => [],
@@ -432,8 +432,8 @@ return array_merge(
 
         'SCORE_FEEDBACK' => [
             'type' => 'default',
-            'title' => language()->notification->score_feedback->title_default,
-            'description' => language()->notification->score_feedback->description_default,
+            'title' => l('notification.score_feedback.title_default'),
+            'description' => l('notification.score_feedback.description_default'),
 
             'trigger_all_pages' => true,
             'triggers' => [],
@@ -466,16 +466,16 @@ return array_merge(
 
         'REQUEST_COLLECTOR' => [
             'type' => 'default',
-            'title' => language()->notification->request_collector->title_default,
-            'description' => language()->notification->request_collector->description_default,
-            'image' => language()->notification->request_collector->image_default,
+            'title' => l('notification.request_collector.title_default'),
+            'description' => l('notification.request_collector.description_default'),
+            'image' => l('notification.request_collector.image_default'),
             'image_alt' => '',
-            'content_title' => language()->notification->request_collector->content_title_default,
-            'content_description' => language()->notification->request_collector->content_description_default,
-            'input_placeholder' => language()->notification->request_collector->input_placeholder_default,
-            'button_text' => language()->notification->request_collector->button_text_default,
+            'content_title' => l('notification.request_collector.content_title_default'),
+            'content_description' => l('notification.request_collector.content_description_default'),
+            'input_placeholder' => l('notification.request_collector.input_placeholder_default'),
+            'button_text' => l('notification.request_collector.button_text_default'),
             'show_agreement' => false,
-            'agreement_text' => language()->notification->request_collector->agreement_text_default,
+            'agreement_text' => l('notification.request_collector.agreement_text_default'),
             'agreement_url' => '',
             'thank_you_url' => '',
 
@@ -516,14 +516,14 @@ return array_merge(
 
         'COUNTDOWN_COLLECTOR' => [
             'type' => 'default',
-            'title' => language()->notification->countdown_collector->title_default,
-            'description' => language()->notification->countdown_collector->description_default,
-            'content_title' => language()->notification->countdown_collector->content_title_default,
-            'input_placeholder' => language()->notification->countdown_collector->input_placeholder_default,
-            'button_text' => language()->notification->countdown_collector->button_text_default,
+            'title' => l('notification.countdown_collector.title_default'),
+            'description' => l('notification.countdown_collector.description_default'),
+            'content_title' => l('notification.countdown_collector.content_title_default'),
+            'input_placeholder' => l('notification.countdown_collector.input_placeholder_default'),
+            'button_text' => l('notification.countdown_collector.button_text_default'),
             'end_date' => (new \DateTime())->modify('+5 hours')->format('Y-m-d H:i:s'),
             'show_agreement' => false,
-            'agreement_text' => language()->notification->countdown_collector->agreement_text_default,
+            'agreement_text' => l('notification.countdown_collector.agreement_text_default'),
             'agreement_url' => '',
             'thank_you_url' => '',
 

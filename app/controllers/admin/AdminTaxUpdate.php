@@ -30,7 +30,7 @@ class AdminTaxUpdate extends Controller {
             //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
             if(!Csrf::check()) {
-                Alerts::add_error(language()->global->error_message->invalid_csrf_token);
+                Alerts::add_error(l('global.error_message.invalid_csrf_token'));
             }
 
             if(!Alerts::has_field_errors() && !Alerts::has_errors()) {
@@ -39,7 +39,7 @@ class AdminTaxUpdate extends Controller {
 //                db()->where('tax_id', $tax_id)->update('taxes', []);
 //
 //                /* Set a nice success message */
-//                Alerts::add_success(sprintf(language()->global->success_message->update1, '<strong>' . htmlspecialchars($_POST['name']) . '</strong>'));
+//                Alerts::add_success(sprintf(l('global.success_message.update1'), '<strong>' . filter_var($_POST['name'], FILTER_SANITIZE_STRING) . '</strong>'));
 
                 /* Refresh the page */
                 redirect('admin/tax-update/' . $tax_id);

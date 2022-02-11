@@ -8,14 +8,14 @@
                 <div class="d-flex justify-content-between mb-3">
                     <h5 class="modal-title">
                         <i class="fa fa-fw fa-sm fa-trash-alt text-primary-900 mr-2"></i>
-                        <?= language()->admin_plugin_delete_modal->header ?>
+                        <?= l('admin_plugin_delete_modal.header') ?>
                     </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="<?= language()->global->close ?>">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="<?= l('global.close') ?>">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
 
-                <p class="text-muted"><?= language()->admin_plugin_delete_modal->subheader ?></p>
+                <p class="text-muted"><?= l('admin_plugin_delete_modal.subheader') ?></p>
             </div>
 
         </div>

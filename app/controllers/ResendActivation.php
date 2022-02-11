@@ -36,7 +36,7 @@ class ResendActivation extends Controller {
 
             /* Check for any errors */
             if(settings()->captcha->resend_activation_is_enabled && !$captcha->is_valid()) {
-                Alerts::add_field_error('captcha', language()->global->error_message->invalid_captcha);
+                Alerts::add_field_error('captcha', l('global.error_message.invalid_captcha'));
             }
 
             /* If there are no errors, resend the activation link */
@@ -51,20 +51,17 @@ class ResendActivation extends Controller {
                     /* Update the current activation email */
                     db()->where('user_id', $user->user_id)->update('users', ['email_activation_code' => $email_code]);
 
-                    /* Get the language for the user */
-                    $language = language($user->language);
-
                     /* Prepare the email */
                     $email_template = get_email_template(
                         [
                             '{{NAME}}' => $user->name,
                         ],
-                        $language->global->emails->user_activation->subject,
+                        l('global.emails.user_activation.subject', $user->language),
                         [
                             '{{ACTIVATION_LINK}}' => url('activate-user?email=' . md5($_POST['email']) . '&email_activation_code=' . $email_code . '&type=user_activation'),
                             '{{NAME}}' => $user->name,
                         ],
-                        $language->global->emails->user_activation->body
+                        l('global.emails.user_activation.body', $user->language)
                     );
 
                     /* Send the email */
@@ -73,7 +70,7 @@ class ResendActivation extends Controller {
                 }
 
                 /* Set a nice success message */
-                Alerts::add_success(language()->resend_activation->success_message);
+                Alerts::add_success(l('resend_activation.success_message'));
             }
         }
 

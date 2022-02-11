@@ -66,12 +66,12 @@ class AdminPlanCreate extends Controller {
             $required_fields = ['name'];
             foreach($required_fields as $field) {
                 if(!isset($_POST[$field]) || (isset($_POST[$field]) && empty($_POST[$field]) && $_POST[$field] != '0')) {
-                    Alerts::add_field_error($field, language()->global->error_message->empty_field);
+                    Alerts::add_field_error($field, l('global.error_message.empty_field'));
                 }
             }
 
             if(!Csrf::check()) {
-                Alerts::add_error(language()->global->error_message->invalid_csrf_token);
+                Alerts::add_error(l('global.error_message.invalid_csrf_token'));
             }
 
             if(!Alerts::has_field_errors() && !Alerts::has_errors()) {
@@ -93,7 +93,7 @@ class AdminPlanCreate extends Controller {
                 ]);
 
                 /* Set a nice success message */
-                Alerts::add_success(sprintf(language()->global->success_message->create1, '<strong>' . htmlspecialchars($_POST['name']) . '</strong>'));
+                Alerts::add_success(sprintf(l('global.success_message.create1'), '<strong>' . filter_var($_POST['name'], FILTER_SANITIZE_STRING) . '</strong>'));
 
                 redirect('admin/plans');
             }

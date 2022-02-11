@@ -18,6 +18,7 @@
 
 .altumcode-informational-bar-header {
     display: flex !important;
+    align-items: center !important;
     width: 100% !important;
     margin-bottom: 5px !important;
 }

@@ -86,9 +86,12 @@ class AltumCodeManager {
 
                 /* Make sure to know all of the form submissions on the page */
                 document.querySelectorAll('form').forEach(form_element => {
-                    form_element.addEventListener('submit', event => {
 
-                        let notification_id = this.options.notification_id;
+                    if(form_element.getAttribute(`data-${pixel_key}-${this.options.notification_id}-form`)) {
+                        return;
+                    }
+
+                    form_element.addEventListener('submit', event => {
 
                         /* Store data from the form */
                         let data = {};
@@ -111,11 +114,13 @@ class AltumCodeManager {
                         /* Data collection from the form */
                         send_tracking_data({
                             ...data,
-                            notification_id: notification_id,
+                            notification_id: this.options.notification_id,
                             type: 'auto_capture'
                         });
 
                     });
+
+                    form_element.setAttribute(`data-${pixel_key}-${this.options.notification_id}-form`, true);
                 });
 
             }
@@ -182,7 +187,6 @@ class AltumCodeManager {
 
         /* Add the close button icon if needed */
         if(this.options.close) {
-
             /* Create a span for close element */
             let close_button = main_element.querySelector('button[class="altumcode-close"]');
 
@@ -190,14 +194,13 @@ class AltumCodeManager {
 
             /* Click to remove handler */
             close_button.addEventListener('click', event => {
-
                 event.stopPropagation();
 
                 /* Remove function call */
                 this.constructor.remove_notification(main_element);
-
             });
-
+        } else {
+            main_element.querySelector('button[class="altumcode-close"]').innerHTML = '';
         }
 
         /* Enable click on the notification if url is defined */

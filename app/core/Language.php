@@ -19,6 +19,7 @@ class Language {
     public static $languages = [];
 
     /* Defaults */
+    public static $main_language = 'english';
     public static $default_language;
     public static $default_language_code;
 
@@ -34,9 +35,9 @@ class Language {
         self::$path = $path;
 
         /* Determine all the languages available in the directory */
-        foreach(glob(self::$path . '*.json') as $file) {
+        foreach(glob(self::$path . '*.php') as $file) {
             $file = explode('/', $file);
-            $file_name = str_replace('.json', '', trim(end($file)));
+            $file_name = str_replace('.php', '', trim(end($file)));
 
             /* Language name & code */
             list($language_name, $language_code) = explode('#', $file_name);
@@ -76,19 +77,19 @@ class Language {
 
         /* Include the language file */
         $language_code = array_search($language, self::$languages);
-        self::$language_objects[$language] = json_decode(file_get_contents(self::$path . $language . '#' . $language_code . '.json'));
+        self::$language_objects[$language] = require self::$path . $language . '#' . $language_code . '.php';
 
         /* Check the language file */
         if(is_null(self::$language_objects[$language])) {
-            die('The language file is corrupted. Please make sure your JSON Language file is JSON Validated ( you can do that with an online JSON Validator by searching on Google ).');
+            die('language.corrupted=Restore the original language file.');
         }
 
         /* Include the admin language file if needed */
         if(\Altum\Routing\Router::$path == 'admin') {
-            $admin_language = json_decode(file_get_contents(self::$path . 'admin/' . $language . '#' . $language_code . '.json'));
+            $admin_language = require self::$path . 'admin/' . $language . '#' . $language_code . '.php';
 
             /* Merge */
-            self::$language_objects[$language] = (object) (array_merge((array) self::$language_objects[$language], (array) $admin_language));
+            self::$language_objects[$language] = array_merge(self::$language_objects[$language], $admin_language);
         }
 
         return self::$language_objects[$language];

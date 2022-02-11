@@ -275,13 +275,13 @@ class PixelTrack extends Controller {
                                 '{{NOTIFICATION_NAME}}' => $notification->name,
                                 '{{CAMPAIGN_NAME}}' => $notification->campaign_name,
                             ],
-                            language($user->language)->global->emails->user_data_send->subject,
+                            l('global.emails.user_data_send.subject', $user->language),
                             [
                                 '{{NOTIFICATION_NAME}}' => $notification->name,
                                 '{{CAMPAIGN_NAME}}' => $notification->campaign_name,
                                 '{{DATA}}' => $email_body
                             ],
-                            language($user->language)->global->emails->user_data_send->body
+                            l('global.emails.user_data_send.body', $user->language),
                         );
 
                         send_mail($notification->settings->data_send_email, $email_template->subject, $email_template->body);

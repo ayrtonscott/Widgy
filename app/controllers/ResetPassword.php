@@ -35,11 +35,11 @@ class ResetPassword extends Controller {
             //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
             /* Check for any errors */
-            if(mb_strlen(trim($_POST['new_password'])) < 6) {
-                Alerts::add_field_error('new_password', language()->reset_password->error_message->short_password);
+            if(mb_strlen($_POST['new_password']) < 6 || mb_strlen($_POST['new_password']) > 64) {
+                Alerts::add_field_error('new_password', l('global.error_message.password_length'));
             }
             if($_POST['new_password'] !== $_POST['repeat_password']) {
-                Alerts::add_field_error('repeat_password', language()->reset_password->error_message->passwords_not_matching);
+                Alerts::add_field_error('repeat_password', l('global.error_message.passwords_not_matching'));
             }
 
             if(!Alerts::has_field_errors() && !Alerts::has_errors()) {
@@ -56,12 +56,12 @@ class ResetPassword extends Controller {
                 Logger::users($user->user_id, 'reset_password.success');
 
                 /* Set a nice success message */
-                Alerts::add_success(language()->reset_password->success_message);
+                Alerts::add_success(l('reset_password.success_message'));
 
                 /* Log the user in */
                 $_SESSION['user_id'] = $user->user_id;
                 (new User())->login_aftermath_update($user->user_id);
-                Alerts::add_info(sprintf(language()->login->info_message->logged_in, $user->name));
+                Alerts::add_info(sprintf(l('login.info_message.logged_in'), $user->name));
 
                 /* Clear the cache */
                 \Altum\Cache::$adapter->deleteItemsByTag('user_id=' . $user->user_id);

@@ -40,7 +40,7 @@ class AccountPlan extends Controller {
         Authentication::guard();
 
         if(!Csrf::check()) {
-            Alerts::add_error(language()->global->error_message->invalid_csrf_token);
+            Alerts::add_error(l('global.error_message.invalid_csrf_token'));
             redirect('account-plan');
         }
 
@@ -54,7 +54,7 @@ class AccountPlan extends Controller {
             }
 
             /* Set a nice success message */
-            Alerts::add_success(language()->account_plan->success_message->subscription_canceled);
+            Alerts::add_success(l('account_plan.success_message.subscription_canceled'));
 
             redirect('account-plan');
 

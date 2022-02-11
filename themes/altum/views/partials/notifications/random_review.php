@@ -18,7 +18,7 @@
                     <?php endfor ?>
                 </div>
 
-                <button class="altumcode-close"></button>
+                <button class="altumcode-close">&#10006;</button>
             </div>
             <p class="altumcode-random-review-description" style="color: <?= $notification->settings->description_color ?>">"<?= $notification->settings->description ?>"</p>
 

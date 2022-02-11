@@ -5,7 +5,7 @@
         <div class="modal-content">
 
             <div class="modal-header">
-                <h5 class="modal-title"><?= language()->custom_branding_campaign_modal->header ?></h5>
+                <h5 class="modal-title"><?= l('custom_branding_campaign_modal.header') ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -18,18 +18,18 @@
                     <input type="hidden" name="campaign_id" value="" />
 
                     <div class="form-group">
-                        <label for="custom_branding_name"><i class="fa fa-fw fa-sm fa-random text-muted mr-1"></i> <?= language()->custom_branding_campaign_modal->input->name ?></label>
+                        <label for="custom_branding_name"><i class="fa fa-fw fa-sm fa-random text-muted mr-1"></i> <?= l('custom_branding_campaign_modal.input.name') ?></label>
                         <input id="custom_branding_name" type="text" class="form-control" name="name" value="<?= $data->campaign->branding->name ?? '' ?>" maxlength="128" />
-                        <small class="form-text text-muted"><?= language()->custom_branding_campaign_modal->input->name_help ?></small>
+                        <small class="form-text text-muted"><?= l('custom_branding_campaign_modal.input.name_help') ?></small>
                     </div>
 
                     <div class="form-group">
-                        <label for="custom_branding_url"><i class="fa fa-fw fa-sm fa-link text-muted mr-1"></i> <?= language()->custom_branding_campaign_modal->input->url ?></label>
+                        <label for="custom_branding_url"><i class="fa fa-fw fa-sm fa-link text-muted mr-1"></i> <?= l('custom_branding_campaign_modal.input.url') ?></label>
                         <input id="custom_branding_url" type="url" class="form-control" name="url" value="<?= $data->campaign->branding->url ?? '' ?>" maxlength="2048" />
                     </div>
 
                     <div class="text-center mt-4">
-                        <button type="submit" name="submit" class="btn btn-block btn-primary"><?= language()->global->update ?></button>
+                        <button type="submit" name="submit" class="btn btn-block btn-primary"><?= l('global.update') ?></button>
                     </div>
                 </form>
             </div>

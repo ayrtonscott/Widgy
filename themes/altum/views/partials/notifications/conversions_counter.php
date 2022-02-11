@@ -7,16 +7,16 @@
 
         <div class="altumcode-conversions-counter-header">
             <div class="altumcode-conversions-counter-number" style="background: <?= $notification->settings->number_background_color ?>; color: <?= $notification->settings->number_color ?>">
-                <?= isset($notification->counter) && $notification->counter >= $notification->settings->display_minimum_activity ? $notification->counter : language()->notification->conversions_counter->number_default ?>
+                <?= isset($notification->counter) && $notification->counter >= $notification->settings->display_minimum_activity ? $notification->counter : l('notification.conversions_counter.number_default') ?>
             </div>
 
             <div>
                 <p class="altumcode-conversions-counter-title" style="color: <?= $notification->settings->title_color ?>"><?= $notification->settings->title ?></p>
-                <p class="altumcode-conversions-counter-time"><?= sprintf(language()->notification->conversions_counter->time_default, $notification->settings->last_activity) ?></p>
+                <p class="altumcode-conversions-counter-time"><?= sprintf(l('notification.conversions_counter.time_default'), $notification->settings->last_activity) ?></p>
             </div>
 
             <div class="altumcode-conversions-counter-close">
-                <button class="altumcode-close"></button>
+                <button class="altumcode-close">&#10006;</button>
             </div>
         </div>
 

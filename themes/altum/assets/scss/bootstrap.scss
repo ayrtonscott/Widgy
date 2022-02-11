@@ -163,6 +163,9 @@ code {
     background: var(--gray);
 }
 
+/* Tooltip fix */
+.tooltip { top: 0; }
+
 /* Extra variables */
 :root {
     --black: #{$black};

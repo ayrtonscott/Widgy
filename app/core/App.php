@@ -67,13 +67,13 @@ class App {
         \Altum\Settings::initialize($settings);
 
         /* Initiate the Language system with the default language */
-        Language::set_default($settings->default_language);
+        Language::set_default($settings->main->default_language);
 
         /* Set the default theme style */
-        ThemeStyle::set_default($settings->default_theme_style);
+        ThemeStyle::set_default($settings->main->default_theme_style);
 
         /* Initiate the Title system */
-        Title::initialize($settings->title);
+        Title::initialize($settings->main->title);
         Meta::initialize();
 
         /* Set the date timezone */

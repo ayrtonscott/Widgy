@@ -82,6 +82,9 @@
     background: none !important;
     opacity: .4 !important;
     transition: .15s all !important;
+    min-width: unset !important;
+    color: unset !important;
+    padding: 2px !important;
 }
 
 .altumcode-close:hover {
@@ -877,7 +880,7 @@
 }
 
 .altumcode-cookie-notification-close {
-    align-self: end!important
+    align-self: start !important
 }
 
 .altumcode-cookie-notification-url {
@@ -1488,6 +1491,7 @@
 
 .altumcode-informational-bar-header {
     display: flex!important;
+    align-items: center !important;
     width: 100%!important;
     margin-bottom: 5px!important
 }

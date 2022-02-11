@@ -19,7 +19,8 @@ class AdminNotifications extends Controller {
 
         /* Prepare the filtering system */
         $filters = (new \Altum\Filters(['user_id', 'campaign_id', 'type', 'is_enabled'], ['name'], ['datetime', 'name']));
-        $filters->set_default_order_by('notification_id', 'DESC');
+        $filters->set_default_order_by('notification_id', settings()->main->default_order_type);
+        $filters->set_default_results_per_page(settings()->main->default_results_per_page);
 
         /* Prepare the paginator */
         $total_rows = database()->query("SELECT COUNT(*) AS `total` FROM `notifications` WHERE 1 = 1 {$filters->get_sql_where()}")->fetch_object()->total ?? 0;
@@ -46,8 +47,8 @@ class AdminNotifications extends Controller {
         }
 
         /* Export handler */
-        process_export_csv($notifications, 'include', ['notification_id', 'campaign_id', 'user_id', 'name', 'type', 'is_enabled', 'last_datetime', 'datetime'], sprintf(language()->admin_notifications->title));
-        process_export_json($notifications, 'include', ['notification_id', 'campaign_id', 'user_id', 'name', 'type', 'is_enabled', 'last_datetime', 'datetime'], sprintf(language()->admin_notifications->title));
+        process_export_csv($notifications, 'include', ['notification_id', 'campaign_id', 'user_id', 'name', 'type', 'is_enabled', 'last_datetime', 'datetime'], sprintf(l('admin_notifications.title')));
+        process_export_json($notifications, 'include', ['notification_id', 'campaign_id', 'user_id', 'name', 'type', 'is_enabled', 'last_datetime', 'datetime'], sprintf(l('admin_notifications.title')));
 
         /* Prepare the pagination view */
         $pagination = (new \Altum\Views\View('partials/pagination', (array) $this))->run(['paginator' => $paginator]);
@@ -83,7 +84,7 @@ class AdminNotifications extends Controller {
         //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
         if(!Csrf::check()) {
-            Alerts::add_error(language()->global->error_message->invalid_csrf_token);
+            Alerts::add_error(l('global.error_message.invalid_csrf_token'));
         }
 
         if(!Alerts::has_field_errors() && !Alerts::has_errors()) {
@@ -102,7 +103,7 @@ class AdminNotifications extends Controller {
             }
 
             /* Set a nice success message */
-            Alerts::add_success(language()->admin_bulk_delete_modal->success_message);
+            Alerts::add_success(l('admin_bulk_delete_modal.success_message'));
 
         }
 
@@ -116,7 +117,7 @@ class AdminNotifications extends Controller {
         //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
         if(!Csrf::check('global_token')) {
-            Alerts::add_error(language()->global->error_message->invalid_csrf_token);
+            Alerts::add_error(l('global.error_message.invalid_csrf_token'));
         }
 
         if(!$notification = db()->where('notification_id', $notification_id)->getOne('notifications', ['notification_id'])) {
@@ -132,7 +133,7 @@ class AdminNotifications extends Controller {
             \Altum\Cache::$adapter->deleteItemsByTag('notification_id=' . $notification->notification_id);
 
             /* Set a nice success message */
-            Alerts::add_success(sprintf(language()->global->success_message->delete1, '<strong>' . $notification->name . '</strong>'));
+            Alerts::add_success(sprintf(l('global.success_message.delete1'), '<strong>' . $notification->name . '</strong>'));
 
         }
 

@@ -57,7 +57,7 @@ class Referrals extends Controller {
 
             /* Check for any errors */
             if(!Csrf::check()) {
-                Alerts::add_error(language()->global->error_message->invalid_csrf_token);
+                Alerts::add_error(l('global.error_message.invalid_csrf_token'));
             }
 
             if($_POST['amount'] < settings()->affiliate->minimum_withdrawal_amount) {
@@ -104,7 +104,7 @@ class Referrals extends Controller {
                             '{{TOTAL_AMOUNT}}' => $amount,
                             '{{CURRENCY}}' => settings()->payment->currency,
                         ],
-                        language()->global->emails->admin_new_affiliate_withdrawal_notification->subject,
+                        l('global.emails.admin_new_affiliate_withdrawal_notification.subject'),
                         [
                             '{{NAME}}' => $this->user->name,
                             '{{EMAIL}}' => $this->user->email,
@@ -113,7 +113,7 @@ class Referrals extends Controller {
                             '{{AFFILIATE_WITHDRAWAL_NOTE}}' => $_POST['note'],
                             '{{ADMIN_AFFILIATE_WITHDRAWAL_LINK}}' => url('admin/affiliates-withdrawals'),
                         ],
-                        language()->global->emails->admin_new_affiliate_withdrawal_notification->body
+                        l('global.emails.admin_new_affiliate_withdrawal_notification.body')
                     );
 
                     send_mail(explode(',', settings()->email_notifications->emails), $email_template->subject, $email_template->body);
@@ -121,7 +121,7 @@ class Referrals extends Controller {
                 }
 
                 /* Set a nice success message */
-                Alerts::add_success(language()->referrals->withdraw->success_message);
+                Alerts::add_success(l('referrals.withdraw.success_message'));
 
                 redirect('referrals');
             }

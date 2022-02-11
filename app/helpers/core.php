@@ -22,3 +22,7 @@ function database() {
 function language($language = null) {
     return \Altum\Language::get($language);
 }
+
+function l($key, $language = null, $null_coalesce = false) {
+    return \Altum\Language::get($language)[$key] ?? \Altum\Language::get(\Altum\Language::$main_language)[$key] ?? ($null_coalesce ? null : 'missing_translation: ' . $key);
+}

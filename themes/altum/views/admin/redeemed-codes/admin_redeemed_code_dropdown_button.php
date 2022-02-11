@@ -6,6 +6,6 @@
     </button>
 
     <div class="dropdown-menu dropdown-menu-right">
-        <a href="#" data-toggle="modal" data-target="#redeemed_code_delete_modal" data-id="<?= $data->id ?>" class="dropdown-item"><i class="fa fa-fw fa-sm fa-times mr-1"></i> <?= language()->global->delete ?></a>
+        <a href="#" data-toggle="modal" data-target="#redeemed_code_delete_modal" data-id="<?= $data->id ?>" class="dropdown-item"><i class="fa fa-fw fa-sm fa-times mr-1"></i> <?= l('global.delete') ?></a>
     </div>
 </div>

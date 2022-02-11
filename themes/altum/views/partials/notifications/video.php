@@ -7,7 +7,7 @@
         <div class="altumcode-video-header">
             <p class="altumcode-video-title" style="color: <?= $notification->settings->title_color ?>"><?= $notification->settings->title ?></p>
 
-            <button class="altumcode-close"></button>
+            <button class="altumcode-close">&#10006;</button>
         </div>
 
         <?php if(!empty($notification->settings->video)): ?>
@@ -15,7 +15,7 @@
             <iframe class="altumcode-video-video-iframe" src="<?= $notification->settings->video ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <?php else: ?>
-            <img src="<?= language()->notification->video->thumbnail_default ?>" class="altumcode-video-video-iframe" loading="lazy" />
+            <img src="<?= l('notification.video.thumbnail_default') ?>" class="altumcode-video-video-iframe" loading="lazy" />
         <?php endif ?>
 
         <a href="<?= $notification->settings->button_url ?>" class="altumcode-video-button" target="_blank" style="background: <?= $notification->settings->button_background_color ?>;color: <?= $notification->settings->button_color ?>;<?= empty($notification->settings->button_text) ? 'display: none!important;' : null ?>"><?= $notification->settings->button_text ?></a>

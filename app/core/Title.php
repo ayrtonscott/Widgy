@@ -28,7 +28,7 @@ class Title {
         }
 
         /* Check if the default is viable and use it */
-        $page_title = (isset(language()->{$language_key}->title)) ? language()->{$language_key}->title : Router::$controller;
+        $page_title = (l($language_key . '.title')) ? l($language_key . '.title') : Router::$controller;
 
         self::set($page_title);
     }

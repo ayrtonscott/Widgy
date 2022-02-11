@@ -1,7 +1,7 @@
 <?php defined('ALTUMCODE') || die() ?>
 
 <div>
-    <p class="text-muted"><?= language()->admin_settings->socials->help ?></p>
+    <p class="text-muted"><?= l('admin_settings.socials.help') ?></p>
 
     <?php foreach(require APP_PATH . 'includes/admin_socials.php' AS $key => $value): ?>
         <label for="<?= $key ?>"><i class="<?= $value['icon'] ?> fa-fw fa-sm mr-1 text-muted"></i> <?= $value['name'] ?></label>
@@ -19,4 +19,4 @@
 
 
 
-<button type="submit" name="submit" class="btn btn-lg btn-block btn-primary mt-4"><?= language()->global->update ?></button>
+<button type="submit" name="submit" class="btn btn-lg btn-block btn-primary mt-4"><?= l('global.update') ?></button>

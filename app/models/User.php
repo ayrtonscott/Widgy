@@ -283,7 +283,7 @@ class User extends Model {
                 }
 
                 $response = \Unirest\Request::post($paypal_api_url . 'v1/billing/subscriptions/' . $user->payment_subscription_id . '/cancel', $headers, \Unirest\Request\Body::json([
-                    'reason' => sprintf(language()->account_plan->cancel->reason, settings()->title)
+                    'reason' => sprintf(l('account_plan.cancel.reason'), settings()->main->title)
                 ]));
 
                 /* Check against errors */

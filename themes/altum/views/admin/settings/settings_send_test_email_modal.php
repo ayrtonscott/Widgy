@@ -11,20 +11,20 @@
                     <div class="d-flex justify-content-between mb-3">
                         <h5 class="modal-title">
                             <i class="fa fa-fw fa-sm fa-paper-plane text-primary-900 mr-2"></i>
-                            <?= language()->admin_settings_send_test_email_modal->header ?>
+                            <?= l('admin_settings_send_test_email_modal.header') ?>
                         </h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="<?= language()->global->close ?>">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="<?= l('global.close') ?>">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
 
                     <div class="form-group">
-                        <label for="email"><?= language()->admin_settings_send_test_email_modal->email ?></label>
+                        <label for="email"><?= l('admin_settings_send_test_email_modal.email') ?></label>
                         <input id="email" type="email" name="email" class="form-control form-control-lg" />
                     </div>
 
                     <div class="mt-4">
-                        <button type="submit" name="submit" class="btn btn-lg btn-block btn-primary"><?= language()->global->submit ?></button>
+                        <button type="submit" name="submit" class="btn btn-lg btn-block btn-primary"><?= l('global.submit') ?></button>
                     </div>
                 </div>
             </form>

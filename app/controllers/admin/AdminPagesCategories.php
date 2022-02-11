@@ -27,7 +27,7 @@ class AdminPagesCategories extends Controller {
         //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
         if(!Csrf::check('global_token')) {
-            Alerts::add_error(language()->global->error_message->invalid_csrf_token);
+            Alerts::add_error(l('global.error_message.invalid_csrf_token'));
         }
 
         if(!$pages_category = db()->where('pages_category_id', $pages_category_id)->getOne('pages_categories', ['pages_category_id', 'title'])) {
@@ -40,7 +40,7 @@ class AdminPagesCategories extends Controller {
             db()->where('pages_category_id', $pages_category_id)->delete('pages_categories');
 
             /* Set a nice success message */
-            Alerts::add_success(sprintf(language()->global->success_message->delete1, '<strong>' . $pages_category->title . '</strong>'));
+            Alerts::add_success(sprintf(l('global.success_message.delete1'), '<strong>' . $pages_category->title . '</strong>'));
 
         }
 

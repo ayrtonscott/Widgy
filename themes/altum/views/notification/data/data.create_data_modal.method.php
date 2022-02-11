@@ -5,7 +5,7 @@
         <div class="modal-content">
 
             <div class="modal-header">
-                <h5 class="modal-title"><?= language()->notification->create_data_modal->header ?></h5>
+                <h5 class="modal-title"><?= l('notification.create_data_modal.header') ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -22,26 +22,26 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <label><i class="fa fa-fw fa-sm fa-key text-muted mr-1"></i> <?= language()->notification->create_data_modal->input->key ?></label>
-                                    <input type="text" class="form-control" name="key[]" placeholder="<?= language()->notification->create_data_modal->input->key_placeholder ?>" required="required" />
+                                    <label><i class="fa fa-fw fa-sm fa-key text-muted mr-1"></i> <?= l('notification.create_data_modal.input.key') ?></label>
+                                    <input type="text" class="form-control" name="key[]" placeholder="<?= l('notification.create_data_modal.input.key_placeholder') ?>" required="required" />
                                 </div>
                             </div>
 
                             <div class="col">
                                 <div class="form-group">
-                                    <label><i class="fa fa-fw fa-sm fa-server text-muted mr-1"></i> <?= language()->notification->create_data_modal->input->value ?></label>
-                                    <input type="text" class="form-control" name="value[]" placeholder="<?= language()->notification->create_data_modal->input->value_placeholder ?>" required="required" />
+                                    <label><i class="fa fa-fw fa-sm fa-server text-muted mr-1"></i> <?= l('notification.create_data_modal.input.value') ?></label>
+                                    <input type="text" class="form-control" name="value[]" placeholder="<?= l('notification.create_data_modal.input.value_placeholder') ?>" required="required" />
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="mb-3">
-                        <button type="button" id="create_key_value" class="btn btn-outline-success btn-sm"><i class="fa fa-fw fa-plus-circle"></i> <?= language()->notification->create_data_modal->create_key_value ?></button>
+                        <button type="button" id="create_key_value" class="btn btn-outline-success btn-sm"><i class="fa fa-fw fa-plus-circle"></i> <?= l('notification.create_data_modal.create_key_value') ?></button>
                     </div>
 
                     <div class="text-center mt-4">
-                        <button type="submit" name="submit" class="btn btn-block btn-primary"><?= language()->global->submit ?></button>
+                        <button type="submit" name="submit" class="btn btn-block btn-primary"><?= l('global.submit') ?></button>
                     </div>
                 </form>
             </div>
@@ -50,14 +50,14 @@
                 <div class="row">
                     <div class="col">
                         <div class="form-group">
-                            <label><i class="fa fa-fw fa-sm fa-key text-muted mr-1"></i> <?= language()->notification->create_data_modal->input->key ?></label>
+                            <label><i class="fa fa-fw fa-sm fa-key text-muted mr-1"></i> <?= l('notification.create_data_modal.input.key') ?></label>
                             <input type="text" class="form-control" name="key[]" />
                         </div>
                     </div>
 
                     <div class="col">
                         <div class="form-group">
-                            <label><i class="fa fa-fw fa-sm fa-server text-muted mr-1"></i> <?= language()->notification->create_data_modal->input->value ?></label>
+                            <label><i class="fa fa-fw fa-sm fa-server text-muted mr-1"></i> <?= l('notification.create_data_modal.input.value') ?></label>
                             <input type="text" class="form-control" name="value[]" />
                         </div>
                     </div>

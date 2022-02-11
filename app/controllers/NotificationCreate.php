@@ -32,7 +32,7 @@ class NotificationCreate extends Controller {
         $user_notifications_total = database()->query("SELECT COUNT(*) AS `total` FROM `notifications` WHERE `user_id` = {$this->user->user_id}")->fetch_object()->total;
 
         if($this->user->plan_settings->notifications_limit != -1 && $user_notifications_total >= $this->user->plan_settings->notifications_limit) {
-            Alerts::add_error(language()->notification->error_message->notifications_limit);
+            Alerts::add_error(l('notification.error_message.notifications_limit'));
             redirect('dashboard');
         }
 
@@ -44,7 +44,7 @@ class NotificationCreate extends Controller {
             $required_fields = ['type', 'campaign_id'];
             foreach($required_fields as $field) {
                 if(!isset($_POST[$field]) || (isset($_POST[$field]) && empty($_POST[$field]) && $_POST[$field] != '0')) {
-                    Alerts::add_field_error($field, language()->global->error_message->empty_field);
+                    Alerts::add_field_error($field, l('global.error_message.empty_field'));
                 }
             }
 
@@ -64,14 +64,14 @@ class NotificationCreate extends Controller {
             }
 
             if(!Csrf::check()) {
-                Alerts::add_error(language()->global->error_message->invalid_csrf_token);
+                Alerts::add_error(l('global.error_message.invalid_csrf_token'));
             }
 
             if(!Alerts::has_field_errors() && !Alerts::has_errors()) {
                 /* Determine the default settings */
                 $notification_settings = json_encode(Notification::get_config($_POST['type']));
                 $notification_key = md5($this->user->user_id . $_POST['campaign_id'] . $_POST['type'] . time());
-                $name = language()->notification_create->default_name;
+                $name = l('notification_create.default_name');
 
                 /* Insert to database */
                 $notification_id = db()->insert('notifications', [
@@ -86,7 +86,7 @@ class NotificationCreate extends Controller {
                 ]);
 
                 /* Set a nice success message */
-                Alerts::add_success(sprintf(language()->global->success_message->create1, '<strong>' . htmlspecialchars($name) . '</strong>'));
+                Alerts::add_success(sprintf(l('global.success_message.create1'), '<strong>' . filter_var($name, FILTER_SANITIZE_STRING) . '</strong>'));
 
                 /* Redirect */
                 redirect('notification/' . $notification_id);

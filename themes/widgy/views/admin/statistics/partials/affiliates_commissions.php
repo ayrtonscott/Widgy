@@ -3,13 +3,13 @@
 <?php ob_start() ?>
 <div class="card">
     <div class="card-body">
-        <h2 class="h4"><i class="fa fa-fw fa-wallet fa-xs text-muted"></i> <?= language()->admin_statistics->affiliates_commissions->header ?></h2>
+        <h2 class="h4"><i class="fa fa-fw fa-wallet fa-xs text-muted"></i> <?= l('admin_statistics.affiliates_commissions.header') ?></h2>
         <div class="d-flex flex-column flex-xl-row">
             <div class="mb-2 mb-xl-0 mr-4">
-                <span class="font-weight-bold"><?= nr($data->total['total_affiliates_commissions']) ?></span> <?= language()->admin_statistics->affiliates_commissions->chart_total_affiliates_commissions ?>
+                <span class="font-weight-bold"><?= nr($data->total['total_affiliates_commissions']) ?></span> <?= l('admin_statistics.affiliates_commissions.chart_total_affiliates_commissions') ?>
             </div>
             <div class="mb-2 mb-xl-0 mr-4">
-                <span class="font-weight-bold"><?= nr($data->total['amount'], 2) . ' ' . settings()->payment->currency ?></span> <?= language()->admin_statistics->affiliates_commissions->chart_amount ?>
+                <span class="font-weight-bold"><?= nr($data->total['amount'], 2) . ' ' . settings()->payment->currency ?></span> <?= l('admin_statistics.affiliates_commissions.chart_amount') ?>
             </div>
         </div>
 
@@ -44,14 +44,14 @@
             labels: <?= $data->affiliates_commissions_chart['labels'] ?>,
             datasets: [
                 {
-                    label: <?= json_encode(language()->admin_statistics->affiliates_commissions->chart_total_affiliates_commissions) ?>,
+                    label: <?= json_encode(l('admin_statistics.affiliates_commissions.chart_total_affiliates_commissions')) ?>,
                     data: <?= $data->affiliates_commissions_chart['total_affiliates_commissions'] ?? '[]' ?>,
                     backgroundColor: total_affiliates_commissions_color_gradient,
                     borderColor: total_affiliates_commissions_color,
                     fill: true
                 },
                 {
-                    label: <?= json_encode(language()->admin_statistics->affiliates_commissions->chart_amount) ?>,
+                    label: <?= json_encode(l('admin_statistics.affiliates_commissions.chart_amount')) ?>,
                     data: <?= $data->affiliates_commissions_chart['amount'] ?? '[]' ?>,
                     backgroundColor: amount_color_gradient,
                     borderColor: amount_color,

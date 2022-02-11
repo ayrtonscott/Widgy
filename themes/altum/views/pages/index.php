@@ -1,12 +1,10 @@
 <?php defined('ALTUMCODE') || die() ?>
 
-<?php require THEME_PATH . 'views/partials/ads_header.php' ?>
-
 <div class="container">
     <nav aria-label="breadcrumb">
         <ol class="custom-breadcrumbs small">
-            <li><a href="<?= url() ?>"><?= language()->index->breadcrumb ?></a> <i class="fa fa-fw fa-angle-right"></i></li>
-            <li class="active" aria-current="page"><?= language()->pages->index->breadcrumb ?></li>
+            <li><a href="<?= url() ?>"><?= l('index.breadcrumb') ?></a> <i class="fa fa-fw fa-angle-right"></i></li>
+            <li class="active" aria-current="page"><?= l('pages.index.breadcrumb') ?></li>
         </ol>
     </nav>
 
@@ -15,13 +13,13 @@
             <i class="fa fa-fw fa-life-ring fa-2x text-muted"></i>
         </div>
 
-        <h1><?= language()->pages->header ?></h1>
+        <h1><?= l('pages.header') ?></h1>
     </div>
-    <p class="text-muted"><?= language()->pages->subheader ?></p>
+    <p class="text-muted"><?= l('pages.subheader') ?></p>
 
     <?php if($data->popular_pages_result->num_rows): ?>
         <div class="mt-5">
-            <h2 class="mb-4"><?= language()->pages->index->popular_pages->header ?></h2>
+            <h2 class="mb-4"><?= l('pages.index.popular_pages') ?></h2>
 
             <div class="row">
                 <?php while($row = $data->popular_pages_result->fetch_object()): ?>
@@ -32,7 +30,7 @@
                             <a href="<?= $row->type == 'internal' ? SITE_URL . 'page/' . $row->url : $row->url ?>" target="<?= $row->type == 'internal' ? '_self' : '_blank' ?>" class="h5 mr-1"><?= $row->title ?></a>
 
                             <?php if($row->type == 'internal'): ?>
-                                <small class="text-muted"><?= sprintf(language()->pages->total_views, nr($row->total_views)) ?></small>
+                                <small class="text-muted"><?= sprintf(l('pages.total_views'), nr($row->total_views)) ?></small>
                             <?php endif ?>
                         </div>
 
@@ -46,7 +44,7 @@
 
     <?php if($data->pages_categories_result->num_rows): ?>
         <div class="mt-5">
-            <h2 class="mb-4"><?= language()->pages->index->pages_categories->header ?></h2>
+            <h2 class="mb-4"><?= l('pages.index.pages_categories.header') ?></h2>
 
             <div class="row">
                 <?php while($row = $data->pages_categories_result->fetch_object()): ?>
@@ -62,7 +60,7 @@
 
                                     <div class="h5"><?= $row->title ?></div>
 
-                                    <span class="text-muted"><?= sprintf(language()->pages->index->pages_categories->total_pages, nr($row->total_pages)) ?></span>
+                                    <span class="text-muted"><?= sprintf(l('pages.index.pages_categories.total_pages'), nr($row->total_pages)) ?></span>
                                 </div>
                             </div>
                         </a>

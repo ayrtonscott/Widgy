@@ -14,9 +14,9 @@ $gray-800: hsl(210, 38%, 87%) !default;
 $gray-700: hsl(214, 32%, 81%) !default;
 $gray-600: hsl(211, 25%, 67%) !default;
 $gray-500: hsl(214, 20%, 63%) !default;
-$gray-400: hsl(216, 15%, 41%) !default;
-$gray-300: hsl(218, 17%, 27%) !default;
-$gray-200: hsl(218, 21%, 18%) !default;
+$gray-400: hsl(216, 15%, 44%) !default;
+$gray-300: hsl(218, 17%, 28%) !default;
+$gray-200: hsl(218, 21%, 19%) !default;
 $gray-100: hsl(220, 17%, 9%) !default;
 $gray-50: hsl(220, 15%, 5%) !default;
 
@@ -173,6 +173,9 @@ code {
     flex-grow: 1;
     background: var(--gray);
 }
+
+/* Tooltip fix */
+.tooltip { top: 0; }
 
 /* Extra variables */
 :root {

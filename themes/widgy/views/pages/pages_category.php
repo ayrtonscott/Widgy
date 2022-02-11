@@ -1,13 +1,11 @@
 <?php defined('ALTUMCODE') || die() ?>
 
-<?php require THEME_PATH . 'views/partials/ads_header.php' ?>
-
 <div class="container">
     <nav aria-label="breadcrumb">
         <ol class="custom-breadcrumbs small">
-            <li><a href="<?= url() ?>"><?= language()->index->breadcrumb ?></a> <i class="fa fa-fw fa-angle-right"></i></li>
-            <li><a href="<?= SITE_URL . 'pages' ?>"><?= language()->pages->index->breadcrumb ?></a> <i class="fa fa-fw fa-angle-right"></i></li>
-            <li class="active" aria-current="page"><?= language()->pages->pages_category->breadcrumb ?></li>
+            <li><a href="<?= url() ?>"><?= l('index.breadcrumb') ?></a> <i class="fa fa-fw fa-angle-right"></i></li>
+            <li><a href="<?= SITE_URL . 'pages' ?>"><?= l('pages.index.breadcrumb') ?></a> <i class="fa fa-fw fa-angle-right"></i></li>
+            <li class="active" aria-current="page"><?= l('pages.pages_category.breadcrumb') ?></li>
         </ol>
     </nav>
 
@@ -37,7 +35,7 @@
                             <a href="<?= $row->type == 'internal' ? SITE_URL . 'page/' . $row->url : $row->url ?>" target="<?= $row->type == 'internal' ? '_self' : '_blank' ?>" class="h5 mr-1"><?= $row->title ?></a>
 
                             <?php if($row->type == 'internal'): ?>
-                                <small class="text-muted"><?= sprintf(language()->pages->total_views, nr($row->total_views)) ?></small>
+                                <small class="text-muted"><?= sprintf(l('pages.total_views'), nr($row->total_views)) ?></small>
                             <?php endif ?>
                         </div>
 

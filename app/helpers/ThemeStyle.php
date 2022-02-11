@@ -33,7 +33,7 @@ class ThemeStyle {
     }
 
     public static function get_file() {
-        return self::$themes[self::get()][language()->direction];
+        return self::$themes[self::get()][l('direction')];
     }
 
     public static function set_default($theme) {

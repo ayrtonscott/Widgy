@@ -38,7 +38,8 @@ class Campaign extends Controller {
 
                 /* Prepare the filtering system */
                 $filters = (new \Altum\Filters(['is_enabled', 'type'], ['name'], ['name', 'datetime']));
-                $filters->set_default_order_by('notification_id', 'DESC');
+                $filters->set_default_order_by('notification_id', settings()->main->default_order_type);
+        $filters->set_default_results_per_page(settings()->main->default_results_per_page);
 
                 /* Prepare the paginator */
                 $total_rows = database()->query("SELECT COUNT(*) AS `total` FROM `notifications` WHERE `campaign_id` = {$campaign->campaign_id} AND `user_id` = {$this->user->user_id} {$filters->get_sql_where()}")->fetch_object()->total ?? 0;
@@ -152,7 +153,7 @@ class Campaign extends Controller {
         $this->add_view_content('content', $view->run($data));
 
         /* Set a custom title */
-        Title::set(sprintf(language()->campaign->title, $campaign->name));
+        Title::set(sprintf(l('campaign.title'), $campaign->name));
 
     }
 
@@ -169,7 +170,7 @@ class Campaign extends Controller {
         //ALTUMCODE.DEMO: if(DEMO) if($this->user->user_id == 1) Alerts::add_error('Please create an account on the demo to test out this function.');
 
         if(!Csrf::check()) {
-            Alerts::add_error(language()->global->error_message->invalid_csrf_token);
+            Alerts::add_error(l('global.error_message.invalid_csrf_token'));
             redirect('dashboard');
         }
 
@@ -186,7 +187,7 @@ class Campaign extends Controller {
             \Altum\Cache::$adapter->deleteItemsByTag('campaign_id=' . $campaign_id);
 
             /* Set a nice success message */
-            Alerts::add_success(sprintf(language()->global->success_message->delete1, '<strong>' . $campaign->name . '</strong>'));
+            Alerts::add_success(sprintf(l('global.success_message.delete1'), '<strong>' . $campaign->name . '</strong>'));
 
             redirect('dashboard');
 

@@ -73,7 +73,7 @@ class Pixel extends Controller {
         }
 
         /* Set the default language depending on the user */
-        \Altum\Language::set_by_code($user->language);
+        \Altum\Language::set_by_name($user->language);
 
         /* Get default settings for the notifications */
         $notifications_config = \Altum\Notification::get_config();

@@ -36,7 +36,7 @@ class AdminCodeUpdate extends Controller {
             //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
             if(!Csrf::check()) {
-                Alerts::add_error(language()->global->error_message->invalid_csrf_token);
+                Alerts::add_error(l('global.error_message.invalid_csrf_token'));
             }
 
             if(!Alerts::has_field_errors() && !Alerts::has_errors()) {
@@ -52,7 +52,7 @@ class AdminCodeUpdate extends Controller {
                 ]);
 
                 /* Set a nice success message */
-                Alerts::add_success(sprintf(language()->global->success_message->update1, '<strong>' . htmlspecialchars($_POST['code']) . '</strong>'));
+                Alerts::add_success(sprintf(l('global.success_message.update1'), '<strong>' . filter_var($_POST['code'], FILTER_SANITIZE_STRING) . '</strong>'));
 
                 /* Refresh the page */
                 redirect('admin/code-update/' . $code_id);

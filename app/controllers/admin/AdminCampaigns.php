@@ -18,7 +18,8 @@ class AdminCampaigns extends Controller {
 
         /* Prepare the filtering system */
         $filters = (new \Altum\Filters(['user_id', 'is_enabled'], ['name', 'domain'], ['datetime', 'name']));
-        $filters->set_default_order_by('campaign_id', 'DESC');
+        $filters->set_default_order_by('campaign_id', settings()->main->default_order_type);
+        $filters->set_default_results_per_page(settings()->main->default_results_per_page);
 
         /* Prepare the paginator */
         $total_rows = database()->query("SELECT COUNT(*) AS `total` FROM `campaigns` WHERE 1 = 1 {$filters->get_sql_where()}")->fetch_object()->total ?? 0;
@@ -45,8 +46,8 @@ class AdminCampaigns extends Controller {
         }
 
         /* Export handler */
-        process_export_csv($campaigns, 'include', ['campaign_id', 'user_id', 'pixel_key', 'name', 'domain', 'is_enabled', 'last_datetime', 'datetime'], sprintf(language()->admin_campaigns->title));
-        process_export_json($campaigns, 'include', ['campaign_id', 'user_id', 'pixel_key', 'name', 'domain', 'is_enabled', 'last_datetime', 'datetime'], sprintf(language()->admin_campaigns->title));
+        process_export_csv($campaigns, 'include', ['campaign_id', 'user_id', 'pixel_key', 'name', 'domain', 'is_enabled', 'last_datetime', 'datetime'], sprintf(l('admin_campaigns.title')));
+        process_export_json($campaigns, 'include', ['campaign_id', 'user_id', 'pixel_key', 'name', 'domain', 'is_enabled', 'last_datetime', 'datetime'], sprintf(l('admin_campaigns.title')));
 
         /* Prepare the pagination view */
         $pagination = (new \Altum\Views\View('partials/pagination', (array) $this))->run(['paginator' => $paginator]);
@@ -86,7 +87,7 @@ class AdminCampaigns extends Controller {
         //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
         if(!Csrf::check()) {
-            Alerts::add_error(language()->global->error_message->invalid_csrf_token);
+            Alerts::add_error(l('global.error_message.invalid_csrf_token'));
         }
 
         if(!Alerts::has_field_errors() && !Alerts::has_errors()) {
@@ -105,7 +106,7 @@ class AdminCampaigns extends Controller {
             }
 
             /* Set a nice success message */
-            Alerts::add_success(language()->admin_bulk_delete_modal->success_message);
+            Alerts::add_success(l('admin_bulk_delete_modal.success_message'));
 
         }
 
@@ -119,7 +120,7 @@ class AdminCampaigns extends Controller {
         //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
         if(!Csrf::check('global_token')) {
-            Alerts::add_error(language()->global->error_message->invalid_csrf_token);
+            Alerts::add_error(l('global.error_message.invalid_csrf_token'));
         }
 
         if(!$campaign = db()->where('campaign_id', $campaign_id)->getOne('campaigns', ['campaign_id', 'name'])) {
@@ -135,7 +136,7 @@ class AdminCampaigns extends Controller {
             \Altum\Cache::$adapter->deleteItemsByTag('campaign_id=' . $campaign->campaign_id);
 
             /* Set a nice success message */
-            Alerts::add_success(sprintf(language()->global->success_message->delete1, '<strong>' . $campaign->name . '</strong>'));
+            Alerts::add_success(sprintf(l('global.success_message.delete1'), '<strong>' . $campaign->name . '</strong>'));
 
         }
 
