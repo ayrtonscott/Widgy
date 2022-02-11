@@ -316,6 +316,7 @@ return [
 	'pay.trial.header' => 'Inicia la prueba del plan %s',
 	'pay.trial.subheader' => 'Ya casi estamos...',
 	'pay.trial.trial_start' => 'Empezar mi prueba de %s días',
+	'pay.trial.trial_skip' => 'No quiero una prueba',
 
 	'pay.custom_plan.header' => 'Suscribirte al plan %s',
 	'pay.custom_plan.subheader' => '⚡ ¡Estás punto de mejorar tu sitio! Completa el siguiente formulario..',

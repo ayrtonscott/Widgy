@@ -316,6 +316,7 @@ return [
 	'pay.trial.header' => 'Start the %s plan',
 	'pay.trial.subheader' => 'You are almost there, no strings attached.',
 	'pay.trial.trial_start' => 'Start my %s days trial',
+	'pay.trial.trial_skip' => 'Skip trial',
 
 	'pay.custom_plan.header' => 'Purchase the %s plan',
 	'pay.custom_plan.subheader' => 'You are almost there, complete the following form and checkout.',
