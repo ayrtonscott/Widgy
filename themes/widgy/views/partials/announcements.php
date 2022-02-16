@@ -9,16 +9,19 @@
         )
     ): ?>
         <?php $has_announcements = true; ?>
-        <?php // * Modificado el 19/12 en 10.0.0 (Agregado mt-5 en class) Inicio. ?>
-        <div data-announcement="<?= $type ?>" class="mt-5 w-100 py-3" style="background-color: <?= settings()->announcements->{$type . '_background_color'} ?>;">
-        <?php // * Modificado el 19/12 en 10.0.0 (Agregado mt-5 en class) Fin. ?>
+        <div data-announcement="<?= $type ?>" class="w-100 py-3" style="background-color: <?= settings()->announcements->{$type . '_background_color'} ?>;">
             <div class="container d-flex justify-content-center position-relative">
-                <div style="color: <?= settings()->announcements->{$type . '_text_color'} ?>;"><?= settings()->announcements->{$type . '_content'} ?></div>
-
-                <div class="position-absolute ml-3" style="right: 0;">
-                    <button data-announcement-close="<?= $type ?>" data-announcement-id="<?= settings()->announcements->{$type . '_id'} ?>" type="button" class="close" data-dismiss="alert">
-                        <i class="fa fa-fw fa-sm fa-times" style="color: <?= settings()->announcements->{$type . '_text_color'} ?>; opacity: .5;"></i>
-                    </button>
+                <div class="row w-100">
+                    <div class="col">
+                        <div class="text-center" style="color: <?= settings()->announcements->{$type . '_text_color'} ?>;"><?= settings()->announcements->{$type . '_content'} ?></div>
+                    </div>
+                    <div class="col-auto px-0">
+                        <div>
+                            <button data-announcement-close="<?= $type ?>" data-announcement-id="<?= settings()->announcements->{$type . '_id'} ?>" type="button" class="close" data-dismiss="alert">
+                                <i class="fa fa-sm fa-times" style="color: <?= settings()->announcements->{$type . '_text_color'} ?>; opacity: .5;"></i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

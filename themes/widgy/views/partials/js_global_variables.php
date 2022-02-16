@@ -2,8 +2,8 @@
 
 <input type="hidden" name="global_url" value="<?= url() ?>" />
 <input type="hidden" name="global_token" value="<?= \Altum\Middlewares\Csrf::get('global_token') ?>" />
-<input type="hidden" name="global_number_decimal_point" value="<?= language()->global->number->decimal_point ?>" />
-<input type="hidden" name="global_number_thousands_separator" value="<?= language()->global->number->thousands_separator ?>" />
+<input type="hidden" name="global_number_decimal_point" value="<?= l('global.number.decimal_point') ?>" />
+<input type="hidden" name="global_number_thousands_separator" value="<?= l('global.number.thousands_separator') ?>" />
 
 <script>
     /* Some global variables */

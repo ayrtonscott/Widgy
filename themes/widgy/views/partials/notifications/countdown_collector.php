@@ -9,7 +9,7 @@
         <div class="altumcode-countdown-collector-header">
             <p class="altumcode-countdown-collector-title" style="color: <?= $notification->settings->title_color ?>"><?= $notification->settings->title ?></p>
 
-            <button class="altumcode-close"></button>
+            <button class="altumcode-close">&#10006;</button>
         </div>
         <p class="altumcode-countdown-collector-description" style="color: <?= $notification->settings->description_color ?>"><?= $notification->settings->description ?></p>
 
@@ -20,22 +20,22 @@
 
             <div class="altumcode-countdown-collector-timer-block">
                 <div class="altumcode-countdown-collector-time" style="color: <?= $notification->settings->time_color ?>;background: <?= $notification->settings->time_background_color ?>" data-type="days"><?= $date_ended ? '0' : $date->format('%a') ?></div>
-                <p class="altumcode-countdown-collector-time-text"><?= language()->notification->countdown_collector->days ?></p>
+                <p class="altumcode-countdown-collector-time-text"><?= l('notification.countdown_collector.days') ?></p>
             </div>
 
             <div class="altumcode-countdown-collector-timer-block">
                 <div class="altumcode-countdown-collector-time" style="color: <?= $notification->settings->time_color ?>;background: <?= $notification->settings->time_background_color ?>" data-type="hours"><?= $date_ended ? '0' : $date->format('%h') ?></div>
-                <p class="altumcode-countdown-collector-time-text"><?= language()->notification->countdown_collector->hours ?></p>
+                <p class="altumcode-countdown-collector-time-text"><?= l('notification.countdown_collector.hours') ?></p>
             </div>
 
             <div class="altumcode-countdown-collector-timer-block">
                 <div class="altumcode-countdown-collector-time" style="color: <?= $notification->settings->time_color ?>;background: <?= $notification->settings->time_background_color ?>" data-type="minutes"><?= $date_ended ? '0' : $date->format('%i') ?></div>
-                <p class="altumcode-countdown-collector-time-text"><?= language()->notification->countdown_collector->minutes ?></p>
+                <p class="altumcode-countdown-collector-time-text"><?= l('notification.countdown_collector.minutes') ?></p>
             </div>
 
             <div class="altumcode-countdown-collector-timer-block">
                 <div class="altumcode-countdown-collector-time" style="color: <?= $notification->settings->time_color ?>;background: <?= $notification->settings->time_background_color ?>" data-type="seconds"><?= $date_ended ? '0' : $date->format('%s') ?></div>
-                <p class="altumcode-countdown-collector-time-text"><?= language()->notification->countdown_collector->seconds ?></p>
+                <p class="altumcode-countdown-collector-time-text"><?= l('notification.countdown_collector.seconds') ?></p>
             </div>
         </div>
 
@@ -51,7 +51,7 @@
                     <div class="altumcode-agreement-checkbox">
                         <input type="checkbox" id="agreement" class="altumcode-agreement-checkbox-input" name="agreement" required="required" />
                         <label for="agreement" class="altumcode-agreement-checkbox-text" style="color: <?= $notification->settings->description_color ?>">
-                            <a href="<?= $notification->settings->agreement_url ?>">
+                            <a href="<?= $notification->settings->agreement_url ?>" target="_blank">
                                 <?= $notification->settings->agreement_text ?>
                             </a>
                         </label>

@@ -7,7 +7,7 @@
         <div class="altumcode-social-share-header">
             <p class="altumcode-social-share-title" style="color: <?= $notification->settings->title_color ?>"><?= $notification->settings->title ?></p>
 
-            <button class="altumcode-close"></button>
+            <button class="altumcode-close">&#10006;</button>
         </div>
 
         <div class="altumcode-social-share-buttons">

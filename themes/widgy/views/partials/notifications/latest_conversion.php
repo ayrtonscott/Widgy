@@ -13,7 +13,7 @@
             <div class="altumcode-latest-conversion-header">
                 <p class="altumcode-latest-conversion-title" style="color: <?= $notification->settings->title_color ?>"><?= isset($notification->title) && $notification->title ? html_entity_decode($notification->title) : $notification->settings->title ?></p>
 
-                <button class="altumcode-close"></button>
+                <button class="altumcode-close">&#10006;</button>
             </div>
             <p class="altumcode-latest-conversion-description" style="color: <?= $notification->settings->description_color ?>"><?= isset($notification->description) && $notification->description ? $notification->description : $notification->settings->description ?></p>
 
@@ -22,7 +22,7 @@
                     <?php if(isset($notification->last_action_date) && $notification->last_action_date): ?>
                         <?= \Altum\Date::get_timeago($notification->last_action_date) ?>
                     <?php else: ?>
-                        <?= language()->notification->latest_conversion->time_ago_default ?>
+                        <?= l('notification.latest_conversion.time_ago_default') ?>
                     <?php endif ?>
                 </div>
 
