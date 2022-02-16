@@ -6,60 +6,68 @@
         <nav aria-label="breadcrumb">
             <ol class="custom-breadcrumbs small">
                 <li>
-                    <a href="<?= url('dashboard') ?>"><?= language()->dashboard->breadcrumb ?></a><i class="fa fa-fw fa-angle-right"></i>
+                    <a href="<?= url('dashboard') ?>"><?= l('dashboard.breadcrumb') ?></a><i class="fa fa-fw fa-angle-right"></i>
                 </li>
                 <li>
-                    <a href="<?= url('campaign/' . $data->notification->campaign_id) ?>"><?= language()->campaign->breadcrumb ?></a><i class="fa fa-fw fa-angle-right"></i>
+                    <a href="<?= url('campaign/' . $data->notification->campaign_id) ?>"><?= l('campaign.breadcrumb') ?></a><i class="fa fa-fw fa-angle-right"></i>
                 </li>
-                <li class="active" aria-current="page"><?= language()->notification->breadcrumb ?></li>
+                <li class="active" aria-current="page"><?= l('notification.breadcrumb') ?></li>
             </ol>
         </nav>
 
-        <div class="d-flex align-items-center">
-            <h1 class="h2 mr-3"><?= $data->notification->name ?></h1>
+        <div class="row">
+            <div class="col text-truncate">
+                <h1 class="h2 text-truncate"><span class="underline"><?= $data->notification->name ?></span></h1>
 
-            <div class="custom-control custom-switch mr-3" data-toggle="tooltip" title="<?= language()->campaign->notifications->is_enabled_tooltip ?>">
-                <input
-                        type="checkbox"
-                        class="custom-control-input"
-                        id="campaign_is_enabled_<?= $data->notification->notification_id ?>"
-                        data-row-id="<?= $data->notification->notification_id ?>"
-                        onchange="ajax_call_helper(event, 'notifications-ajax', 'is_enabled_toggle')"
-                    <?= $data->notification->is_enabled ? 'checked="checked"' : null ?>
-                >
-                <label class="custom-control-label clickable" for="campaign_is_enabled_<?= $data->notification->notification_id ?>"></label>
-            </div>
+                <div class="row">
+                    <div class="col-auto text-truncate">
+                        <div class="d-flex align-items-center text-muted">
+                            <img src="https://external-content.duckduckgo.com/ip3/<?= $data->notification->domain ?>.ico" class="img-fluid icon-favicon mr-1" />
+                            <div class="d-inline-block text-truncate"><?= $data->notification->domain ?></div>
+                        </div>
+                    </div>
 
-            <div class="dropdown">
-                <button type="button" class="btn btn-link text-secondary dropdown-toggle dropdown-toggle-simple" data-toggle="dropdown" data-boundary="scrollParent"> <?php // * Modificado 24/12 en 10.0.0 - Cambiado viewport por scrollParent ?>
-                    <i class="fa fa-fw fa-ellipsis-v"></i>
-                </button>
-
-                <div class="dropdown-menu dropdown-menu-right">
-                    <a href="<?= url('notification/' . $data->notification->notification_id) ?>" class="dropdown-item"><i class="fa fa-fw fa-sm fa-pencil-alt mr-1"></i> <?= language()->global->edit ?></a>
-                    <a href="<?= url('notification/' . $data->notification->notification_id . '/statistics') ?>" class="dropdown-item"><i class="fa fa-fw fa-sm fa-chart-bar mr-1"></i> <?= language()->notification->statistics->link ?></a>
-                    <a href="#" data-toggle="modal" data-target="#notification_duplicate_modal" data-notification-id="<?= $data->notification->notification_id ?>" class="dropdown-item"><i class="fa fa-fw fa-sm fa-copy mr-1"></i> <?= language()->notification->duplicate ?></a>
-                    <a href="#" data-toggle="modal" data-target="#notification_delete_modal" data-notification-id="<?= $data->notification->notification_id ?>" class="dropdown-item"><i class="fa fa-fw fa-sm fa-times mr-1"></i> <?= language()->global->delete ?></a>
+                    <div class="col">
+                        <span class="text-muted">
+                            <i class="<?= l('notification.' . mb_strtolower($data->notification->type) . '.icon') ?> fa-sm mr-1"></i> <?= l('notification.' . mb_strtolower($data->notification->type) . '.name') ?>
+                        </span>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="d-flex">
-            <div class="d-flex align-items-center text-muted mr-3">
-                <img src="https://external-content.duckduckgo.com/ip3/<?= $data->notification->domain ?>.ico" class="img-fluid icon-favicon mr-1" />
-                <?= $data->notification->domain ?>
+            <div class="col-auto">
+                <div class="d-flex align-items-center">
+                    <div class="custom-control custom-switch mr-3" data-toggle="tooltip" title="<?= l('campaign.notifications.is_enabled_tooltip') ?>">
+                        <input
+                                type="checkbox"
+                                class="custom-control-input"
+                                id="campaign_is_enabled_<?= $data->notification->notification_id ?>"
+                                data-row-id="<?= $data->notification->notification_id ?>"
+                                onchange="ajax_call_helper(event, 'notifications-ajax', 'is_enabled_toggle')"
+                            <?= $data->notification->is_enabled ? 'checked="checked"' : null ?>
+                        >
+                        <label class="custom-control-label clickable" for="campaign_is_enabled_<?= $data->notification->notification_id ?>"></label>
+                    </div>
+
+                    <div class="dropdown">
+                        <button type="button" class="btn btn-link text-secondary dropdown-toggle dropdown-toggle-simple" data-toggle="dropdown" data-boundary="viewport">
+                            <i class="fa fa-fw fa-ellipsis-v"></i>
+                        </button>
+
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a href="<?= url('notification/' . $data->notification->notification_id) ?>" class="dropdown-item"><i class="fa fa-fw fa-sm fa-pencil-alt mr-1"></i> <?= l('global.edit') ?></a>
+                            <a href="<?= url('notification/' . $data->notification->notification_id . '/statistics') ?>" class="dropdown-item"><i class="fa fa-fw fa-sm fa-chart-bar mr-1"></i> <?= l('notification.statistics.link') ?></a>
+                            <a href="#" data-toggle="modal" data-target="#notification_duplicate_modal" data-notification-id="<?= $data->notification->notification_id ?>" class="dropdown-item"><i class="fa fa-fw fa-sm fa-copy mr-1"></i> <?= l('notification.duplicate') ?></a>
+                            <a href="#" data-toggle="modal" data-target="#notification_delete_modal" data-notification-id="<?= $data->notification->notification_id ?>" class="dropdown-item"><i class="fa fa-fw fa-sm fa-times mr-1"></i> <?= l('global.delete') ?></a>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <span class="text-muted">
-                <i class="<?= language()->notification->{mb_strtolower($data->notification->type)}->icon ?> fa-sm mr-1"></i> <?= language()->notification->{mb_strtolower($data->notification->type)}->name ?>
-            </span>
         </div>
 
         <?= $this->views['method_menu'] ?>
     </div>
 </header>
-
-<?php require THEME_PATH . 'views/partials/ads_header.php' ?>
 
 <section class="container">
 

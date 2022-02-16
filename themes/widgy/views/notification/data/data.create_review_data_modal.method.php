@@ -5,7 +5,7 @@
         <div class="modal-content">
 
             <div class="modal-header">
-                <h5 class="modal-title"><?= language()->notification->create_review_data_modal->header ?></h5>
+                <h5 class="modal-title"><?= l('notification.create_review_data_modal.header') ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -18,39 +18,39 @@
                     <input type="hidden" name="notification_id" value="<?= $data->notification->notification_id ?>" />
 
                     <div class="form-group">
-                        <label><?= language()->notification->create_review_data_modal->input->title ?></label>
+                        <label><?= l('notification.create_review_data_modal.input.title') ?></label>
                         <input type="hidden" class="form-control" name="key[]" value="title" required="required" />
                         <input type="text" class="form-control" name="value[]" required="required" />
                     </div>
 
                     <div class="form-group">
-                        <label><?= language()->notification->create_review_data_modal->input->description ?></label>
+                        <label><?= l('notification.create_review_data_modal.input.description') ?></label>
                         <input type="hidden" class="form-control" name="key[]" value="description" required="required" />
                         <input type="text" class="form-control" name="value[]" required="required" />
                     </div>
 
                     <div class="form-group">
-                        <label><?= language()->notification->settings->image ?></label>
+                        <label><?= l('notification.settings.image') ?></label>
                         <input type="hidden" class="form-control" name="key[]" value="image" required="required" />
                         <input type="text" class="form-control" name="value[]" required="required" />
                     </div>
 
                     <div class="form-group">
-                        <label for=""><?= language()->notification->settings->image_alt ?></label>
+                        <label for=""><?= l('notification.settings.image_alt') ?></label>
                         <input type="hidden" class="form-control" name="key[]" value="image_alt" required="required" />
                         <input type="text" class="form-control" name="value[]" required="required" maxlength="100" />
-                        <small class="form-text text-muted"><?= language()->notification->settings->image_alt_help ?></small>
+                        <small class="form-text text-muted"><?= l('notification.settings.image_alt_help') ?></small>
                     </div>
 
                     <div class="form-group">
-                        <label><?= language()->notification->create_review_data_modal->input->stars ?></label>
+                        <label><?= l('notification.create_review_data_modal.input.stars') ?></label>
                         <input type="hidden" class="form-control" name="key[]" value="stars" />
                         <input type="number" value="5" min="1" max="5" class="form-control" name="value[]" />
-                        <small class="form-text text-muted"><?= language()->notification->create_review_data_modal->input->stars_help ?></small>
+                        <small class="form-text text-muted"><?= l('notification.create_review_data_modal.input.stars_help') ?></small>
                     </div>
 
                     <div class="text-center mt-4">
-                        <button type="submit" name="submit" class="btn btn-block btn-primary"><?= language()->global->create ?></button>
+                        <button type="submit" name="submit" class="btn btn-block btn-primary"><?= l('global.create') ?></button>
                     </div>
                 </form>
             </div>

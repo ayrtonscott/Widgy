@@ -3,13 +3,13 @@
 <div class="mt-5 mb-3">
     <div class="d-flex flex-column flex-md-row justify-content-between">
         <div class="d-flex">
-            <h2 class="h3 mr-3"><?= language()->notification->data->header ?></h2>
+            <h2 class="h3 mr-3"><?= l('notification.data.header') ?></h2>
 
             <div>
                 <?php if(count($data->conversions)): ?>
-                    <a href="<?= url('notification/' . $data->notification->notification_id . '/data/' . $data->datetime['start_date'] . '/' . $data->datetime['end_date'] . '?page=' . ($_GET['page'] ?? 1) . '&json') ?>" target="_blank" class="btn btn-sm btn-light rounded-pill mr-3"><i class="fa fa-fw fa-file-csv"></i> <?= language()->global->export_json ?></a>
+                    <a href="<?= url('notification/' . $data->notification->notification_id . '/data/' . $data->datetime['start_date'] . '/' . $data->datetime['end_date'] . '?page=' . ($_GET['page'] ?? 1) . '&json') ?>" target="_blank" class="btn btn-sm btn-light mr-3"><i class="fa fa-fw fa-file-csv"></i> <?= l('global.export_json') ?></a>
                 <?php endif ?>
-                <button type="button" data-toggle="modal" data-target="#create_notification_data" class="btn btn-sm btn-primary rounded-pill mr-3"><i class="fa fa-plus-circle"></i> <?= language()->notification->data->create ?></button>
+                <button type="button" data-toggle="modal" data-target="#create_notification_data" class="btn btn-sm btn-primary mr-3"><i class="fa fa-fw fa-sm fa-plus"></i> <?= l('notification.data.create') ?></button>
             </div>
         </div>
 
@@ -39,9 +39,9 @@
 <?php if(!count($data->conversions)): ?>
 
     <div class="d-flex flex-column align-items-center justify-content-center">
-        <img src="<?= ASSETS_FULL_URL . 'images/no_rows.svg' ?>" class="col-10 col-md-6 col-lg-4 mb-3" alt="<?= language()->global->no_data ?>" />
-        <h2 class="h4 text-muted"><?= language()->global->no_data ?></h2>
-        <p><?= language()->notification->info_message->no_data ?></a></p>
+        <img src="<?= ASSETS_FULL_URL . 'images/no_rows.svg' ?>" class="col-10 col-md-6 col-lg-4 mb-3" alt="<?= l('global.no_data') ?>" />
+        <h2 class="h4 text-muted"><?= l('global.no_data') ?></h2>
+        <p><?= l('notification.info_message.no_data') ?></a></p>
     </div>
 
 <?php else: ?>
@@ -50,9 +50,9 @@
         <table class="table table-custom">
             <thead>
             <tr>
-                <th><?= language()->notification->data->data ?></th>
-                <th><?= language()->notification->data->type ?></th>
-                <th><?= language()->notification->data->date ?></th>
+                <th><?= l('notification.data.data') ?></th>
+                <th><?= l('notification.data.type') ?></th>
+                <th><?= l('notification.data.date') ?></th>
                 <th></th>
             </tr>
             </thead>
@@ -60,19 +60,21 @@
 
             <?php foreach($data->conversions as $row): ?>
                 <tr class="clickable" data-toggle="collapse" data-target="#<?= 'data_collapse_' . $row->id ?>" aria-expanded="true" aria-controls="<?= 'data_collapse_' . $row->id ?>">
-                    <td>
-                        <strong><?= language()->notification->data->expand_data ?></strong>
+                    <td class="text-nowrap">
+                        <strong><?= l('notification.data.expand_data') ?></strong>
                     </td>
-                    <td><?= language()->notification->data->{'type_' . $row->type} ?></td>
-                    <td><span class="text-muted" data-toggle="tooltip" title="<?= \Altum\Date::get($row->datetime, 1) ?>"><?= \Altum\Date::get($row->datetime) ?></span></td>
+                    <td class="text-nowrap"><?= l('notification.data.type_' . $row->type) ?></td>
+                    <td class="text-nowrap"><span class="text-muted" data-toggle="tooltip" title="<?= \Altum\Date::get($row->datetime, 1) ?>"><?= \Altum\Date::get($row->datetime) ?></span></td>
                     <td>
-                        <div class="dropdown">
-                            <button type="button" class="btn btn-link text-secondary dropdown-toggle dropdown-toggle-simple" data-toggle="dropdown" data-boundary="scrollParent"> <?php // * Modificado 24/12 en 10.0.0 - Cambiado viewport por scrollParent ?>
-                                <i class="fa fa-fw fa-ellipsis-v"></i>
-                            </button>
+                        <div class="d-flex justify-content-end">
+                            <div class="dropdown">
+                                <button type="button" class="btn btn-link text-secondary dropdown-toggle dropdown-toggle-simple" data-toggle="dropdown" data-boundary="viewport">
+                                    <i class="fa fa-fw fa-ellipsis-v"></i>
+                                </button>
 
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a href="#" class="dropdown-item" data-delete-notification-data="<?= language()->global->info_message->confirm_delete ?>" data-row-id="<?= $row->id ?>"><i class="fa fa-fw fa-times"></i> <?= language()->global->delete ?></a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a href="#" class="dropdown-item" data-delete-notification-data="<?= l('global.info_message.confirm_delete') ?>" data-row-id="<?= $row->id ?>"><i class="fa fa-fw fa-times"></i> <?= l('global.delete') ?></a>
+                                </div>
                             </div>
                         </div>
                     </td>
@@ -115,13 +117,13 @@
         minDate: $('#daterangepicker').data('min-date'),
         maxDate: $('#daterangepicker').data('max-date'),
         ranges: {
-            <?= json_encode(language()->global->date->today) ?>: [moment(), moment()],
-            <?= json_encode(language()->global->date->yesterday) ?>: [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-            <?= json_encode(language()->global->date->last_7_days) ?>: [moment().subtract(6, 'days'), moment()],
-            <?= json_encode(language()->global->date->last_30_days) ?>: [moment().subtract(29, 'days'), moment()],
-            <?= json_encode(language()->global->date->this_month) ?>: [moment().startOf('month'), moment().endOf('month')],
-            <?= json_encode(language()->global->date->last_month) ?>: [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
-            <?= json_encode(language()->global->date->all_time) ?>: [moment($('#daterangepicker').data('min-date')), moment()]
+            <?= json_encode(l('global.date.today')) ?>: [moment(), moment()],
+            <?= json_encode(l('global.date.yesterday')) ?>: [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+            <?= json_encode(l('global.date.last_7_days')) ?>: [moment().subtract(6, 'days'), moment()],
+            <?= json_encode(l('global.date.last_30_days')) ?>: [moment().subtract(29, 'days'), moment()],
+            <?= json_encode(l('global.date.this_month')) ?>: [moment().startOf('month'), moment().endOf('month')],
+            <?= json_encode(l('global.date.last_month')) ?>: [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+            <?= json_encode(l('global.date.all_time')) ?>: [moment($('#daterangepicker').data('min-date')), moment()]
         },
         alwaysShowCalendars: true,
         linkedCalendars: false,

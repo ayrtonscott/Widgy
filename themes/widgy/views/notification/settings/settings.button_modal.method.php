@@ -11,40 +11,40 @@ $javascript = '';
 <?php /* Basic Tab */ ?>
 <?php ob_start() ?>
     <div class="form-group">
-        <label for="settings_name"><?= language()->notification->settings->name ?></label>
+        <label for="settings_name"><?= l('notification.settings.name') ?></label>
         <input type="text" id="settings_name" name="name" class="form-control" value="<?= $data->notification->name ?>" maxlength="256" required="required" />
     </div>
 
     <div class="form-group">
-        <label for="settings_title"><?= language()->notification->settings->title ?></label>
+        <label for="settings_title"><?= l('notification.settings.title') ?></label>
         <input type="text" id="settings_title" name="title" class="form-control" value="<?= $data->notification->settings->title ?>" maxlength="256" />
     </div>
 
     <div class="form-group">
-        <label for="settings_description"><?= language()->notification->settings->description ?></label>
+        <label for="settings_description"><?= l('notification.settings.description') ?></label>
         <input type="text" id="settings_description" name="description" class="form-control" value="<?= $data->notification->settings->description ?>" maxlength="512" />
     </div>
 
     <div class="form-group">
-        <label for="settings_image"><?= language()->notification->settings->image ?></label>
-        <input id="settings_image" name="image" class="form-control" value="<?= $data->notification->settings->image ?>" maxlength="2048" /><?php // Modificación 02/01/22 en 10.0.0 - Borramos el type URL ?>
-        <small class="form-text text-muted"><?= language()->notification->settings->image_help ?></small>
+        <label for="settings_image"><?= l('notification.settings.image') ?></label>
+        <input type="url" id="settings_image" name="image" class="form-control" value="<?= $data->notification->settings->image ?>" maxlength="2048" />
+        <small class="form-text text-muted"><?= l('notification.settings.image_help') ?></small>
     </div>
 
     <div class="form-group">
-        <label for="settings_image_alt"><?= language()->notification->settings->image_alt ?></label>
+        <label for="settings_image_alt"><?= l('notification.settings.image_alt') ?></label>
         <input type="text" id="settings_image_alt" name="image_alt" class="form-control" value="<?= $data->notification->settings->image_alt ?>" maxlength="100" />
-        <small class="form-text text-muted"><?= language()->notification->settings->image_alt_help ?></small>
+        <small class="form-text text-muted"><?= l('notification.settings.image_alt_help') ?></small>
     </div>
 
     <div class="form-group">
-        <label for="settings_button_text"><?= language()->notification->settings->button_text ?></label>
+        <label for="settings_button_text"><?= l('notification.settings.button_text') ?></label>
         <input type="text" id="settings_button_text" name="button_text" class="form-control" value="<?= $data->notification->settings->button_text ?>" maxlength="128" />
     </div>
 
     <div class="form-group">
-        <label for="settings_button_url"><?= language()->notification->settings->button_url ?></label>
-        <input id="settings_button_url" name="button_url" class="form-control" value="<?= $data->notification->settings->button_url ?>" maxlength="2048" /> <?php // Modificación 02/01/22 en 10.0.0 - Borramos el type URL ?>
+        <label for="settings_button_url"><?= l('notification.settings.button_url') ?></label>
+        <input type="url" id="settings_button_url" name="button_url" class="form-control" value="<?= $data->notification->settings->button_url ?>" maxlength="2048" />
     </div>
 <?php $html['basic'] = ob_get_clean() ?>
 
@@ -52,7 +52,7 @@ $javascript = '';
 <?php /* Customize Tab */ ?>
 <?php ob_start() ?>
     <div class="form-group">
-        <label for="settings_title_color"><?= language()->notification->settings->title_color ?></label>
+        <label for="settings_title_color"><?= l('notification.settings.title_color') ?></label>
         <div class="input-group">
             <div class="input-group-prepend">
                 <div id="settings_title_color_pickr"></div>
@@ -62,7 +62,7 @@ $javascript = '';
     </div>
 
     <div class="form-group">
-        <label for="settings_description_color"><?= language()->notification->settings->description_color ?></label>
+        <label for="settings_description_color"><?= l('notification.settings.description_color') ?></label>
         <div class="input-group">
             <div class="input-group-prepend">
                 <div id="settings_description_color_pickr"></div>
@@ -72,7 +72,7 @@ $javascript = '';
     </div>
 
     <div class="form-group">
-        <label for="settings_background_color"><?= language()->notification->settings->background_color ?></label>
+        <label for="settings_background_color"><?= l('notification.settings.background_color') ?></label>
         <div class="input-group">
             <div class="input-group-prepend">
                 <div id="settings_background_color_pickr"></div>
@@ -82,20 +82,20 @@ $javascript = '';
     </div>
 
     <div class="form-group">
-        <label for="settings_background_pattern"><?= language()->notification->settings->background_pattern ?></label>
+        <label for="settings_background_pattern"><?= l('notification.settings.background_pattern') ?></label>
         <select class="form-control" id="settings_background_pattern" name="background_pattern">
-            <option value="" <?= $data->notification->settings->background_pattern == '' ? 'selected="selected"' : null ?>><?= language()->notification->settings->background_pattern_none ?></option>
+            <option value="" <?= $data->notification->settings->background_pattern == '' ? 'selected="selected"' : null ?>><?= l('notification.settings.background_pattern_none') ?></option>
 
             <?php $background_patterns = (require_once APP_PATH . 'includes/notifications_background_patterns.php')(); ?>
 
             <?php foreach($background_patterns as $key => $value): ?>
-                <option value="<?= $key ?>" <?= $data->notification->settings->background_pattern == $key ? 'selected="selected"' : null ?> data-value="<?= $value ?>"><?= language()->notification->settings->{'background_pattern_' . $key} ?></option>
+                <option value="<?= $key ?>" <?= $data->notification->settings->background_pattern == $key ? 'selected="selected"' : null ?> data-value="<?= $value ?>"><?= l('notification.settings.background_pattern_' . $key) ?></option>
             <?php endforeach ?>
         </select>
     </div>
 
     <div class="form-group">
-        <label for="settings_button_background_color"><?= language()->notification->settings->button_background_color ?></label>
+        <label for="settings_button_background_color"><?= l('notification.settings.button_background_color') ?></label>
         <div class="input-group">
             <div class="input-group-prepend">
                 <div id="settings_button_background_color_pickr"></div>
@@ -105,7 +105,7 @@ $javascript = '';
     </div>
 
     <div class="form-group">
-        <label for="settings_button_color"><?= language()->notification->settings->button_color ?></label>
+        <label for="settings_button_color"><?= l('notification.settings.button_color') ?></label>
         <div class="input-group">
             <div class="input-group-prepend">
                 <div id="settings_button_color_pickr"></div>
@@ -117,25 +117,25 @@ $javascript = '';
     <div class="row">
         <div class="col-12 col-md-4">
             <div class="form-group">
-                <label for="settings_border_radius"><?= language()->notification->settings->border_radius ?></label>
+                <label for="settings_border_radius"><?= l('notification.settings.border_radius') ?></label>
                 <select class="form-control" name="border_radius">
-                    <option value="rounded" <?= $data->notification->settings->border_radius == 'rounded' ? 'selected="selected"' : null ?>><?= language()->notification->settings->border_radius_rounded ?></option>
+                    <option value="rounded" <?= $data->notification->settings->border_radius == 'rounded' ? 'selected="selected"' : null ?>><?= l('notification.settings.border_radius_rounded') ?></option>
                 </select>
-                <small class="form-text text-muted"><?= language()->notification->settings->border_radius_help ?></small>
+                <small class="form-text text-muted"><?= l('notification.settings.border_radius_help') ?></small>
             </div>
         </div>
 
         <div class="col-12 col-md-4">
             <div class="form-group">
-                <label for="settings_border_width"><?= language()->notification->settings->border_width ?></label>
+                <label for="settings_border_width"><?= l('notification.settings.border_width') ?></label>
                 <input type="number" min="0" max="5" id="settings_border_width" name="border_width" class="form-control" value="<?= $data->notification->settings->border_width ?>" />
-                <small class="form-text text-muted"><?= language()->notification->settings->border_width_help ?></small>
+                <small class="form-text text-muted"><?= l('notification.settings.border_width_help') ?></small>
             </div>
         </div>
 
         <div class="col-12 col-md-4">
             <div class="form-group">
-                <label for="settings_border_color"><?= language()->notification->settings->border_color ?></label>
+                <label for="settings_border_color"><?= l('notification.settings.border_color') ?></label>
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <div id="settings_border_color_pickr"></div>
@@ -155,10 +155,10 @@ $javascript = '';
                 <?= $data->notification->settings->shadow ? 'checked="checked"' : null ?>
         >
 
-        <label class="custom-control-label clickable" for="settings_shadow"><?= language()->notification->settings->shadow ?></label>
+        <label class="custom-control-label clickable" for="settings_shadow"><?= l('notification.settings.shadow') ?></label>
 
         <div>
-            <small class="form-text text-muted"><?= language()->notification->settings->shadow_help ?></small>
+            <small class="form-text text-muted"><?= l('notification.settings.shadow_help') ?></small>
         </div>
     </div>
 <?php $html['customize'] = ob_get_clean() ?>

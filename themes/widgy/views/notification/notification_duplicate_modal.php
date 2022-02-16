@@ -6,8 +6,8 @@
 
             <div class="modal-body">
                 <div class="d-flex justify-content-between mb-3">
-                    <h5 class="modal-title"><?= language()->notification_duplicate_modal->header ?></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="<?= language()->global->close ?>">
+                    <h5 class="modal-title"><?= l('notification_duplicate_modal.header') ?></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="<?= l('global.close') ?>">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -17,7 +17,7 @@
                     <input type="hidden" name="notification_id" value="" />
 
                     <div class="mt-4">
-                        <button type="submit" name="submit" class="btn btn-block btn-primary"><?= language()->global->submit ?></button>
+                        <button type="submit" name="submit" class="btn btn-block btn-primary"><?= l('global.submit') ?></button>
                     </div>
                 </form>
             </div>

@@ -28,7 +28,7 @@ $javascript = '';
         data: {
             labels: <?= $data->logs_chart['labels'] ?>,
             datasets: [{
-                label: <?= json_encode(language()->notification->statistics->form_submissions_chart) ?>,
+                label: <?= json_encode(l('notification.statistics.form_submissions_chart')) ?>,
                 data: <?= $data->logs_chart['form_submission'] ?? '[]' ?>,
                 backgroundColor: gradient,
                 borderColor: '#E260AE',

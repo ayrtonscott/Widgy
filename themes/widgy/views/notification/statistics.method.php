@@ -8,14 +8,14 @@ $statistics = require THEME_PATH . 'views/notification/statistics/statistics.' .
 
 <?php if(!settings()->socialproofo->analytics_is_enabled): ?>
     <div class="alert alert-warning" role="alert">
-        <?= language()->notification->statistics->disabled ?>
+        <?= l('notification.statistics.disabled') ?>
     </div>
 <?php endif ?>
 
 <div class="mt-5 mb-3">
     <div class="d-flex flex-column flex-md-row justify-content-between">
         <div>
-            <h2 class="h3"><?= language()->notification->statistics->header ?></h2>
+            <h2 class="h3"><?= l('notification.statistics.header') ?></h2>
         </div>
 
         <div>
@@ -43,9 +43,9 @@ $statistics = require THEME_PATH . 'views/notification/statistics/statistics.' .
 <?php if(!count($data->logs)): ?>
 
     <div class="d-flex flex-column align-items-center justify-content-center">
-        <img src="<?= ASSETS_FULL_URL . 'images/no_rows.svg' ?>" class="col-10 col-md-6 col-lg-4 mb-3" alt="<?= language()->global->no_data ?>" />
-        <h2 class="h4 text-muted"><?= language()->global->no_data ?></h2>
-        <p><?= language()->notification->info_message->no_data ?></a></p>
+        <img src="<?= ASSETS_FULL_URL . 'images/no_rows.svg' ?>" class="col-10 col-md-6 col-lg-4 mb-3" alt="<?= l('global.no_data') ?>" />
+        <h2 class="h4 text-muted"><?= l('global.no_data') ?></h2>
+        <p><?= l('notification.info_message.no_data') ?></a></p>
     </div>
 
 <?php else: ?>
@@ -65,7 +65,7 @@ $statistics = require THEME_PATH . 'views/notification/statistics/statistics.' .
 
                     <div>
                         <div class="card-title h4 m-0"><?= nr($data->logs_total['impression']) ?></div>
-                        <small class="text-muted"><?= language()->notification->statistics->impressions_chart ?></small>
+                        <small class="text-muted"><?= l('notification.statistics.impressions_chart') ?></small>
                     </div>
                 </div>
             </div>
@@ -85,7 +85,7 @@ $statistics = require THEME_PATH . 'views/notification/statistics/statistics.' .
 
                     <div>
                         <div class="card-title h4 m-0"><?= nr($data->logs_total['hover']) ?></div>
-                        <small class="text-muted"><?= language()->notification->statistics->hovers_chart ?></small>
+                        <small class="text-muted"><?= l('notification.statistics.hovers_chart') ?></small>
                     </div>
                 </div>
             </div>
@@ -105,7 +105,7 @@ $statistics = require THEME_PATH . 'views/notification/statistics/statistics.' .
 
                     <div>
                         <div class="card-title h4 m-0"><?= nr($data->logs_total['click']) ?></div>
-                        <small class="text-muted"><?= language()->notification->statistics->clicks_chart ?></small>
+                        <small class="text-muted"><?= l('notification.statistics.clicks_chart') ?></small>
                     </div>
                 </div>
             </div>
@@ -124,8 +124,8 @@ $statistics = require THEME_PATH . 'views/notification/statistics/statistics.' .
 
     <?php if($data->top_pages_result->num_rows): ?>
 
-        <h2 class="h3 mt-5"><?= language()->notification->statistics->header_top_pages ?></h2>
-        <p class="text-muted"><?= language()->notification->statistics->subheader_top_pages ?></p>
+        <h2 class="h3 mt-5"><?= l('notification.statistics.header_top_pages') ?></h2>
+        <p class="text-muted"><?= l('notification.statistics.subheader_top_pages') ?></p>
 
         <div class="table-responsive table-custom-container">
             <table class="table table-custom">
@@ -133,7 +133,7 @@ $statistics = require THEME_PATH . 'views/notification/statistics/statistics.' .
                     <tr>
                         <th></th>
                         <th>
-                            <?= language()->notification->statistics->pageviews ?>
+                            <?= l('notification.statistics.pageviews') ?>
                         </th>
                     </tr>
                 </thead>
@@ -142,13 +142,13 @@ $statistics = require THEME_PATH . 'views/notification/statistics/statistics.' .
                 <?php while($row = $data->top_pages_result->fetch_object()): ?>
 
                     <tr>
-                        <td>
+                        <td class="text-nowrap">
                             <div class="d-flex flex-column">
-                                <?= language()->notification->statistics->{$row->type} ?>
+                                <?= l('notification.statistics.' . $row->type) ?>
                                 <span class="text-muted"><?= $row->url ?></span>
                             </div>
                         </td>
-                        <td><?= nr($row->pageviews) ?></td>
+                        <td class="text-nowrap"><?= nr($row->pageviews) ?></td>
                     </tr>
 
                 <?php endwhile ?>
@@ -180,13 +180,13 @@ $statistics = require THEME_PATH . 'views/notification/statistics/statistics.' .
         minDate: $('#daterangepicker').data('min-date'),
         maxDate: $('#daterangepicker').data('max-date'),
         ranges: {
-            <?= json_encode(language()->global->date->today) ?>: [moment(), moment()],
-            <?= json_encode(language()->global->date->yesterday) ?>: [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-            <?= json_encode(language()->global->date->last_7_days) ?>: [moment().subtract(6, 'days'), moment()],
-            <?= json_encode(language()->global->date->last_30_days) ?>: [moment().subtract(29, 'days'), moment()],
-            <?= json_encode(language()->global->date->this_month) ?>: [moment().startOf('month'), moment().endOf('month')],
-            <?= json_encode(language()->global->date->last_month) ?>: [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
-            <?= json_encode(language()->global->date->all_time) ?>: [moment($('#daterangepicker').data('min-date')), moment()]
+            <?= json_encode(l('global.date.today')) ?>: [moment(), moment()],
+            <?= json_encode(l('global.date.yesterday')) ?>: [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+            <?= json_encode(l('global.date.last_7_days')) ?>: [moment().subtract(6, 'days'), moment()],
+            <?= json_encode(l('global.date.last_30_days')) ?>: [moment().subtract(29, 'days'), moment()],
+            <?= json_encode(l('global.date.this_month')) ?>: [moment().startOf('month'), moment().endOf('month')],
+            <?= json_encode(l('global.date.last_month')) ?>: [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+            <?= json_encode(l('global.date.all_time')) ?>: [moment($('#daterangepicker').data('min-date')), moment()]
         },
         alwaysShowCalendars: true,
         linkedCalendars: false,
@@ -211,7 +211,7 @@ $statistics = require THEME_PATH . 'views/notification/statistics/statistics.' .
         data: {
             labels: <?= $data->logs_chart['labels'] ?>,
             datasets: [{
-                label: <?= json_encode(language()->notification->statistics->impressions_chart) ?>,
+                label: <?= json_encode(l('notification.statistics.impressions_chart')) ?>,
                 data: <?= $data->logs_chart['impression'] ?? '[]' ?>,
                 backgroundColor: gradient,
                 borderColor: '#607ae2',
@@ -233,7 +233,7 @@ $statistics = require THEME_PATH . 'views/notification/statistics/statistics.' .
         data: {
             labels: <?= $data->logs_chart['labels'] ?>,
             datasets: [{
-                label: <?= json_encode(language()->notification->statistics->hovers_chart) ?>,
+                label: <?= json_encode(l('notification.statistics.hovers_chart')) ?>,
                 data: <?= $data->logs_chart['hover'] ?? '[]' ?>,
                 backgroundColor: gradient,
                 borderColor: '#d560e2',
