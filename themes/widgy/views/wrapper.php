@@ -5,13 +5,12 @@
 <?php defined('ALTUMCODE') || die() ?>
 <?php if(\Altum\Routing\Router::$controller_key != 'index'): // * Agregado 19/12 en 10.0.0 (Eliminamos todo en el index) INICIO. ?>
 <!DOCTYPE html>
-<html lang="<?= \Altum\Language::$language_code ?>" dir="<?= language()->direction ?>">
+<html lang="<?= \Altum\Language::$language_code ?>" dir="<?= l('direction') ?>">
     <head>
         <title><?= \Altum\Title::get() ?></title>
         <base href="<?= SITE_URL; ?>">
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta http-equiv="content-language" content="<?= \Altum\Language::$language_code  ?>" />
 
         <?php if(\Altum\Meta::$description): ?>
             <meta name="description" content="<?= \Altum\Meta::$description ?>" />
@@ -37,7 +36,7 @@
         <link rel="alternate" href="<?= SITE_URL . \Altum\Routing\Router::$original_request ?>" hreflang="x-default" />
         <?php if(count(\Altum\Language::$languages) > 1): ?>
             <?php foreach(\Altum\Language::$languages as $language_code => $language_name): ?>
-                <?php if(settings()->default_language != $language_name): ?>
+                <?php if(settings()->main->default_language != $language_name): ?>
                     <link rel="alternate" href="<?= SITE_URL . $language_code . '/' . \Altum\Routing\Router::$original_request ?>" hreflang="<?= $language_code ?>" />
                 <?php endif ?>
             <?php endforeach ?>
@@ -62,7 +61,7 @@
         <?php foreach(['custom.css', 'animate.min.css'] as $file): ?>
             <link href="<?= ASSETS_FULL_URL . 'css/' . $file . '?v=' . PRODUCT_CODE ?>" rel="stylesheet" media="screen,print">
         <?php endforeach ?>
-        
+
         <?= \Altum\Event::get_content('head') ?>
 
         <?php if(!empty(settings()->custom->head_js)): ?>
@@ -104,10 +103,10 @@
            
             <?php if(count(\Altum\Language::$languages) > 1): ?>
                         <div class="btn btn-sm btn-outline-dark d-none d-md-inline-block dropdown">
-                            <a class="dropdown-toggle clickable" id="language_switch" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="text-muted"></i> <?= language()->global->language ?></a>
+                            <a class="dropdown-toggle clickable" id="language_switch" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="text-muted"></i> <?= l('global.language') ?></a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="language_switch">
-                                <h6 class="dropdown-header"><?= language()->global->choose_language ?></h6>
+                                <h6 class="dropdown-header"><?= l('global.choose_language') ?></h6>
                                 <?php foreach(\Altum\Language::$languages as $language_code => $language_name): ?>
                                     <a class="dropdown-item" href="<?= SITE_URL . $language_code . '/' . \Altum\Routing\Router::$original_request . '?set_language=' . $language_name ?>">
                                         <?php if($language_name == \Altum\Language::$language): ?>
@@ -153,23 +152,23 @@
 
                 <div class="dropdown-menu dropdown-menu-right">
                             <?php if(\Altum\Middlewares\Authentication::is_admin()): ?>
-                                <a class="dropdown-item" href="<?= url('admin') ?>"><i class="fa fa-fw fa-sm fa-user-shield mr-1"></i> <?= language()->global->menu->admin ?></a>
+                                <a class="dropdown-item" href="<?= url('admin') ?>"><i class="fa fa-fw fa-sm fa-user-shield mr-1"></i> <?= l('global.menu.admin') ?></a>
                             <?php endif ?>
-                            <a class="dropdown-item" href="<?= url('account') ?>"><i class="fa fa-fw fa-sm fa-wrench mr-1"></i> <?= language()->account->menu ?></a>
-                            <a class="dropdown-item" href="<?= url('account-plan') ?>"><i class="fa fa-fw fa-sm fa-box-open mr-1"></i> <?= language()->account_plan->menu ?></a>
+                            <a class="dropdown-item" href="<?= url('account') ?>"><i class="fa fa-fw fa-sm fa-wrench mr-1"></i> <?= l('account.menu') ?></a>
+                            <a class="dropdown-item" href="<?= url('account-plan') ?>"><i class="fa fa-fw fa-sm fa-box-open mr-1"></i> <?= l('account_plan.menu') ?></a>
 
                             <?php if(settings()->payment->is_enabled): ?>
-                            <a class="dropdown-item" href="<?= url('account-payments') ?>"><i class="fa fa-fw fa-sm fa-dollar-sign mr-1"></i> <?= language()->account_payments->menu ?></a>
+                            <a class="dropdown-item" href="<?= url('account-payments') ?>"><i class="fa fa-fw fa-sm fa-dollar-sign mr-1"></i> <?= l('account_payments.menu') ?></a>
 
                                 <?php if(\Altum\Plugin::is_active('affiliate') && settings()->affiliate->is_enabled): ?>
-                                    <a class="dropdown-item" href="<?= url('referrals') ?>"><i class="fa fa-fw fa-sm fa-wallet mr-1"></i> <?= language()->referrals->menu ?></a>
+                                    <a class="dropdown-item" href="<?= url('referrals') ?>"><i class="fa fa-fw fa-sm fa-wallet mr-1"></i> <?= l('referrals.menu') ?></a>
                                 <?php endif ?>
                             <?php endif ?>
 
-                            <a class="dropdown-item" href="<?= url('account-api') ?>"><i class="fa fa-fw fa-sm fa-code mr-1"></i> <?= language()->account_api->menu ?></a>
+                            <a class="dropdown-item" href="<?= url('account-api') ?>"><i class="fa fa-fw fa-sm fa-code mr-1"></i> <?= l('account_api.menu') ?></a>
 
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="<?= url('logout') ?>"><i class="fa fa-fw fa-sm fa-sign-out-alt mr-1"></i> <?= language()->global->menu->logout ?></a>
+                            <a class="dropdown-item" href="<?= url('logout') ?>"><i class="fa fa-fw fa-sm fa-sign-out-alt mr-1"></i> <?= l('global.menu.logout') ?></a>
                         </div>
             </div>
         </div>
@@ -181,37 +180,37 @@
                     <li class="<?= \Altum\Routing\Router::$controller_key == 'dashboard' ? 'active' : null ?>">
                         <a href="<?= url('dashboard') ?>">
                             <i class="iconsminds-shop-4"></i>
-                            <span><?= language()->dashboard->menu ?></span>
+                            <span><?= l('dashboard.menu') ?></span>
                         </a>
                     </li>
                     <li class="<?= \Altum\Routing\Router::$controller_key == 'account' ? 'active' : null ?>">
                         <a href="<?= url('account') ?>">
                             <i class="iconsminds-profile"></i>
-                            <span><?= language()->account->menu ?></span>
+                            <span><?= l('account.menu') ?></span>
                         </a>
                     </li>
                     <li class="<?= \Altum\Routing\Router::$controller_key == 'account-plan' ? 'active' : null ?>">
                         <a href="<?= url('account-plan') ?>">
                             <i class="iconsminds-upgrade"></i>
-                            <span><?= language()->account_plan->menu ?></span>
+                            <span><?= l('account_plan.menu') ?></span>
                         </a>
                     </li>
                     <li class="<?= \Altum\Routing\Router::$controller_key == 'account-payments' ? 'active' : null ?>">
                         <a href="<?= url('account-payments') ?>">
                             <i class="iconsminds-coins"></i>
-                            <span><?= language()->account_payments->menu ?></span>
+                            <span><?= l('account_payments.menu') ?></span>
                         </a>
                     </li>
                     <li class="<?= \Altum\Routing\Router::$controller_key == 'account-logs' ? 'active' : null ?>">
                         <a href="<?= url('account-logs') ?>">
                             <i class="iconsminds-finger-print"></i>
-                            <span><?= language()->account_logs->menu ?></span>
+                            <span><?= l('account_logs.menu') ?></span>
                         </a>
                     </li>
                     <li class="">
                         <a href="<?= HELPCENTER_URL ?><?= \Altum\Language::$language_code == "tiendanube" ? "es" : \Altum\Language::$language_code // * Agregado 24/1 en 10.0.0 (Fix language code) INICIO. ?> ">
                             <i class="iconsminds-library"></i>
-                            <span><?= language()->custom->helpcenter ?> </span>
+                            <span><?= l('custom.helpcenter') ?> </span>
                         </a>
                     </li>
                 </ul>
@@ -223,7 +222,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12 col-sm-6">
-                        <p class="mb-0 text-muted"><?= sprintf(language()->global->footer->copyright, date('Y'), settings()->title) ?></p>
+                        <p class="mb-0 text-muted"><?= sprintf(l('global.footer.copyright'), date('Y'), settings()->title) ?></p>
                     </div>
                     <div class="col-sm-6 d-none d-sm-block">
                         <ul class="breadcrumb pt-0 pr-0 float-right">
@@ -246,23 +245,21 @@
     <?php endif ?>
     <?php // * Agregado 17/12 en 10.0.0 - (Body de Dore) FIN. ?>
 
-    <body class="<?= language()->direction == 'rtl' ? 'rtl' : null ?> <?= \Altum\Routing\Router::$controller_settings['body_white'] ? 'bg-white' : null ?>" data-theme-style="<?= \Altum\ThemeStyle::get() ?>">
+    <body class="<?= l('direction') == 'rtl' ? 'rtl' : null ?> <?= \Altum\Routing\Router::$controller_settings['body_white'] ? 'bg-white' : null ?>" data-theme-style="<?= \Altum\ThemeStyle::get() ?>">
         <?php //ALTUMCODE:DEMO if(DEMO) echo include_view(THEME_PATH . 'views/partials/ac_banner.php', ['demo_url' => 'https://socialproofo.com/demo/', 'title_text' => 'SocialProofo by AltumCode', 'product_url' => 'https://altumco.de/socialproofo-buy', 'buy_text' => 'Buy SocialProofo']) ?>
 
+        <?php require THEME_PATH . 'views/partials/admin_impersonate_user.php' ?>
         <?php require THEME_PATH . 'views/partials/announcements.php' ?>
 
         <?php // * Eliminado 17/12 en 10.0.0 - (Sacamos el view menu) INICIO - FIN. ?>
 
-        <main class="">
+        <?php require THEME_PATH . 'views/partials/ads_header.php' ?>
 
+        <main>
             <?= $this->views['content'] ?>
-
         </main>
-        
 
-        <?php if(\Altum\Routing\Router::$controller_key != 'index'): ?>
-            <?php require THEME_PATH . 'views/partials/ads_footer.php' ?>
-        <?php endif ?>
+        <?php require THEME_PATH . 'views/partials/ads_footer.php' ?>
 
         <?php // * Eliminado 17/12 en 10.0.0 - (Sacamos el footer) INICIO - FIN. ?>
 

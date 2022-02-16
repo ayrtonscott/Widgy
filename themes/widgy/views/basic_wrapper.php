@@ -3,13 +3,12 @@
 <?php // * Agregado 21/01 en 10.0.0 - (Agregamos Intercom) FIN. ?>
 <?php defined('ALTUMCODE') || die() ?>
 <!DOCTYPE html>
-<html lang="<?= \Altum\Language::$language_code ?>" dir="<?= language()->direction ?>">
+<html lang="<?= \Altum\Language::$language_code ?>" dir="<?= l('direction') ?>">
     <head>
         <title><?= \Altum\Title::get() ?></title>
         <base href="<?= SITE_URL; ?>">
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta http-equiv="content-language" content="<?= \Altum\Language::$language_code  ?>" />
 
         <?php if(\Altum\Meta::$description): ?>
             <meta name="description" content="<?= \Altum\Meta::$description ?>" />
@@ -25,7 +24,7 @@
         <link rel="alternate" href="<?= SITE_URL . \Altum\Routing\Router::$original_request ?>" hreflang="x-default" />
         <?php if(count(\Altum\Language::$languages) > 1): ?>
             <?php foreach(\Altum\Language::$languages as $language_code => $language_name): ?>
-                <?php if(settings()->default_language != $language_name): ?>
+                <?php if(settings()->main->default_language != $language_name): ?>
                     <link rel="alternate" href="<?= SITE_URL . $language_code . '/' . \Altum\Routing\Router::$original_request ?>" hreflang="<?= $language_code ?>" />
                 <?php endif ?>
             <?php endforeach ?>
@@ -58,8 +57,9 @@
         <?php endif ?>
     </head>
 
-    <body class="<?= language()->direction == 'rtl' ? 'rtl' : null ?> <?= \Altum\Routing\Router::$controller_settings['body_white'] ? 'bg-white' : null ?>">
-    <?php require THEME_PATH . 'views/partials/announcements.php' ?>
+    <body class="<?= l('direction') == 'rtl' ? 'rtl' : null ?> <?= \Altum\Routing\Router::$controller_settings['body_white'] ? 'bg-white' : null ?>">
+        <?php require THEME_PATH . 'views/partials/admin_impersonate_user.php' ?>
+        <?php require THEME_PATH . 'views/partials/announcements.php' ?>
 
         <main class="py-5" data-theme-style="<?= \Altum\ThemeStyle::get() ?>">
 
@@ -67,9 +67,9 @@
                 <div class="d-flex justify-content-center">
                     <a href="<?= url() ?>">
                         <?php if(settings()->logo != ''): ?>
-                            <img src="<?= UPLOADS_FULL_URL . 'logo/' . settings()->logo ?>" class="img-fluid navbar-logo" alt="<?= language()->global->accessibility->logo_alt ?>" />
+                            <img src="<?= UPLOADS_FULL_URL . 'logo/' . settings()->logo ?>" class="img-fluid navbar-logo" alt="<?= l('global.accessibility.logo_alt') ?>" />
                         <?php else: ?>
-                            <h1><?= settings()->title ?></h1>
+                            <h1><?= settings()->main->title ?></h1>
                         <?php endif ?>
                     </a>
                 </div>

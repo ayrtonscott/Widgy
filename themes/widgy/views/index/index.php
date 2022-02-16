@@ -5,7 +5,7 @@
 <?php // * Agregado 2/2 en 10.0.0 - (Agregamos Intercom) FIN. 
 ?>
 <!DOCTYPE html>
-<html lang="<?= \Altum\Language::$language_code ?>" dir="<?= language()->direction ?>">
+<html lang="<?= \Altum\Language::$language_code ?>" dir="<?= l('direction') ?>">
 
 <head>
   <meta charset="UTF-8" />
@@ -74,21 +74,21 @@
         <span></span>
       </a>
       <ul class="navbar-nav">
-        <li class="nav-item"><a href="#home" class="scrollTo"><?= language()->index->custom->nav_item1 ?></a></li>
-        <li class="nav-item"><a href="#about" class="scrollTo"><?= language()->index->custom->nav_item2 ?></a></li>
-        <li class="nav-item"><a href="#notification_preview" class="scrollTo"><?= language()->index->custom->nav_item3 ?></a></li>
-        <li class="nav-item"><a href="#pricing" class="scrollTo"><?= language()->index->custom->nav_item4 ?></a></li>
+        <li class="nav-item"><a href="#home" class="scrollTo"><?= l('index.custom.nav_item1') ?></a></li>
+        <li class="nav-item"><a href="#about" class="scrollTo"><?= l('index.custom.nav_item2') ?></a></li>
+        <li class="nav-item"><a href="#notification_preview" class="scrollTo"><?= l('index.custom.nav_item3') ?></a></li>
+        <li class="nav-item"><a href="#pricing" class="scrollTo"><?= l('index.custom.nav_item4') ?></a></li>
         <li class="nav-item">
           <div class="separator"></div>
         </li>
-        <li class="nav-item pl-5"><a href="login"><strong><?= language()->global->login ?></strong></a>
+        <li class="nav-item pl-5"><a href="login"><strong><?= l('global.login') ?></strong></a>
         <li class="nav-item pl-4">
           <?php if (count(\Altum\Language::$languages) > 1) : ?>
 
-            <a class=" btn btn-outline-semi-light btn-sm pr-4 pl-4 dropdown-toggle clickable" id="language_switch" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="text-muted"></i> <?= language()->global->language ?></a>
+            <a class=" btn btn-outline-semi-light btn-sm pr-4 pl-4 dropdown-toggle clickable" id="language_switch" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="text-muted"></i> <?= l('global.language') ?></a>
 
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="language_switch">
-              <h6 class="dropdown-header"><?= language()->global->choose_language ?></h6>
+              <h6 class="dropdown-header"><?= l('global.choose_language') ?></h6>
               <?php foreach (\Altum\Language::$languages as $language_code => $language_name) : ?>
                 <a class="dropdown-item" href="<?= SITE_URL . $language_code . '/' . \Altum\Routing\Router::$original_request . '?set_language=' . $language_name ?>">
                   <?php if ($language_name == \Altum\Language::$language) : ?>
@@ -115,22 +115,22 @@
             <span class="dark"></span>
           </a>
           <ul class="navbar-nav d-none d-lg-flex flex-row">
-            <li class="nav-item"><a href="#home" class="scrollTo"><?= language()->index->custom->nav_item1 ?></a></li>
-            <li class="nav-item"><a href="#about" class="scrollTo"><?= language()->index->custom->nav_item2 ?></a></li>
-            <li class="nav-item"><a href="#notification_preview" class="scrollTo"><?= language()->index->custom->nav_item3 ?></a></li>
-            <li class="nav-item"><a href="#pricing" class="scrollTo"><?= language()->index->custom->nav_item4 ?></a></li>
+            <li class="nav-item"><a href="#home" class="scrollTo"><?= l('index.custom.nav_item1') ?></a></li>
+            <li class="nav-item"><a href="#about" class="scrollTo"><?= l('index.custom.nav_item2') ?></a></li>
+            <li class="nav-item"><a href="#notification_preview" class="scrollTo"><?= l('index.custom.nav_item3') ?></a></li>
+            <li class="nav-item"><a href="#pricing" class="scrollTo"><?= l('index.custom.nav_item4') ?></a></li>
             <li class="nav-item">
               <div class="separator"></div>
             </li>
-            <li class="nav-item pl-5"><a href="login"><strong><?= language()->global->login ?></strong></a>
+            <li class="nav-item pl-5"><a href="login"><strong><?= l('global.login') ?></strong></a>
             </li>
             <li class="nav-item pl-2">
               <?php if (count(\Altum\Language::$languages) > 1) : ?>
 
-                <a class=" btn btn-outline-semi-light btn-sm pr-4 pl-4 dropdown-toggle clickable" id="language_switch" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="text-muted"></i> <?= language()->global->language ?></a>
+                <a class=" btn btn-outline-semi-light btn-sm pr-4 pl-4 dropdown-toggle clickable" id="language_switch" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="text-muted"></i> <?= l('global.language') ?></a>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="language_switch">
-                  <h6 class="dropdown-header"><?= language()->global->choose_language ?></h6>
+                  <h6 class="dropdown-header"><?= l('global.choose_language') ?></h6>
                   <?php foreach (\Altum\Language::$languages as $language_code => $language_name) : ?>
                     <a class="dropdown-item" href="<?= SITE_URL . $language_code . '/' . \Altum\Routing\Router::$original_request . '?set_language=' . $language_name ?>">
                       <?php if ($language_name == \Altum\Language::$language) : ?>
@@ -159,17 +159,17 @@
             <div class="row home-row">
               <div class="col-12 d-block d-md-none">
                 <a>
-                  <img alt="mobile hero" class="mobile-hero" src="themes/widgy/assets/img/landing-page/home-hero-mobile_<?= \Altum\Language::$language_code  ?>.png" />
+                  <img alt="mobile hero" class="mobile-hero" src="themes/widgy/assets/img/landing-page/home-hero-mobile_<?= \Altum\Language::$language_code ?>.png" />
                 </a>
               </div>
 
               <div class="col-12 col-xl-4 col-lg-5 col-md-6">
                 <div class="home-text">
-                  <div class="display-1"><?= language()->index->header ?></div>
+                  <div class="display-1"><?= l('index.header') ?></div>
                   <p class="white mb-5">
-                    <?= language()->index->subheader ?>
+                    <?= l('index.subheader') ?>
                   </p>
-                  <a class="btn btn-secondary btn-xl mr-2 mb-2" target="_blank" href="<?= language()->index->custom->register_link ?>"><?= language()->index->cta->header ?> <i class="simple-icon-arrow-right"></i></a>
+                  <a class="btn btn-secondary btn-xl mr-2 mb-2" target="_blank" href="<?= l('index.custom.register_link') ?>"><?= l('index.cta.header') ?> <i class="simple-icon-arrow-right"></i></a>
 
                 </div>
               </div>
@@ -252,11 +252,11 @@
           <div class="container" id="about">
             <div class="row mb-2">
               <div class="col-12 offset-0 col-lg-8 offset-lg-2 text-center">
-                <h1><?= language()->index->tools->header ?></h1>
+                <h1><?= l('index.tools.header') ?></h1>
                 <p>
-                  <?= sprintf(language()->index->tools->subheader, nr($data->total_track_notifications)) ?>
+                  <?= sprintf(l('index.tools.subheader'), nr($data->total_track_notifications)) ?>
                 </p>
-                <a class="btn btn-secondary btn-xl mr-2 mb-2" target="_blank" href="<?= language()->index->custom->register_link ?>"><?= language()->index->cta->header ?> <i class="simple-icon-arrow-right"></i></a>
+                <a class="btn btn-secondary btn-xl mr-2 mb-2" target="_blank" href="<?= l('index.custom.register_link') ?>"><?= l('index.cta.header') ?> <i class="simple-icon-arrow-right"></i></a>
               </div>
             </div>
 
@@ -273,9 +273,9 @@
                     </div>
                   </div>
                   <div class="feature-text-container mt-4">
-                    <h2><?= language()->index->custom->feature1_title ?></h2>
+                    <h2><?= l('index.custom.feature1_title') ?></h2>
                     <p>
-                      <?= language()->index->custom->feature1_desc ?>
+                      <?= l('index.custom.feature1_desc') ?>
                     </p>
                   </div>
                 </div>
@@ -286,9 +286,9 @@
               <div class="col-12 col-md-6 col-lg-5 d-flex align-items-center">
                 <div class="d-flex">
                   <div class="feature-text-container">
-                    <h2><?= language()->index->custom->feature2_title ?></h2>
+                    <h2><?= l('index.custom.feature2_title') ?></h2>
                     <p>
-                      <?= language()->index->custom->feature2_desc ?>
+                      <?= l('index.custom.feature2_desc') ?>
                     </p>
                   </div>
                 </div>
@@ -298,30 +298,6 @@
                 <img alt="feature" class="feature-image-right feature-image-charts position-relative" src="themes/widgy/assets/img/landing-page/features/settings-panel_<?= \Altum\Language::$language_code ?>.png" />
               </div>
             </div>
-
-            <!-- 
-            <div class="row feature-row" id="socialproof">
-              <div class="col-12 col-md-6 col-lg-6 order-2 order-md-1">
-                <img alt="feature" class="feature-image-left feature-image-charts" src="themes/widgy/assets/img/landing-page/features/plesant-design.png" />
-              </div>
-
-              <div class="col-12 col-md-6 offset-md-0 col-lg-5 offset-lg-1 d-flex align-items-center order-1 order-md-2">
-                <div class="d-flex">
-                  <div class="feature-icon-container">
-                    <div class="icon-background">
-                      <i class="fas fa-fw fa-ban"></i>
-                    </div>
-                  </div>
-                  <div class="feature-text-container mt-3">
-                    <h2><?= language()->index->custom->feature1_title ?></h2>
-                    <p>
-                      <?= language()->index->custom->feature1_desc ?>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div> -->
-
           </div>
 
 
@@ -331,8 +307,8 @@
 
           <div class="mb-3 d-flex justify-content-between align-items-center flex-column flex-md-row">
             <div>
-              <h3><span class=""><?= language()->index->tools->preview ?></span></h3>
-              <p class="text-muted"><?= language()->index->tools->preview_description ?></p>
+              <h3><span class=""><?= l('index.tools.preview') ?></span></h3>
+              <p class="text-muted"><?= l('index.tools.preview_description') ?></p>
             </div>
 
             <div id="notification_preview" class="container-disabled-simple"></div>
@@ -352,13 +328,13 @@
                   <div class="card-body">
 
                     <div class="mb-3 text-center">
-                      <span class="custom-radio-box-main-icon"><i class="<?= language()->notification->{mb_strtolower($notification_type)}->icon ?>"></i></span>
+                      <span class="custom-radio-box-main-icon"><i class="<?= l('notification.' . mb_strtolower($notification_type) . '.icon') ?>"></i></span>
                     </div>
 
-                    <div class="card-title font-weight-bold text-center"><?= language()->notification->{mb_strtolower($notification_type)}->name ?>
+                    <div class="card-title font-weight-bold text-center"><?= l('notification.' . mb_strtolower($notification_type) . '.name') ?>
                     </div>
 
-                    <p class="text-muted text-center"><?= language()->notification->{mb_strtolower($notification_type)}->description ?></p>
+                    <p class="text-muted text-center"><?= l('notification.' . mb_strtolower($notification_type) . '.description') ?></p>
 
                   </div>
                 </div>
@@ -386,9 +362,9 @@
           <div class="container" id="layouts">
             <div class="row">
               <div class="col-12 offset-0 col-lg-8 offset-lg-2 text-center" id="pricing">
-                <h1><?= language()->index->pricing->header ?></h1>
+                <h1><?= l('index.pricing.header') ?></h1>
                 <p>
-                  <?= language()->index->pricing->subheader ?>
+                  <?= l('index.pricing.subheader') ?>
                 </p>
               </div>
             </div>
@@ -437,30 +413,30 @@
                           <?php endif ?>
                         </h6>
                         </p>
-                        <p class="text-muted text-small "><?= language()->plan->custom_plan->monthly ?></p>
+                        <p class="text-muted text-small "><?= l('plan.custom_plan.monthly') ?></p>
                       </div>
                       <div class="pl-3 pr-3 pt-3 pb-0 d-flex price-feature-list flex-column flex-grow-1">
                         <?= include_view(THEME_PATH . 'views/partials/plans_plan_content.php', ['plan_settings' => $plan->settings]) ?>
                         <div class="text-center">
                           <?php if (\Altum\Language::$language_code == "tiendanube") : ?>
-                            <a href="<?= language()->index->custom->register_link ?>" class="btn btn-primary btn-lg">
+                            <a href="<?= l('index.custom.register_link') ?>" class="btn btn-primary btn-lg">
                             <?php else : ?>
                               <a href="<?= url('register?redirect=pay/' . $plan->plan_id) ?>" class="btn btn-primary btn-lg">
                               <?php endif ?>
 
                               <?php if (\Altum\Middlewares\Authentication::check()) : ?>
                                 <?php if (!$this->user->plan_trial_done && $plan->trial_days) : ?>
-                                  <?= sprintf(language()->plan->button->trial, $plan->trial_days) ?>
+                                  <?= sprintf(l('plan.button.trial'), $plan->trial_days) ?>
                                 <?php elseif ($this->user->plan_id == $plan->plan_id) : ?>
-                                  <?= language()->plan->button->renew ?>
+                                  <?= l('plan.button.renew') ?>
                                 <?php else : ?>
-                                  <?= language()->plan->button->choose ?>
+                                  <?= l('plan.button.choose') ?>
                                 <?php endif ?>
                               <?php else : ?>
                                 <?php if ($plan->trial_days) : ?>
-                                  <?= sprintf(language()->plan->button->trial, $plan->trial_days) ?>
+                                  <?= sprintf(l('plan.button.trial'), $plan->trial_days) ?>
                                 <?php else : ?>
-                                  <?= language()->plan->button->choose ?>
+                                  <?= l('plan.button.choose') ?>
                                 <?php endif ?>
                               <?php endif ?>
                               <i class="simple-icon-arrow-right"></i>
@@ -480,15 +456,15 @@
           <div class="container">
             <div class="row">
               <div class="col-12 offset-0 col-lg-8 offset-lg-2 text-center">
-                <h1><?= language()->index->cta->header ?> </h1>
+                <h1><?= l('index.cta.header') ?> </h1>
                 <p>
-                  <?= language()->index->cta->subheader ?>
+                  <?= l('index.cta.subheader') ?>
                 </p>
               </div>
 
               <div class="col-12 offset-0 col-lg-6 offset-lg-3 newsletter-input-container">
                 <div class="text-center mb-3">
-                  <a class="btn btn-secondary btn-xl" target="_top" href="<?= language()->index->custom->register_link ?>"><?= language()->index->sign_up ?></a>
+                  <a class="btn btn-secondary btn-xl" target="_top" href="<?= l('index.custom.register_link') ?>"><?= l('index.sign_up') ?></a>
                 </div>
               </div>
             </div>
@@ -536,6 +512,9 @@
   <script src="themes/widgy/assets/js/vendor/landing-page/jquery.scrollTo.min.js"></script>
   <script src="themes/widgy/assets/js/vendor/landing-page/jquery.autoellipsis.js"></script>
   <script src="themes/widgy/assets/js/dore.scripts.landingpage.js"></script>
+  <script src="themes/widgy/assets/js/libraries/fontawesome.min.js"></script>
+  <script src="themes/widgy/assets/js/libraries/fontawesome-solid.min.js"></script>
+  <script src="themes/widgy/assets/js/libraries/fontawesome-brands.modified.js"></script>
   <script src="themes/widgy/assets/js/scripts.single.theme.js"></script>
 </body>
 

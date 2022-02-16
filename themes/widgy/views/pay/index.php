@@ -23,30 +23,31 @@
 
     <nav aria-label="breadcrumb">
         <ol class="custom-breadcrumbs small">
-            <li><a href="<?= url() ?>"><?= language()->index->breadcrumb ?></a> <i class="fa fa-fw fa-angle-right"></i></li>
-            <li><a href="<?= url('plan') ?>"><?= language()->plan->breadcrumb ?></a> <i class="fa fa-fw fa-angle-right"></i></li>
-            <li><a href="<?= url('pay-billing/' . $data->plan_id) ?>"><?= language()->pay_billing->breadcrumb ?></a> <i class="fa fa-fw fa-angle-right"></i></li>
-            <li class="active" aria-current="page"><?= sprintf(language()->pay->breadcrumb, $data->plan->name) ?></li>
+            <li><a href="<?= url() ?>"><?= l('index.breadcrumb') ?></a> <i class="fa fa-fw fa-angle-right"></i></li>
+            <li><a href="<?= url('plan') ?>"><?= l('plan.breadcrumb') ?></a> <i class="fa fa-fw fa-angle-right"></i></li>
+            <li><a href="<?= url('pay-billing/' . $data->plan_id) ?>"><?= l('pay_billing.breadcrumb') ?></a> <i class="fa fa-fw fa-angle-right"></i></li>
+            <li class="active" aria-current="page"><?= sprintf(l('pay.breadcrumb'), $data->plan->name) ?></li>
         </ol>
     </nav>
 
-    <?php if($data->plan->trial_days && !$this->user->plan_trial_done): ?>
-        <h1 class="h3"><?= sprintf(language()->pay->trial->header, $data->plan->name) ?></h1>
-        <div class="text-muted mb-5"><?= language()->pay->trial->subheader ?></div>
+    <?php if($data->plan->trial_days && !$this->user->plan_trial_done && !isset($_GET['trial_skip'])): ?>
+        <h1 class="h3"><?= sprintf(l('pay.trial.header'), $data->plan->name) ?></h1>
+        <div class="text-muted mb-5"><?= l('pay.trial.subheader') ?></div>
 
-        <form action="<?= 'pay/' . $data->plan_id ?>" method="post" role="form">
+        <form action="" method="post" role="form">
             <input type="hidden" name="token" value="<?= \Altum\Middlewares\Csrf::get() ?>" />
 
             <div class="row">
                 <div class="col-12 col-xl-8 order-1 order-xl-0">
-                    <button type="submit" name="submit" class="btn btn-lg btn-block btn-primary"><?= sprintf(language()->pay->trial->trial_start, $data->plan->trial_days) ?></button>
+                    <button type="submit" name="submit" class="btn btn-lg btn-block btn-primary"><?= sprintf(l('pay.trial.trial_start'), $data->plan->trial_days) ?></button>
+                    <a href="<?= url('pay/' . $data->plan_id . '?trial_skip=true') ?>" class="btn btn-block btn-outline-secondary"><?= l('pay.trial.trial_skip') ?></a>
 
                     <div class="mt-3 text-muted text-center">
                         <small>
                             <?= sprintf(
-                                language()->pay->accept,
-                                '<a href="' . settings()->terms_and_conditions_url . '">' . language()->global->terms_and_conditions . '</a>',
-                                '<a href="' . settings()->privacy_policy_url . '">' . language()->global->privacy_policy . '</a>'
+                                l('pay.accept'),
+                                '<a href="' . settings()->main->terms_and_conditions_url . '" target="_blank">' . l('global.terms_and_conditions') . '</a>',
+                                '<a href="' . settings()->main->privacy_policy_url . '" target="_blank">' . l('global.privacy_policy') . '</a>'
                             ) ?>
                         </small>
                     </div>
@@ -56,7 +57,7 @@
                 <div class="mb-5 col-12 col-xl-4 order-0 order-xl-1">
                     <div class="">
                         <div class="">
-                            <h2 class="h4 mb-4 text-muted"><?= language()->pay->plan_details ?></h2>
+                            <h2 class="h4 mb-4 text-muted"><?= l('pay.plan_details') ?></h2>
 
                             <?= (new \Altum\Views\View('partials/plan_features'))->run(['plan_settings' => $data->plan->settings]) ?>
                         </div>
@@ -76,10 +77,10 @@
 
     ?>
 
-        <h1 class="h3"><?= sprintf(language()->pay->custom_plan->header, $data->plan->name) ?></h1>
-        <div class="text-muted mb-5"><?= language()->pay->custom_plan->subheader ?></div>
+        <h1 class="h3"><?= sprintf(l('pay.custom_plan.header'), $data->plan->name) ?></h1>
+        <div class="text-muted mb-5"><?= l('pay.custom_plan.subheader') ?></div>
 
-        <form action="<?= 'pay/' . $data->plan_id ?>" method="post" enctype="multipart/form-data" role="form">
+        <form action="" method="post" enctype="multipart/form-data" role="form">
             <input type="hidden" name="plan_id" value="<?= $data->plan_id ?>" />
             <input type="hidden" name="monthly_price" value="<?= $data->plan->monthly_price ?>" />
             <input type="hidden" name="annual_price" value="<?= $data->plan->annual_price ?>" />
@@ -89,7 +90,7 @@
             <div class="row">
                 <div class="col-12 col-xl-8">
 
-                    <h2 class="h5 mb-4 text-muted"><i class="fa fa-fw fa-sm fa-box-open mr-1"></i> <?= language()->pay->custom_plan->payment_frequency ?></h2>
+                    <h2 class="h5 mb-4 text-muted"><i class="fa fa-fw fa-sm fa-box-open mr-1"></i> <?= l('pay.custom_plan.payment_frequency') ?></h2>
 
                     <div>
                         <div class="row d-flex align-items-stretch">
@@ -100,7 +101,7 @@
 
                                     <div class="card">
                                         <div class="card-body d-flex align-items-center justify-content-between">
-                                            <div class="card-title mb-0"><?= language()->pay->custom_plan->monthly ?></div>
+                                            <div class="card-title mb-0"><?= l('pay.custom_plan.monthly') ?></div>
 
                                             <div class="">
                                                 <div class="d-flex align-items-center">
@@ -120,12 +121,12 @@
 
                                     <div class="card">
                                         <div class="card-body d-flex align-items-center justify-content-between">
-                                            <div class="card-title mb-0"><?= language()->pay->custom_plan->annual ?></div>
+                                            <div class="card-title mb-0"><?= l('pay.custom_plan.annual') ?></div>
 
                                             <div class="d-flex align-items-center">
                                                 <?php if($data->plan->monthly_price && $annual_price_savings > 0): ?>
                                                     <div class="payment-price-savings mr-2">
-                                                        <span><?= sprintf(language()->pay->custom_plan->annual_savings, '<span class="badge badge-success">-' . $annual_price_savings, settings()->payment->currency . '</span>') ?></span>
+                                                        <span><?= sprintf(l('pay.custom_plan.annual_savings'), '<span class="badge badge-success">-' . $annual_price_savings, settings()->payment->currency . '</span>') ?></span>
                                                     </div>
                                                 <?php endif ?>
 
@@ -144,11 +145,11 @@
 
                                     <div class="card">
                                         <div class="card-body d-flex align-items-center justify-content-between">
-                                            <div class="card-title mb-0"><?= language()->pay->custom_plan->lifetime ?></div>
+                                            <div class="card-title mb-0"><?= l('pay.custom_plan.lifetime') ?></div>
 
                                             <div class="d-flex align-items-center">
                                                 <div class="payment-price-savings mr-2">
-                                                    <small><?= language()->pay->custom_plan->lifetime_help ?></small>
+                                                    <small><?= l('pay.custom_plan.lifetime_help') ?></small>
                                                 </div>
 
                                                 <span id="lifetime_price_amount" class="custom-radio-box-main-text"><?= $data->plan->lifetime_price ?></span>
@@ -163,11 +164,11 @@
                         </div>
                     </div>
 
-                    <h2 class="h5 mt-5 mb-4 text-muted"><i class="fa fa-fw fa-sm fa-money-check-alt mr-1"></i> <?= language()->pay->custom_plan->payment_processor ?></h2>
+                    <h2 class="h5 mt-5 mb-4 text-muted"><i class="fa fa-fw fa-sm fa-money-check-alt mr-1"></i> <?= l('pay.custom_plan.payment_processor') ?></h2>
 
                     <?php if(!settings()->paypal->is_enabled && !settings()->stripe->is_enabled && !settings()->offline_payment->is_enabled && !settings()->coinbase->is_enabled && !settings()->payu->is_enabled && !settings()->paystack->is_enabled && !settings()->razorpay->is_enabled && !settings()->mollie->is_enabled): ?>
                         <div class="alert alert-info" role="alert">
-                            <?= language()->pay->custom_plan->no_processor ?>
+                            <?= l('pay.custom_plan.no_processor') ?>
                         </div>
                     <?php else: ?>
 
@@ -180,7 +181,7 @@
 
                                             <div class="card">
                                                 <div class="card-body d-flex align-items-center justify-content-between">
-                                                    <div class="card-title mb-0"><?= language()->pay->custom_plan->{$key} ?></div>
+                                                    <div class="card-title mb-0"><?= l('pay.custom_plan.' . $key) ?></div>
 
                                                     <div class="">
                                                         <span class="custom-radio-box-main-icon"><i class="<?= $value['icon'] ?> fa-fw"></i></span>
@@ -196,7 +197,7 @@
                         </div>
                     <?php endif ?>
 
-                    <h2 class="h5 mt-5 mb-4 text-muted"><i class="fa fa-fw fa-sm fa-dollar-sign mr-1"></i> <?= language()->pay->custom_plan->payment_type ?></h2>
+                    <h2 class="h5 mt-5 mb-4 text-muted"><i class="fa fa-fw fa-sm fa-dollar-sign mr-1"></i> <?= l('pay.custom_plan.payment_type') ?></h2>
 
                     <div>
                         <div class="row d-flex align-items-stretch">
@@ -207,7 +208,7 @@
                                 <div class="card">
                                     <div class="card-body d-flex align-items-center justify-content-between">
                                         <?php // * Modificado 16/12 en 10.0.0 - (Establecemos la ID de tipo) INICIO. ?>
-                                        <div id="tipo" class="card-title mb-0"><?= language()->pay->custom_plan->one_time_type ?></div>
+                                        <div id="tipo" class="card-title mb-0"><?= l('pay.custom_plan.one_time_type') ?></div>
                                         <?php // * Modificado 16/12 en 10.0.0 - (Establecemos la ID de tipo) FIN. ?>
                                         <div class="">
                                             <span class="custom-radio-box-main-icon"><i class="fa fa-fw fa-hand-holding-usd"></i></span>
@@ -223,7 +224,7 @@
                                 <div class="card">
                                     <div class="card-body d-flex align-items-center justify-content-between">
 
-                                        <div class="card-title mb-0"><?= language()->pay->custom_plan->recurring_type ?></div>
+                                        <div class="card-title mb-0"><?= l('pay.custom_plan.recurring_type') ?></div>
 
                                         <div class="">
                                             <span class="custom-radio-box-main-icon"><i class="fa fa-fw fa-sync-alt"></i></span>
@@ -238,7 +239,7 @@
                     <?php // * Modificado 17/12 en 10.0.0 - Reubicado el div para que aparezca al final- INICIO. ?>
                     <div id="offline_payment_processor_wrapper" style="display: none;">
                                 <div class="form-group mt-4">
-                                    <label><?= language()->pay->custom_plan->offline_payment_instructions ?></label>
+                                    <label><?= l('pay.custom_plan.offline_payment_instructions') ?></label>
                                     <?php // * Modificado 13/8 en 7.1.0 - (Agregue ID Instrucciones) INICIO. 
                                     ?>
                                     <div class="card">
@@ -249,9 +250,9 @@
                                 </div>
 
                                 <div class="form-group mt-4">
-                                    <label><?= language()->pay->custom_plan->offline_payment_proof ?></label>
+                                    <label><?= l('pay.custom_plan.offline_payment_proof') ?></label>
                                     <input id="offline_payment_proof" type="file" name="offline_payment_proof" accept="<?= \Altum\Uploads::get_whitelisted_file_extensions_accept('offline_payment_proofs') ?>" class="form-control" />
-                                    <div class="mt-2"><span class="text-muted"><?= sprintf(language()->global->accessibility->whitelisted_file_extensions, \Altum\Uploads::get_whitelisted_file_extensions_accept('offline_payment_proofs')) ?></span></div>
+                                    <div class="mt-2"><span class="text-muted"><?= sprintf(l('global.accessibility.whitelisted_file_extensions'), \Altum\Uploads::get_whitelisted_file_extensions_accept('offline_payment_proofs')) ?></span></div>
                                 </div>
                     </div>
                     
@@ -262,14 +263,14 @@
                 <div class="mt-5 mt-xl-0 col-12 col-xl-4">
                     <div class="">
                         <div class="mb-5">
-                            <h2 class="h4 mb-4 text-muted"><?= language()->pay->plan_details ?></h2>
+                            <h2 class="h4 mb-4 text-muted"><?= l('pay.plan_details') ?></h2>
 
                             <?= (new \Altum\Views\View('partials/plan_features'))->run(['plan_settings' => $data->plan->settings]) ?>
                         </div>
 
                         <div class="card">
                             <div class="card-header text-muted font-weight-bold">
-                                <?= language()->pay->custom_plan->summary->header ?>
+                                <?= l('pay.custom_plan.summary.header') ?>
                             </div>
 
                             <div class="card-body">
@@ -277,7 +278,7 @@
                                 <div>
                                     <div class="d-flex justify-content-between mb-3">
                                         <span class="text-muted">
-                                            <?= language()->pay->custom_plan->summary->plan ?>
+                                            <?= l('pay.custom_plan.summary.plan') ?>
                                         </span>
 
                                         <span>
@@ -287,16 +288,16 @@
 
                                     <div class="d-flex justify-content-between mb-3">
                                         <span class="text-muted">
-                                            <?= language()->pay->custom_plan->summary->payment_frequency ?>
+                                            <?= l('pay.custom_plan.summary.payment_frequency') ?>
                                         </span>
 
                                         <div id="summary_payment_frequency_monthly" style="display: none;">
                                             <div class="d-flex flex-column">
                                                 <span class="text-right">
-                                                    <?= language()->pay->custom_plan->summary->monthly ?>
+                                                    <?= l('pay.custom_plan.summary.monthly') ?>
                                                 </span>
                                                 <small class="text-right text-muted">
-                                                    <?= language()->pay->custom_plan->summary->monthly_help ?>
+                                                    <?= l('pay.custom_plan.summary.monthly_help') ?>
                                                 </small>
                                             </div>
                                         </div>
@@ -304,10 +305,10 @@
                                         <div id="summary_payment_frequency_annual" style="display: none;">
                                             <div class="d-flex flex-column">
                                                 <span class="text-right">
-                                                    <?= language()->pay->custom_plan->summary->annual ?>
+                                                    <?= l('pay.custom_plan.summary.annual') ?>
                                                 </span>
                                                 <small class="text-right text-muted">
-                                                    <?= language()->pay->custom_plan->summary->annual_help ?>
+                                                    <?= l('pay.custom_plan.summary.annual_help') ?>
                                                 </small>
                                             </div>
                                         </div>
@@ -315,10 +316,10 @@
                                         <div id="summary_payment_frequency_lifetime" style="display: none;">
                                             <div class="d-flex flex-column">
                                                 <span class="text-right">
-                                                    <?= language()->pay->custom_plan->summary->lifetime ?>
+                                                    <?= l('pay.custom_plan.summary.lifetime') ?>
                                                 </span>
                                                 <small class="text-right text-muted">
-                                                    <?= language()->pay->custom_plan->summary->lifetime_help ?>
+                                                    <?= l('pay.custom_plan.summary.lifetime_help') ?>
                                                 </small>
                                             </div>
                                         </div>
@@ -326,16 +327,16 @@
 
                                     <div class="d-flex justify-content-between mb-3">
                                         <span class="text-muted">
-                                            <?= language()->pay->custom_plan->summary->payment_type ?>
+                                            <?= l('pay.custom_plan.summary.payment_type') ?>
                                         </span>
 
                                         <div id="summary_payment_type_one_time" style="display: none;">
                                             <div class="d-flex flex-column">
                                                 <span class="text-right">
-                                                    <?= language()->pay->custom_plan->summary->one_time ?>
+                                                    <?= l('pay.custom_plan.summary.one_time') ?>
                                                 </span>
                                                 <small class="text-right text-muted">
-                                                    <?= language()->pay->custom_plan->summary->one_time_help ?>
+                                                    <?= l('pay.custom_plan.summary.one_time_help') ?>
                                                 </small>
                                             </div>
                                         </div>
@@ -343,10 +344,10 @@
                                         <div id="summary_payment_type_recurring" style="display: none;">
                                             <div class="d-flex flex-column">
                                                 <span class="text-right">
-                                                    <?= language()->pay->custom_plan->summary->recurring ?>
+                                                    <?= l('pay.custom_plan.summary.recurring') ?>
                                                 </span>
                                                 <small class="text-right text-muted">
-                                                    <?= language()->pay->custom_plan->summary->recurring_help ?>
+                                                    <?= l('pay.custom_plan.summary.recurring_help') ?>
                                                 </small>
                                             </div>
                                         </div>
@@ -354,13 +355,13 @@
 
                                     <div class="d-flex justify-content-between mb-3">
                                         <span class="text-muted">
-                                            <?= language()->pay->custom_plan->summary->payment_processor ?>
+                                            <?= l('pay.custom_plan.summary.payment_processor') ?>
                                         </span>
 
                                         <?php foreach($data->payment_processors as $key => $value): ?>
                                             <?php if(settings()->{$key}->is_enabled): ?>
                                                 <span data-summary-payment-processor="<?= $key ?>" class="d-none">
-                                                    <?= language()->pay->custom_plan->{$key} ?>
+                                                    <?= l('pay.custom_plan.' . $key) ?>
                                                 </span>
                                             <?php endif ?>
                                         <?php endforeach ?>
@@ -368,7 +369,7 @@
 
                                     <div class="d-flex justify-content-between mb-3">
                                         <span class="text-muted">
-                                            <?= language()->pay->custom_plan->summary->plan_price ?>
+                                            <?= l('pay.custom_plan.summary.plan_price') ?>
                                         </span>
 
                                         <div>
@@ -381,7 +382,7 @@
                                     <div id="summary_discount" class="d-none">
                                         <div class="d-flex justify-content-between mb-3">
                                             <span class="text-muted">
-                                                <?= language()->pay->custom_plan->summary->discount ?>
+                                                <?= l('pay.custom_plan.summary.discount') ?>
                                             </span>
 
                                             <div>
@@ -404,7 +405,7 @@
                                                         <span data-toggle="tooltip" title="<?= $row->description ?>"><i class="fa fa-fw fa-sm fa-question-circle"></i></span>
                                                     </span>
                                                         <small class="text-muted">
-                                                            <?= language()->pay->custom_plan->summary->{$row->type == 'inclusive' ? 'tax_inclusive' : 'tax_exclusive'} ?>
+                                                            <?= l('pay.custom_plan.summary.' . ($row->type == 'inclusive' ? 'tax_inclusive' : 'tax_exclusive')) ?>
                                                         </small>
                                                     </div>
 
@@ -431,11 +432,11 @@
 
                                 <?php if(settings()->payment->codes_is_enabled): ?>
                                     <div class="mt-4">
-                                        <button type="button" id="code_button" class="btn btn-block btn-outline-secondary border-gray-100"><?= language()->pay->custom_plan->code_button ?></button>
+                                        <button type="button" id="code_button" class="btn btn-block btn-outline-secondary border-gray-100"><?= l('pay.custom_plan.code_button') ?></button>
 
                                         <div style="display: none;" id="code_block">
                                             <div class="form-group">
-                                                <label for="code"><i class="fa fa-fw fa-sm fa-tags mr-1"></i> <?= language()->pay->custom_plan->code ?></label>
+                                                <label for="code"><i class="fa fa-fw fa-sm fa-tags mr-1"></i> <?= l('pay.custom_plan.code') ?></label>
                                                 <input id="code" type="text" name="code" class="form-control" />
                                                 <div id="code_help"></div>
                                             </div>
@@ -553,7 +554,7 @@
                             <div class="card-footer bg-white">
                                 <div class="d-flex justify-content-between font-weight-bold">
                                     <span class="text-muted">
-                                        <?= language()->pay->custom_plan->summary->total ?>
+                                        <?= l('pay.custom_plan.summary.total') ?>
                                     </span>
 
                                     <div>
@@ -574,17 +575,17 @@
 
                     <div class="mt-5">
                         <button type="submit" name="submit" class="btn btn-lg btn-block btn-primary">
-                            <span id="submit_default_text"><?= language()->pay->custom_plan->pay ?></span>
-                            <span id="submit_text" class="d-none"><?= language()->pay->custom_plan->pay ?></span>
+                            <span id="submit_default_text"><?= l('pay.custom_plan.pay') ?></span>
+                            <span id="submit_text" class="d-none"><?= l('pay.custom_plan.pay') ?></span>
                         </button>
                     </div>
 
                     <div class="mt-3 text-muted text-center">
                         <small>
                             <?= sprintf(
-                                language()->pay->accept,
-                                '<a href="' . settings()->terms_and_conditions_url . '">' . language()->global->terms_and_conditions . '</a>',
-                                '<a href="' . settings()->privacy_policy_url . '">' . language()->global->privacy_policy . '</a>'
+                                l('pay.accept'),
+                                '<a href="' . settings()->main->terms_and_conditions_url . '" target="_blank">' . l('global.terms_and_conditions') . '</a>',
+                                '<a href="' . settings()->main->privacy_policy_url . '" target="_blank">' . l('global.privacy_policy') . '</a>'
                             ) ?>
                         </small>
                     </div>
@@ -716,7 +717,7 @@
         } else {
             $('#offline_payment_processor_wrapper').hide();
             <?php // * Modificado 17/12 en 10.0.0 - Agregado para que muestre mensaje si es offline payment- INICIO. ?>
-            $("#tipo").html("<?= language()->pay->custom_plan->one_time_type ?>");
+            $("#tipo").html("<?= l('pay.custom_plan.one_time_type') ?>");
             $('#summary_payment_type_one_time').show();
             $('#summary_payment_type_recurring').hide();
             <?php // * Modificado 17/12 en 10.0.0 - Agregado para que muestre mensaje si es offline payment- FIN. ?>
