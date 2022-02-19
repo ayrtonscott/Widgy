@@ -14,15 +14,15 @@
         </div>
 
         <div class="d-flex flex-column flex-lg-row">
-            <?php if(count(\Altum\Language::$languages) > 1): ?>
+            <?php if(count(\Altum\Language::$active_languages) > 1): ?>
                 <div class="dropdown mb-2 ml-lg-3">
                     <button type="button" class="btn btn-link text-decoration-none p-0" id="language_switch" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-fw fa-language mr-1"></i> <?= l('global.language') ?></button>
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="language_switch">
                         <h6 class="dropdown-header"><?= l('global.choose_language') ?></h6>
-                        <?php foreach(\Altum\Language::$languages as $language_code => $language_name): ?>
+                        <?php foreach(\Altum\Language::$active_languages as $language_name => $language_code): ?>
                             <a class="dropdown-item" href="<?= SITE_URL . $language_code . '/' . \Altum\Routing\Router::$original_request . '?set_language=' . $language_name ?>">
-                                <?php if($language_name == \Altum\Language::$language): ?>
+                                <?php if($language_name == \Altum\Language::$name): ?>
                                     <i class="fa fa-fw fa-sm fa-check mr-1 text-success"></i>
                                 <?php else: ?>
                                     <i class="fa fa-fw fa-sm fa-circle-notch mr-1 text-muted"></i>

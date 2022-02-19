@@ -18,32 +18,41 @@
         <table class="table table-custom">
             <thead>
             <tr>
-                <th><?= l('admin_languages.main.language') ?></th>
+                <th><?= l('admin_languages.main.language_name') ?></th>
                 <th><?= l('admin_languages.main.language_code') ?></th>
+                <th><?= l('admin_languages.main.status') ?></th>
                 <th></th>
             </tr>
             </thead>
             <tbody>
-            <?php foreach(\Altum\Language::$languages as $language_code => $language): ?>
+            <?php foreach(\Altum\Language::$languages as $language): ?>
 
                 <tr>
                     <td>
-                        <a href="<?= url('admin/language-update/' . $language_code) ?>"><?= $language ?></a>
-                        <?php if($language == settings()->main->default_language): ?>
+                        <a href="<?= url('admin/language-update/' . $language['name']) ?>"><?= $language['name'] ?></a>
+                        <?php if($language['name'] == settings()->main->default_language): ?>
                             <span class="mx-1 badge badge-success"><?= l('admin_languages.main.default_language') ?></span>
                         <?php endif ?>
-                        <?php if($language == \Altum\Language::$main_language): ?>
+                        <?php if($language['name'] == \Altum\Language::$main_name): ?>
                             <span class="mx-1 badge badge-info"><?= l('admin_languages.main.main') ?></span>
                         <?php endif ?>
                     </td>
 
                     <td>
-                        <?= $language_code ?>
+                        <?= $language['code'] ?>
+                    </td>
+
+                    <td>
+                        <?php if($language['status'] == 'disabled'): ?>
+                        <span class="badge badge-pill badge-warning"><i class="fa fa-fw fa-eye-slash"></i> <?= l('global.disabled') ?>
+                            <?php elseif($language['status'] == 'active'): ?>
+                            <span class="badge badge-pill badge-success"><i class="fa fa-fw fa-check"></i> <?= l('global.active') ?>
+                                <?php endif ?>
                     </td>
 
                     <td>
                         <div class="d-flex justify-content-end">
-                            <?= include_view(THEME_PATH . 'views/admin/languages/admin_language_dropdown_button.php', ['id' => $language_code]) ?>
+                            <?= include_view(THEME_PATH . 'views/admin/languages/admin_language_dropdown_button.php', ['id' => $language['name']]) ?>
                         </div>
                     </td>
                 </tr>

@@ -15,7 +15,8 @@
 
 <?= \Altum\Alerts::output_alerts() ?>
 
-<div class="alert alert-info" role="alert">
+
+<div class="alert <?= count(\Altum\Language::$languages[\Altum\Language::$main_name]['content']) > ini_get('max_input_vars') ? 'alert-danger' : 'alert-info' ?>" role="alert">
     <?= sprintf(l('admin_languages.info_message.max_input_vars'), ini_get('max_input_vars')) ?>
 </div>
 
@@ -26,10 +27,10 @@
             <input type="hidden" name="token" value="<?= \Altum\Middlewares\Csrf::get() ?>" />
 
             <div class="form-group">
-                <label for="language"><?= l('admin_languages.main.language') ?></label>
-                <input id="language" type="text" name="language" class="form-control form-control-lg <?= \Altum\Alerts::has_field_errors('language') ? 'is-invalid' : null ?>" value="<?= $data->values['language'] ?>" required="required" />
-                <?= \Altum\Alerts::output_field_error('language') ?>
-                <small class="form-text text-muted"><?= l('admin_languages.main.language_help') ?></small>
+                <label for="language_name"><?= l('admin_languages.main.language_name') ?></label>
+                <input id="language_name" type="text" name="language_name" class="form-control form-control-lg <?= \Altum\Alerts::has_field_errors('language_name') ? 'is-invalid' : null ?>" value="<?= $data->values['language_name'] ?>" required="required" />
+                <?= \Altum\Alerts::output_field_error('language_name') ?>
+                <small class="form-text text-muted"><?= l('admin_languages.main.language_name_help') ?></small>
             </div>
 
             <div class="form-group">
@@ -37,6 +38,14 @@
                 <input id="language_code" type="text" name="language_code" class="form-control form-control-lg <?= \Altum\Alerts::has_field_errors('language_code') ? 'is-invalid' : null ?>" value="<?= $data->values['language_code'] ?>" required="required" />
                 <?= \Altum\Alerts::output_field_error('language_code') ?>
                 <small class="form-text text-muted"><?= l('admin_languages.main.language_code_help') ?></small>
+            </div>
+
+            <div class="form-group">
+                <label for="status"><?= l('admin_languages.main.status') ?></label>
+                <select id="status" name="status" class="form-control form-control-lg">
+                    <option value="active" <?= $data->values['status'] == 'active' ? 'selected="selected"' : null ?>><?= l('global.active') ?></option>
+                    <option value="disabled" <?= $data->values['status'] == 'disabled' ? 'selected="selected"' : null ?>><?= l('global.disabled') ?></option>
+                </select>
             </div>
 
             <div class="d-flex align-items-center my-5">
@@ -55,22 +64,22 @@
 
             <div id="translations">
                 <?php $index = 1; ?>
-                <?php foreach(\Altum\Language::$language_objects[\Altum\Language::$main_language] as $key => $value): ?>
+                <?php foreach(\Altum\Language::$languages[\Altum\Language::$main_name]['content'] as $key => $value): ?>
                     <?php $form_key = str_replace('.', '##', $key) ?>
 
                     <?php if($key == 'direction'): ?>
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label for="<?= \Altum\Language::$main_language . '_' . $form_key ?>"><?= $key ?></label>
-                                    <input id="<?= \Altum\Language::$main_language . '_' . $form_key ?>" value="<?= $value ?>" class="form-control form-control-lg" readonly="readonly" />
+                                    <label for="<?= \Altum\Language::$main_name . '_' . $form_key ?>"><?= $key ?></label>
+                                    <input id="<?= \Altum\Language::$main_name . '_' . $form_key ?>" value="<?= $value ?>" class="form-control form-control-lg" readonly="readonly" />
                                 </div>
                             </div>
 
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="<?= $form_key ?>">&nbsp;</label>
-                                    <select id="<?= $form_key ?>" name="<?= $form_key ?>" class="form-control form-control-lg <?= \Altum\Alerts::has_field_errors($form_key) ? 'is-invalid' : null ?> <?= !isset(\Altum\Language::get($data->language)[$key]) || (isset(\Altum\Language::get($data->language)[$key]) && empty(\Altum\Language::get($data->language)[$key])) ? 'border-danger' : null ?>" <?= $index++ >= ini_get('max_input_vars') ? 'readonly="readonly"' : null ?>>
+                                    <select id="<?= $form_key ?>" name="<?= $form_key ?>" class="form-control form-control-lg" <?= $index++ >= ini_get('max_input_vars') ? 'readonly="readonly"' : null ?>>
                                         <option value="ltr" <?= $data->values[$form_key] ?? null == 'ltr' ? 'selected="selected"' : null ?>>ltr</option>
                                         <option value="rtl" <?= $data->values[$form_key] ?? null == 'rtl' ? 'selected="selected"' : null ?>>rtl</option>
                                     </select>
@@ -81,8 +90,8 @@
                         <div class="row" data-display-container>
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label for="<?= \Altum\Language::$main_language . '_' . $form_key ?>"><?= $key ?></label>
-                                    <textarea id="<?= \Altum\Language::$main_language . '_' . $form_key ?>" class="form-control form-control-lg" readonly="readonly"><?= $value ?></textarea>
+                                    <label for="<?= \Altum\Language::$main_name . '_' . $form_key ?>"><?= $key ?></label>
+                                    <textarea id="<?= \Altum\Language::$main_name . '_' . $form_key ?>" class="form-control form-control-lg" readonly="readonly"><?= $value ?></textarea>
                                 </div>
                             </div>
 

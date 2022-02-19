@@ -32,9 +32,9 @@
 
     /* On modal show load new data */
     $('#language_delete_modal').on('show.bs.modal', event => {
-        let language_id = $(event.relatedTarget).data('language-id');
+        let language_name = $(event.relatedTarget).data('language-name');
 
-        $(event.currentTarget).find('#language_delete_modal_url').attr('href', `${url}admin/languages/delete/${language_id}&global_token=${global_token}`);
+        $(event.currentTarget).find('#language_delete_modal_url').attr('href', `${url}admin/languages/delete/${language_name}&global_token=${global_token}`);
     });
 </script>
 <?php \Altum\Event::add_content(ob_get_clean(), 'javascript') ?>

@@ -47,44 +47,34 @@
                             <button type="submit" name="submit" class="btn btn-primary btn-block my-1"><?= l('login.form.login') ?></button>
                         </div>
 
-                        <?php if(settings()->facebook->is_enabled || settings()->google->is_enabled || settings()->twitter->is_enabled): ?>
-                            <div class="d-flex align-items-center my-3">
-                                <div class="line bg-gray-300"></div>
-                                <div class="mx-3"><small class=""><?= l('login.form.or') ?></small></div>
-                                <div class="line bg-gray-300"></div>
-                            </div>
+                        <hr class="border-gray-100 my-3" />
 
+                        <div class="">
                             <?php if(settings()->facebook->is_enabled): ?>
-                                <div class="row">
-                                    <div class="col-sm mt-1">
-                                        <a href="<?= url('login/facebook-initiate') ?>" class="btn btn-light btn-block text-gray-600">
-                                            <img src="<?= ASSETS_FULL_URL . 'images/facebook.svg' ?>" class="mr-1" />
-                                            <?= l('login.display.facebook') ?>
-                                        </a>
-                                    </div>
+                                <div class="mt-2">
+                                    <a href="<?= url('login/facebook-initiate') ?>" class="btn btn-light btn-block">
+                                        <img src="<?= ASSETS_FULL_URL . 'images/facebook.svg' ?>" class="mr-1" />
+                                        <?= l('login.display.facebook') ?>
+                                    </a>
                                 </div>
                             <?php endif ?>
                             <?php if(settings()->google->is_enabled): ?>
-                                <div class="row">
-                                    <div class="col-sm mt-1">
-                                        <a href="<?= url('login/google-initiate') ?>" class="btn btn-light btn-block text-gray-600">
-                                            <img src="<?= ASSETS_FULL_URL . 'images/google.svg' ?>" class="mr-1" />
-                                            <?= l('login.display.google') ?>
-                                        </a>
-                                    </div>
+                                <div class="mt-2">
+                                    <a href="<?= url('login/google-initiate') ?>" class="btn btn-light btn-block">
+                                        <img src="<?= ASSETS_FULL_URL . 'images/google.svg' ?>" class="mr-1" />
+                                        <?= l('login.display.google') ?>
+                                    </a>
                                 </div>
                             <?php endif ?>
                             <?php if(settings()->twitter->is_enabled): ?>
-                                <div class="row">
-                                    <div class="col-sm mt-1">
-                                        <a href="<?= url('login/twitter-initiate') ?>" class="btn btn-light btn-block text-gray-600">
-                                            <img src="<?= ASSETS_FULL_URL . 'images/twitter.svg' ?>" class="mr-1" />
-                                            <?= l('login.display.twitter') ?>
-                                        </a>
-                                    </div>
+                                <div class="mt-2">
+                                    <a href="<?= url('login/twitter-initiate') ?>" class="btn btn-light btn-block">
+                                        <img src="<?= ASSETS_FULL_URL . 'images/twitter.svg' ?>" class="mr-1" />
+                                        <?= l('login.display.twitter') ?>
+                                    </a>
                                 </div>
                             <?php endif ?>
-                        <?php endif ?>
+                        </div>
 
                         <div class="mt-4 text-center">
                             <small><a href="lost-password" class="text-muted"><?= l('login.display.lost_password') ?></a> / <a href="resend-activation" class="text-muted" role="button"><?= l('login.display.resend_activation') ?></a></small>

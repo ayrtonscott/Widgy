@@ -164,7 +164,7 @@ class User extends Model {
         $total_logins = $status == '1' && !$is_admin_created ? 1 : 0;
         $plan_expiration_date = $plan_expiration_date ?? \Altum\Date::$date;
         $plan_trial_done = 0;
-        $language = \Altum\Language::$default_language;
+        $language = \Altum\Language::$default_name;
         $billing = json_encode(['type' => 'personal', 'name' => '', 'address' => '', 'city' => '', 'county' => '', 'zip' => '', 'country' => '', 'phone' => '', 'tax_id' => '',]);
         $api_key = md5($email . microtime() . microtime());
         $referral_key = md5(rand() . $email . microtime() . $email. microtime());

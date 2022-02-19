@@ -23,7 +23,7 @@ class App {
     public function __construct() {
 
         /* Initiate the Language system */
-        Language::initialize(APP_PATH . 'languages/');
+        Language::initialize();
 
         /* Initiate the plugin system */
         Plugin::initialize();
@@ -67,7 +67,7 @@ class App {
         \Altum\Settings::initialize($settings);
 
         /* Initiate the Language system with the default language */
-        Language::set_default($settings->main->default_language);
+        Language::set_default_by_name($settings->main->default_language);
 
         /* Set the default theme style */
         ThemeStyle::set_default($settings->main->default_theme_style);
@@ -123,12 +123,12 @@ class App {
             }
 
             /* Update the language of the site for next page use if the current language (default) is different than the one the user has */
-            if(!isset($_GET['set_language']) && Language::$language != $user->language) {
+            if(!isset($_GET['set_language']) && Language::$name != $user->language) {
                 Language::set_by_name($user->language);
             }
 
             /* Update the language of the user if needed */
-            if(isset($_GET['set_language']) && in_array($_GET['set_language'], Language::$languages) && Language::$language != $user->language) {
+            if(isset($_GET['set_language']) && in_array($_GET['set_language'], Language::$languages) && Language::$name != $user->language) {
                 db()->where('user_id', Authentication::$user_id)->update('users', ['language' => $_GET['set_language']]);
 
                 /* Clear the cache */
@@ -147,15 +147,15 @@ class App {
         Csrf::set('global_token');
 
         /* If the language code is the default one, redirect to index */
-        if(Router::$language_code == Language::$default_language_code) {
+        if(Router::$language_code == Language::$default_code) {
             redirect(Router::$original_request);
         }
 
         /* Redirect based on browser language if needed */
-        $browser_language = isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) ? mb_substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2) : null;
-        if(Router::$controller_settings['no_browser_language_detection'] == false && !Router::$language_code && !Authentication::check() && $browser_language && Language::$default_language_code != $browser_language && array_key_exists($browser_language, Language::$languages)) {
+        $browser_language_code = isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) ? mb_substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2) : null;
+        if(Router::$controller_settings['no_browser_language_detection'] == false && !Router::$language_code && !Authentication::check() && $browser_language_code && Language::$default_code != $browser_language_code && array_search($browser_language_code, Language::$active_languages)) {
             if(!isset($_SERVER['HTTP_REFERER']) || (isset($_SERVER['HTTP_REFERER']) && parse_url($_SERVER['HTTP_REFERER'])['host'] != parse_url(SITE_URL)['host'])) {
-                header('Location: ' . SITE_URL . $browser_language . '/' . Router::$original_request);
+                header('Location: ' . SITE_URL . $browser_language_code . '/' . Router::$original_request);
             }
         }
 

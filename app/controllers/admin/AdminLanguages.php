@@ -27,15 +27,15 @@ class AdminLanguages extends Controller {
 
     public function delete() {
 
-        $language_code = isset($this->params[0]) ? $this->params[0] : null;
+        $language_name = isset($this->params[0]) ? $this->params[0] : null;
 
         //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
-        if(!array_key_exists($language_code, Language::$languages)) {
+        if(!array_key_exists($language_name, Language::$languages)) {
             redirect('admin/languages');
         }
 
-        $language = Language::$languages[$language_code];
+        $language = Language::$languages[$language_name];
 
         if(!Csrf::check('global_token')) {
             Alerts::add_error(l('global.error_message.invalid_csrf_token'));
@@ -52,11 +52,21 @@ class AdminLanguages extends Controller {
         if(!Alerts::has_field_errors() && !Alerts::has_errors()) {
 
             /* Delete the language */
-            unlink(Language::$path . $language . '#' . $language_code . '.php');
-            unlink(Language::$path . 'admin/' . $language . '#' . $language_code . '.php');
+            /* Old handling */
+            if(file_exists(Language::$path . $language['name'] . '#' . $language['code'] . '.php')) {
+                unlink(Language::$path . $language['name'] . '#' . $language['code'] . '.php');
+                unlink(Language::$path . 'admin/' . $language['name'] . '#' . $language['code'] . '.php');
+            }
+
+            /* New handling */
+            if(file_exists(Language::$path . $language['name'] . '#' . $language['code'] . '#' . $language['status'] . '.php')) {
+                unlink(Language::$path . $language['name'] . '#' . $language['code'] . '#' . $language['status'] . '.php');
+                unlink(Language::$path . 'admin/' . $language['name'] . '#' . $language['code'] . '#' . $language['status'] . '.php');
+            }
 
             /* Update all users that used this language */
-            db()->where('language', $language)->update('users', ['language' => settings()->main->default_language]);
+            $user_fallback_language_name = $language['name'] == settings()->main->default_language ? Language::$main_name : settings()->main->default_language;
+            db()->where('language', $language)->update('users', ['language' => $user_fallback_language_name]);
 
             /* Set a nice success message */
             Alerts::add_success(sprintf(l('global.success_message.delete1'), '<strong>' . $language . '</strong>'));

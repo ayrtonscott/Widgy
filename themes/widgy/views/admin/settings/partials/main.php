@@ -9,7 +9,7 @@
     <div class="form-group">
         <label for="default_language"><i class="fa fa-fw fa-sm fa-language text-muted mr-1"></i> <?= l('admin_settings.main.default_language') ?></label>
         <select id="default_language" name="default_language" class="form-control form-control-lg">
-            <?php foreach(\Altum\Language::$languages as $value) echo '<option value="' . $value . '" ' . (settings()->main->default_language == $value ? 'selected="selected"' : null) . '>' . $value . '</option>' ?>
+            <?php foreach(\Altum\Language::$active_languages as $language_name => $language_code) echo '<option value="' . $language_name . '" ' . (settings()->main->default_language == $language_name ? 'selected="selected"' : null) . '>' . $language_name . ' - ' . $language_code . '</option>' ?>
         </select>
         <small class="form-text text-muted"><?= l('admin_settings.main.default_language_help') ?></small>
     </div>

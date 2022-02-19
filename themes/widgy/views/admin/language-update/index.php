@@ -16,19 +16,19 @@
 <?= \Altum\Alerts::output_alerts() ?>
 
 <div class="alert alert-info" role="alert">
-    <?= sprintf(l('admin_languages.info_message.max_input_vars'), ini_get('max_input_vars')) ?>
-</div>
-
-<div class="alert alert-info" role="alert">
     <?php
     $total_translated = 0;
     $total = 0;
-    foreach(\Altum\Language::$language_objects[\Altum\Language::$main_language] as $key => $value) {
-        if(!empty(\Altum\Language::$language_objects[$data->language][$key])) $total_translated++;
+    foreach(\Altum\Language::$languages[\Altum\Language::$main_name]['content'] as $key => $value) {
+        if(!empty(\Altum\Language::$languages[$data->language['name']]['content'][$key])) $total_translated++;
         $total++;
     }
     ?>
     <?= sprintf(l('admin_languages.info_message.total'), $total_translated, $total) ?>
+</div>
+
+<div class="alert <?= $total > ini_get('max_input_vars') ? 'alert-danger' : 'alert-info' ?>" role="alert">
+    <?= sprintf(l('admin_languages.info_message.max_input_vars'), ini_get('max_input_vars')) ?>
 </div>
 
 <div class="card <?= \Altum\Alerts::has_field_errors() ? 'border-danger' : null ?>">
@@ -38,17 +38,25 @@
             <input type="hidden" name="token" value="<?= \Altum\Middlewares\Csrf::get() ?>" />
 
             <div class="form-group">
-                <label for="language"><?= l('admin_languages.main.language') ?></label>
-                <input id="language" type="text" name="language" class="form-control form-control-lg <?= \Altum\Alerts::has_field_errors('language') ? 'is-invalid' : null ?>" value="<?= $data->language ?>" <?= $data->language_code == 'en' ? 'readonly="readonly"' : null ?> required="required" />
-                <?= \Altum\Alerts::output_field_error('language') ?>
-                <small class="form-text text-muted"><?= l('admin_languages.main.language_help') ?></small>
+                <label for="language_name"><?= l('admin_languages.main.language_name') ?></label>
+                <input id="language_name" type="text" name="language_name" class="form-control form-control-lg <?= \Altum\Alerts::has_field_errors('language_name') ? 'is-invalid' : null ?>" value="<?= $data->language['name'] ?>" <?= $data->language['name'] == \Altum\Language::$main_name ? 'readonly="readonly"' : null ?> required="required" />
+                <?= \Altum\Alerts::output_field_error('language_name') ?>
+                <small class="form-text text-muted"><?= l('admin_languages.main.language_name_help') ?></small>
             </div>
 
             <div class="form-group">
                 <label for="language_code"><?= l('admin_languages.main.language_code') ?></label>
-                <input id="language_code" type="text" name="language_code" class="form-control form-control-lg <?= \Altum\Alerts::has_field_errors('language_code') ? 'is-invalid' : null ?>" value="<?= $data->language_code ?>" <?= $data->language_code == 'en' ? 'readonly="readonly"' : null ?> required="required" />
+                <input id="language_code" type="text" name="language_code" class="form-control form-control-lg <?= \Altum\Alerts::has_field_errors('language_code') ? 'is-invalid' : null ?>" value="<?= $data->language['code'] ?>" <?= $data->language['name'] == \Altum\Language::$main_name ? 'readonly="readonly"' : null ?> required="required" />
                 <?= \Altum\Alerts::output_field_error('language_code') ?>
                 <small class="form-text text-muted"><?= l('admin_languages.main.language_code_help') ?></small>
+            </div>
+
+            <div class="form-group">
+                <label for="status"><?= l('admin_languages.main.status') ?></label>
+                <select id="status" name="status" class="form-control form-control-lg">
+                    <option value="active" <?= $data->language['status'] == 'active' ? 'selected="selected"' : null ?>><?= l('global.active') ?></option>
+                    <option value="disabled" <?= $data->language['status'] == 'disabled' ? 'selected="selected"' : null ?>><?= l('global.disabled') ?></option>
+                </select>
             </div>
 
             <div class="d-flex align-items-center my-5">
@@ -67,24 +75,24 @@
 
             <div id="translations">
                 <?php $index = 1; ?>
-                <?php foreach(\Altum\Language::$language_objects[\Altum\Language::$main_language] as $key => $value): ?>
+                <?php foreach(\Altum\Language::$languages[\Altum\Language::$main_name]['content'] as $key => $value): ?>
                     <?php $form_key = str_replace('.', '##', $key) ?>
 
                     <?php if($key == 'direction'): ?>
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label for="<?= \Altum\Language::$main_language . '_' . $form_key ?>"><?= $key ?></label>
-                                    <input id="<?= \Altum\Language::$main_language . '_' . $form_key ?>" value="<?= $value ?>" class="form-control form-control-lg" readonly="readonly" />
+                                    <label for="<?= \Altum\Language::$main_name . '_' . $form_key ?>"><?= $key ?></label>
+                                    <input id="<?= \Altum\Language::$main_name . '_' . $form_key ?>" value="<?= $value ?>" class="form-control form-control-lg" readonly="readonly" />
                                 </div>
                             </div>
 
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="<?= $form_key ?>">&nbsp;</label>
-                                    <select id="<?= $form_key ?>" name="<?= $form_key ?>" class="form-control form-control-lg <?= \Altum\Alerts::has_field_errors($form_key) ? 'is-invalid' : null ?> <?= !isset(\Altum\Language::get($data->language)[$key]) || (isset(\Altum\Language::get($data->language)[$key]) && empty(\Altum\Language::get($data->language)[$key])) ? 'border-danger' : null ?>" <?= $index++ >= ini_get('max_input_vars') ? 'readonly="readonly"' : null ?>>
-                                        <option value="ltr" <?= (\Altum\Language::get($data->language)[$key] ?? null) == 'ltr' ? 'selected="selected"' : null ?>>ltr</option>
-                                        <option value="rtl" <?= (\Altum\Language::get($data->language)[$key] ?? null) == 'rtl' ? 'selected="selected"' : null ?>>rtl</option>
+                                    <select id="<?= $form_key ?>" name="<?= $form_key ?>" class="form-control form-control-lg <?= \Altum\Alerts::has_field_errors($form_key) ? 'is-invalid' : null ?> <?= !isset(\Altum\Language::get($data->language['name'])[$key]) || (isset(\Altum\Language::get($data->language['name'])[$key]) && empty(\Altum\Language::get($data->language['name'])[$key])) ? 'border-danger' : null ?>" <?= $index++ >= ini_get('max_input_vars') ? 'readonly="readonly"' : null ?>>
+                                        <option value="ltr" <?= (\Altum\Language::get($data->language['name'])[$key] ?? null) == 'ltr' ? 'selected="selected"' : null ?>>ltr</option>
+                                        <option value="rtl" <?= (\Altum\Language::get($data->language['name'])[$key] ?? null) == 'rtl' ? 'selected="selected"' : null ?>>rtl</option>
                                     </select>
                                 </div>
                             </div>
@@ -93,15 +101,15 @@
                         <div class="row" data-display-container>
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label for="<?= \Altum\Language::$main_language . '_' . $form_key ?>"><?= $key ?></label>
-                                    <textarea id="<?= \Altum\Language::$main_language . '_' . $form_key ?>" class="form-control form-control-lg" readonly="readonly"><?= $value ?></textarea>
+                                    <label for="<?= \Altum\Language::$main_name . '_' . $form_key ?>"><?= $key ?></label>
+                                    <textarea id="<?= \Altum\Language::$main_name . '_' . $form_key ?>" class="form-control form-control-lg" readonly="readonly"><?= $value ?></textarea>
                                 </div>
                             </div>
 
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="<?= $form_key ?>">&nbsp;</label>
-                                    <textarea data-display-input id="<?= $form_key ?>" name="<?= $form_key ?>" class="form-control form-control-lg <?= \Altum\Alerts::has_field_errors($form_key) ? 'is-invalid' : null ?> <?= !isset(\Altum\Language::get($data->language)[$key]) || (isset(\Altum\Language::get($data->language)[$key]) && empty(\Altum\Language::get($data->language)[$key])) ? 'border-danger' : null ?>" <?= $index++ >= ini_get('max_input_vars') ? 'readonly="readonly"' : null ?>><?= \Altum\Language::get($data->language)[$key] ?? null ?></textarea>
+                                    <textarea data-display-input id="<?= $form_key ?>" name="<?= $form_key ?>" class="form-control form-control-lg <?= \Altum\Alerts::has_field_errors($form_key) ? 'is-invalid' : null ?> <?= !isset(\Altum\Language::get($data->language['name'])[$key]) || (isset(\Altum\Language::get($data->language['name'])[$key]) && empty(\Altum\Language::get($data->language['name'])[$key])) ? 'border-danger' : null ?>" <?= $index++ >= ini_get('max_input_vars') ? 'readonly="readonly"' : null ?>><?= \Altum\Language::get($data->language['name'])[$key] ?? null ?></textarea>
                                 </div>
                             </div>
                         </div>

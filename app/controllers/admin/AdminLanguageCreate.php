@@ -11,28 +11,27 @@ namespace Altum\Controllers;
 
 use Altum\Alerts;
 use Altum\Language;
-use Altum\Logger;
 use Altum\Middlewares\Csrf;
-use Altum\Models\User;
 
 class AdminLanguageCreate extends Controller {
 
     public function index() {
 
         /* Make sure to load up in memory the main language */
-        Language::get(Language::$main_language);
+        Language::get(Language::$main_name);
 
         /* Default variables */
         $values = [];
 
         if(!empty($_POST)) {
             /* Clean some posted variables */
-            $_POST['language'] = filter_var($_POST['language'], FILTER_SANITIZE_STRING);
+            $_POST['language_name'] = filter_var($_POST['language_name'], FILTER_SANITIZE_STRING);
             $_POST['language_code'] = mb_strtolower(filter_var($_POST['language_code'], FILTER_SANITIZE_STRING));
+            $_POST['status'] = isset($_POST['status']) && in_array($_POST['status'], ['active', 'disabled']) ? $_POST['status'] : 'active';
 
             $language_strings = '';
             $admin_language_strings = '';
-            foreach(\Altum\Language::$language_objects[\Altum\Language::$default_language] as $key => $value) {
+            foreach(\Altum\Language::$languages[\Altum\Language::$main_name]['content'] as $key => $value) {
                 $form_key = str_replace('.', '##', $key);
 
                 if(isset($_POST[$form_key]) && !empty($_POST[$form_key])) {
@@ -60,7 +59,7 @@ ALTUM;
             //ALTUMCODE:DEMO if(DEMO) Alerts::add_error('This command is blocked on the demo.');
 
             /* Check for any errors */
-            $required_fields = ['language', 'language_code'];
+            $required_fields = ['language_name', 'language_code'];
             foreach($required_fields as $field) {
                 if(!isset($_POST[$field]) || (isset($_POST[$field]) && empty($_POST[$field]) && $_POST[$field] != '0')) {
                     Alerts::add_field_error($field, l('global.error_message.empty_field'));
@@ -79,30 +78,39 @@ ALTUM;
                 Alerts::add_error(sprintf(l('global.error_message.directory_not_writable'), Language::$path . 'admin/'));
             }
 
-            if(in_array($_POST['language'], Language::$languages) || array_key_exists($_POST['language_code'], Language::$languages)) {
-                Alerts::add_error(sprintf(l('admin_languages.error_message.language_exists'), $_POST['language'], $_POST['language_code']));
+            if(in_array($_POST['language_name'], Language::$languages)) {
+                Alerts::add_error(sprintf(l('admin_languages.error_message.language_exists'), $_POST['language_name'], $_POST['language_code']));
+            }
+
+            foreach(Language::$languages as $lang) {
+                if($lang['code'] == $_POST['language_code']) {
+                    Alerts::add_error(sprintf(l('admin_languages.error_message.language_exists'), $_POST['language_name'], $_POST['language_code']));
+                    break;
+                }
             }
 
             /* If there are no errors, continue */
             if(!Alerts::has_field_errors() && !Alerts::has_errors()) {
 
-                file_put_contents(Language::$path . $_POST['language'] . '#' . $_POST['language_code'] . '.php', $language_content($language_strings));
-                file_put_contents(Language::$path . 'admin/' . $_POST['language'] . '#' . $_POST['language_code'] . '.php', $language_content($admin_language_strings));
-                chmod(Language::$path . $_POST['language'] . '#' . $_POST['language_code'] . '.php', 0777);
-                chmod(Language::$path . 'admin/' . $_POST['language'] . '#' . $_POST['language_code'] . '.php', 0777);
+                file_put_contents(Language::$path . $_POST['language_name'] . '#' . $_POST['language_code'] . '#' . $_POST['status'] . '.php', $language_content($language_strings));
+                file_put_contents(Language::$path . 'admin/' . $_POST['language_name'] . '#' . $_POST['language_code'] . '#' . $_POST['status'] . '.php', $language_content($admin_language_strings));
+
+                chmod(Language::$path . $_POST['language_name'] . '#' . $_POST['language_code'] . '#' . $_POST['status'] . '.php', 0777);
+                chmod(Language::$path . 'admin/' . $_POST['language_name'] . '#' . $_POST['language_code'] . '#' . $_POST['status'] . '.php', 0777);
 
                 /* Set a nice success message */
-                Alerts::add_success(sprintf(l('global.success_message.create1'), '<strong>' . filter_var($_POST['language'], FILTER_SANITIZE_STRING) . '</strong>'));
+                Alerts::add_success(sprintf(l('global.success_message.create1'), '<strong>' . filter_var($_POST['language_name'], FILTER_SANITIZE_STRING) . '</strong>'));
 
                 /* Redirect */
-                redirect('admin/language-update/' . $_POST['language_code']);
+                redirect('admin/language-update/' . $_POST['language_name']);
             }
 
         }
 
         /* Default variables */
-        $values['language'] = $_POST['language'] ?? null;
+        $values['language_name'] = $_POST['language_name'] ?? null;
         $values['language_code'] = $_POST['language_code'] ?? null;
+        $values['status'] = $_POST['status'] ?? 'active';
 
         /* Main View */
         $data = [

@@ -8,7 +8,7 @@
  */
 
 function url($append = '') {
-    return SITE_URL . (\Altum\Language::$default_language != \Altum\Language::$language ? \Altum\Language::$language_code . '/' : null)  . $append;
+    return SITE_URL . (\Altum\Language::$default_name != \Altum\Language::$name ? \Altum\Language::$code . '/' : null)  . $append;
 }
 
 function redirect($append = '') {

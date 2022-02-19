@@ -65,7 +65,7 @@ class Captcha {
 
             if(!\Altum\Event::exists_content_type_key('javascript', 'captcha')) {
                 ob_start();
-                echo '<script src="https://www.google.com/recaptcha/api.js?hl=' . Language::$language_code . '" async defer></script>';
+                echo '<script src="https://www.google.com/recaptcha/api.js?hl=' . Language::$code . '" async defer></script>';
                 \Altum\Event::add_content(ob_get_clean(), 'javascript', 'captcha');
             }
         }
@@ -77,7 +77,7 @@ class Captcha {
 
             if(!\Altum\Event::exists_content_type_key('javascript', 'captcha')) {
                 ob_start();
-                echo '<script src="https://hcaptcha.com/1/api.js?hl=' . Language::$language_code . '" async defer></script>';
+                echo '<script src="https://hcaptcha.com/1/api.js?hl=' . Language::$code . '" async defer></script>';
                 \Altum\Event::add_content(ob_get_clean(), 'javascript', 'captcha');
             }
         }
