@@ -11,7 +11,13 @@
             <span class="badge badge-success"><?= sprintf(l('account.plan.header'), $this->user->plan->name) ?></span>
 
             <?php if($this->user->plan_id != 'free'): ?>
-                <span><?= sprintf(l('account.plan.subheader'), '<strong>' . \Altum\Date::get($this->user->plan_expiration_date, 2) . '</strong>') ?></span>
+                <?php // * INICIO - Modificado 24/12 en 10.0.0 - Si es mayor a 2050 mostrar mensaje de MP ?>
+                    <?php if($this->user->plan_expiration_date >= '2050-01-01') : ?>
+                        El <strong>débito automático</strong> ha sido establecido en tu cuenta de MercadoPago.
+                    <?php else : ?>
+                        <span><?= sprintf(l('account.plan.subheader'), '<strong>' . \Altum\Date::get($this->user->plan_expiration_date, 2) . '</strong>') ?></span>
+                    <?php endif ?>
+                <?php // * FIN - Modificado 24/12 en 10.0.0 - Si es mayor a 2050 mostrar mensaje de MP ?>
             <?php endif ?>
 
             <?php if(settings()->payment->is_enabled): ?>
@@ -36,6 +42,14 @@
 
     </div>
 </header>
+    <?php // * INICIO - Agregado el 25/12 en 10.0.0 - Alerta para cuando te quedas sin impresiones ?>
+        <?php if($progress_percentage >= 90): ?>
+            <div class="alert alert-danger animated fadeInDown">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <span><?= l('custom.dashboard_cust_notifications_not_shown') ?></span>
+            </div>
+        <?php endif ?>
+    <?php // * FIN - Agregado el 25/12 en 10.0.0 - Alerta para cuando te quedas sin impresiones ?>
 
 <section class="container">
 
@@ -44,7 +58,7 @@
     <div class="mt-5 d-flex justify-content-between">
         <h2 class="h3"><?= l('dashboard.campaigns.header') ?></h2>
 
-        <div class="col-auto p-0 d-flex">
+        <div class="col-lg-auto p-2 d-flex"> <?php // * Modificado 24/12 en 10.0.0 - Fix versión mobile ?>
             <div>
                 <?php if($this->user->plan_settings->campaigns_limit != -1 && $data->campaigns_total >= $this->user->plan_settings->campaigns_limit): ?>
                     <button type="button" data-toggle="tooltip" title="<?= l('campaign.error_message.campaigns_limit') ?>" class="btn btn-primary disabled">
@@ -194,7 +208,7 @@
                         <td>
                             <div class="d-flex justify-content-end">
                                 <div class="dropdown">
-                                <button type="button" class="btn btn-link text-secondary dropdown-toggle dropdown-toggle-simple" data-toggle="dropdown" data-boundary="viewport">
+                                <button type="button" class="btn btn-link text-secondary dropdown-toggle dropdown-toggle-simple" data-toggle="dropdown" data-boundary="scrollParent"> <?php // * Modificado 24/12 en 10.0.0 - Cambiado viewport por scrollParent ?>
                                     <i class="fa fa-fw fa-ellipsis-v"></i>
                                 </button>
 

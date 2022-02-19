@@ -9,7 +9,7 @@
         )
     ): ?>
         <?php $has_announcements = true; ?>
-        <div data-announcement="<?= $type ?>" class="w-100 py-3" style="background-color: <?= settings()->announcements->{$type . '_background_color'} ?>;">
+        <div data-announcement="<?= $type ?>" class="mt-5 w-100 py-3" style="background-color: <?= settings()->announcements->{$type . '_background_color'} ?>;"><?php // * Modificado el 19/12 en 10.0.0 (Agregado mt-5 en class) Inicio. ?>
             <div class="container d-flex justify-content-center position-relative">
                 <div class="row w-100">
                     <div class="col">

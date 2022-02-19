@@ -262,9 +262,9 @@ $settings = require THEME_PATH . 'views/notification/settings/settings.' . mb_st
             <?php endif ?>
             <?php /* INICIO - Agregado 04/02 en 10.0.0 - Ayuda de notificación */ ?>
                 <li class="nav-item">
-                    <?php $sJsonKey = "article_id_" . $data->notification->type; $iArticleId = language()->custom_notification->$sJsonKey; // Obtenemos el ArticleID ?>
+                    <?php $sJsonKey = "custom_notification.article_id_" . $data->notification->type; $iArticleId = l($sJsonKey); // Obtenemos el ArticleID ?>
                     <a class="nav-link" id="tab_data_link" data-toggle="pill" href="#"  aria-selected="false" onclick="Intercom('showArticle', <?= $iArticleId ?>), Intercom('trackEvent', 'button-notification-help')">
-                        <i class="fa fa-fw fa-sm fa-question-circle mr-1"></i> <?= language()->custom_notification->title_help ?>
+                        <i class="fa fa-fw fa-sm fa-question-circle mr-1"></i> <?= l('custom_notification.title_help') ?>
                     </a>
                 </li>
             <?php /* FIN - Agregado 04/02 en 10.0.0 - Ayuda de notificación */ ?>
