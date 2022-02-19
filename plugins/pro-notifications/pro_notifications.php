@@ -4,9 +4,9 @@
 return [
     'INFORMATIONAL_BAR' => [
         'type' => 'pro',
-        'title' => language()->notification->informational_bar->title_default,
-        'description' => language()->notification->informational_bar->description_default,
-        'image' => language()->notification->informational_bar->image_default,
+        'title' => l('notification.informational_bar.title_default'),
+        'description' => l('notification.informational_bar.description_default'),
+        'image' => l('notification.informational_bar.image_default'),
         'image_alt' => '',
         'url'   => '',
         'url_new_tab' => true,
@@ -41,11 +41,11 @@ return [
 
     'IMAGE' => [
         'type' => 'pro',
-        'title' => language()->notification->image->title_default,
-        'image' => language()->notification->image->image_default,
+        'title' => l('notification.image.title_default'),
+        'image' => l('notification.image.image_default'),
         'image_alt' => '',
         'button_url'   => '',
-        'button_text'  => language()->notification->image->button_text_default,
+        'button_text'  => l('notification.image.button_text_default'),
 
         'trigger_all_pages' => true,
         'triggers' => [],
@@ -77,11 +77,11 @@ return [
 
     'COLLECTOR_BAR' => [
         'type' => 'pro',
-        'title' => language()->notification->collector_bar->title_default,
-        'input_placeholder' => language()->notification->collector_bar->input_placeholder_default,
-        'button_text' => language()->notification->collector_bar->button_text_default,
+        'title' => l('notification.collector_bar.title_default'),
+        'input_placeholder' => l('notification.collector_bar.input_placeholder_default'),
+        'button_text' => l('notification.collector_bar.button_text_default'),
         'show_agreement' => false,
-        'agreement_text' => language()->notification->collector_bar->agreement_text_default,
+        'agreement_text' => l('notification.collector_bar.agreement_text_default'),
         'agreement_url' => '',
         'thank_you_url' => '',
 
@@ -119,8 +119,8 @@ return [
 
     'COUPON_BAR' => [
         'type' => 'pro',
-        'title' => language()->notification->coupon_bar->title_default,
-        'coupon_code' => language()->notification->coupon_bar->coupon_code_default,
+        'title' => l('notification.coupon_bar.title_default'),
+        'coupon_code' => l('notification.coupon_bar.coupon_code_default'),
         'url'   => '',
         'url_new_tab' => true,
 
@@ -156,8 +156,8 @@ return [
 
     'BUTTON_BAR' => [
         'type' => 'pro',
-        'title' => language()->notification->button_bar->title_default,
-        'button_text' => language()->notification->button_bar->button_text_default,
+        'title' => l('notification.button_bar.title_default'),
+        'button_text' => l('notification.button_bar.button_text_default'),
         'url'   => '',
         'url_new_tab' => true,
 
@@ -192,14 +192,14 @@ return [
 
     'COLLECTOR_MODAL' => [
         'type' => 'pro',
-        'title' => language()->notification->collector_modal->title_default,
-        'description' => language()->notification->collector_modal->description_default,
-        'image' => language()->notification->collector_modal->image_default,
+        'title' => l('notification.collector_modal.title_default'),
+        'description' => l('notification.collector_modal.description_default'),
+        'image' => l('notification.collector_modal.image_default'),
         'image_alt' => '',
-        'input_placeholder' => language()->notification->collector_modal->input_placeholder_default,
-        'button_text' => language()->notification->collector_modal->button_text_default,
+        'input_placeholder' => l('notification.collector_modal.input_placeholder_default'),
+        'button_text' => l('notification.collector_modal.button_text_default'),
         'show_agreement' => false,
-        'agreement_text' => language()->notification->collector_modal->agreement_text_default,
+        'agreement_text' => l('notification.collector_modal.agreement_text_default'),
         'agreement_url' => '',
         'thank_you_url' => '',
 
@@ -238,14 +238,14 @@ return [
 
     'COLLECTOR_TWO_MODAL' => [
         'type' => 'pro',
-        'title' => language()->notification->collector_two_modal->title_default,
-        'description' => language()->notification->collector_two_modal->description_default,
-        'image' => language()->notification->collector_two_modal->image_default,
+        'title' => l('notification.collector_two_modal.title_default'),
+        'description' => l('notification.collector_two_modal.description_default'),
+        'image' => l('notification.collector_two_modal.image_default'),
         'image_alt' => '',
-        'input_placeholder' => language()->notification->collector_two_modal->input_placeholder_default,
-        'button_text' => language()->notification->collector_two_modal->button_text_default,
+        'input_placeholder' => l('notification.collector_two_modal.input_placeholder_default'),
+        'button_text' => l('notification.collector_two_modal.button_text_default'),
         'show_agreement' => false,
-        'agreement_text' => language()->notification->collector_two_modal->agreement_text_default,
+        'agreement_text' => l('notification.collector_two_modal.agreement_text_default'),
         'agreement_url' => '',
         'thank_you_url' => '',
 
@@ -284,11 +284,11 @@ return [
 
     'BUTTON_MODAL' => [
         'type' => 'pro',
-        'title' => language()->notification->button_modal->title_default,
-        'description' => language()->notification->button_modal->description_default,
-        'image' => language()->notification->button_modal->image_default,
+        'title' => l('notification.button_modal.title_default'),
+        'description' => l('notification.button_modal.description_default'),
+        'image' => l('notification.button_modal.image_default'),
         'image_alt' => '',
-        'button_text' => language()->notification->button_modal->button_text_default,
+        'button_text' => l('notification.button_modal.button_text_default'),
         'button_url'   => '',
 
         'trigger_all_pages' => true,
@@ -322,10 +322,10 @@ return [
 
     'TEXT_FEEDBACK' => [
         'type' => 'pro',
-        'title' => language()->notification->text_feedback->title_default,
-        'description' => language()->notification->text_feedback->description_default,
-        'input_placeholder' => language()->notification->text_feedback->input_placeholder_default,
-        'button_text' => language()->notification->text_feedback->button_text_default,
+        'title' => l('notification.text_feedback.title_default'),
+        'description' => l('notification.text_feedback.description_default'),
+        'input_placeholder' => l('notification.text_feedback.input_placeholder_default'),
+        'button_text' => l('notification.text_feedback.button_text_default'),
 
         'trigger_all_pages' => true,
         'triggers' => [],
@@ -362,8 +362,8 @@ return [
 
     'ENGAGEMENT_LINKS' => [
         'type' => 'pro',
-        'title' => language()->notification->engagement_links->title,
-        'categories' => json_decode(json_encode(language()->notification->engagement_links->categories), false),
+        'title' => l('notification.engagement_links.title'),
+        'categories' => json_decode(json_encode(l('notification.engagement_links.categories')), false),
 
         'trigger_all_pages' => true,
         'triggers' => [],

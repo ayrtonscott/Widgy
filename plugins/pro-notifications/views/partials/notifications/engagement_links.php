@@ -6,7 +6,7 @@
         <div class="altumcode-engagement-links-header">
             <div class="altumcode-engagement-links-title" style="color: <?= $notification->settings->title_color ?>"><?= $notification->settings->title ?></div>
 
-            <button class="altumcode-close"></button>
+            <button class="altumcode-close">&#10006;</button>
         </div>
 
         <div class="altumcode-engagement-links-hidden">

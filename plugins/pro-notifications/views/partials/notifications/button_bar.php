@@ -11,7 +11,7 @@
             <div class="altumcode-button-bar-middle">
                 <button type="button" class="altumcode-button-bar-button" style="color: <?= $notification->settings->button_color ?>;background: <?= $notification->settings->button_background_color ?>;"><?= $notification->settings->button_text ?></button>
 
-                <button class="altumcode-close"></button>
+                <button class="altumcode-close">&#10006;</button>
             </div>
         </div>
 

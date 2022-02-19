@@ -12,9 +12,11 @@
             <div class="altumcode-informational-bar-header">
                 <p class="altumcode-informational-bar-title" style="color: <?= $notification->settings->title_color ?>"><?= $notification->settings->title ?></p>
 
-                <button class="altumcode-close"></button>
+                <button class="altumcode-close">&#10006;</button>
             </div>
+            <?php if($notification->settings->description): ?>
             <p class="altumcode-informational-bar-description" style="color: <?= $notification->settings->description_color ?>"><?= $notification->settings->description ?></p>
+            <?php endif ?>
 
             <?php if($notification->settings->display_branding): ?>
                 <?php if(isset($notification->branding, $notification->branding->name, $notification->branding->url) && !empty($notification->branding->name) && !empty($notification->branding->url)): ?>

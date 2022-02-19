@@ -6,7 +6,7 @@
         <div class="altumcode-text-feedback-header">
             <div class="altumcode-text-feedback-title" style="color: <?= $notification->settings->title_color ?>"><button type="button" class="altumcode-text-feedback-expand" style="color: <?= $notification->settings->title_color ?>">&rarr;</button> <?= $notification->settings->title ?></div>
 
-            <button class="altumcode-close"></button>
+            <button class="altumcode-close">&#10006;</button>
         </div>
 
         <div class="altumcode-text-feedback-hidden">

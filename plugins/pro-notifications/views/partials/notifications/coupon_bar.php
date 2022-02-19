@@ -11,7 +11,7 @@
             <div class="altumcode-coupon-bar-middle">
                 <div class="altumcode-coupon-bar-coupon-code" style="color: <?= $notification->settings->coupon_code_color ?>;background: <?= $notification->settings->coupon_code_background_color ?>;border-color: <?= $notification->settings->coupon_code_border_color ?>;"><?= $notification->settings->coupon_code ?></div>
 
-                <button class="altumcode-close"></button>
+                <button class="altumcode-close">&#10006;</button>
             </div>
         </div>
 
