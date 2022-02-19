@@ -81,6 +81,7 @@ return [
 	'global.unlimited' => 'ꝏ',
     'global.admin_impersonate_user_help' => 'Logged in as',
     'global.admin_impersonate_user_logout' => 'Exit',
+
 	'global.info_message.confirm_delete' => '¿Estás seguro de que quieres borrar esto?',
 	'global.info_message.plan_feature_no_access' => 'Tu plan actual no te permite acceder a este beneficio.',
 	'global.info_message.user_plan_is_expired' => 'Tu plan actual ha expirado y se ha limitado tu acceso. ¡Por favor considera renovarlo!',
@@ -584,7 +585,6 @@ return [
 	'login.form.twofa_token_placeholder' => 'Token de la autenticación de dos factores',
 	'login.form.remember_me' => 'Recuérdame',
 	'login.form.login' => 'Login',
-	'login.form.or' => 'o',
 
 	'login.display.total_track_notifications' => 'notificaciones impresas, y contando.. .',
 	'login.display.register' => '¿No tienes una cuenta? %s',
@@ -1202,36 +1202,7 @@ return [
 	'notification.engagement_links.name' => 'Links de interacción',
 	'notification.engagement_links.description' => 'Muestra un widget que contenga todos tus links relevantes.',
 	'notification.engagement_links.icon' => 'fa fa-fw fa-link',
-	'notification.engagement_links.title' => 'Conecta con nosotros',
-
-
-	'notification.engagement_links.categories.0.title' => 'Redes sociales',
-	'notification.engagement_links.categories.0.description' => 'Enterate de todo',
-
-
-	'notification.engagement_links.categories.0.links.0.title' => 'Twitter',
-	'notification.engagement_links.categories.0.links.0.description' => 'Síguenos en Twitter!',
-	'notification.engagement_links.categories.0.links.0.image' => 'https://img.icons8.com/fluency/96/000000/twitter.png',
-	'notification.engagement_links.categories.0.links.0.url' => 'https://domain.com/',
-
-	'notification.engagement_links.categories.0.links.1.title' => 'instagram',
-	'notification.engagement_links.categories.0.links.1.description' => 'Síguenos en instagram!',
-	'notification.engagement_links.categories.0.links.1.image' => 'https://img.icons8.com/color/96/000000/instagram-new--v1.png',
-	'notification.engagement_links.categories.0.links.1.url' => 'https://domain.com/',
-
-	'notification.engagement_links.categories.1.title' => 'Contactanos',
-	'notification.engagement_links.categories.1.description' => '',
-
-
-	'notification.engagement_links.categories.1.links.0.title' => 'Email',
-	'notification.engagement_links.categories.1.links.0.description' => 'Email de soporte técnico.',
-	'notification.engagement_links.categories.1.links.0.image' => '',
-	'notification.engagement_links.categories.1.links.0.url' => 'https://domain.com/',
-
-	'notification.engagement_links.categories.1.links.1.title' => 'Whatsapp',
-	'notification.engagement_links.categories.1.links.1.description' => '¡Envíanos un mensajito!.',
-	'notification.engagement_links.categories.1.links.1.image' => '',
-	'notification.engagement_links.categories.1.links.1.url' => 'https://domain.com/',
+	'notification.engagement_links.title' => 'Conecta con nosotros 👋',
 
 	'notification_delete_modal.header' => 'Borrar notificación',
 	'notification_delete_modal.subheader' => 'Si borras esta notificación todos los datos desaparecerán. Esta acción es irreversible.',

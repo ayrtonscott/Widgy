@@ -134,3 +134,15 @@ Stack trace:
 #1 C:\xampp\htdocs\index.php(14): Altum\App->__construct()
 #2 {main}
   thrown in C:\xampp\htdocs\app\helpers\Cache.php on line 19
+[19-Feb-2022 04:39:29 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$default_language in C:\xampp\htdocs\app\core\App.php on line 70
+[19-Feb-2022 04:39:29 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$default_theme_style in C:\xampp\htdocs\app\core\App.php on line 73
+[19-Feb-2022 04:39:29 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$title in C:\xampp\htdocs\app\core\App.php on line 76
+[19-Feb-2022 03:39:30 UTC] PHP Fatal error:  Uncaught Error: Access to undeclared static property Altum\Language::$language_code in C:\xampp\htdocs\themes\widgy\views\partials\plans.php:111
+Stack trace:
+#0 C:\xampp\htdocs\app\core\View.php(35): require()
+#1 C:\xampp\htdocs\app\controllers\Index.php(32): Altum\Views\View->run(Object(stdClass))
+#2 [internal function]: Altum\Controllers\Index->index()
+#3 C:\xampp\htdocs\app\core\App.php(177): call_user_func_array(Array, Array)
+#4 C:\xampp\htdocs\index.php(17): Altum\App->__construct()
+#5 {main}
+  thrown in C:\xampp\htdocs\themes\widgy\views\partials\plans.php on line 111

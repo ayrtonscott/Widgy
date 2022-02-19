@@ -3,7 +3,7 @@
 <?php // * Agregado 21/01 en 10.0.0 - (Agregamos Intercom) FIN. ?>
 <?php defined('ALTUMCODE') || die() ?>
 <!DOCTYPE html>
-<html lang="<?= \Altum\Language::$language_code ?>" dir="<?= l('direction') ?>">
+<html lang="<?= \Altum\Language::$code ?>" dir="<?= l('direction') ?>">
     <head>
         <title><?= \Altum\Title::get() ?></title>
         <base href="<?= SITE_URL; ?>">
@@ -22,8 +22,8 @@
         <?php endif ?>
 
         <link rel="alternate" href="<?= SITE_URL . \Altum\Routing\Router::$original_request ?>" hreflang="x-default" />
-        <?php if(count(\Altum\Language::$languages) > 1): ?>
-            <?php foreach(\Altum\Language::$languages as $language_code => $language_name): ?>
+        <?php if(count(\Altum\Language::$active_languages) > 1): ?>
+            <?php foreach(\Altum\Language::$active_languages as $language_name => $language_code): ?>
                 <?php if(settings()->main->default_language != $language_name): ?>
                     <link rel="alternate" href="<?= SITE_URL . $language_code . '/' . \Altum\Routing\Router::$original_request ?>" hreflang="<?= $language_code ?>" />
                 <?php endif ?>

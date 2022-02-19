@@ -81,6 +81,7 @@ return [
 	'global.unlimited' => 'Unlimited',
     'global.admin_impersonate_user_help' => 'Logged in as',
     'global.admin_impersonate_user_logout' => 'Exit',
+
 	'global.info_message.confirm_delete' => 'Are you sure you want to delete this?',
 	'global.info_message.plan_feature_no_access' => 'Your current plan does not allow you to access this feature.',
 	'global.info_message.user_plan_is_expired' => 'Your current plan has expired and your access is limited. Please get a new plan!',
@@ -584,7 +585,6 @@ return [
 	'login.form.twofa_token_placeholder' => 'Token code from the authenticator app',
 	'login.form.remember_me' => 'Remember me',
 	'login.form.login' => 'Login',
-	'login.form.or' => 'or',
 
 	'login.display.total_track_notifications' => 'Displayed notifications worldwide and counting.',
 	'login.display.register' => 'Don\'t have an account? %s',
@@ -1202,36 +1202,7 @@ return [
 	'notification.engagement_links.name' => 'Engagement Links',
 	'notification.engagement_links.description' => 'Display a subtle widget which contains all of your relevant links.',
 	'notification.engagement_links.icon' => 'fa fa-fw fa-link',
-	'notification.engagement_links.title' => 'Connect with us 👁',
-
-
-	'notification.engagement_links.categories.0.title' => 'Social Media',
-    'notification.engagement_links.categories.0.description' => 'Our social media pages.',
-
-
-	'notification.engagement_links.categories.0.links.0.title' => 'Twitter',
-	'notification.engagement_links.categories.0.links.0.description' => 'Follow us on Twitter!',
-	'notification.engagement_links.categories.0.links.0.image' => 'https://img.icons8.com/fluency/96/000000/twitter.png',
-	'notification.engagement_links.categories.0.links.0.url' => 'https://domain.com/',
-
-	'notification.engagement_links.categories.0.links.1.title' => 'instagram',
-	'notification.engagement_links.categories.0.links.1.description' => 'Follow us on instagram!',
-	'notification.engagement_links.categories.0.links.1.image' => 'https://img.icons8.com/color/96/000000/instagram-new--v1.png',
-	'notification.engagement_links.categories.0.links.1.url' => 'https://domain.com/',
-
-    'notification.engagement_links.categories.1.title' => 'Contact',
-	'notification.engagement_links.categories.1.description' => '',
-
-
-	'notification.engagement_links.categories.1.links.0.title' => 'Email',
-	'notification.engagement_links.categories.1.links.0.description' => 'Tech support email.',
-	'notification.engagement_links.categories.1.links.0.image' => '',
-	'notification.engagement_links.categories.1.links.0.url' => 'https://domain.com/',
-
-	'notification.engagement_links.categories.1.links.1.title' => 'Whatsapp',
-	'notification.engagement_links.categories.1.links.1.description' => 'Send us a message!.',
-	'notification.engagement_links.categories.1.links.1.image' => '',
-	'notification.engagement_links.categories.1.links.1.url' => 'https://domain.com/',
+	'notification.engagement_links.title' => 'Connect with us 👋',
 
 	'notification_delete_modal.header' => 'Delete notification',
 	'notification_delete_modal.subheader' => 'By deleting the notification, all the data associated with the notification will be lost. This action cannot be undone.',
