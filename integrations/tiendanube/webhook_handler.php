@@ -85,8 +85,12 @@ if ($sEvent == 'order/created' || $sEvent == 'order/paid' || $sEvent == 'order/p
     $ResponseORDER["billing_city"] = ucwords($ResponseORDER["billing_city"]);
     $ResponseORDER["billing_province"] = strtolower($ResponseORDER["billing_province"]);
     $ResponseORDER["billing_province"] = ucwords($ResponseORDER["billing_province"]);
+
+    // Si el producto tiene de precio $0, utilizar el producto siguiente.
+    $ResponseORDER["products"][0]["price"] == 0 ? $iIndexNumber = 1 : $iIndexNumber = 0;
+
     // Quitamos los decimales del precio
-    $ResponseORDER["products"][0]["price"] = round($ResponseORDER["products"][0]["price"]);
+    $ResponseORDER["products"][$iIndexNumber]["price"] = round($ResponseORDER["products"][$iIndexNumber]["price"]);
     // Limpiamos el método de pago
     $ResponseORDER["payment_details"]["method"] == "debit_card" ? $ResponseORDER["payment_details"]["method"] = "tarjeta de débito" : "";
     $ResponseORDER["payment_details"]["method"] == "credit_card" ? $ResponseORDER["payment_details"]["method"] = "tarjeta de crédito" : "";
@@ -98,18 +102,18 @@ if ($sEvent == 'order/created' || $sEvent == 'order/paid' || $sEvent == 'order/p
     unset($pos);
 
     // • Pedimos los datos del producto:
-    $iProductID = $ResponseORDER["products"][0]["product_id"];
+    $iProductID = $ResponseORDER["products"][$iIndexNumber]["product_id"];
     $Url = "https://api.tiendanube.com/v1/" . $iStoreID . "/products/" . $iProductID;
     $ResponsePRODUCT = Requests::get($Url, $Headers);
     $ResponsePRODUCT = json_decode($ResponsePRODUCT->body, true);
 
     // Limpiamos la variación
-    $pos = strpos($ResponseORDER["products"][0]["name"], "(");
+    $pos = strpos($ResponseORDER["products"][$iIndexNumber]["name"], "(");
     if (!empty($pos)) {
-        $sProductName = mb_substr($ResponseORDER["products"][0]["name"], 0, $pos - 1);
-        $sVariation = mb_substr($ResponseORDER["products"][0]["name"], $pos - 1, null);
+        $sProductName = mb_substr($ResponseORDER["products"][$iIndexNumber]["name"], 0, $pos - 1);
+        $sVariation = mb_substr($ResponseORDER["products"][$iIndexNumber]["name"], $pos - 1, null);
     } else {
-        $sProductName = $ResponseORDER["products"][0]["name"];
+        $sProductName = $ResponseORDER["products"][$iIndexNumber]["name"];
         $sVariation = "";
     }
     unset($pos);
@@ -117,18 +121,20 @@ if ($sEvent == 'order/created' || $sEvent == 'order/paid' || $sEvent == 'order/p
 
 if ($sEvent == 'product/created' || $sEvent == 'product/updated') { // ? Es un producto?
 
+    $iIndexNumber = 0; // Seteamos el index en el producto único.
+
     // • Pedimos los datos del producto:
     $Url = "https://api.tiendanube.com/v1/" . $iStoreID . "/products/" . $iEventid;
     $ResponsePRODUCT = Requests::get($Url, $Headers);
     $ResponsePRODUCT = json_decode($ResponsePRODUCT->body, true);
 
     // Limpiamos la fecha de creación
-    $pos = strpos($ResponsePRODUCT["variants"][0]["created_at"], "T");
-    !empty($pos) ? $ResponsePRODUCT["variants"][0]["created_at"] = date("d-m-Y", strtotime(mb_substr($ResponsePRODUCT["variants"][0]["created_at"], 0, $pos))) : "";
+    $pos = strpos($ResponsePRODUCT["variants"][$iIndexNumber]["created_at"], "T");
+    !empty($pos) ? $ResponsePRODUCT["variants"][$iIndexNumber]["created_at"] = date("d-m-Y", strtotime(mb_substr($ResponsePRODUCT["variants"][$iIndexNumber]["created_at"], 0, $pos))) : "";
     unset($pos);
     // Limpiamos la fecha de modificación
-    $pos = strpos($ResponsePRODUCT["variants"][0]["updated_at"], "T");
-    !empty($pos) ? $ResponsePRODUCT["variants"][0]["updated_at"] = date("d-m-Y", strtotime(mb_substr($ResponsePRODUCT["variants"][0]["updated_at"], 0, $pos))) : "";
+    $pos = strpos($ResponsePRODUCT["variants"][$iIndexNumber]["updated_at"], "T");
+    !empty($pos) ? $ResponsePRODUCT["variants"][$iIndexNumber]["updated_at"] = date("d-m-Y", strtotime(mb_substr($ResponsePRODUCT["variants"][$iIndexNumber]["updated_at"], 0, $pos))) : "";
     unset($pos);
 }
 
@@ -143,10 +149,10 @@ if ($sEvent == 'order/created' || $sEvent ==  'order/paid' || $sEvent ==  'order
         'provincia' => $ResponseORDER["billing_province"],
         'producto' => $sProductName,
         'variacion' => $sVariation,
-        'cantidad' => $ResponseORDER["products"][0]["quantity"],
-        'stock' => $ResponsePRODUCT["variants"][0]["stock"],
-        'precio' => $ResponseORDER["products"][0]["price"],
-        'url-imagen' => $ResponseORDER["products"][0]["image"]["src"],
+        'cantidad' => $ResponseORDER["products"][$iIndexNumber]["quantity"],
+        'stock' => $ResponsePRODUCT["variants"][$iIndexNumber]["stock"],
+        'precio' => $ResponseORDER["products"][$iIndexNumber]["price"],
+        'url-imagen' => $ResponseORDER["products"][$iIndexNumber]["image"]["src"],
         'url-enlace' => $ResponsePRODUCT["canonical_url"]
     );
 
@@ -160,16 +166,16 @@ if ($sEvent == 'product/created' || $sEvent ==  'product/updated') { // ? Es un 
     $aData = array(
         'id' => $ResponsePRODUCT["id"],
         'producto' => $ResponsePRODUCT["name"]["es"],
-        'variacion' => $ResponsePRODUCT["variants"][0]["values"][0]["es"],
-        'stock' => $ResponsePRODUCT["variants"][0]["stock"],
-        'precio' => $ResponsePRODUCT["variants"][0]["price"],
-        'preciopromo' => $ResponsePRODUCT["variants"][0]["promotional_price"],
-        'url-imagen' => $ResponsePRODUCT['images'][0]['src'],
+        'variacion' => $ResponsePRODUCT["variants"][$iIndexNumber]["values"][0]["es"],
+        'stock' => $ResponsePRODUCT["variants"][$iIndexNumber]["stock"],
+        'precio' => $ResponsePRODUCT["variants"][$iIndexNumber]["price"],
+        'preciopromo' => $ResponsePRODUCT["variants"][$iIndexNumber]["promotional_price"],
+        'url-imagen' => $ResponsePRODUCT['images'][$iIndexNumber]['src'],
         'url-enlace' => $ResponsePRODUCT["canonical_url"]
     );
 
-    $sEvent == 'product/created' ? $aData += ['fecha' => $ResponsePRODUCT["variants"][0]["created_at"]] : "";
-    $sEvent == 'product/updated' ? $aData += ['fecha' => $ResponsePRODUCT["variants"][0]["updated_at"]] : "";
+    $sEvent == 'product/created' ? $aData += ['fecha' => $ResponsePRODUCT["variants"][$iIndexNumber]["created_at"]] : "";
+    $sEvent == 'product/updated' ? $aData += ['fecha' => $ResponsePRODUCT["variants"][$iIndexNumber]["updated_at"]] : "";
 }
 
 
