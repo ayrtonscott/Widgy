@@ -1,0 +1,45 @@
+/* Live Counter */
+.altumcode-live-counter-wrapper {
+    width: 220px !important;
+}
+
+@media (min-width: 576px) {
+    .altumcode-live-counter-wrapper {
+        width: 280px !important;
+    }
+}
+
+.altumcode-live-counter-content {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+}
+
+.altumcode-live-counter-header {
+    display: flex !important;
+    width: 100% !important;
+}
+
+.altumcode-live-counter-main {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-grow: 1 !important;
+}
+
+.altumcode-live-counter-number {
+    padding: 3px 32px !important;
+    border-radius: 4px !important;
+    font-weight: bolder !important;
+    font-size: 21px !important;
+}
+
+.altumcode-live-counter-close {
+    align-self: end !important;
+}
+
+.altumcode-live-counter-description {
+    font-size: 14px !important;
+    margin-bottom: 16px !important;
+}

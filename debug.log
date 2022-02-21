@@ -1,0 +1,4 @@
+[21-Feb-2022 18:02:28 Europe/Berlin] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user ''@'localhost' (using password: NO) in C:\xampp\htdocs\app\core\Database.php on line 23
+[21-Feb-2022 18:15:54 Europe/Berlin] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user ''@'localhost' (using password: NO) in C:\xampp\htdocs\app\core\Database.php on line 23
+[21-Feb-2022 18:23:50 Europe/Berlin] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user ''@'localhost' (using password: NO) in C:\xampp\htdocs\app\core\Database.php on line 23
+[21-Feb-2022 18:31:01 Europe/Berlin] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user ''@'localhost' (using password: NO) in C:\xampp\htdocs\app\core\Database.php on line 23
